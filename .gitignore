@@ -1,0 +1,6 @@
+# records and history
+.VimballRecord
+.netrwhist
+
+# changelogs
+*.changelog
