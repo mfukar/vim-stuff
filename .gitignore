@@ -9,3 +9,4 @@
 tags/
 # Documentation is for sissies
 doc/
+*.README
