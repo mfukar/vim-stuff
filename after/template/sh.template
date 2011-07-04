@@ -1,0 +1,9 @@
+VimL:" $Id: sh.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:" «sh» File Template, Luc Hermitte, 02nd Jan 2011
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end   = s:value_start
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+#!/usr/bin/<+ba+>sh
+<++>

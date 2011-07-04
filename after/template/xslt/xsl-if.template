@@ -1,0 +1,11 @@
+VimL:" $Id: xsl-if.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:"{xsl:if} Template, Luc Hermitte, 30th Jul 2003
+VimL:" hint: <xsl:if test="condition"></xsl:if>
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end   = 'Â¡'
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+VimL: let s:reindent = 1 
+<xsl:if test="<+condition+>">
+	<++>
+</xsl:if>

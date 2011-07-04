@@ -1,0 +1,18 @@
+VimL:" Python File Template, mfukar, Sat Jan 22, 2011 15:03 GTB Standard Time
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end   = s:value_start
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+#!/usr/bin/env python
+# @file        Â¡s:filenameÂ¡
+# @author      Â¡substitute(Author(0),'\r"','\r','g')Â¡
+# @version     <+version+>
+# @date        Created:     Â¡DateStamp()Â¡
+#              Last Update: Mon Jan 24, 2011 14:54 GTB Standard Time
+#------------------------------------------------------------------------
+# Description: <+description+>
+#------------------------------------------------------------------------
+# History:     <+history+>
+# TODO:        <+missing features+>
+#------------------------------------------------------------------------
+

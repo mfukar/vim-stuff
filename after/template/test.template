@@ -1,0 +1,28 @@
+VimL: " $Id
+VimL: " muTemplate Test File-Template, Luc Hermitte
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+VimL: let s:var = 1
+BEGIN<++>
+/*
+ * Â¡'$'Â¡Id$
+ */
+Â¡s:varÂ¡
+aÂ¡s:varÂ¡
+Â¡s:var + 5Â¡a
+aÂ¡s:varÂ¡aÂ¡s:varÂ¡
+aÂ¡s:varÂ¡aÂ¡s:varÂ¡a
+here <+we go+>
+VimL: let s:msg =''
+VimL: call s:Include('test-included')
+VimL: let s:msg =' again'
+VimL: call s:Include('test-included')
+
+------
+Some tests:
+VimL: let s:expr = "first line\nsecond line\n "
+text Â¡s:exprÂ¡
+text
+END

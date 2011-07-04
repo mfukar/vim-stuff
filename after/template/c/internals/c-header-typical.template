@@ -1,0 +1,9 @@
+VimL: " $Id: c-header-typical.template 188 2010-05-17 01:46:33Z luc.hermitte $
+VimL: " C++ Typical Header File-Template, Luc Hermitte
+<+Include+>
+
+VimL: let s:ns = lh#option#get('cpp_project_namespace', "<+namespace+>")
+namespace Â¡s:nsÂ¡ {
+   <+Definitions here+>
+} // namespace Â¡s:nsÂ¡
+

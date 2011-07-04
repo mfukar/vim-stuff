@@ -1,0 +1,11 @@
+VimL:" $Id: xsl-for-each.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:"{xsl:for-each} Template File, Luc Hermitte
+VimL:" hint: <xsl:for-each select="XPath"></xsl:for-each>
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:reindent     = 1 
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+<xsl:for-each select="<+XPath+>">
+<++>
+</xsl:for-each>

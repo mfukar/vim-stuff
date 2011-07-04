@@ -1,0 +1,17 @@
+VimL:" $Id: c-file-header.template 270 2010-12-01 00:32:35Z luc.hermitte $
+VimL:" Default File header - C/C++ Definition File-Template, Luc Hermitte
+/*
+ * @file	Â¡s:filenameÂ¡
+ * @author	Â¡substitute(Author(0),'\r"','\r *','g')Â¡
+ * @version	<+version+>
+ * @date
+ * 	Created:     Â¡DateStamp()Â¡
+ * 	Last Update: Â¡DateStamp()Â¡
+ *------------------------------------------------------------------------
+ * Description:	<+description+>
+ *------------------------------------------------------------------------
+ * History:	<+history+>
+ * TODO:	<+missing features+>
+ *------------------------------------------------------------------------
+ */
+

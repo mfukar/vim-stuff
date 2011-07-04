@@ -1,0 +1,43 @@
+VimL: " $Id: vim-rc-local.template 188 2010-05-17 01:46:33Z luc.hermitte $
+VimL: "Â«VimÂ» local-vimrc Template File, Luc Hermitte
+VimL: let s:location = fnamemodify(s:path, ':r')
+VimL: " Override s:fn computation for local-vimrc case
+VimL: let s:fn = substitute(s:location,'\(\W\|_\)\+', '_', 'g') 
+let s:k_version = <+001+>
+" Always loaded {{{1
+" Buffer-local Definitions {{{1
+" Avoid local reinclusion {{{2
+if &cp || (exists("b:loaded_Â¡s:fnÂ¡")
+      \ && (b:loaded_Â¡s:fnÂ¡ >= s:k_version)
+      \ && !exists('g:force_reload_Â¡s:fnÂ¡'))
+  finish
+endif
+let b:loaded_Â¡s:fnÂ¡ = s:k_version
+let s:cpo_save=&cpo
+set cpo&vim
+" Avoid local reinclusion }}}2
+
+"------------------------------------------------------------------------
+" Local mappings {{{2
+
+inoremap <buffer> <+keybinding+> <+action+>
+
+"------------------------------------------------------------------------
+" Local commands {{{2
+
+command! -b -nargs=<++> <+CommandName+> <+Action+>
+
+"=============================================================================
+" Global Definitions {{{1
+" Avoid global reinclusion {{{2
+if &cp || (exists("g:loaded_Â¡s:fnÂ¡")
+      \ && (g:loaded_Â¡s:fnÂ¡ >= s:k_version)
+      \ && !exists('g:force_reload_Â¡s:fnÂ¡'))
+  let &cpo=s:cpo_save
+  finish
+endif
+let g:loaded_Â¡s:fnÂ¡ = s:k_version
+" Avoid global reinclusion }}}2
+"------------------------------------------------------------------------
+" Functions {{{2
+" Functions }}}2

@@ -1,0 +1,14 @@
+VimL:" $Id: loop-arg.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:" ``VimL loop on function parameters'' File Template, Luc Hermitte <hermitte {at} free {dot} fr>
+VimL:" hint: <+i+>=0; while i<a:0 ; actions ; ++i ; endwhile
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:reindent     = 1
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+VimL: let s:name = INPUT('Name of the index : ', Marker_Txt('i'))
+let Â¡s:nameÂ¡ = 0
+while Â¡s:nameÂ¡ != a:0
+	let Â¡s:nameÂ¡ += 1
+	<++>
+endwhile<++>

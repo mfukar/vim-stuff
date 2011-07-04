@@ -1,0 +1,14 @@
+VimL:" $Id: plugmap.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:" ``VimL <Plug> mappings'' File Template, Luc Hermitte <hermitte {at} free {dot} fr>
+VimL:" hint: <Plug>mapping + default mapping
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:reindent     = 1
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+VimL: let s:mode = INPUT('Mode (invox)?', Marker_Txt('mode'))
+VimL: let s:plug = INPUT('<Plug>?', Marker_Txt('name'))
+Â¡s:modeÂ¡noremap <Plug>Â¡s:plugÂ¡ <+definition+>
+if !hasmapto('<Plug>Â¡s:plugÂ¡', 'Â¡s:modeÂ¡')
+    Â¡s:modeÂ¡map <unique> <+keybinding+> <Plug>Â¡s:plugÂ¡
+endif

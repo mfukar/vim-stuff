@@ -1,0 +1,11 @@
+VimL:" $Id: include.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:" s:Include() call Template File, Luc Hermitte, 06th Dec 2010
+VimL:" hint: VimL: call s:Include(...)
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end   = s:value_start
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+VimL: let s:ft = expand('%:t:r')
+Â¡'VimL:'Â¡ call s:Include('Â¡s:ftÂ¡-<+name+>', 'Â¡s:ftÂ¡/<+internals+>')
+<++>

@@ -1,0 +1,16 @@
+VimL: " $Id: vim-autoload-plugin.template 249 2010-09-19 22:54:26Z luc.hermitte $
+VimL: "Â«VimÂ» autoload plugin Template File, Luc Hermitte
+VimL: "
+VimL: call s:Include('vim-autoload-function', 'vim/internals')
+VimL: "
+let s:cpo_save=&cpo
+set cpo&vim
+"------------------------------------------------------------------------
+VimL: call s:Include('vim-autoload-debug', 'vim/internals')
+
+"------------------------------------------------------------------------
+" ## Exported functions {{{1
+
+"------------------------------------------------------------------------
+" ## Internal functions {{{1
+

@@ -1,0 +1,12 @@
+VimL: " $Id: cpptu-header.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL: "C++ CXXTest File-Template, Luc Hermitte
+VimL:" hint: class UT : public CxxTest::TestSuite
+VimL: let s:TUName = expand('%:t:r')
+#include <cxxtest/TestSuite.h>
+
+class Â¡s:TUNameÂ¡ : public CxxTest::TestSuite
+{
+public:
+    void test_<+fct+>();
+};
+

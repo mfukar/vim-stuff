@@ -1,0 +1,11 @@
+VimL:" $Id: xsl-when.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:"{xsl:when} Template File, Luc Hermitte
+VimL:" hint: <xsl:when test="cond"></xsl:when>
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:reindent     = 1 
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+<xsl:when test="<+condition+>">
+<++>
+</xsl:when>

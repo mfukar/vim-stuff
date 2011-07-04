@@ -1,0 +1,29 @@
+VimL: " $Id: vim-autoload-debug.template 249 2010-09-19 22:54:26Z luc.hermitte $
+VimL:" ``VimL debug functions for autoload plugins (internals)'' File Template, Luc Hermitte <hermitte {at} free {dot} fr>
+VimL: "
+VimL: call s:Include('vim-autoload-function', 'vim/internals')
+VimL: "
+" ## Misc Functions     {{{1
+" # Version {{{2
+let s:k_version = <+001+>
+function! Â¡s:function_prefixÂ¡version()
+  return s:k_version
+endfunction
+
+" # Debug   {{{2
+let s:verbose = 0
+function! Â¡s:function_prefixÂ¡verbose(...)
+  if a:0 > 0 | let s:verbose = a:1 | endif
+  return s:verbose
+endfunction
+
+function! s:Verbose(expr)
+  if s:verbose
+    echomsg a:expr
+  endif
+endfunction
+
+function! Â¡s:function_prefixÂ¡debug(expr)
+  return eval(a:expr)
+endfunction
+

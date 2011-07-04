@@ -1,0 +1,14 @@
+VimL:" $Id: template.template 302 2010-12-09 23:34:20Z luc.hermitte $
+VimL:" Templates Definition File Template, Luc Hermitte
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+Â¡'VimL:" $'Â¡Id$
+Â¡s:Comment('<+'.expand('%:t:r').'+>'.' File Template, '.Author(1).', '.DateStamp())Â¡
+Â¡'VimL:'Â¡ let s:value_start = 'Â¡'
+Â¡'VimL:'Â¡ let s:value_start = 'Â¡'
+Â¡'VimL:'Â¡ let s:value_end   = s:value_start
+Â¡'VimL:'Â¡ let s:marker_open  = '<+'
+Â¡'VimL:'Â¡ let s:marker_close = '+>'
+<++>

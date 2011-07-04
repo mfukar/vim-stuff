@@ -1,0 +1,11 @@
+VimL: " $Id: c-header.template 270 2010-12-01 00:32:35Z luc.hermitte $
+VimL: "C/C++ Header File-Template, Luc Hermitte
+VimL: let s:filename = s:path_from_root(expand('%:p'))
+VimL: call s:Include('c-file-header', 'c/internals')
+VimL: call s:Include('c-header-guard', 'c/internals')
+#ifndef <+Â¡s:guardÂ¡__+>
+#define <+Â¡s:guardÂ¡__+>
+
+<+Definitions here+>
+
+#endif // <+Â¡s:guardÂ¡__+>

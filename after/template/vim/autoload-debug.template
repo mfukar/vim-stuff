@@ -1,0 +1,10 @@
+VimL:" $Id: autoload-debug.template 326 2011-01-06 01:37:00Z luc.hermitte $
+VimL:" ``VimL debug functions for autoload plugins'' File Template, Luc Hermitte <hermitte {at} free {dot} fr>
+VimL:" hint: debug function for autoload plugins
+VimL: let s:value_start  = 'Â¡'
+VimL: let s:value_end    = 'Â¡'
+VimL: let s:reindent     = 1
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+VimL: "
+VimL: call s:Include('vim-autoload-debug', 'vim/internals')
