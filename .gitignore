@@ -7,6 +7,10 @@
 
 # I keep tags under a directory of their own (usually)
 tags/
+
 # Documentation is for sissies
 doc/
 *.README
+
+# Ignore saved views
+view/

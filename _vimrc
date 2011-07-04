@@ -2,7 +2,7 @@
 "
 " mfukar's .vimrc
 "
-" Last Update: Mon Jul 04, 2011 13:24 GTB Daylight Time
+" Last Update: Mon Jul 04, 2011 19:56 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -96,7 +96,7 @@ map <C-Z> :shell<CR>
 " Set the terminal title, always.
 set title
 
-" Create a status line.
+" Create a fancy status line.
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
@@ -123,8 +123,7 @@ colorscheme spice
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
     set guicursor=n-v-c:block-Cursor
-    set guicursor+=i:hor50-iCursor
-    set guicursor+=i:blinkwait25-blinkon250-blinkoff250
+    set guicursor+=i:hor50-iCursor-blinkwait25-blinkon250-blinkoff250
 endif
 
 " have a hundred lines of command-line (etc) history:
@@ -151,7 +150,8 @@ set showmode
 set showcmd
 
 " My keyboards have backslash in different places. Thanks to guitar
-" practice I can handle the stretches, but it's an annoyance:
+" practice I can handle the stretches, but it's an annoyance, so let's
+" set another leader:
 let mapleader = ","
 let maplocalleader = ","
 
@@ -165,12 +165,13 @@ set mouse=a
 " don't have files trying to override this .vimrc:
 set nomodeline
 
-" pscp for netrw
+" I use pscp with netrw.
 if(has('win32')) 
-" list files, it's the key setting, if you haven't set,
-        " you will get a blank buffer
-        let g:netrw_list_cmd = "plink HOSTNAME ls -lFah"
-        let g:netrw_scp_cmd = "pscp -l mfoukara -scp -q -batch"
+    " list files, it's the key setting, if you haven't set it you
+    " will most likely get a blank buffer:
+    let g:netrw_list_cmd = "plink HOSTNAME ls -lFah"
+    " $USERNAME works for me:
+    let g:netrw_scp_cmd = "pscp -l ".$USERNAME." -scp -q -batch"
 endif
 
 
@@ -219,24 +220,16 @@ set comments+=b:\"
 
 " * Text Formatting -- Specific File Formats
 
-" enable filetype detection:
+" Enable filetype detection:
 filetype on
-
 
 " Add tags for quickly jumping around C, Python code.
 autocmd FileType c set tags+=$HOME/.vim/tags/c.ctags
 autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
 
-" recognize anything in my .Postponed directory as a news article:
-augroup filetype
-  autocmd BufNewFile,BufRead */.Postponed/* set filetype=mail
-  " recognizing everything .txt as human-readable clobbers 'help'
-  " as well as a lot of other stuff, so screw it:
-  " autocmd BufNewFile,BufRead *.txt set filetype=human
-
-  " include files can be nasm, makefiles, etc..
-  " autocmd BufNewFile,BufRead *.inc set filetype=nasm
-augroup END
+" include files can be nasm, makefiles, etc.
+" TODO: figure something out to distinguish between them..
+" autocmd BufNewFile,BufRead *.inc set filetype=nasm
 
 " in human-language files, automatically format everything at 72 chars:
 autocmd FileType mail,human set formatoptions+=t textwidth=72
@@ -273,7 +266,8 @@ autocmd FileType c,cpp set foldmethod=syntax
 " but indent for Python:
 autocmd FileType python set foldmethod=indent
 
-" but restore all manually created folds - and save them at exit:
+" Folds:
+" restore all manually created folds - and save them at exit:
 "au BufWinLeave  * mkview
 "au BufWinEnter  * silent loadview
 
@@ -317,7 +311,6 @@ set infercase
 abbreviate teh the
 abbreviate spolier spoiler
 abbreviate atmoic atomic
-abbreviate hse he/she
 abbreviate ifno info
 
 " Spell checking operations are defined next.  They are all set to normal mode keystrokes
@@ -363,17 +356,17 @@ nmap <F8> \sa
 " wrap in insert mode:
 set whichwrap=h,l,~,[,]
 
-" page down with <Space> (like in `Lynx', `Mutt', `Pine', `Netscape Navigator',
-" `SLRN', `Less', and `More'); page up with - (like in `Lynx', `Mutt', `Pine'):
+" page down with <Space> (like in Lynx | Mutt | less)
+" page up   with -       (like in Lynx | Mutt)
+" [<Space> by default is like l, <BkSpc> like h, and - like k.]
 noremap <Space> <PageDown>
 noremap - <PageUp>
-" [<Space> by default is like l, <BkSpc> like h, and - like k.]
 
 " scroll the window (but leaving the cursor in the same place) by a couple of
 " lines up/down with <Ins>/<Del> (like in `Lynx'):
+" [<Ins> by default is like i, and <Del> like x.]
 noremap <Ins> 2<C-Y>
 noremap <Del> 2<C-E>
-" [<Ins> by default is like i, and <Del> like x.]
 
 " use <F5> to cycle through split windows
 " and <F6> to cycle through tabs
@@ -400,7 +393,6 @@ imap <C-J> <Plug>MarkersJumpF
  map <C-J> <Plug>MarkersJumpF
 imap <C-K> <Plug>MarkersJumpB
  map <C-K> <Plug>MarkersJumpB
-"nmap <C-m> <Plug>MarkersMark
 vmap <C-m> <Plug>MarkersMark
 
 " Bracket manipulation mode
@@ -426,6 +418,7 @@ noremap Y y$
 " TODO: have a keymap expand a doxygen template with the function in the
 " current line
 " ...
+
 
 " * Keystrokes -- Toggles
 
@@ -461,7 +454,7 @@ nnoremap \th :set invhls hls?<CR>
 " insertion, and over indentations:
 set backspace=eol,start,indent
 
-" abbreviations:
+" Useful abbreviations:
 iabbrev lorem Loremipsumdolorsitamet,consecteturadipisicingelit,seddoeiusmod
 \temporincididuntutlaboreetdoloremagnaaliqua.Utenimadminimveniam,quisnostrud
 \exercitationullamcolaborisnisiutaliquipexeacommodoconsequat.Duisauteiruredo
@@ -541,8 +534,7 @@ function! HighlightSpellingErrors()
   " execute that command, then generate a unique list of misspelt words and
   " store it in a temporary file:
   let ErrorsFile = tempname()
-  execute PipeCmd . ' ispell -l -d '. g:IspellLang .
-    \ ' | sort | uniq > ' . ErrorsFile
+  execute PipeCmd . ' ispell -l -d '. g:IspellLang .' | sort | uniq > ' . ErrorsFile
 
   " open that list of words in another window:
   execute 'split ' . ErrorsFile
@@ -550,8 +542,7 @@ function! HighlightSpellingErrors()
   " for every word in that list ending with "'s", check if the root form
   " without the "'s" is in the dictionary, and if so remove the word from the
   " list:
-  global /'s$/ execute 'read ! echo ' . expand('<cword>') .
-    \ ' | ispell -l -d ' . g:IspellLang | delete
+  global /'s$/ execute 'read ! echo '. expand('<cword>') .' | ispell -l -d ' . g:IspellLang | delete
   " (If the root form is in the dictionary, ispell -l will have no output so
   " nothing will be read in, the cursor will remain in the same place and the
   " :delete will delete the word from the list.  If the root form is not in the
@@ -568,7 +559,7 @@ function! HighlightSpellingErrors()
       % substitute /\W/\\(&\\|\&\\(#\\d\\{2,4}\\|\w\\{2,8}\\);\\)/e
     endif
 
-    " turn each mistake into a `Vim' command to place it in the SpellError
+    " turn each mistake into a vim command to place it in the SpellError
     " syntax highlighting group:
     % substitute /^/syntax match SpellError !\\</
     % substitute /$/\\>!/
@@ -640,9 +631,9 @@ function! DateStamp(...)
 endfunction
 
 
-" If buffer modified, update any 'Last Update: ' in the first 20 lines.  'Last Update: '
-" can have up to 10 characters before (they are retained).  Restores cursor and window
-" position using save_cursor variable.
+" If the buffer is modified, update any 'Last Update: ' in the first 20 lines.
+" 'Last Update: ' can have up to 10 characters before (they are retained).
+" Restores cursor and window position.
 function! LastModified()
     if &modified
         let save_cursor = getpos(".")
