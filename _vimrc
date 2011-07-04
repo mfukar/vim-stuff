@@ -2,7 +2,7 @@
 "
 " mfukar's .vimrc
 "
-" Last Update: Mon Jul 04, 2011 19:56 GTB Daylight Time
+" Last Update: Mon Jul 04, 2011 20:08 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -17,8 +17,7 @@
 " * Keystrokes -- Formatting
 " * Keystrokes -- Toggles
 " * Keystrokes -- Insert Mode
-" * Keystrokes -- For HTML Files
-" * 'SLRN' Behaviour
+" * SLRN Behaviour
 " * Functions Referred to Above
 " * Automatic Code Completion 
 "
@@ -28,8 +27,8 @@ autocmd!
 
 " * Terminal Settings
 
-" `XTerm', `RXVT', `Gnome Terminal', and `Konsole' all claim to be "xterm";
-" `KVT' claims to be "xterm-color":
+" XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
+" KVT claims to be "xterm-color":
 if &term =~ 'xterm'
 " Gnome terminal fortunately sets $COLORTERM; it needs <BkSpc> and
 " <Del> fixing, and it has a bug which causes spurious 'c's to appear,
@@ -155,7 +154,7 @@ set showcmd
 let mapleader = ","
 let maplocalleader = ","
 
-" when using list, keep tabs at their full width and display `arrows':
+" when using list, keep tabs at their full width and display arrows:
 execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
 " (Character 187 is a right double-chevron, and 183 a mid-dot.)
 
@@ -206,14 +205,14 @@ if expand('%:p:h') =~ 'ng10'
     endif
 endif
 
-" normally don't automatically format `text' as it is typed, IE only do this with
+" normally don't automatically format text as it is typed, IE only do this with
 " comments, at 90 characters (my terminals are 102 columns wide). also, reformat
 " numbered lists:
 set fo-=t
 set fo+=n
 set textwidth=90
 
-" treat lines starting with a quote mark as comments (for `Vim' files, such as this very
+" treat lines starting with a quote mark as comments (for Vim files, such as this very
 " one!):
 set comments+=b:\"
 
@@ -278,7 +277,7 @@ autocmd FileType python set foldmethod=indent
 set ignorecase
 set smartcase
 
-" show the `best match so far' as search strings are typed:
+" show the best match so far as search strings are typed:
 set incsearch
 
 " assume the /g flag on :s substitutions to replace all matches in a line:
@@ -287,7 +286,7 @@ set gdefault
 
 " * Spelling
 
-" define `Ispell' language and personal dictionary, used in several places below:
+" define Ispell language and personal dictionary, used in several places below:
 let IspellLang = 'british'
 if has("win32")
     let PersonalDict = '$HOME\.ispell_' . IspellLang
@@ -297,7 +296,7 @@ endif
 
 " try to avoid misspelling words in the first place -- have the insert mode
 " <Ctrl>+N/<Ctrl>+P keys perform completion on partially-typed words by checking the Linux
-" word list (if on Linux) and the personal `Ispell' dictionary; sort out case sensibly (so
+" word list (if on Linux) and the personal Ispell dictionary; sort out case sensibly (so
 " that words at starts of sentences can still be completed with words that are in the
 " dictionary all in lower case):
 execute 'set dictionary+=' . PersonalDict
@@ -318,7 +317,7 @@ abbreviate ifno info
 " referred to are defined at the end of this .vimrc.
 
 " \si ("spelling interactive") saves the current file then spell checks it
-" interactively through `Ispell' and reloads the corrected version:
+" interactively through Ispell and reloads the corrected version:
 execute 'nnoremap \si :w<CR>:!ispell -x -d ' . IspellLang . ' %<CR>:e<CR><CR>'
 
 " \sl ("spelling list") lists all spelling mistakes in the current buffer,
@@ -363,7 +362,7 @@ noremap <Space> <PageDown>
 noremap - <PageUp>
 
 " scroll the window (but leaving the cursor in the same place) by a couple of
-" lines up/down with <Ins>/<Del> (like in `Lynx'):
+" lines up/down with <Ins>/<Del> (like in Lynx):
 " [<Ins> by default is like i, and <Del> like x.]
 noremap <Ins> 2<C-Y>
 noremap <Del> 2<C-E>
@@ -465,21 +464,21 @@ iabbrev mf mfukar
 iabbrev -*- -*- coding: utf-8 -*-
 
 
-" * `SLRN' Behaviour
+" * SLRN Behaviour
 
-" when using `SLRN' to compose a new news article without a signature, the
+" when using SLRN to compose a new news article without a signature, the
 " cursor will be at the end of the file, the blank line after the header, so
 " duplicate this line ready to start typing on; when composing a new article
-" with a signature, `SLRN' includes an appropriate blank line but places the
+" with a signature, SLRN includes an appropriate blank line but places the
 " cursor on the following one, so move it up one line [if re-editing a
-" partially-composed article, `SLRN' places the cursor on the top line, so
+" partially-composed article, SLRN places the cursor on the top line, so
 " neither of these will apply]:
 autocmd VimEnter .article if line('.') == line('$') | yank | put |
   \ elseif line('.') != 1 | -
 
 " when following up articles from people with long names and/or e-mail
-" addresses, the `SLRN'-generated attribution line can have over 80 characters,
-" which will then cause `SLRN' to complain when trying to post it(!), so if
+" addresses, the SLRN-generated attribution line can have over 80 characters,
+" which will then cause SLRN to complain when trying to post it(!), so if
 " editing a followup for the first time, reformat the line (then put the cursor
 " back):
 autocmd VimEnter .followup if line('.') != 1 | normal gq${j
@@ -492,12 +491,10 @@ function! HighlightSpellingErrors()
 " defined above;
 " requires the ispell, sort, and uniq commands to be in the path;
 " requires the global variable IspellLang to be defined above, and to contain
-" the preferred `Ispell' language;
+" the preferred Ispell language;
 " for mail/news messages, requires the grep command to be in the path;
 " for HTML documents, saves the file to disk and requires the lynx command to
 " be in the path
-"
-" 2000 Jun 1: for `Vim' 5.6
 
   " for HTML files, remove all current syntax highlighting (so that
   " misspellings show up clearly), and note it's HTML for future reference:
@@ -519,7 +516,7 @@ function! HighlightSpellingErrors()
 
   " form a command that has the text to be checked piping through standard
   " output; for HTML files this involves saving the current file and processing
-  " it with `Lynx'; for everything else, use all the buffer except quoted text
+  " it with Lynx; for everything else, use all the buffer except quoted text
   " and mail/news headers:
   if HTML
     write
@@ -594,7 +591,7 @@ endfunction " HighlightSpellingErrors()
 function! AddWordToDictionary()
 " adds the word under the cursor to the personal dictonary; used for the \sa operation
 " defined above; requires the global variable PersonalDict to be defined above, and to
-" contain the `Ispell' personal dictionary.  Get the word under the cursor, including the
+" contain the Ispell personal dictionary.  Get the word under the cursor, including the
 " apostrophe as a word character to allow for words like "won't", but then ignoring any
 " apostrophes at the start or end of the word:
         set iskeyword+='
@@ -602,7 +599,7 @@ function! AddWordToDictionary()
         let Word = substitute(Word, "'\\+$", '', '')
         set iskeyword-='
 
-" override any SpellError highlighting that might exist for this word, `highlighting' it
+" override any SpellError highlighting that might exist for this word, highlighting it
 " as normal text:
         execute 'syntax match Normal #\<' . Word . '\>#'
 
