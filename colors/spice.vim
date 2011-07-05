@@ -37,7 +37,7 @@ hi IncSearch        guifg=#FFFFFF guibg=#D07E08 gui=none
  
 hi DiffChange       guibg=#4C4C09 gui=none
 hi DiffAdd          guibg=#252556 gui=none
-hi DiffText         guibg=#66326E gui=none
+hi DiffText         guifg=#000000 guibg=#66326E gui=none
 hi DiffDelete       guibg=#3F000A gui=none
 hi TabLineFill      guibg=#5E5E5E gui=none
 hi TabLineSel       guifg=#FFFFD7 gui=bold
