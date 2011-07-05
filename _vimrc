@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jul 05, 2011 08:11 GTB Daylight Time
+" Last Update: Tue Jul 05, 2011 08:31 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -308,6 +308,7 @@ set complete=.,w,k
 set infercase
 
 " correct my common typos without me even noticing them:
+abbreviate amtch match
 abbreviate teh the
 abbreviate spolier spoiler
 abbreviate atmoic atomic

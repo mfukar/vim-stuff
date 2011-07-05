@@ -6,7 +6,7 @@
 "
 " Changelog:
 "   0.1 - Extended c.vim, adding custom types.
-"   0.2 - More custom types added from NG10
+"   0.2 - More custom types added
 
 
 " Common ANSI-standard functions
@@ -178,9 +178,6 @@ syn keyword cAnsiFunction	UINTMAX_C INTMAX_C UINT64_C
 syn keyword cAnsiFunction	UINT32_C UINT16_C UINT8_C
 syn keyword cAnsiFunction	INT64_C INT32_C INT16_C INT8_C
 
-" mfukar - Function names
-" NG10
-
 " Common ANSI-standard Names
 syn keyword	cAnsiName	PRId8 PRIi16 PRIo32 PRIu64
 syn keyword	cAnsiName	PRId16 PRIi32 PRIo64 PRIuLEAST8
@@ -236,38 +233,18 @@ syn keyword	cAnsiName	bitand not or_eq
 " mfukar - Types
 syn keyword	cCustomType	lfsr_t lfsr_data
 syn keyword	cCustomType	sparse_set_t sparse_set_iterator_t
-" NG10
+" Anontool related keywords
+syn keyword cCustomType anonlib_endian_t
+" NG
 syn keyword cCustomType u8 u16 u32 u64
-syn keyword cCustomType bool_t return_t
-syn keyword cCustomType se_buff_t se_bootmem_find_named_block_desc_t se_ipv4_hdr_t se_udp_hdr_t
-syn keyword cCustomType protocol_t pdp_context_t
-syn keyword cCustomType db_t db_entry_header_t
-syn keyword cCustomType protcountdb_db_full_t protcountdb_entry_t protcountdb_record_t
 syn keyword cCustomType gw_state_e gw_exec_e gw_result_e gw_packet_type_e gwup_db_result_e gwup_reporter_sub_app_report_msg_t gwup_db_rec_stat_t gwup_proxy_stat_t
 syn keyword cCustomType	ppp
 syn keyword cCustomType	fsm
 syn keyword cCustomType	lcp lcp_options
 syn keyword cCustomType	l2tp_client_procedure
-syn keyword cCustomType attr_list_for_l2tp_cond_t
-syn keyword cCustomType	libmsg_interface_id_t libmsg_address_t
-syn keyword cCustomType an_peer_endp_t pdn_own_endp_t pdn_peer_endp_t
-syn keyword cCustomType ng_ip_address_t teid_t data_volume_t rat_type_t
-syn keyword cCustomType	application_policy_map_t session_idle_timeout_t
-syn keyword cCustomType ng_link_local_addr_id_t lie_id_t ng_user_location_info_t
-syn keyword cCustomType	ng_vrfid_t ng_imsi_t ng_msisdn_t ng_imeisv_t
-syn keyword cCustomType	ng_charging_char_t charging_id_t
-syn keyword cCustomType token_str32_t forced_dest_addr_info_t http_flow_t
-syn keyword cCustomType ng_serving_network_t
-syn keyword cCustomType ipc_node_number_t ipc_node_type_t ipc_process_type_t ipc_service_type_t ipc_service_number_t ipc_service_unit_type_t ipc_service_unit_number_t ipc_slot_number_t ipc_cpu_number_t ipc_node_index_t
-syn keyword cCustomType sc_subscriber_t sc_session_t sc_bearer_t sc_endpt_t sc_proc_type_t sc_procedure_t
-syn keyword cCustomType gtpcv2_message_t gtpcv2_create_session_response_t gtp_v1_header_t gtp_v1_header_optional_t
-syn keyword cCustomType libtrace_st_trace_t
-syn keyword cCustomType proc_create_session_data_t
-syn keyword cCustomType dpi_result_t
-"
-" Anontool related keywords
-syn keyword cCustomType anonlib_endian_t
 
+" well it basically comes down to this match
+" [excluding REALLY retarded defs]:
 syn match cCustomType   "[a-z_]\+_t"
 
 " Operators
