@@ -1,8 +1,8 @@
 " .vimrc
 "
-" mfukar's .vimrc
+" mfukar's _vimrc
 "
-" Last Update: Mon Jul 04, 2011 20:08 GTB Daylight Time
+" Last Update: Tue Jul 05, 2011 08:11 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -76,11 +76,12 @@ if has("gui_running")
         set gfn=Consolas:h11
 endif
 
+" My laptop stupidly sets language to Greek.
 if has("win32")
-    " My laptop stupidly sets language to Greek.
     lang English_United Kingdom.1252
 endif
 
+" whoami
 let g:author = "Michael Foukarakis"
 let g:author_short = "mfukar"
 
@@ -88,8 +89,8 @@ let g:author_short = "mfukar"
 " TODO: 'complete' doesn't seem to work atm.
 let g:mt_chooseWith = "confirm"
 
-" 'screen' would lose the connection on ^Z,
-" so let's remap it to something useful: a shell.
+" screw , I don't want SIGSTOP and 'screen' would lose the connection
+" on it, so let's remap it to something useful: a shell.
 map <C-Z> :shell<CR>
 
 " Set the terminal title, always.
@@ -212,7 +213,7 @@ set fo-=t
 set fo+=n
 set textwidth=90
 
-" treat lines starting with a quote mark as comments (for Vim files, such as this very
+" treat lines starting with a quote mark as comments (for vim files, such as this very
 " one!):
 set comments+=b:\"
 
