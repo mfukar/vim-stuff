@@ -1,11 +1,7 @@
 " Some settings for vim's cscope interface, plus some keyboard mappings that I find useful.
 "
 " USAGE: 
-" -- vim 6 and upwards: Stick this file in your ~/.vim/plugin directory (or in a
-"                       'plugin' directory in some other directory that is in 
-"                       your 'runtimepath'.
-"
-" Michael Foukarakis    michael.foukarakis@gmail.com    15/3/2011
+" -- vim 6 and upwards: Stick this file in your ~/.vim/plugin directory
 
 if has("cscope")
     " Use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
