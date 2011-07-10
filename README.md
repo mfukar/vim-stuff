@@ -8,7 +8,7 @@ Plugins
 
 * CSApprox
 * matchit
-*  netrw
+* netrw
 * pyclewn
 * SearchInRuntime
 * surround
