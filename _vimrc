@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jul 05, 2011 08:31 GTB Daylight Time
+" Last Update: Mon Jul 11, 2011 16:09 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -281,7 +281,7 @@ set smartcase
 " show the best match so far as search strings are typed:
 set incsearch
 
-" assume the /g flag on :s substitutions to replace all matches in a line:
+" always assume the /g flag on :s substitutions to replace all matches in a line:
 set gdefault
 
 
@@ -644,14 +644,19 @@ endfun
 autocmd BufWritePre * call LastModified()
 
 filetype plugin on
+" TODO: Decide between pydiction | omnicomplete for Python:
 if has("unix")
-    let g:pydiction_location = '/home/mfoukara/.vim/pydiction/complete-dict'
+    let g:pydiction_location = '/home/'.$USERNAME.'/.vim/pydiction/complete-dict'
     let g:pydiction_menu_height = 20
 endif
 
-" Let's try omnicompletion:
+" Enable omnicompletion:
 set ofu=syntaxcomplete#Complete
 set cot=menu,longest
+
+" Screw Python 2. Yeah, I said it, beardies:
+autocmd FileType python set ofu=python3complete#Complete
+
 
 " Remove the Windows ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
