@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Jul 11, 2011 16:09 GTB Daylight Time
+" Last Update: Mon Aug 01, 2011 10:04 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -70,7 +70,6 @@ endif
 set fileencodings=ucs-bom,utf-8,default,latin1
 
 if has("gui_running")
-        set autochdir
         set lines=50
         set columns=96
         set gfn=Consolas:h11
@@ -103,11 +102,12 @@ endf
 set statusline=%<%f\ [%{&ff}]%h%m%r\ 0x%B%=%{strftime(\"%H:%M,\ %b\ %d,\ %Y\")}\ %l,\T%{IndentLevel()}\ %P
 set laststatus=2
 
-" Some UNIX specific bits..
-if has("unix")
-    " Taglist plugin on/off switching.
-    nnoremap <silent> <F7> :TlistToggle<CR>
-endif
+" Taglist configuration
+" on/off switching:
+nnoremap <silent> <F7> :TlistToggle<CR>
+let Tlist_Close_On_Select = 1
+" Let my shells handle paths:
+let Tlist_Ctags_Cmd='ctags'
 
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2))
@@ -174,6 +174,8 @@ if(has('win32'))
     let g:netrw_scp_cmd = "pscp -l ".$USERNAME." -scp -q -batch"
 endif
 
+" Automatically change the working directory:
+set autochdir
 
 " * Text Formatting -- General
 
@@ -193,7 +195,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set autoindent
 
 " some extra tags involved in ng20
-if expand('%:p:h') =~ 'ng10'
+if expand('%:p:h') =~ 'ng'
     " Also add tags for NG20
     set tags+=/scratch/mfoukara/tags
     
@@ -223,6 +225,9 @@ set comments+=b:\"
 " Enable filetype detection:
 filetype on
 
+" we want the :Man function:
+runtime ftplugin/man.vim
+
 " Add tags for quickly jumping around C, Python code.
 autocmd FileType c set tags+=$HOME/.vim/tags/c.ctags
 autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
@@ -234,16 +239,13 @@ autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
 " in human-language files, automatically format everything at 72 chars:
 autocmd FileType mail,human set formatoptions+=t textwidth=72
 
-" for C-like programming, have automatic indentation:
-autocmd FileType c,cpp,slang set cindent
+" for C/C++/Python, have automatic indentation:
+autocmd FileType c,cpp,python set cindent
 
 " for actual C (not C++) programming where comments have explicit end characters, if
 " starting a new line in the middle of a comment automatically insert the comment leader
 " characters:
 autocmd FileType c set formatoptions+=ro
-
-" for Perl programming, have things in braces indenting themselves:
-autocmd FileType perl set smartindent
 
 " for CSS, also have things in braces indented:
 autocmd FileType css set smartindent
@@ -407,10 +409,10 @@ nnoremap Q gqap
 vnoremap Q gq
 
 " have the usual indentation keystrokes still work in visual mode:
-vnoremap <C-T> >
-vnoremap <C-D> <LT>
-vmap <Tab> <C-T>
-vmap <S-Tab> <C-D>
+vnoremap <C-T>   >
+vnoremap <C-D>   <LT>
+vmap     <Tab>   <C-T>
+vmap     <S-Tab> <C-D>
 
 " have Y behave analogously to D and C rather than to dd and cc (which is
 " already done by yy):
@@ -591,24 +593,24 @@ endfunction " HighlightSpellingErrors()
 
 
 function! AddWordToDictionary()
-" adds the word under the cursor to the personal dictonary; used for the \sa operation
-" defined above; requires the global variable PersonalDict to be defined above, and to
-" contain the Ispell personal dictionary.  Get the word under the cursor, including the
-" apostrophe as a word character to allow for words like "won't", but then ignoring any
-" apostrophes at the start or end of the word:
-        set iskeyword+='
-        let Word = substitute(expand('<cword>'), "^'\\+", '', '')
-        let Word = substitute(Word, "'\\+$", '', '')
-        set iskeyword-='
+    " adds the word under the cursor to the personal dictonary; used for the \sa operation
+    " defined above; requires the global variable PersonalDict to be defined above, and to
+    " contain the Ispell personal dictionary.  Get the word under the cursor, including the
+    " apostrophe as a word character to allow for words like "won't", but then ignoring any
+    " apostrophes at the start or end of the word:
+    set iskeyword+='
+    let Word = substitute(expand('<cword>'), "^'\\+", '', '')
+    let Word = substitute(Word, "'\\+$", '', '')
+    set iskeyword-='
 
-" override any SpellError highlighting that might exist for this word, highlighting it
-" as normal text:
-        execute 'syntax match Normal #\<' . Word . '\>#'
+    " override any SpellError highlighting that might exist for this word, highlighting it
+    " as normal text:
+    execute 'syntax match Normal #\<' . Word . '\>#'
 
-" remove any final "'s" so that possessive forms don't end up in the dictionary, then add
-" the word to the dictionary:
-        let Word = substitute(Word, "'s$", '', '')
-        execute '!echo "' . Word . '" >> ' . g:PersonalDict
+    " remove any final "'s" so that possessive forms don't end up in the dictionary, then add
+    " the word to the dictionary:
+    let Word = substitute(Word, "'s$", '', '')
+    execute '!echo "' . Word . '" >> ' . g:PersonalDict
 endfunction " AddWordToDictionary()
 
 
@@ -646,7 +648,7 @@ autocmd BufWritePre * call LastModified()
 filetype plugin on
 " TODO: Decide between pydiction | omnicomplete for Python:
 if has("unix")
-    let g:pydiction_location = '/home/'.$USERNAME.'/.vim/pydiction/complete-dict'
+    let g:pydiction_location = '/home/'.$USERNAME.'/.vim/ftplugin/pydiction/complete-dict'
     let g:pydiction_menu_height = 20
 endif
 
@@ -657,11 +659,10 @@ set cot=menu,longest
 " Screw Python 2. Yeah, I said it, beardies:
 autocmd FileType python set ofu=python3complete#Complete
 
-
 " Remove the Windows ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Remove indenting on empty lines
-"map <F2> :%s/\s*$//g<cr>:noh<cr>''
+noremap <Leader>i :%s/\s*$//g<cr>:noh<cr>''
 
 " end of mfukar's .vimrc
