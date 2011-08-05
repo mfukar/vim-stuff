@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Aug 01, 2011 10:04 GTB Daylight Time
+" Last Update: Fri Aug 05, 2011 09:16 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -647,9 +647,11 @@ autocmd BufWritePre * call LastModified()
 
 filetype plugin on
 " TODO: Decide between pydiction | omnicomplete for Python:
+let g:pydiction_menu_height = 20
 if has("unix")
     let g:pydiction_location = '/home/'.$USERNAME.'/.vim/ftplugin/pydiction/complete-dict'
-    let g:pydiction_menu_height = 20
+else
+    let g:pydiction_location =$VIMRUNTIME.'vimfiles/fplugin/pydiction/complete-dict'
 endif
 
 " Enable omnicompletion:
