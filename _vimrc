@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Aug 05, 2011 09:16 GTB Daylight Time
+" Last Update: Tue Aug 09, 2011 10:02 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -612,6 +612,31 @@ function! AddWordToDictionary()
     let Word = substitute(Word, "'s$", '', '')
     execute '!echo "' . Word . '" >> ' . g:PersonalDict
 endfunction " AddWordToDictionary()
+
+function! s:RunShellCommand(cmdline)
+    let first = 1
+    let words = []
+    " Expand and escape cmd arguments.
+    " shellescape() should work with '\'
+    for part in split(a:cmdline)
+        if first
+            " skip the cmd. ugly, i know.
+            let first = 0
+        else
+            if part[0] =~ '\v[%#<]'
+                let part = expand(part)
+            endif
+            let part = shellescape(part, 1)
+        endif
+        call add(words, part)
+    endfor
+
+    " This is where actual work is getting done :-)
+    silent execute '$read !'. expanded_cmdline
+
+    setlocal nomodifiable
+    1
+endfunction
 
 
 " * Automatic Code Completion
