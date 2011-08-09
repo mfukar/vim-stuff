@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Aug 09, 2011 10:02 GTB Daylight Time
+" Last Update: Tue Aug 09, 2011 11:42 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -613,6 +613,7 @@ function! AddWordToDictionary()
     execute '!echo "' . Word . '" >> ' . g:PersonalDict
 endfunction " AddWordToDictionary()
 
+
 function! s:RunShellCommand(cmdline)
     let first = 1
     let words = []
@@ -636,10 +637,8 @@ function! s:RunShellCommand(cmdline)
 
     setlocal nomodifiable
     1
-endfunction
+endfunction " RunShellCommand(cmdline)
 
-
-" * Automatic Code Completion
 
 " Override DateStamp() (used by µTemplate)
 function! DateStamp(...)
@@ -654,8 +653,10 @@ function! DateStamp(...)
             return strftime('%a %b %d, %Y %R %Z')
         endif
     endif
-endfunction
+endfunction " DateStamp(...)
 
+
+" * Automatic Code Completion
 
 " If the buffer is modified, update any 'Last Update: ' in the first 20 lines.
 " 'Last Update: ' can have up to 10 characters before (they are retained).
