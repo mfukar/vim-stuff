@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Aug 09, 2011 11:42 GTB Daylight Time
+" Last Update: Thu Sep 08, 2011 20:23 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -654,6 +654,16 @@ function! DateStamp(...)
         endif
     endif
 endfunction " DateStamp(...)
+
+
+" TODO: Transform visual box selection into a single line.
+function! Deboxify()
+endfunction " Deboxify()
+
+
+" TODO: Function to diff contents of two registers in two new windows
+function! DiffRegs(srcreg1, srcreg2)
+endfunction " DiffRegs(srcreg1, srcreg2)
 
 
 " * Automatic Code Completion
