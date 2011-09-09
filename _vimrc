@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 08, 2011 20:23 GTB Daylight Time
+" Last Update: Fri Sep 09, 2011 10:38 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -661,9 +661,41 @@ function! Deboxify()
 endfunction " Deboxify()
 
 
-" TODO: Function to diff contents of two registers in two new windows
-function! DiffRegs(srcreg1, srcreg2)
-endfunction " DiffRegs(srcreg1, srcreg2)
+" TODO: Make some usable keybinds for those two. Figure a way to use with registers,
+" ranges, et al.
+" Function to diff two blobs in two new windows.
+" Blobs can come from registers, ranges, etc.
+" List of buffers being diffed, so we can close them all at once:
+let g:diffblob_buffers = []
+function! DiffBlobs(blob1, blob2)
+    " Preserve the unnamed register
+    let s:nonamereg = @@
+    let @@ = a:blob1
+    " New window!
+    new
+    normal P
+    setlocal nomodifiable
+    setlocal buftype=nofile
+    diffthis
+    call add(g:diff_buffers, bufnr('%'))
+
+    let @@ = a:blob2
+    vsp +enew
+    normal P
+    setlocal nomodifiable
+    setlocal buftype=nofile
+    diffthis
+    call add(g:diff_buffers, bufnr('%'))
+
+    let @@ = s:nonamereg
+endfunction " DiffRegs(blob1, blob2)
+
+" Function to wipe all buffers holding diff blobs
+function! EndDiffBlobs()
+    for buffer in g:diffblob_buffers
+        exe 'bwipeout! ' . buffer
+    endfor
+endfunction " EndDiffRegs()
 
 
 " * Automatic Code Completion
