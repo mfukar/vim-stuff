@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Sep 09, 2011 10:38 GTB Daylight Time
+" Last Update: Sat Sep 10, 2011 09:31 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -677,7 +677,7 @@ function! DiffBlobs(blob1, blob2)
     setlocal nomodifiable
     setlocal buftype=nofile
     diffthis
-    call add(g:diff_buffers, bufnr('%'))
+    call add(g:diffblob_buffers, bufnr('%'))
 
     let @@ = a:blob2
     vsp +enew
@@ -685,7 +685,7 @@ function! DiffBlobs(blob1, blob2)
     setlocal nomodifiable
     setlocal buftype=nofile
     diffthis
-    call add(g:diff_buffers, bufnr('%'))
+    call add(g:diffblob_buffers, bufnr('%'))
 
     let @@ = s:nonamereg
 endfunction " DiffRegs(blob1, blob2)
@@ -693,8 +693,11 @@ endfunction " DiffRegs(blob1, blob2)
 " Function to wipe all buffers holding diff blobs
 function! EndDiffBlobs()
     for buffer in g:diffblob_buffers
-        exe 'bwipeout! ' . buffer
+        exe ':buffer '  . buffer
+        diffoff
+        quit
     endfor
+    let g:diffblob_buffers = []
 endfunction " EndDiffRegs()
 
 
