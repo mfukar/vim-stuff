@@ -56,7 +56,7 @@ Brackets [ ] -insert=0 -trigger=<localleader>[
 Brackets ' ' -visual=0
 Brackets ' ' -insert=0 -trigger=''
 Brackets " " -visual=0 -open=function('lh#vim#brackets#dquotes')
-Brackets " " -insert=0 -trigger=""
+Brackets " " -insert=0 -trigger=<localleader>"
 Brackets < > -open=function('lh#vim#brackets#lt')
 
 
