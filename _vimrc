@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sat Sep 10, 2011 09:31 GTB Daylight Time
+" Last Update: Wed Sep 14, 2011 15:30 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -699,6 +699,27 @@ function! EndDiffBlobs()
     endfor
     let g:diffblob_buffers = []
 endfunction " EndDiffRegs()
+
+" Function to encode a blob in base64,
+" then put the result in the unnamed register.
+python3 << EOF
+import vim, base64
+def _my_b64encode(blob = None):
+    res = base64.b64encode(str.encode(blob))
+    vim.command("let @@='%s'"%(bytes.decode(res), ))
+EOF
+" Function to decode a blob in base64,
+" then put the result in the unnamed register.
+python3 << EOF
+import vim, base64
+def _my_b64decode(blob = None):
+    res = base64.b64decode(str.encode(blob))
+    vim.command("let @@='%s'"%(bytes.decode(res), ))
+EOF
+" Mappings to base64 encode/decode current visual selection and paste it one a new line below the current one.
+" Both clobber the unnamed register.
+vnoremap <Leader>e64  ""y:let @@=substitute(@@, "\n", "", "")<CR>:exe 'python3 _my_b64encode("'.getreg('"').'")'<CR>o<C-[>p
+vnoremap <Leader>d64  ""y:let @@=substitute(@@, "\n", "", "")<CR>:exe 'python3 _my_b64decode("'.getreg('"').'")'<CR>o<C-[>p
 
 
 " * Automatic Code Completion
