@@ -15,7 +15,7 @@
 "       Drop the file into {rtp}/plugin
 " History:	
 "       v2.2.1  first version
-" TODO:		«missing features»
+" TODO:	Nothing yet
 " }}}1
 "=============================================================================
 
