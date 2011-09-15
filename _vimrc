@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Sep 14, 2011 23:40 GTB Daylight Time
+" Last Update: Thu Sep 15, 2011 13:17 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -692,12 +692,14 @@ endfunction " DiffRegs(blob1, blob2)
 
 " Function to wipe all buffers holding diff blobs
 function! EndDiffBlobs()
-    for buffer in g:diffblob_buffers
-        exe ':buffer '  . buffer
+    let current_buf = bufnr('%')
+    for ibuf in g:diffblob_buffers
+        call utilities#SwitchWindow(ibuf)
         diffoff
         quit
     endfor
     let g:diffblob_buffers = []
+    call utilities#SwitchBuffer(current_buf)
 endfunction " EndDiffRegs()
 
 " Function to encode a blob in base64,
