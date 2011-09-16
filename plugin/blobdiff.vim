@@ -1,13 +1,21 @@
 "=============================================================================
 " File:         plugin\blobdiff.vim                               {{{1
 " Author:       Michael Foukarakis
-" Version:      0.0.1
+" Version:      0.0.5
 " Created:      Thu Sep 15, 2011 12:34 GTB Daylight Time
-" Last Update: Thu Sep 15, 2011 15:57 GTB Daylight Time
+" Last Update:  Fri Sep 16, 2011 14:43 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
-"       Diff two blobs of text in two new windows.
-" 
+"       Diff two arbitrary blobs of text.
+"       Functionality:
+"           - blobs may be overlapping
+"           - use signs to point to blob boundaries in files
+"           - use the Sign highlight group for signs
+"           - (tries to) support filetype & syntax in diff buffers
+"           - if a blob originated from a buffer, the diff buffer is
+"             modifiable/writable, updating the source buffer too.
+"           - if a blob originated from a register, its diff buffer
+"             is not modifiable
 "------------------------------------------------------------------------
 " Installation:
 "       Drop this file into {rtp}/plugin
@@ -18,7 +26,7 @@
 " }}}1
 "=============================================================================
 
-" Load once.
+" Load once:
 if exists("g:blobdiff_loaded")
     finish
 endif
@@ -35,33 +43,47 @@ function!   s:Init()
 endfunction " s:Init()
 
 
-command! -range BlobDiff    call s:BlobDiff(<line1>, <line2>)
-function! s:BlobDiff(from, to)
+" user command - BlobDiff(source)
+" a:source is either 'blob' for blobs of text from a buffer
+"                 or 'reg'  for blobs of test from a register
+" a:from   is either the starting line for blobs, or source register
+" a:to     is the end line of the blob
+command! -nargs=+ -range BlobDiff   call s:BlobDiff(<args>, <line1>, <line2>)
+command! -nargs=+        RegDiff    call s:BlobDiff(<args>, 0)
+function!   s:BlobDiff(mode, from, to)
     call s:Init()
 
     if s:differ_one.IsBlank()
-        call s:differ_one.Init(a:from, a:to)
+        if a:mode == 'blob'
+            call s:differ_one.InitFromRange(bufnr('%'), a:from, a:to)
+        elseif a:mode == 'reg'
+            call s:differ_one.InitFromRegister(a:from)
+        endif
     elseif s:differ_two.IsBlank()
-        call s:differ_two.Init(a:from, a:to)
+        if a:mode == 'blob'
+            call s:differ_two.InitFromRange(bufnr('%'), a:from, a:to)
+        elseif a:mode == 'reg'
+            call s:differ_two.InitFromRegister(a:from)
+        endif
 
         call s:PerformDiff(s:differ_one, s:differ_two)
     else
         call s:differ_one.Reset()
         call s:differ_two.Reset()
 
-        call s:BlobDiff(a:from, a:to)
+        call s:BlobDiff(a:mode, a:from, a:to)
     endif
 endfunction " s:BlobDiff()
 
 
 command! BlobDiffReset call s:BlobDiffReset()
-function! s:BlobDiffReset()
+function!   s:BlobDiffReset()
     call s:differ_one.Reset()
     call s:differ_two.Reset()
 endfunction " s:BlobDiffReset()
 
 
-function! s:PerformDiff(one, two)
+function!   s:PerformDiff(one, two)
     call a:one.CreateDiffBuffer("rightbelow split")
     call a:two.CreateDiffBuffer("vsplit")
 

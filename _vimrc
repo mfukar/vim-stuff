@@ -453,8 +453,8 @@ imap <F3> <C-O>\tf
 nnoremap \tl :set invlist list?<CR>
 nmap <F2> \tl
 
-" map <F2> to calling the BlobDiff command in visual/select mode:
-vmap <F2> :BlobDiff
+" map <F2> to calling the BlobDiff command with a selection in visual/select mode:
+vmap <F2> :BlobDiff('blob')<CR>
 
 " have \th ("toggle highlight") toggle highlighting of search matches, and
 " report the change:
