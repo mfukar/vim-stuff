@@ -3,10 +3,10 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.1
 " Created:      Thu Sep 15, 2011 13:22 GTB Daylight Time
-" Last Update: Thu Sep 15, 2011 16:46 GTB Daylight Time
+" Last Update: Fri Sep 16, 2011 08:44 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
-"       Differ class - an object that can diff!
+"       Differ class - a dictionary that can diff!
 " 
 "------------------------------------------------------------------------
 " Installation:

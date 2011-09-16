@@ -1,27 +1,26 @@
 "=============================================================================
-" $Id: vim_brackets.vim 172 2010-05-10 02:14:53Z luc.hermitte $
-" File:		ftlugin/vim/vim_brackets.vim                             {{{1
-" Author:	Luc Hermitte <EMAIL:hermitte {at} free {dot} fr>
+" File:         ftlugin/vim/vim_brackets.vim                             {{{1
+" Author:       Luc Hermitte <EMAIL:hermitte {at} free {dot} fr>
 "               <URL:http://code.google.com/p/lh-vim/>
-" Version:	1.0.0
-" Created:	24th Mar 2008
-" Last Update:	$Date: 2010-05-10 04:14:53 +0200 (lun., 10 mai 2010) $
+" Version:      1.0.0
+" Created:      24th Mar 2008
+" Last Update:  Fri Sep 16, 2011 09:17 GTB Daylight Time
 "------------------------------------------------------------------------
-" Description:	
-" 	vim-ftplugin that defines the default preferences regarding the
-" 	bracketing mappings we want to use.
-" 
+" Description:
+"   vim-ftplugin that defines the default preferences regarding the
+"   bracketing mappings we want to use.
+"
 "------------------------------------------------------------------------
 " Installation:
-" 	This particular file is meant to be into {rtp}/after/ftplugin/vim/
-" 	In order to overidde these default definitions, copy this file into a
-" 	directory that comes before the {rtp}/after/ftplugin/vim/ you choosed
-" 	-- typically $HOME/.vim/ftplugin/vim/ (:h 'rtp').
-" 	Then, replace the calls to :Brackets
+"   This particular file is meant to be into {rtp}/after/ftplugin/vim/
+"   In order to overidde these default definitions, copy this file into a
+"   directory that comes before the {rtp}/after/ftplugin/vim/ you choosed
+"   -- typically $HOME/.vim/ftplugin/vim/ (:h 'rtp').
+"   Then, replace the calls to :Brackets
 "
-" 	Requires Vim7+, lh-map-tools, and {rtp}/autoload/lh/vim/brackets.vim
+"   Requires Vim7+, lh-map-tools, and {rtp}/autoload/lh/vim/brackets.vim
 " History:
-" TODO:		
+" TODO:
 " * Escapable "()" must also work with \%(\)
 
 "=============================================================================
@@ -50,14 +49,14 @@ let b:usemarks         = 0
 let b:cb_jump_on_close = 1
 
 Brackets ( ) -esc
-Brackets { } 
+Brackets { }
 Brackets [ ] -visual=0
 Brackets [ ] -insert=0 -trigger=<localleader>[
 Brackets ' ' -visual=0
 Brackets ' ' -insert=0 -trigger=''
 Brackets " " -visual=0 -open=function('lh#vim#brackets#dquotes')
 Brackets " " -insert=0 -trigger=<localleader>"
-Brackets < > -open=function('lh#vim#brackets#lt')
+Brackets < > -visual=0 -open=function('lh#vim#brackets#lt')
 
 
 "------------------------------------------------------------------------

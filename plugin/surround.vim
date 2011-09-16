@@ -1,10 +1,9 @@
 "=============================================================================
-" $Id$
 " File:         plugin/surround.vim                               {{{1
 " Author:       mfoukara
 " Version:      0.1
 " Created:      Thu 16 Dec 2010 11:29:51 AM EET
-" Last Update:  $Date$
+" Last Update:  Fri Sep 16, 2011 08:56 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       My rendition of surround.vim
@@ -14,8 +13,8 @@
 "       Drop this file into {rtp}/plugin
 "       Requires Vim7+
 "      
-" History:	
-" TODO: 
+" History:	None yet
+" TODO:     Nothing yet
 " }}}1
 "=============================================================================
 " Exit quickly when:

@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 15, 2011 13:17 GTB Daylight Time
+" Last Update: Fri Sep 16, 2011 08:56 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -16,9 +16,11 @@
 " * Keystrokes -- Moving Around
 " * Keystrokes -- Formatting
 " * Keystrokes -- Toggles
+" * Keystrokes -- Object Processing
 " * Keystrokes -- Insert Mode
 " * SLRN Behaviour
 " * Functions Referred to Above
+" * Functions Using the Python Interface
 " * Automatic Code Completion 
 "
 " First clear any existing autocommands:
@@ -176,6 +178,11 @@ endif
 
 " Automatically change the working directory:
 set autochdir
+
+" allow <BkSpc> to delete line breaks, beyond the start of the current
+" insertion, and over indentations:
+set backspace=eol,start,indent
+
 
 " * Text Formatting -- General
 
@@ -419,7 +426,7 @@ vmap     <S-Tab> <C-D>
 noremap Y y$
 
 " TODO: have a keymap expand a doxygen template with the function in the
-" current line
+" current line:
 " ...
 
 
@@ -446,16 +453,23 @@ imap <F3> <C-O>\tf
 nnoremap \tl :set invlist list?<CR>
 nmap <F2> \tl
 
+" map <F2> to calling the BlobDiff command in visual/select mode:
+vmap <F2> :BlobDiff
+
 " have \th ("toggle highlight") toggle highlighting of search matches, and
 " report the change:
 nnoremap \th :set invhls hls?<CR>
 
 
-" * Keystrokes -- Insert Mode
+" * Keystrokes -- Object Processing
 
-" allow <BkSpc> to delete line breaks, beyond the start of the current
-" insertion, and over indentations:
-set backspace=eol,start,indent
+" Mappings to base64 encode/decode current visual selection and paste it one a new line below the current one.
+" Both clobber register 0:
+vnoremap <Leader>e64  "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64encode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
+vnoremap <Leader>d64  "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64decode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
+
+
+" * Keystrokes -- Insert Mode
 
 " Useful abbreviations:
 iabbrev lorem Loremipsumdolorsitamet,consecteturadipisicingelit,seddoeiusmod
@@ -702,6 +716,13 @@ function! EndDiffBlobs()
     call utilities#SwitchBuffer(current_buf)
 endfunction " EndDiffRegs()
 
+
+
+" * Functions Using the Python Interface
+
+" I'm using Python-3.x. Deal with it:
+if v:version >= 703
+
 " Function to encode a blob in base64,
 " then put the result in the unnamed register.
 python3 << EOF
@@ -718,22 +739,20 @@ def _my_b64decode(blob = None):
     res = base64.b64decode(str.encode(blob))
     vim.command("let @@='%s'"%(bytes.decode(res), ))
 EOF
-" Mappings to base64 encode/decode current visual selection and paste it one a new line below the current one.
-" Both clobber the unnamed register.
-vnoremap <Leader>e64  ""y:let @@=substitute(@@, "\n", "", "")<CR>:exe 'python3 _my_b64encode("'.getreg('"').'")'<CR>o<C-[>p
-vnoremap <Leader>d64  ""y:let @@=substitute(@@, "\n", "", "")<CR>:exe 'python3 _my_b64decode("'.getreg('"').'")'<CR>o<C-[>p
+
+endif
 
 
 " * Automatic Code Completion
 
-" If the buffer is modified, update any 'Last Update: ' in the first 20 lines.
+" If the buffer is modified, update any 'Last Update: ' string in the first 20 lines.
 " 'Last Update: ' can have up to 10 characters before (they are retained).
-" Restores cursor and window position.
+" Restores cursor and window position:
 function! LastModified()
     if &modified
         let save_cursor = getpos(".")
         let n = min([20, line("$")])
-        exe '1,' . n . 's#^\(.\{,10}Last Update: \).*#\1' . DateStamp() . '#e'
+        exe '1,' . n . 's#^\(.\{,10}Last Update:  \).*#\1' . DateStamp() . '#e'
         call setpos('.', save_cursor)
     endif
 endfun
