@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.3
 " Created:      Thu Sep 15, 2011 13:22 GTB Daylight Time
-" Last Update:  Mon Sep 19, 2011 14:14 GTB Daylight Time
+" Last Update:  Mon Sep 19, 2011 17:16 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Differ - a dictionary that can diff!
@@ -49,9 +49,9 @@ endfunction " blobdiff#differ#New()
 function!   blobdiff#differ#InitFromRange(bufno, range_start, range_end) dict
     let self.mode               = 'blob'
     let self.source_buffer      = a:bufno
-    let self.filetype           = &filetype
     let self.range_start        = a:range_start
     let self.range_end          = a:range_end
+    let self.filetype           = &filetype
 
     call self.SetupSigns()
 
@@ -61,7 +61,7 @@ endfunction " blobdiff#differ#Init()
 
 function!   blobdiff#differ#InitFromRegister(register) dict
     let self.mode               = 'reg'
-    let self.text               = escape(getreg(a:register))
+    let self.text               = split(getreg(a:register), '\n')
 
     let self.is_blank           = 0
 endfunction " blobdiff#differ#Init()
@@ -132,7 +132,7 @@ function!   blobdiff#differ#SetupDiffBuffer() dict
         setlocal nomodifiable
     endif
 
-    "autocmd BufWrite <buffer> silent call b:differ.UpdateOriginalBuffer()
+    autocmd BufWrite <buffer> silent call b:differ.UpdateOriginalBuffer()
 endfunction " blobdiff#differ#SetupDiffBuffer()
 
 

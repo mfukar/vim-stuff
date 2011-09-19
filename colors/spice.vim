@@ -20,7 +20,7 @@ hi Pmenu          guifg=#FFFFFF guibg=#323232
 hi PmenuSel       guifg=#FFFFFF guibg=#B97D00
 
 " Background and menu colors
-hi Cursor           guifg=NONE    guibg=#FFFFFF gui=none
+hi Cursor           guifg=NONE    guibg=tan     gui=none
 hi iCursor          guifg=orange  guibg=orange
 hi Normal           guifg=#FFFFFF guibg=#000000 gui=none
 hi NonText          guifg=#FFFFFF guibg=#0F0F0F gui=none
