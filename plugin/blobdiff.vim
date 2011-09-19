@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.5
 " Created:      Thu Sep 15, 2011 12:34 GTB Daylight Time
-" Last Update:  Fri Sep 16, 2011 14:43 GTB Daylight Time
+" Last Update:  Mon Sep 19, 2011 13:42 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Diff two arbitrary blobs of text.
@@ -30,7 +30,7 @@
 if exists("g:blobdiff_loaded")
     finish
 endif
-let g:blobdiff_loaded = '0.0.1'
+let g:blobdiff_loaded = '0.0.5'
 
 let s:cpo_save=&cpo
 set cpo&vim

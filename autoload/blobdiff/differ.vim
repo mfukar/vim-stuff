@@ -1,9 +1,9 @@
 "=============================================================================
 " File:         autoload\differ.vim                               {{{1
 " Author:       Michael Foukarakis
-" Version:      0.0.2
+" Version:      0.0.3
 " Created:      Thu Sep 15, 2011 13:22 GTB Daylight Time
-" Last Update:  Mon Sep 19, 2011 13:20 GTB Daylight Time
+" Last Update:  Mon Sep 19, 2011 14:14 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Differ - a dictionary that can diff!
@@ -20,11 +20,11 @@
 function!   blobdiff#differ#New(sign_name, sign_no)
     let differ = {
         \ 'mode':               '',
-        \ 'original_buffer':    -1,
+        \ 'source_buffer':      -1,
         \ 'diff_buffer_no':     -1,
         \ 'filetype':           '',
-        \ 'from':               -1,
-        \ 'to':                 -1,
+        \ 'range_start':        -1,
+        \ 'range_end':          -1,
         \ 'sign_name':          a:sign_name,
         \ 'sign_no':            a:sign_no,
         \ 'sign_text':          a:sign_no.'>',
@@ -46,12 +46,12 @@ function!   blobdiff#differ#New(sign_name, sign_no)
 endfunction " blobdiff#differ#New()
 
 
-function!   blobdiff#differ#InitFromRange(bufno, from, to) dict
+function!   blobdiff#differ#InitFromRange(bufno, range_start, range_end) dict
     let self.mode               = 'blob'
-    let self.original_buffer    = a:bufno
+    let self.source_buffer      = a:bufno
     let self.filetype           = &filetype
-    let self.from               = a:from
-    let self.to                 = a:to
+    let self.range_start        = a:range_start
+    let self.range_end          = a:range_end
 
     call self.SetupSigns()
 
@@ -81,11 +81,11 @@ function!   blobdiff#differ#Reset() dict
     endif
 
     let self.mode               = ''
-    let self.original_buffer    = -1
+    let self.source_buffer      = -1
     let self.diff_buffer_no     = -1
     let self.filetype           = ''
-    let self.from               = -1
-    let self.to                 = -1
+    let self.range_start        = -1
+    let self.range_end          = -1
     let self.brother_differ     = {}
 
     let self.is_blank           = 1
@@ -93,7 +93,7 @@ endfunction " blobdiff#differ#Reset()
 
 
 function!   blobdiff#differ#Lines() dict
-    return getbufline(self.original_buffer, self.from, self.to)
+    return getbufline(self.source_buffer, self.range_start, self.range_end)
 endfunction " blobdiff#differ#Lines()
 
 
@@ -119,7 +119,7 @@ endfunction " blobdiff#differ#CreateDiffBuffer()
 function!   blobdiff#differ#SetupDiffBuffer() dict
     let b:differ    = self
 
-    "let statusline  = printf('[%s]', bufname(self.original_buffer))
+    "let statusline  = printf('[%s]', bufname(self.source_buffer))
     "if &statusline =~ '%f'
     "    let statusline = substitute(&statusline, '%f', statusline, '')
     "endif
@@ -147,8 +147,8 @@ function! blobdiff#differ#SetupSigns() dict
     exe 'sign unplace ' .self.sign_no. '1'
     exe 'sign unplace ' .self.sign_no. '2'
 
-    exe printf("sign place %d1 name=%s line=%d buffer=%d", self.sign_no, self.sign_name, self.from, self.original_buffer)
-    exe printf('sign place %d2 name=%s line=%d buffer=%d', self.sign_no, self.sign_name, self.to, self.original_buffer)
+    exe printf("sign place %d1 name=%s line=%d buffer=%d", self.sign_no, self.sign_name, self.range_start, self.source_buffer)
+    exe printf('sign place %d2 name=%s line=%d buffer=%d', self.sign_no, self.sign_name, self.range_end, self.source_buffer)
 endfunction " blobdiff#differ#SetupSigns()
 
 
