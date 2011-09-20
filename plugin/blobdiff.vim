@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.5
 " Created:      Thu Sep 15, 2011 12:34 GTB Daylight Time
-" Last Update:  Mon Sep 19, 2011 13:42 GTB Daylight Time
+" Last Update:  Tue Sep 20, 2011 13:37 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Diff two arbitrary blobs of text.
@@ -32,7 +32,7 @@ if exists("g:blobdiff_loaded")
 endif
 let g:blobdiff_loaded = '0.0.5'
 
-let s:cpo_save=&cpo
+let s:cpo_save = &cpo
 set cpo&vim
 
 function!   s:Init()
@@ -92,6 +92,5 @@ function!   s:PerformDiff(one, two)
 endfunction " s:PerformDiff()
 
 
-let &cpo=s:cpo_save
+let &cpo = s:cpo_save
 "=============================================================================
-" vim600: set fdm=marker:

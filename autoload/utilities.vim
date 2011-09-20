@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.1
 " Created:      Thu Sep 15, 2011 12:42 GTB Daylight Time
-" Last Update:  Fri Sep 16, 2011 09:23 GTB Daylight Time
+" Last Update:  Tue Sep 20, 2011 14:12 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Utility autoload functions tailored for me. If they don't work
@@ -36,4 +36,3 @@ endfunction
 
 let &cpo=s:cpo_save
 "=============================================================================
-" vim600: set fdm=marker:

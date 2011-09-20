@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.3
 " Created:      Thu Sep 15, 2011 13:22 GTB Daylight Time
-" Last Update:  Mon Sep 19, 2011 17:16 GTB Daylight Time
+" Last Update:  Tue Sep 20, 2011 15:59 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Differ - a dictionary that can diff!
@@ -21,7 +21,7 @@ function!   blobdiff#differ#New(sign_name, sign_no)
     let differ = {
         \ 'mode':               '',
         \ 'source_buffer':      -1,
-        \ 'diff_buffer_no':     -1,
+        \ 'diff_buffer':        -1,
         \ 'filetype':           '',
         \ 'range_start':        -1,
         \ 'range_end':          -1,
@@ -82,7 +82,7 @@ function!   blobdiff#differ#Reset() dict
 
     let self.mode               = ''
     let self.source_buffer      = -1
-    let self.diff_buffer_no     = -1
+    let self.diff_buffer        = -1
     let self.filetype           = ''
     let self.range_start        = -1
     let self.range_end          = -1
@@ -98,18 +98,23 @@ endfunction " blobdiff#differ#Lines()
 
 
 function!   blobdiff#differ#CreateDiffBuffer(edit_cmd) dict
+    " Grab the blob from a range or the register contents in self.text:
     if self.mode == 'blob'
         let blob     = self.Lines()
     else
         let blob     = self.text
     endif
+    " Use a temp file, to support changes diff <--> source
     let tempfile = tempname()
-
+    " Open it for editing
     exe a:edit_cmd . ' ' . tempfile
+    " Paste the blob for diffing
     call append(0, blob)
+    " Remove the extraneous line
     normal! Gdd
-
-    let self.diff_buffer_no = bufnr('%')
+    " This is pretty safe, we just jumped into editing the buffer..
+    let  self.diff_buffer = bufnr('%')
+    " Set it up
     call self.SetupDiffBuffer()
 
     diffthis
@@ -129,16 +134,19 @@ function!   blobdiff#differ#SetupDiffBuffer() dict
     setlocal bufhidden=hide
     setlocal nomodified
     if self.mode == 'reg'
+        " For register-originated blobs, don't support editing:
         setlocal nomodifiable
+    elseif self.mode == 'blob'
+        " For blob buffers, mirror changes to source buffer:
+        autocmd BufWrite <buffer> silent call b:differ.UpdateOriginalBuffer()
     endif
 
-    autocmd BufWrite <buffer> silent call b:differ.UpdateOriginalBuffer()
 endfunction " blobdiff#differ#SetupDiffBuffer()
 
 
 function! blobdiff#differ#CloseDiffBuffer() dict
-    if bufexists(self.diff_buffer_no)
-        exe 'bdelete ' .self.diff_buffer_no
+    if bufexists(self.diff_buffer)
+        exe 'bdelete ' .self.diff_buffer
     endif
 endfunction "blobdiff#differ#CloseDiffBuffer()
 
@@ -152,5 +160,44 @@ function! blobdiff#differ#SetupSigns() dict
 endfunction " blobdiff#differ#SetupSigns()
 
 
+function! blobdiff#differ#UpdateOriginalBuffer() dict
+    let new_blob        = getbuflines('%', 0, $)
+    " Book keeping:
+    let new_nlines = len(new_blob)
+    let old_nlines = self.range_end - self.range_start + 1
+
+    " Switch to the source buffer:
+    call utilities#SwitchBuffer(self.source_buffer)
+    let saved_cursor    = getpos('.')
+    " Replace the relevant lines:
+    call cursor(self.range_start, 1)
+    exe 'normal! '. old_nlines. 'dd'
+    call append(self.range_start - 1, new_blob)
+    " Restore the cursor and switch to the diff buffer:
+    call setpos('.', saved_cursor)
+    call utilities#SwitchBuffer(self.diff_buffer)
+
+    " Update the new range end:
+    let self.range_end = self.range_start + new_nlines
+
+    " Notify the other differ, it may need an update too:
+    call self.brother_differ.blobdiff#differ#UpdateBrother(new_nlines - old_nlines)
+endfunction " blobdiff#differ#UpdateOriginalBuffer()
+
+
+function! blobdiff#differ#UpdateBrother(delta)
+    let other = self.brother_differ
+
+    if other.mode == 'reg'
+        \ && self.source_buffer == other.source_buffer
+        \ && self.range_end <= other.range_start
+        \ && a:delta != 0
+        let other.range_start = other.range_start + a:delta
+        let other.range_end   = other.range_end   + a:delta
+
+        call other.SetupSigns()
+    endif
+endfunction " blobdiff#differ#UpdateBrother()
+
+
 "=============================================================================
-" vim600: set fdm=marker:
