@@ -770,8 +770,7 @@ endif
 " Enable omnicompletion:
 set ofu=syntaxcomplete#Complete
 set cot=menu,longest
-
-" Screw Python 2. Yeah, I said it, beardies:
+" and screw Python 2, while we're at it. Yeah, I said it, beardies:
 autocmd FileType python set ofu=python3complete#Complete
 
 " Remove the Windows ^M

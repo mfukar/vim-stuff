@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.3
 " Created:      Thu Sep 15, 2011 13:22 GTB Daylight Time
-" Last Update:  Tue Sep 20, 2011 15:59 GTB Daylight Time
+" Last Update:  Fri Sep 23, 2011 16:18 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Differ - a dictionary that can diff!
@@ -19,26 +19,28 @@
 
 function!   blobdiff#differ#New(sign_name, sign_no)
     let differ = {
-        \ 'mode':               '',
-        \ 'source_buffer':      -1,
-        \ 'diff_buffer':        -1,
-        \ 'filetype':           '',
-        \ 'range_start':        -1,
-        \ 'range_end':          -1,
-        \ 'sign_name':          a:sign_name,
-        \ 'sign_no':            a:sign_no,
-        \ 'sign_text':          a:sign_no.'>',
-        \ 'is_blank':           1,
-        \ 'brother_differ':     {},
-        \ 'InitFromRange':      function('blobdiff#differ#InitFromRange'),
-        \ 'InitFromRegister':   function('blobdiff#differ#InitFromRegister'),
-        \ 'IsBlank':            function('blobdiff#differ#IsBlank'),
-        \ 'Reset':              function('blobdiff#differ#Reset'),
-        \ 'Lines':              function('blobdiff#differ#Lines'),
-        \ 'CreateDiffBuffer':   function('blobdiff#differ#CreateDiffBuffer'),
-        \ 'CloseDiffBuffer':    function('blobdiff#differ#CloseDiffBuffer'),
-        \ 'SetupDiffBuffer':    function('blobdiff#differ#SetupDiffBuffer'),
-        \ 'SetupSigns':         function('blobdiff#differ#SetupSigns')
+    \'mode':                    '',
+    \'source_buffer':           -1,
+    \'diff_buffer':             -1,
+    \'filetype':                '',
+    \'range_start':             -1,
+    \'range_end':               -1,
+    \'sign_name':               a:sign_name,
+    \'sign_no':                 a:sign_no,
+    \'sign_text':               a:sign_no.'>',
+    \'is_blank':                1,
+    \'brother_differ':          {},
+    \'InitFromRange':           function('blobdiff#differ#InitFromRange'),
+    \'InitFromRegister':        function('blobdiff#differ#InitFromRegister'),
+    \'IsBlank':                 function('blobdiff#differ#IsBlank'),
+    \'Reset':                   function('blobdiff#differ#Reset'),
+    \'Lines':                   function('blobdiff#differ#Lines'),
+    \'CreateDiffBuffer':        function('blobdiff#differ#CreateDiffBuffer'),
+    \'CloseDiffBuffer':         function('blobdiff#differ#CloseDiffBuffer'),
+    \'SetupDiffBuffer':         function('blobdiff#differ#SetupDiffBuffer'),
+    \'SetupSigns':              function('blobdiff#differ#SetupSigns'),
+    \'UpdateOriginalBuffer':    function('blobdiff#differ#UpdateOriginalBuffer'),
+    \'UpdateBrother':           function('blobdiff#differ#UpdateBrother')
     \}
 
     exe 'sign define ' .differ.sign_name. ' text=' .differ.sign_text. ' texthl=Sign'
@@ -161,7 +163,7 @@ endfunction " blobdiff#differ#SetupSigns()
 
 
 function! blobdiff#differ#UpdateOriginalBuffer() dict
-    let new_blob        = getbuflines('%', 0, $)
+    let new_blob        = getbufline('%', 0, $)
     " Book keeping:
     let new_nlines = len(new_blob)
     let old_nlines = self.range_end - self.range_start + 1
@@ -181,23 +183,22 @@ function! blobdiff#differ#UpdateOriginalBuffer() dict
     let self.range_end = self.range_start + new_nlines
 
     " Notify the other differ, it may need an update too:
-    call self.brother_differ.blobdiff#differ#UpdateBrother(new_nlines - old_nlines)
+    call self.UpdateBrother(new_nlines - old_nlines)
 endfunction " blobdiff#differ#UpdateOriginalBuffer()
 
 
-function! blobdiff#differ#UpdateBrother(delta)
+function! blobdiff#differ#UpdateBrother(delta) dict
     let other = self.brother_differ
 
-    if other.mode == 'reg'
-        \ && self.source_buffer == other.source_buffer
-        \ && self.range_end <= other.range_start
-        \ && a:delta != 0
+    if other.mode == 'blob'
+  \ && self.source_buffer == other.source_buffer
+  \ && self.range_end <= other.range_start
+  \ && a:delta != 0
         let other.range_start = other.range_start + a:delta
         let other.range_end   = other.range_end   + a:delta
 
         call other.SetupSigns()
     endif
 endfunction " blobdiff#differ#UpdateBrother()
-
 
 "=============================================================================
