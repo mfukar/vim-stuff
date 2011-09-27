@@ -245,7 +245,7 @@ syn keyword cCustomType	l2tp_client_procedure
 
 " well it basically comes down to this match
 " [excluding REALLY retarded defs]:
-syn match cCustomType   "[a-z_]\+_t\>"
+syn match cCustomType   "[A-Za-z_]\w*_t\>"
 
 " Operators
 syn match cOperator	"\(<<\|>>\|[-+*/%&^|<>!=]\)="
