@@ -29,6 +29,7 @@ autocmd!
 
 " * Terminal Settings
 
+" TODO I need to fix the logic here. terms have changed. /sadface
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color":
 if &term =~ 'xterm'
@@ -67,6 +68,10 @@ elseif has("unix")
     set directory=~/.vim-tmp,~/.tmp,~/tmp
 endif
 
+" Set 'path' to make gf usable (maybe just TODO a little smarter):
+set path=$SRC_ROOT/include,$HOME/include,.
+
+
 " * User Interface
 
 set fileencodings=ucs-bom,utf-8,default,latin1
@@ -91,13 +96,13 @@ let g:author_short = "mfukar"
 let g:mt_chooseWith = "confirm"
 
 " screw , I don't want SIGSTOP and 'screen' would lose the connection
-" on it, so let's remap it to something useful: a shell.
+" on it, so let's remap it to something useful, like a shell:
 map <C-Z> :shell<CR>
 
-" Set the terminal title, always.
+" Set the terminal title, always:
 set title
 
-" Create a fancy status line.
+" Create a fancy status line:
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
@@ -108,7 +113,7 @@ set laststatus=2
 " on/off switching:
 nnoremap <silent> <F7> :TlistToggle<CR>
 let Tlist_Close_On_Select = 1
-" Let my shells handle paths:
+" Let my shells handle all the path sickness:
 let Tlist_Ctags_Cmd='ctags'
 
 " have syntax highlighting in terminals which can display colours:
@@ -197,19 +202,19 @@ set nu
 set shiftwidth=4    " # of spaces to use for each step when autoindenting
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 set expandtab       " insert #tabstop spaces instead of Tab
-set tabstop=4       " 4 spaces indent for NG10
+set tabstop=4       " 4 spaces indent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set autoindent
 
 " some extra tags involved in ng20
 if expand('%:p:h') =~ 'ng'
-    " Also add tags for NG20
+    " Also add tags for ng20:
     set tags+=/scratch/mfoukara/tags
     
-    " Add any cscope database in current directory
+    " Add any cscope database in current directory:
     if filereadable("cscope.out")
         cs add cscope.out  
-    " else add the database pointed to by environment variable 
+    " else add the database pointed to by environment variable:
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
