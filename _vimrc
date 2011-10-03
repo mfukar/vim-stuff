@@ -68,8 +68,16 @@ elseif has("unix")
     set directory=~/.vim-tmp,~/.tmp,~/tmp
 endif
 
-" Set 'path' to make gf usable (maybe just TODO a little smarter):
+" Set 'path' to make gf usable:
 set path=$SRC_ROOT/include,$HOME/include,.
+
+" And let's make it just a little bit smarter for Python:
+python3 << EOF
+import os, sys, vim
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command('set path+=%s' % (p.replace(' ', '\ ')))
+EOF
 
 
 " * User Interface

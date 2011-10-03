@@ -25,15 +25,15 @@ hi iCursor          guifg=orange  guibg=orange
 hi Normal           guifg=#FFFFFF guibg=#000000 gui=none
 hi NonText          guifg=#FFFFFF guibg=#0F0F0F gui=none
 hi LineNr           guifg=#FFFFFF guibg=#191919 gui=none
-hi StatusLine       guifg=#FFFFFF guibg=#251900 gui=italic
+hi StatusLine       guifg=#FFFFFF guibg=#183D00 gui=italic
 hi StatusLineNC     guifg=#FFFFFF guibg=#282828 gui=none
 hi VertSplit        guifg=#FFFFFF guibg=#191919 gui=none
 hi Folded           guifg=#F96D00 guibg=#000000 gui=none
 hi Title            guifg=#B97D00 guibg=NONE    gui=bold
 hi Visual           guifg=#8A5A0C guibg=#323232 gui=none
 hi SpecialKey       guifg=#759B93 guibg=#0F0F0F gui=none
-hi Search           guifg=#FFFFFF guibg=#D07E08 gui=none
-hi IncSearch        guifg=tan     guibg=#8A5A0C gui=none
+hi Search           guifg=#FFFFFF guibg=#9A2700 gui=none
+hi IncSearch        guifg=tan     guibg=#D07E08 gui=none
 hi Sign             guifg=#02DF15 guibg=NONE    gui=none
  
 hi DiffChange       guibg=#4C4C09 gui=none
@@ -42,6 +42,8 @@ hi DiffText         guifg=#000000 guibg=#66326E gui=none
 hi DiffDelete       guibg=#3F000A gui=none
 hi TabLineFill      guibg=#5E5E5E gui=none
 hi TabLineSel       guifg=#FFFFD7 gui=bold
+
+hi Todo             guifg=#FFFFFF guibg=blue    gui=none
 
 
 " Syntax highlighting
