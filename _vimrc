@@ -82,6 +82,8 @@ EOF
 
 " * User Interface
 
+set encoding=utf-8
+
 set fileencodings=ucs-bom,utf-8,default,latin1
 
 if has("gui_running")
@@ -138,7 +140,7 @@ colorscheme spice
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
     set guicursor=n-v-c:block-Cursor
-    set guicursor+=i:hor50-iCursor-blinkwait25-blinkon250-blinkoff250
+    set guicursor+=i:hor25-iCursor-blinkwait25-blinkon250-blinkoff250
 endif
 
 " have a hundred lines of command-line (etc) history:

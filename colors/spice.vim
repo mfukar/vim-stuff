@@ -15,17 +15,17 @@ let colors_name = "spice"
 
 hi CursorLine     guibg=#000000
 hi CursorColumn   guibg=#000000
-hi MatchParen     guifg=#EFA37F guibg=#000000 gui=bold
+hi MatchParen     guifg=#FF7400 guibg=#000000 gui=bold
 hi Pmenu          guifg=#FFFFFF guibg=#323232
 hi PmenuSel       guifg=#FFFFFF guibg=#B97D00
 
 " Background and menu colors
-hi Cursor           guifg=NONE    guibg=tan     gui=none
-hi iCursor          guifg=orange  guibg=orange
+hi Cursor           guifg=NONE    guibg=#476D9A
+hi iCursor          guifg=NONE    guibg=yellow
 hi Normal           guifg=#FFFFFF guibg=#000000 gui=none
 hi NonText          guifg=#FFFFFF guibg=#0F0F0F gui=none
 hi LineNr           guifg=#FFFFFF guibg=#191919 gui=none
-hi StatusLine       guifg=#FFFFFF guibg=#183D00 gui=italic
+hi StatusLine       guifg=#FFFFFF guibg=#476D9A gui=italic
 hi StatusLineNC     guifg=#FFFFFF guibg=#282828 gui=none
 hi VertSplit        guifg=#FFFFFF guibg=#191919 gui=none
 hi Folded           guifg=#F96D00 guibg=#000000 gui=none
