@@ -35,7 +35,7 @@ hi SpecialKey       guifg=#759B93 guibg=#0F0F0F gui=none
 hi Search           guifg=#FFFFFF guibg=#9A2700 gui=none
 hi IncSearch        guifg=tan     guibg=#D07E08 gui=none
 hi Sign             guifg=#02DF15 guibg=NONE    gui=none
- 
+
 hi DiffChange       guibg=#4C4C09 gui=none
 hi DiffAdd          guibg=#252556 gui=none
 hi DiffText         guifg=#000000 guibg=#66326E gui=none
@@ -61,3 +61,8 @@ hi String       guifg=#8A5A0C gui=none
 hi Type         guifg=#A64100 gui=none
 hi pythonBuiltin guifg=#FF4D1A gui=none
 hi TabLineFill  guifg=#372404 gui=none
+
+" Special cases
+" end-of-line whitespace
+hi      whitespaceEOL guibg=red
+match   whitespaceEOL   /\s\+$/
