@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      1.0
 " Created:      Tue Oct 18, 2011 10:00 GTB Daylight Time
-" Last Update:  Tue Oct 18, 2011 10:10 GTB Daylight Time
+" Last Update:  Tue Oct 18, 2011 10:21 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       Additional syntax highlighting for man pages.
@@ -17,7 +17,6 @@
 let s:cpo_save=&cpo
 set cpo&vim
 "------------------------------------------------------------------------
-
 syn match manSectionHeading "^\s\+[0-9]\+\.[0-9.]*\s\+[A-Z].*$" contains=manSectionNumber
 syn match manSectionNumber "^\s\+[0-9]\+\.[0-9]*" contained
 syn region manDQString start='[^a-zA-Z"]"[^", )]'lc=1 end='"' contains=manSQString
@@ -33,13 +32,13 @@ syn match manSubSectionStart "^\*" skipwhite nextgroup=manSubSection
 syn match manSubSection ".*$" contained
 
 hi link manSectionNumber Number
-hi link manDQString String
-hi link manSQString String
-hi link manBQString String
-hi link manBQSQString String
-hi link manBullet Special
-hi manSubSectionStart term=NONE cterm=NONE gui=NONE ctermfg=black ctermbg=black guifg=navyblue guibg=navyblue
-hi manSubSection term=underline cterm=underline gui=underline ctermfg=green guifg=green
+hi link manDQString      String
+hi link manSQString      String
+hi link manBQString      String
+hi link manBQSQString    String
+hi link manBullet        Special
+hi manSubSectionStart term=NONE      cterm=NONE gui=NONE ctermfg=black ctermbg=black guifg=navyblue guibg=navyblue
+hi manSubSection      term=underline cterm=underline gui=underline ctermfg=green guifg=green
 
 set ts=8
 "------------------------------------------------------------------------

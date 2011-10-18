@@ -265,11 +265,7 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass ImportWarning UnicodeWarning
 endif
 
-
-" This is fast but code inside triple quoted strings screws it up. It
-" is impossible to fix because the only way to know if you are inside a
-" triple quoted string is to start from the beginning of the file.
-" syn sync match pythonSync grouphere NONE "):$"
+syntax sync fromstart
 
 if version >= 508 || !exists("did_python_syn_inits")
   if version <= 508
