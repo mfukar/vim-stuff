@@ -47,7 +47,7 @@
 "
 "    For fast machines:
 "       python_slow_sync
-" For version 6.x: Quit when a syntax file was already loaded
+" Quit when a syntax file was already loaded:
 if exists("b:current_syntax")
   finish
 endif
@@ -265,15 +265,11 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass ImportWarning UnicodeWarning
 endif
 
-if exists("python_slow_sync") && python_slow_sync != 0
-  syn sync minlines=2000
-else
-  " This is fast but code inside triple quoted strings screws it up. It
-  " is impossible to fix because the only way to know if you are inside a
-  " triple quoted string is to start from the beginning of the file.
-  syn sync match pythonSync grouphere NONE "):$"
-  syn sync maxlines=200
-endif
+
+" This is fast but code inside triple quoted strings screws it up. It
+" is impossible to fix because the only way to know if you are inside a
+" triple quoted string is to start from the beginning of the file.
+" syn sync match pythonSync grouphere NONE "):$"
 
 if version >= 508 || !exists("did_python_syn_inits")
   if version <= 508
@@ -297,8 +293,8 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonComment      Comment
   HiLink pythonCoding       Special
-  HiLink pythonRun      Special
-  HiLink pythonTodo     Todo
+  HiLink pythonRun          Special
+  HiLink pythonTodo         Todo
 
   HiLink pythonError        Error
   HiLink pythonIndentError  Error
@@ -306,8 +302,8 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonString       String
   HiLink pythonRawString    String
-  HiLink pythonEscape           Special
-  HiLink pythonEscapeError      Error
+  HiLink pythonEscape       Special
+  HiLink pythonEscapeError  Error
 
   HiLink pythonBytes            String
   HiLink pythonBytesContent     String
@@ -335,7 +331,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBuiltinObj   Structure
   HiLink pythonBuiltinFunc  Function
 
-  HiLink pythonExClass  Structure
+  HiLink pythonExClass      Structure
 
   delcommand HiLink
 endif

@@ -58,6 +58,9 @@ endif
 
 " * Environment
 
+" Normal vim operation. Modified when viewing manpages:
+let $PAGER=''
+
 " Store temporary files in a central spot,
 " instead of all over the place.
 if has("win32")
@@ -246,6 +249,8 @@ set comments+=b:\"
 
 " Enable filetype detection:
 filetype on
+" and per-filetype indentation, while we're at it:
+filetype plugin indent on
 
 " we want the :Man function:
 runtime ftplugin/man.vim
@@ -261,8 +266,8 @@ autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
 " in human-language files, automatically format everything at 72 chars:
 autocmd FileType mail,human set formatoptions+=t textwidth=72
 
-" for C/C++/Python, have automatic indentation:
-autocmd FileType c,cpp,python set cindent
+" for C/C++, have automatic indentation:
+autocmd FileType c,cpp set cindent
 
 " for actual C (not C++) programming where comments have explicit end characters, if
 " starting a new line in the middle of a comment automatically insert the comment leader
@@ -755,6 +760,13 @@ def _my_b64decode(blob = None):
     vim.command("let @@='%s'"%(bytes.decode(res), ))
 EOF
 
+" Use :make to compile the current buffer and see syntax errors
+" :cn to see next, :cp to see previous
+" :dist to see all errors
+" TODO
+
+" Execute the code selection using compile/exec
+" TODO
 endif
 
 

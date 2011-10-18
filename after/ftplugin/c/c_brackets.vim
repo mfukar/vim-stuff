@@ -80,14 +80,10 @@ if exists(':Brackets')
   :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=0
 
   :Brackets /* */ -visual=0
-  " :Brackets /** */ -visual=0 -trigger=/!
-  "
+  :Brackets /* */ -insert=0 -trigger=<leader>/
+  :Brackets /** */ -visual=0 -trigger=/!
 endif
 
 "=============================================================================
-
-" }}}
-"=============================================================================
 let &cpo=s:cpo_save
 "=============================================================================
-" vim600: set fdm=marker:

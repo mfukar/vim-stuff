@@ -100,7 +100,6 @@ function! s:BlockStarter(lnum, block_start_re)
 endfunction
                 
 function! GetPythonIndent(lnum)
-
     " First line has indent 0
     if a:lnum == 1
         return 0
@@ -157,7 +156,7 @@ function! GetPythonIndent(lnum)
     let pline = getline(plnum)
     let sslnum = s:StatementStart(plnum)
     
-    " If the previous line is blank, keep the same indentation
+    " If the previous line is blank, keep the indentation:
     if pline =~ '^\s*$'
         return -1
     endif
