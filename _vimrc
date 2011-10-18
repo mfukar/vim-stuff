@@ -256,8 +256,12 @@ filetype plugin indent on
 runtime ftplugin/man.vim
 
 " Add tags for quickly jumping around C, Python code.
-autocmd FileType c set tags+=$HOME/.vim/tags/c.ctags
-autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
+if has("unix")
+    autocmd FileType c set tags+=$HOME/.vim/tags/c.ctags
+    autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
+elseif has("win32")
+    autocmd FileType python set tags+=$VIM/vimfiles/tags/python.ctags
+endif
 
 " include files can be nasm, makefiles, etc.
 " TODO: figure something out to distinguish between them..
@@ -693,49 +697,6 @@ endfunction " DateStamp(...)
 " TODO: Transform visual box selection into a single line.
 function! Deboxify()
 endfunction " Deboxify()
-
-
-" TODO: Make some usable keybinds for those two. Figure a way to use with registers,
-" ranges, et al.
-" Function to diff two blobs in two new windows.
-" Blobs can come from registers, ranges, etc.
-" List of buffers being diffed, so we can close them all at once:
-let g:diffblob_buffers = []
-function! DiffBlobs(blob1, blob2)
-    " Preserve the unnamed register
-    let s:nonamereg = @@
-    let @@ = a:blob1
-    " New window!
-    new
-    normal P
-    setlocal nomodifiable
-    setlocal buftype=nofile
-    diffthis
-    call add(g:diffblob_buffers, bufnr('%'))
-
-    let @@ = a:blob2
-    vsp +enew
-    normal P
-    setlocal nomodifiable
-    setlocal buftype=nofile
-    diffthis
-    call add(g:diffblob_buffers, bufnr('%'))
-
-    let @@ = s:nonamereg
-endfunction " DiffRegs(blob1, blob2)
-
-" Function to wipe all buffers holding diff blobs
-function! EndDiffBlobs()
-    let current_buf = bufnr('%')
-    for ibuf in g:diffblob_buffers
-        call utilities#SwitchWindow(ibuf)
-        diffoff
-        quit
-    endfor
-    let g:diffblob_buffers = []
-    call utilities#SwitchBuffer(current_buf)
-endfunction " EndDiffRegs()
-
 
 
 " * Functions Using the Python Interface
