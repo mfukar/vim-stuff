@@ -1,4 +1,4 @@
-VimL:" Python File Template, mfukar, Sat Jan 22, 2011 15:03 GTB Standard Time
+VimL:" Python File Template, mfukar, Sat Oct 19, 2011 15:03 GTB Standard Time
 VimL: let s:value_start = 'Â¡'
 VimL: let s:value_end   = s:value_start
 VimL: let s:marker_open  = '<+'
