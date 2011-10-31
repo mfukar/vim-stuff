@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Sep 16, 2011 08:56 GTB Daylight Time
+" Last Update: Mon Oct 31, 2011 16:10 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -29,7 +29,7 @@ autocmd!
 
 " * Terminal Settings
 
-" TODO I need to fix the logic here. terms have changed. /sadface
+" TODO I need to fix the logic here. terms have changed.
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color":
 if &term =~ 'xterm'
@@ -491,8 +491,8 @@ nnoremap \th :set invhls hls?<CR>
 
 " * Keystrokes -- Object Processing
 
-" Mappings to base64 encode/decode current visual selection and paste it one a new line below the current one.
-" Both clobber register 0:
+" Mappings to base64 encode/decode current visual selection and paste it one a new line
+" below the current one.  Both clobber register 0:
 vnoremap <Leader>e64  "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64encode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
 vnoremap <Leader>d64  "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64decode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
 
@@ -738,18 +738,18 @@ endif
 
 " * Automatic Code Completion
 
-" If the buffer is modified, update any 'Last Update: ' string in the first 20 lines.
-" 'Last Update: ' can have up to 10 characters before (they are retained).
-" Restores cursor and window position:
-function! LastModified()
+" If the buffer is modified, update any 'Last Update:' string in the first 20 lines.
+" 'Last Update:' can have up to 10 characters before and whitespace after it, they are
+" both retained. Restores cursor and window position:
+function! LastUpdated()
     if &modified
         let save_cursor = getpos(".")
         let n = min([20, line("$")])
-        exe '1,' . n . 's#^\(.\{,10}Last Update:  \).*#\1' . DateStamp() . '#e'
+        exe '1,' . n . 's#^\(.\{,10}Last Update:[ ]\+\).*#\1' . DateStamp() . '#e'
         call setpos('.', save_cursor)
     endif
 endfun
-autocmd BufWritePre * call LastModified()
+autocmd BufWritePre * call LastUpdated()
 
 filetype plugin on
 " TODO: Decide between pydiction | omnicomplete for Python:
