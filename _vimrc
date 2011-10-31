@@ -457,7 +457,9 @@ vnoremap <Leader>kr y:call Deboxify('@@')<CR>p
 " * Keystrokes -- Toggles
 
 " Keystrokes to toggle options are defined here.  They are all set to normal mode strokes
-" beginning \t but some function keys (which won't work in all terminals) are also mapped.
+" beginning with \t.
+" Some function keys (which might not work in all terminals) are also mapped, for
+" convenience.
 
 " have \tp ("toggle paste") toggle paste on/off and report the change, and
 " where possible also have <F4> do this both in normal and insert mode:
@@ -477,8 +479,10 @@ imap <F3> <C-O>\tf
 nnoremap \tl :set invlist list?<CR>
 nmap <F2> \tl
 
-" map <F2> to calling the BlobDiff command with a selection in visual/select mode:
-vmap <F2> :BlobDiff('blob')<CR>
+" map <Leader><F2> to calling the BlobDiff command with a selection in visual/select mode,
+" and with the unnamed register contents in normal mode:
+vmap <Leader><F2> :BlobDiff('blob')<CR>
+nmap <Leader><F2> :RegDiff('@@')<CR>
 
 " have \th ("toggle highlight") toggle highlighting of search matches, and
 " report the change:

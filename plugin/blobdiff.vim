@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.1
 " Created:      Thu Sep 15, 2011 12:34 GTB Daylight Time
-" Last Update:  Mon Oct 31, 2011 15:19 GTB Standard Time
+" Last Update:  Mon Oct 31, 2011 15:47 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       Diff two arbitrary blobs of text.
@@ -49,7 +49,7 @@ endfunction " s:Init()
 " a:from   is either the starting line for blobs, or source register
 " a:to     is the end line of the blob
 command! -nargs=+ -range BlobDiff   call s:BlobDiff(<args>, <line1>, <line2>)
-command! -nargs=+        RegDiff    call s:BlobDiff(<args>, 0)
+command! -nargs=+        RegDiff    call s:BlobDiff('reg', <args>, 0)
 function!   s:BlobDiff(mode, from, to)
     call s:Init()
 
