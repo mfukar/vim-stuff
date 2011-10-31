@@ -1,9 +1,9 @@
 "=============================================================================
 " File:         plugin\blobdiff.vim                               {{{1
 " Author:       Michael Foukarakis
-" Version:      0.0.5
+" Version:      0.1
 " Created:      Thu Sep 15, 2011 12:34 GTB Daylight Time
-" Last Update:  Tue Sep 20, 2011 13:37 GTB Daylight Time
+" Last Update:  Mon Oct 31, 2011 15:19 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       Diff two arbitrary blobs of text.
@@ -30,7 +30,7 @@
 if exists("g:blobdiff_loaded")
     finish
 endif
-let g:blobdiff_loaded = '0.0.5'
+let g:blobdiff_loaded = '0.1'
 
 let s:cpo_save = &cpo
 set cpo&vim

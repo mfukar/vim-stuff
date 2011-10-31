@@ -21,7 +21,7 @@
 " * SLRN Behaviour
 " * Functions Referred to Above
 " * Functions Using the Python Interface
-" * Automatic Code Completion 
+" * Automatic Code Completion
 "
 " First clear any existing autocommands:
 autocmd!
@@ -186,10 +186,10 @@ set mouse=a
 set nomodeline
 
 " I use pscp with netrw.
-if(has('win32')) 
+if(has('win32'))
     " list files, it's the key setting, if you haven't set it you
     " will most likely get a blank buffer:
-    let g:netrw_list_cmd = "plink HOSTNAME ls -lFah"
+    let g:netrw_list_cmd = "plink HOSTNAME ls -lFAh"
     " $USERNAME works for me:
     let g:netrw_scp_cmd = "pscp -l ".$USERNAME." -scp -q -batch"
 endif
@@ -223,10 +223,10 @@ set autoindent
 if expand('%:p:h') =~ 'ng'
     " Also add tags for ng20:
     set tags+=/scratch/mfoukara/tags
-    
+
     " Add any cscope database in current directory:
     if filereadable("cscope.out")
-        cs add cscope.out  
+        cs add cscope.out
     " else add the database pointed to by environment variable:
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
@@ -266,9 +266,6 @@ endif
 " include files can be nasm, makefiles, etc.
 " TODO: figure something out to distinguish between them..
 " autocmd BufNewFile,BufRead *.inc set filetype=nasm
-
-" in human-language files, automatically format everything at 72 chars:
-autocmd FileType mail,human set formatoptions+=t textwidth=72
 
 " for C/C++, have automatic indentation:
 autocmd FileType c,cpp set cindent
@@ -430,7 +427,7 @@ imap <C-K> <Plug>MarkersJumpB
 vmap <C-m> <Plug>MarkersMark
 
 " Bracket manipulation mode
-noremap <silent> <C-L>m :call BracketsManipMode("\<C-L>b")<cr>
+noremap <silent> <C-L>m :call BracketsManipMode("\<C-L>b")<CR>
 
 
 " * Keystrokes -- Formatting
@@ -452,6 +449,9 @@ noremap Y y$
 " TODO: have a keymap expand a doxygen template with the function in the
 " current line:
 " ...
+
+" have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle:
+vnoremap <Leader>kr y:call Deboxify('@@')<CR>p
 
 
 " * Keystrokes -- Toggles
@@ -695,7 +695,8 @@ endfunction " DateStamp(...)
 
 
 " TODO: Transform visual box selection into a single line.
-function! Deboxify()
+function! Deboxify(reg)
+    let @@ = join(split(getreg(a:reg), '\n'), "")
 endfunction " Deboxify()
 
 
