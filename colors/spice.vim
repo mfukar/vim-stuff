@@ -30,7 +30,7 @@ hi StatusLineNC     guifg=#FFFFFF guibg=#282828 gui=none
 hi VertSplit        guifg=#FFFFFF guibg=#191919 gui=none
 hi Folded           guifg=#F96D00 guibg=#000000 gui=none
 hi Title            guifg=#B97D00 guibg=NONE    gui=bold
-hi Visual           guifg=#8A5A0C guibg=#323232 gui=none
+hi Visual           guifg=#9A7A0C guibg=#323232 gui=none
 hi SpecialKey       guifg=#759B93 guibg=#0F0F0F gui=none
 hi Search           guifg=#FFFFFF guibg=#9A2700 gui=none
 hi IncSearch        guifg=tan     guibg=#D07E08 gui=none

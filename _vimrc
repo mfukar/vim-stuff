@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Oct 31, 2011 16:10 GTB Standard Time
+" Last Update: Mon Jan 02, 2012 12:26 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -201,6 +201,8 @@ set autochdir
 " insertion, and over indentations:
 set backspace=eol,start,indent
 
+" give the cursor some room to breathe:
+set scrolloff=5
 
 " * Text Formatting -- General
 
@@ -739,13 +741,13 @@ endif
 " * Automatic Code Completion
 
 " If the buffer is modified, update any 'Last Update:' string in the first 20 lines.
-" 'Last Update:' can have up to 10 characters before and whitespace after it, they are
+" 'Last Update:' can have up to 20 characters before and whitespace after it, they are
 " both retained. Restores cursor and window position:
 function! LastUpdated()
     if &modified
         let save_cursor = getpos(".")
         let n = min([20, line("$")])
-        exe '1,' . n . 's#^\(.\{,10}Last Update:[ ]\+\).*#\1' . DateStamp() . '#e'
+        exe '1,' . n . 's#^\(.\{,20}Last Update:[ ]\+\).*#\1' . DateStamp() . '#e'
         call setpos('.', save_cursor)
     endif
 endfun

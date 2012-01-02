@@ -8,7 +8,7 @@ VimL: let s:marker_close = '+>'
 # @author      Â¡substitute(Author(0),'\r"','\r','g')Â¡
 # @version     <+version+>
 # @date        Created:     Â¡DateStamp()Â¡
-#              Last Update: Mon Jan 24, 2011 14:54 GTB Standard Time
+#              Last Update: Â¡DateStamp()Â¡
 #------------------------------------------------------------------------
 # Description: <+description+>
 #------------------------------------------------------------------------

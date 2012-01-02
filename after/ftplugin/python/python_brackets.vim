@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     1.0
 " Created:     Mon Jan 17, 2011 08:45 EET
-" Last Update: Tue Jan 18, 2011 14:51 GTB Standard Time
+" Last Update: Thu Nov 24, 2011 09:34 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Python.
@@ -51,6 +51,7 @@ if exists(':Brackets')
         :Brackets " " -visual=1 -insert=0 -trigger=""
         :Brackets ' ' -visual=0 -insert=1
         :Brackets ' ' -visual=1 -insert=0 -trigger=''
+        :Brackets """ """       -insert=0 -trigger=<localleader>/
 endif
 
 "------------------------------------------------------------------------
@@ -65,8 +66,8 @@ endif
 " Global Definitions
 " Avoid global reinclusion
 if &cp || (exists("g:loaded_ftplug_python_brackets")
-      \ && (g:loaded_ftplug_python_brackets >= s:k_version)
-      \ && !exists('g:force_reload_ftplug_python_brackets'))
+     \ && (g:loaded_ftplug_python_brackets >= s:k_version)
+     \ && !exists('g:force_reload_ftplug_python_brackets'))
   let &cpo=s:cpo_save
   finish
 endif
@@ -81,4 +82,3 @@ let g:loaded_ftplug_python_brackets = s:k_version
 "------------------------------------------------------------------------
 let &cpo=s:cpo_save
 "------------------------------------------------------------------------
-" vim600: set fdm=marker:

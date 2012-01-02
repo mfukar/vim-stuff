@@ -1,17 +1,20 @@
-VimL:" $Id: c-file-header.template 270 2010-12-01 00:32:35Z luc.hermitte $
-VimL:" Default File header - C/C++ Definition File-Template, Luc Hermitte
-/*
- * @file	Â¡s:filenameÂ¡
- * @author	Â¡substitute(Author(0),'\r"','\r *','g')Â¡
- * @version	<+version+>
- * @date
- * 	Created:     Â¡DateStamp()Â¡
- * 	Last Update: Â¡DateStamp()Â¡
+VimL:" Default File header - C/C++ Definition File-Template, mfukar
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end   = s:value_start
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+/**
+ * @file        Â¡s:filenameÂ¡
+ * @author      Â¡substitute(Author(0),'\r"','\r *','g')Â¡
+ * @version     <+version+>
+ * @date        Created:     Â¡DateStamp()Â¡
+ *              Last Update: Â¡DateStamp()Â¡
  *------------------------------------------------------------------------
- * Description:	<+description+>
+ * Description: <+description+>
  *------------------------------------------------------------------------
- * History:	<+history+>
- * TODO:	<+missing features+>
+ * History:     <+history+>
+ * TODO:        <+missing features+>
+ *------------------------------------------------------------------------
+ * -*- coding: utf-8 -*-
  *------------------------------------------------------------------------
  */
-
