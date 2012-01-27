@@ -2,19 +2,18 @@
 " $Id$
 " File:         syntax\markdown.vim                               {{{1
 " Author:       Michael Foukarakis
-" Version:      «0.0.1»
+" Version:      0.1
 " Created:      Wed Jan 25, 2012 11:07 GTB Standard Time
-" Last Update:  Wed Jan 25, 2012 11:14 GTB Standard Time
+" Last Update:  Fri Jan 27, 2012 09:41 GTB Standard Time
 "------------------------------------------------------------------------
-" Description:  «description»
+" Description:  Markdown syntax file
 "------------------------------------------------------------------------
 " Installation:
 "       Drop this file into {rtp}/syntax
 "       Requires Vim7+
-"       «install details»
 "------------------------------------------------------------------------
-" History:      «history»
-" TODO:         «missing features»
+" History:      None yet
+" TODO:         Nothing yet.
 "------------------------------------------------------------------------
 " -*- coding: utf-8 -*-
 "------------------------------------------------------------------------
@@ -54,8 +53,7 @@ syn match markdownBlockquote ">\s" contained nextgroup=@markdownBlock
 
 syn region markdownCodeBlock start="    \|\t" end="$" contained
 
-" TODO: real nesting
-syn match markdownListMarker " \{0,4\}[-*+]\%(\s\+\S\)\@=" contained
+syn match markdownListMarker " \{0,20\}[-*+]\%(\s\+\S\)\@=" contained
 syn match markdownOrderedListMarker " \{0,4}\<\d\+\.\%(\s*\S\)\@=" contained
 
 syn match markdownRule "\* *\* *\*[ *]*$" contained

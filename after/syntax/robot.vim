@@ -2,9 +2,9 @@
 " $Id$
 " File:         after/syntax/robot.vim
 " Author:       Michael Foukarakis
-" Version:      0.0.4
+" Version:      0.4
 " Created:      Fri 17 Dec 2010 11:31:46 AM EET
-" Last Update:  Fri Jan 07, 2011  08:33AM
+" Last Update:  Fri Jan 27, 2012 09:35 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       Syntax file for ROBOT test framework files.
