@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Jan 02, 2012 12:26 GTB Standard Time
+" Last Update: Sun Feb 05, 2012 10:04 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -221,9 +221,9 @@ set tabstop=4       " 4 spaces indent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set autoindent
 
-" some extra tags involved in ng20
+" some extra tags for various stuff:
 if expand('%:p:h') =~ 'ng'
-    " Also add tags for ng20:
+    " Add tags for ng:
     set tags+=/scratch/mfoukara/tags
 
     " Add any cscope database in current directory:
@@ -234,6 +234,15 @@ if expand('%:p:h') =~ 'ng'
         cs add $CSCOPE_DB
     endif
 endif
+
+if expand('%:p:h') =~ 'linux'
+    " Linux kernel tags
+    set tags += /home/mfukar/src/linux/tags
+
+    " Add the cscope database:
+    " TODO
+endif
+
 
 " normally don't automatically format text as it is typed, IE only do this with
 " comments, at 90 characters (my terminals are 102 columns wide). also, reformat
