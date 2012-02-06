@@ -1,13 +1,12 @@
 "=============================================================================
 " File:         plugin/surround.vim                               {{{1
-" Author:       mfoukara
-" Version:      0.1
+" Author:       mfukar
+" Version:      0.2
 " Created:      Thu 16 Dec 2010 11:29:51 AM EET
-" Last Update:  Fri Sep 16, 2011 08:56 GTB Daylight Time
+" Last Update:  Mon Feb 06, 2012 08:49 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       My rendition of surround.vim
-" 
 "------------------------------------------------------------------------
 " Installation:
 "       Drop this file into {rtp}/plugin

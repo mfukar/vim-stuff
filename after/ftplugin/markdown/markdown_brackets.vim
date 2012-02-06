@@ -3,14 +3,13 @@
 " Author:      Michael Foukarakis
 " Version:     1.0
 " Created:     Mon Jan 17, 2011 08:45 EET
-" Last Update: Fri Jan 27, 2012 11:05 GTB Standard Time
+" Last Update: Mon Feb 06, 2012 09:08 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Markdown.
 "------------------------------------------------------------------------
 " Installation:
 "       Drop this file into {rtp}/after/ftplugin/markdown
-"       Requires Vim7+
 " History:      None yet.
 " TODO:         None yet.
 "------------------------------------------------------------------------
@@ -36,14 +35,18 @@ if exists(':Brackets')
         let b:usemarks          = 0
         let b:cb_jump_on_close  = 1
         :SetMarker <+ +>
-        :Brackets { } -visual=0
-        :Brackets { } -visual=1 -insert=0
-        :Brackets ( )
-        :Brackets [ ] -visual=0
-        :Brackets [ ] -insert=0
-        :Brackets " " -visual=0 -insert=1
-        :Brackets " " -visual=1 -insert=0 -trigger=""
-        :Brackets ' ' -visual=1 -insert=0 -trigger=''
+        :Brackets! { } -visual=0
+        :Brackets! { } -insert=0
+        :Brackets! ( )
+        :Brackets! [ ] -visual=0
+        :Brackets! [ ] -insert=0
+        :Brackets! " " -visual=0
+        :Brackets! " " -insert=0 -trigger=""
+        :Brackets! ' ' -insert=0 -trigger=''
+        " Special case, some HTML will be written inside Markdown..
+        :Brackets! < > -visual=0
+                \      -open=function('lh#html#brackets#lt')
+                \      -clos=function('lh#html#brackets#gt')
 endif
 
 "------------------------------------------------------------------------

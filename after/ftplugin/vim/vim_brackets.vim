@@ -4,7 +4,7 @@
 "               <URL:http://code.google.com/p/lh-vim/>
 " Version:      1.0.0
 " Created:      24th Mar 2008
-" Last Update:  Fri Sep 16, 2011 09:17 GTB Daylight Time
+" Last Update:  Mon Feb 06, 2012 09:05 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "   vim-ftplugin that defines the default preferences regarding the
@@ -48,16 +48,17 @@ endif
 let b:usemarks         = 0
 let b:cb_jump_on_close = 1
 
-Brackets ( ) -esc
-Brackets { }
-Brackets [ ] -visual=0
-Brackets [ ] -insert=0 -trigger=<localleader>[
-Brackets ' ' -visual=0
-Brackets ' ' -insert=0 -trigger=''
-Brackets " " -visual=0 -open=function('lh#vim#brackets#dquotes')
-Brackets " " -insert=0 -trigger=<localleader>"
-Brackets < > -visual=0 -open=function('lh#vim#brackets#lt')
-
+if exists(':Brackets')
+    :Brackets! ( ) -esc
+    :Brackets! { }
+    :Brackets! [ ] -visual=0
+    :Brackets! [ ] -insert=0 -trigger=<localleader>[
+    :Brackets! ' ' -visual=0
+    :Brackets! ' ' -insert=0 -trigger=''
+    :Brackets! " " -visual=0 -open=function('lh#vim#brackets#dquotes')
+    :Brackets! " " -insert=0 -trigger=<localleader>"
+    :Brackets! < > -visual=0 -open=function('lh#vim#brackets#lt')
+endif
 
 "------------------------------------------------------------------------
 let &cpo=s:cpo_save

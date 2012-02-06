@@ -1,9 +1,9 @@
 "------------------------------------------------------------------------
 " File:        after/ftplugin/erlang_brackets.vim
 " Author:      Michael Foukarakis
-" Version:     0.1
+" Version:     0.2
 " Created:     Tue Jan 18, 2011 14:57 EET
-" Last Update: Tue Jan 18, 2011 15:43 GTB Standard Time
+" Last Update: Mon Feb 06, 2012 09:07 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Erlang.
@@ -34,33 +34,31 @@ if !exists(':Brackets')
         runtime plugin/common_brackets.vim
 endif
 if exists(':Brackets')
-	let b:usemarks		= 0
-	let b:cb_jump_on_close	= 1
-	:SetMarker <+ +>
+    let b:usemarks = 0
+    let b:cb_jump_on_close = 1
+    :SetMarker <+ +>
 
-	" Single-line brackets as the default, for now..
-	:Brackets { } -visual=0
-	:Brackets { } -visual=1 -insert=0
-	":Brackets { } -visual=0 -insert=1 -nl -trigger=<localleader>{
-	":Brackets { } -visual=1 -insert=0 -nl -trigger=<localleader>{
+    " Single-line brackets as the default, for now..
+    :Brackets! { } -visual=0
+    :Brackets! { } -visual=1 -insert=0
+    ":Brackets! { } -visual=0 -insert=1 -nl -trigger=<localleader>{
+    ":Brackets! { } -visual=1 -insert=0 -nl -trigger=<localleader>{
 
-	:Brackets ( )
-	:Brackets [ ] -visual=0
-	:Brackets [ ] -insert=0 -trigger=<localleader>[
-        :Brackets " " -visual=0 -insert=1
-        :Brackets " " -visual=1 -insert=0 -trigger=""
-        :Brackets ' ' -visual=0 -insert=1
-        :Brackets ' ' -visual=1 -insert=0 -trigger=''
+    :Brackets! ( )
+    :Brackets! [ ] -visual=0
+    :Brackets! [ ] -insert=0 -trigger=<localleader>[
+    :Brackets! " " -visual=0
+    :Brackets! " " -insert=0 -trigger=""
+    :Brackets! ' ' -visual=0
+    :Brackets! ' ' -insert=0 -trigger=''
 endif
 
 "------------------------------------------------------------------------
 " Local mappings
-
 "inoremap <buffer> «keybinding» «action»
 
 "------------------------------------------------------------------------
 " Local commands
-
 "command! -b -nargs=«» «CommandName» «Action»
 
 "------------------------------------------------------------------------

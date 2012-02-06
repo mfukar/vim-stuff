@@ -1,27 +1,26 @@
 "=============================================================================
 " $Id: html_brackets.vim 172 2010-05-10 02:14:53Z luc.hermitte $
-" File:		ftplugin/html/html_brackets.vim                          {{{1
-" Author:	Luc Hermitte <EMAIL:hermitte {at} free {dot} fr>
+" File:     ftplugin/html/html_brackets.vim                          {{{1
+" Author:   Luc Hermitte <EMAIL:hermitte {at} free {dot} fr>
 "               <URL:http://code.google.com/p/lh-vim/>
-" Version:	1.0.0
-" Created:	24th Mar 2008
-" Last Update:	$Date: 2010-05-10 04:14:53 +0200 (lun., 10 mai 2010) $
+" Version:  1.0.0
+" Created:  24th Mar 2008
+" Last Update:  Mon Feb 06, 2012 09:08 GTB Standard Time
 "------------------------------------------------------------------------
-" Description:	
-" 	html-ftplugin that defines the default preferences regarding the
-" 	bracketing mappings we want to use.
-" 
+" Description:
+"   html-ftplugin that defines the default preferences regarding the
+"   bracketing mappings we want to use.
 "------------------------------------------------------------------------
-" Installation:	
-" 	This particular file is meant to be into {rtp}/after/ftplugin/html/
-" 	In order to overidde these default definitions, copy this file into a
-" 	directory that comes before the {rtp}/after/ftplugin/html/ you choosed
-" 	-- typically $HOME/.vim/ftplugin/html/ (:h 'rtp').
-" 	Then, replace the calls to :Brackets
+" Installation:
+"   This particular file is meant to be into {rtp}/after/ftplugin/html/
+"   In order to override these default definitions, copy this file into a
+"   directory that comes before the {rtp}/after/ftplugin/html/ you chose
+"   -- typically $HOME/.vim/ftplugin/html/ (:h 'rtp').
+"   Then, replace the calls to :Brackets
 
-" 	Requires Vim7+, lh-map-tools, and {rtp}/autoload/lh/html/brackets.vim
+"   Requires Vim7+, lh-map-tools, and {rtp}/autoload/lh/html/brackets.vim
 " History:
-" TODO:	
+" TODO:
 " }}}1
 "=============================================================================
 
@@ -39,7 +38,7 @@ set cpo&vim
 if !exists(':Brackets')
   runtime plugin/common_brackets.vim
 endif
-" It seems that function() does not load anything ...
+" It seems that function() does not load anything..
 if !exists('lh#html#brackets#lt')
   runtime autoload/lh/html/brackets.vim
 endif
@@ -47,9 +46,11 @@ endif
 let b:usemarks         = 1
 let b:cb_jump_on_close = 1
 
-Brackets < > -visual=0 
-      \      -open=function('lh#html#brackets#lt')
-      \      -clos=function('lh#html#brackets#gt')
+if exists(':Brackets')
+    :Brackets! < > -visual=0
+            \      -open=function('lh#html#brackets#lt')
+            \      -clos=function('lh#html#brackets#gt')
+endif
 
 "------------------------------------------------------------------------
 let &cpo=s:cpo_save
