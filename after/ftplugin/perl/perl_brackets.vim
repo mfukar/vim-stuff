@@ -7,12 +7,12 @@
 " Created:	26th May 2004
 " Last Update:	$Date: 2010-05-10 04:14:53 +0200 (lun., 10 mai 2010) $
 "------------------------------------------------------------------------
-" Description:	
+" Description:
 " 	perl-ftplugin that defines the default preferences regarding the
 " 	bracketing mappings we want to use.
-" 
+"
 "------------------------------------------------------------------------
-" Installation:	
+" Installation:
 " 	This particular file is meant to be into {rtp}/after/ftplugin/perl/
 " 	In order to overidde these default definitions, copy this file into a
 " 	directory that comes before the {rtp}/after/ftplugin/perl/ you choosed --
@@ -21,10 +21,10 @@
 "
 " 	Requires Vim7+, lh-map-tools
 "
-" History:	
+" History:
 "	v1.0.0	07th Sep 2009
 "		copy-paste of c_brackets.vim
-" TODO:		
+" TODO:
 " }}}1
 "=============================================================================
 
@@ -35,7 +35,7 @@ if exists('b:loaded_ftplug_perl_brackets') && !exists('g:force_reload_ftplug_per
   finish
 endif
 let b:loaded_ftplug_perl_brackets = 1
- 
+
 let s:cpo_save=&cpo
 set cpo&vim
 " }}}1
@@ -51,25 +51,23 @@ runtime ftplugin/perl_localleader.vim
 if exists(':Brackets')
   let b:usemarks         = 1
   let b:cb_jump_on_close = 1
-  " Re-run brackets() in order to update the mappings regarding the different
-  " options.
-  :Brackets { } -visual=0 -nl
-  :Brackets { } -visual=0 -trigger=#{ 
-  :Brackets { } -visual=1 -insert=0 -nl -trigger=<localleader>{
-  :Brackets { } -visual=1 -insert=0
 
-  :Brackets ( )
-  :Brackets [ ] -visual=0
-  :Brackets [ ] -insert=0 -trigger=<localleader>[
-  :Brackets " " -visual=0 -insert=1
-  :Brackets " " -visual=1 -insert=0 -trigger=""
-  :Brackets ' ' -visual=0 -insert=1
-  :Brackets ' ' -visual=1 -insert=0 -trigger=''
-  " :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=0
+  :Brackets! { } -visual=0 -nl
+  :Brackets! { } -visual=0 -trigger=#{
+  :Brackets! { } -insert=0 -nl -trigger=<localleader>{
+  :Brackets! { } -insert=0
 
-  " :Brackets /* */ -visual=0
-  " :Brackets /** */ -visual=0 -trigger=/!
-  "
+  :Brackets! ( )
+  :Brackets! [ ] -visual=0
+  :Brackets! [ ] -insert=0 -trigger=<localleader>[
+  :Brackets! " " -visual=0
+  :Brackets! " " -insert=0 -trigger=""
+  :Brackets! ' ' -visual=0
+  :Brackets! ' ' -insert=0 -trigger=''
+  " :Brackets! < > -open=function('lh#cpp#brackets#lt') -visual=0
+
+  " :Brackets! /* */ -visual=0
+  " :Brackets! /** */ -visual=0 -trigger=/!
 endif
 
 "=============================================================================

@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     0.2
 " Created:     Tue Jan 18, 2011 14:57 EET
-" Last Update: Mon Feb 06, 2012 09:07 GTB Standard Time
+" Last Update: Mon Feb 06, 2012 10:22 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Erlang.
@@ -38,12 +38,7 @@ if exists(':Brackets')
     let b:cb_jump_on_close = 1
     :SetMarker <+ +>
 
-    " Single-line brackets as the default, for now..
-    :Brackets! { } -visual=0
-    :Brackets! { } -visual=1 -insert=0
-    ":Brackets! { } -visual=0 -insert=1 -nl -trigger=<localleader>{
-    ":Brackets! { } -visual=1 -insert=0 -nl -trigger=<localleader>{
-
+    :Brackets! { }
     :Brackets! ( )
     :Brackets! [ ] -visual=0
     :Brackets! [ ] -insert=0 -trigger=<localleader>[

@@ -61,11 +61,8 @@ if exists(':Brackets')
   :SetMarker <+ +>
   " Re-run brackets() in order to update the mappings regarding the different
   " options.
-  :Brackets! { } -visual=0 -nl
-  :Brackets! { } -visual=0 -trigger=#{
-  :Brackets! { } -insert=0 -nl -trigger=<localleader>{
-  :Brackets! { } -insert=0
-
+  :Brackets! { } -visual=0 -nl -trigger=<localleader>{
+  :Brackets! { }
   :Brackets! ( )
   :Brackets! [ ] -visual=0
   :Brackets! [ ] -insert=0 -trigger=<localleader>[

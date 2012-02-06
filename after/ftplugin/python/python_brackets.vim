@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     1.0
 " Created:     Mon Jan 17, 2011 08:45 EET
-" Last Update: Sat Feb 04, 2012 16:37 GTB Standard Time
+" Last Update: Mon Feb 06, 2012 10:34 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Python.
@@ -36,13 +36,8 @@ if exists(':Brackets')
         let b:usemarks          = 0
         let b:cb_jump_on_close  = 1
         :SetMarker <+ +>
-        " Multi-line brackets. [dictionary-style]
-        :Brackets! { } -visual=0 -nl
-        :Brackets! { } -insert=0 -nl -trigger=<localleader>{
-        " Single-line brackets.[code-golf-style]
-        :Brackets! { } -visual=0 -trigger=#{
-        :Brackets! { } -insert=0
 
+        :Brackets! { }
         :Brackets! ( )
         :Brackets! [ ] -visual=0
         :Brackets! [ ] -insert=0 -trigger=<localleader>[
@@ -50,7 +45,8 @@ if exists(':Brackets')
         :Brackets! " " -insert=0 -trigger=""
         :Brackets! ' ' -visual=0
         :Brackets! ' ' -insert=0 -trigger=''
-        :Brackets! """ """       -insert=0 -trigger=<localleader>/
+        " Python docstrings
+        :Brackets! """ """ -nl -trigger=<localleader>/
 endif
 
 "------------------------------------------------------------------------

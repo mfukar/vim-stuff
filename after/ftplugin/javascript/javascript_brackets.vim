@@ -49,24 +49,18 @@ endif
 if exists(':Brackets')
   let b:usemarks         = 0
   let b:cb_jump_on_close = 1
-  " Re-run brackets() in order to update the mappings regarding the different
-  " options.
-  :Brackets { } -visual=0 -nl
-  :Brackets { } -visual=0 -trigger=#{ 
-  :Brackets { } -visual=1 -insert=0 -nl -trigger=<localleader>{
-  :Brackets { } -visual=1 -insert=0
 
-  :Brackets ( )
-  :Brackets [ ] -visual=0
-  :Brackets [ ] -insert=0 -trigger=<localleader>[
-  :Brackets " " -visual=0 -insert=1
-  :Brackets " " -visual=1 -insert=0 -trigger=""
-  :Brackets ' ' -visual=0 -insert=1
-  :Brackets ' ' -visual=1 -insert=0 -trigger=''
+  :Brackets! { }
+  :Brackets! ( )
+  :Brackets! [ ] -visual=0
+  :Brackets! [ ] -insert=0 -trigger=<localleader>[
+  :Brackets! " " -visual=0
+  :Brackets! " " -insert=0 -trigger=""
+  :Brackets! ' ' -visual=0
+  :Brackets! ' ' -insert=0 -trigger=''
 
-  " :Brackets /* */ -visual=0
-  " :Brackets /** */ -visual=0 -trigger=/!
-  "
+  " :Brackets! /* */ -visual=0
+  " :Brackets! /** */ -visual=0 -trigger=/!
 endif
 
 "=============================================================================

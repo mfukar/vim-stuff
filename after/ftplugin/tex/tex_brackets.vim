@@ -43,15 +43,15 @@ endif
 
 let b:usemarks         = 1
 let b:cb_jump_on_close = 1
-let b:marker_open      = '<+'
-let b:marker_close     = '+>'
 
-Brackets ( ) -esc
-Brackets { } -esc
-Brackets [ ] -visual=0 -esc
-Brackets [ ] -insert=0 -trigger=<localleader>[
-Brackets $ $ -visual=0
-Brackets $ $ -insert=0 -trigger=<localleader>$
+:SetMarker <+ +>
+
+:Brackets! ( ) -esc
+:Brackets! { } -esc
+:Brackets! [ ] -visual=0 -esc
+:Brackets! [ ] -insert=0 -trigger=<localleader>[
+:Brackets! $ $ -visual=0
+:Brackets! $ $ -insert=0 -trigger=<localleader>$
 
 "------------------------------------------------------------------------
 let &cpo=s:cpo_save
