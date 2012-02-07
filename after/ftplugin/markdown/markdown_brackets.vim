@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     1.0
 " Created:     Mon Jan 17, 2011 08:45 EET
-" Last Update: Mon Feb 06, 2012 09:08 GTB Standard Time
+" Last Update: Tue Feb 07, 2012 13:23 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Markdown.
@@ -19,8 +19,9 @@ let s:k_version = 10
 if &cp || (exists("b:loaded_ftplug_markdown_brackets")
       \ && (b:loaded_ftplug_markdown_brackets >= s:k_version)
       \ && !exists('g:force_reload_ftplug_markdown_brackets'))
-  finish
+    finish
 endif
+
 let b:loaded_ftplug_markdown_brackets = s:k_version
 let s:cpo_save=&cpo
 set cpo&vim
@@ -29,24 +30,20 @@ set cpo&vim
 " Brackets
 "------------------------------------------------------------------------
 if !exists(':Brackets')
-        runtime plugin/common_brackets.vim
+    runtime plugin/common_brackets.vim
 endif
 if exists(':Brackets')
-        let b:usemarks          = 0
-        let b:cb_jump_on_close  = 1
-        :SetMarker <+ +>
-        :Brackets! { } -visual=0
-        :Brackets! { } -insert=0
-        :Brackets! ( )
-        :Brackets! [ ] -visual=0
-        :Brackets! [ ] -insert=0
-        :Brackets! " " -visual=0
-        :Brackets! " " -insert=0 -trigger=""
-        :Brackets! ' ' -insert=0 -trigger=''
-        " Special case, some HTML will be written inside Markdown..
-        :Brackets! < > -visual=0
-                \      -open=function('lh#html#brackets#lt')
-                \      -clos=function('lh#html#brackets#gt')
+    let b:usemarks          = 0
+    let b:cb_jump_on_close  = 1
+    :SetMarker <+ +>
+    :Brackets -clear
+    :Brackets { } -visual=0
+    :Brackets { } -insert=0
+    :Brackets ( )
+    :Brackets [ ] -visual=0
+    :Brackets [ ] -insert=0
+    :Brackets " " -visual=0
+    :Brackets " " -insert=0 -trigger=""
 endif
 
 "------------------------------------------------------------------------

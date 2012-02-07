@@ -59,22 +59,22 @@ if exists(':Brackets')
   let b:usemarks         = 0
   let b:cb_jump_on_close = 1
   :SetMarker <+ +>
-  " Re-run brackets() in order to update the mappings regarding the different
-  " options.
-  :Brackets! { } -visual=0 -nl -trigger=<localleader>{
-  :Brackets! { }
-  :Brackets! ( )
-  :Brackets! [ ] -visual=0
-  :Brackets! [ ] -insert=0 -trigger=<localleader>[
-  :Brackets! " " -visual=0
-  :Brackets! " " -insert=0 -trigger=""
-  :Brackets! ' ' -visual=0
-  :Brackets! ' ' -insert=0 -trigger=''
-  :Brackets! < > -open=function('lh#cpp#brackets#lt') -visual=0
 
-  :Brackets! /* */ -visual=0
-  :Brackets! /* */ -insert=0 -trigger=<localleader>/
-  :Brackets! /** */ -visual=0 -trigger=/!
+  :Brackets -clear
+  :Brackets { } -visual=0 -nl -trigger=<localleader>{
+  :Brackets { }
+  :Brackets ( )
+  :Brackets [ ] -visual=0
+  :Brackets [ ] -insert=0 -trigger=<localleader>[
+  :Brackets " " -visual=0
+  :Brackets " " -insert=0 -trigger=""
+  :Brackets ' ' -visual=0
+  :Brackets ' ' -insert=0 -trigger=''
+  :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=0
+
+  :Brackets /* */ -visual=0
+  :Brackets /* */ -insert=0 -trigger=<localleader>/
+  :Brackets /** */ -visual=0 -trigger=/!
 endif
 "=============================================================================
 let &cpo=s:cpo_save

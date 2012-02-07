@@ -5,7 +5,7 @@
 "               <URL:http://code.google.com/p/lh-vim/>
 " Version:      1.1.1
 " Created:      28th Feb 2008
-" Last Update:  $Date: 2010-12-10 01:21:13 +0100 (ven., 10 dÃ©c. 2010) $
+" Last Update:  Tue Feb 07, 2012 13:16 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:  
 " 		This autoload plugin defines the functions behind the command

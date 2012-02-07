@@ -41,18 +41,20 @@ if !exists(':Brackets')
   runtime plugin/common_brackets.vim
 endif
 
-let b:usemarks         = 1
-let b:cb_jump_on_close = 1
+if exists(':Brackets')
+    let b:usemarks         = 1
+    let b:cb_jump_on_close = 1
 
-:SetMarker <+ +>
+    :SetMarker <+ +>
 
-:Brackets! ( ) -esc
-:Brackets! { } -esc
-:Brackets! [ ] -visual=0 -esc
-:Brackets! [ ] -insert=0 -trigger=<localleader>[
-:Brackets! $ $ -visual=0
-:Brackets! $ $ -insert=0 -trigger=<localleader>$
-
+    :Brackets -clear
+    :Brackets ( ) -esc
+    :Brackets { } -esc
+    :Brackets [ ] -visual=0 -esc
+    :Brackets [ ] -insert=0 -trigger=<localleader>[
+    :Brackets $ $ -visual=0
+    :Brackets $ $ -insert=0 -trigger=<localleader>$
+endif
 "------------------------------------------------------------------------
 let &cpo=s:cpo_save
 "=============================================================================

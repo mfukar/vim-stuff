@@ -5,7 +5,7 @@
 "               <URL:http://code.google.com/p/lh-vim/>
 " Version:  1.0.0
 " Created:  24th Mar 2008
-" Last Update:  Mon Feb 06, 2012 09:08 GTB Standard Time
+" Last Update:  Tue Feb 07, 2012 13:23 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "   html-ftplugin that defines the default preferences regarding the
@@ -43,11 +43,11 @@ if !exists('lh#html#brackets#lt')
   runtime autoload/lh/html/brackets.vim
 endif
 
-let b:usemarks         = 1
-let b:cb_jump_on_close = 1
-
 if exists(':Brackets')
-    :Brackets! < > -visual=0
+    let b:usemarks         = 1
+    let b:cb_jump_on_close = 1
+
+    :Brackets < > -visual=0
             \      -open=function('lh#html#brackets#lt')
             \      -clos=function('lh#html#brackets#gt')
 endif

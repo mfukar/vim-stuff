@@ -52,22 +52,23 @@ if exists(':Brackets')
   let b:usemarks         = 1
   let b:cb_jump_on_close = 1
 
-  :Brackets! { } -visual=0 -nl
-  :Brackets! { } -visual=0 -trigger=#{
-  :Brackets! { } -insert=0 -nl -trigger=<localleader>{
-  :Brackets! { } -insert=0
+  :Brackets -clear
+  :Brackets { } -visual=0 -nl
+  :Brackets { } -visual=0 -trigger=#{
+  :Brackets { } -insert=0 -nl -trigger=<localleader>{
+  :Brackets { } -insert=0
 
-  :Brackets! ( )
-  :Brackets! [ ] -visual=0
-  :Brackets! [ ] -insert=0 -trigger=<localleader>[
-  :Brackets! " " -visual=0
-  :Brackets! " " -insert=0 -trigger=""
-  :Brackets! ' ' -visual=0
-  :Brackets! ' ' -insert=0 -trigger=''
-  " :Brackets! < > -open=function('lh#cpp#brackets#lt') -visual=0
+  :Brackets ( )
+  :Brackets [ ] -visual=0
+  :Brackets [ ] -insert=0 -trigger=<localleader>[
+  :Brackets " " -visual=0
+  :Brackets " " -insert=0 -trigger=""
+  :Brackets ' ' -visual=0
+  :Brackets ' ' -insert=0 -trigger=''
+  " :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=0
 
-  " :Brackets! /* */ -visual=0
-  " :Brackets! /** */ -visual=0 -trigger=/!
+  " :Brackets /* */ -visual=0
+  " :Brackets /** */ -visual=0 -trigger=/!
 endif
 
 "=============================================================================

@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Feb 05, 2012 10:04 EET
+" Last Update: Tue Feb 07, 2012 13:31 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -268,44 +268,44 @@ runtime ftplugin/man.vim
 
 " Add tags for quickly jumping around C, Python code.
 if has("unix")
-    autocmd FileType c set tags+=$HOME/.vim/tags/c.ctags
-    autocmd FileType python set tags+=$HOME/.vim/tags/python.ctags
+    autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
+    autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
 elseif has("win32")
-    autocmd FileType python set tags+=$VIM/vimfiles/tags/python.ctags
+    autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
 
 " include files can be nasm, makefiles, etc.
 " TODO: figure something out to distinguish between them..
-" autocmd BufNewFile,BufRead *.inc set filetype=nasm
+" autocmd BufNewFile,BufRead *.inc setlocal filetype=nasm
 
 " for C/C++, have automatic indentation:
-autocmd FileType c,cpp set cindent
+autocmd FileType c,cpp setlocal cindent
 
 " for actual C (not C++) programming where comments have explicit end characters, if
 " starting a new line in the middle of a comment automatically insert the comment leader
 " characters:
-autocmd FileType c set formatoptions+=ro
+autocmd FileType c setlocal formatoptions+=ro
 
 " for CSS, also have things in braces indented:
-autocmd FileType css set smartindent
+autocmd FileType css setlocal smartindent
 
 " for HTML, generally format text, but if a long line has been created leave it
 " alone when editing:
-autocmd FileType html set formatoptions+=tl
+autocmd FileType html setlocal formatoptions+=tl
 
 " for both CSS and HTML, use genuine tab characters for indentation, to make
 " files a few bytes smaller:
-autocmd FileType html,css set noexpandtab tabstop=2
+autocmd FileType html,css setlocal noexpandtab tabstop=2
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
 " later):
-autocmd FileType make set noexpandtab shiftwidth=8
+autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 " set folding according to syntax for C,C++:
-autocmd FileType c,cpp set foldmethod=syntax
+autocmd FileType c,cpp setlocal foldmethod=syntax
 " but indent for Python:
-autocmd FileType python set foldmethod=indent
+autocmd FileType python setlocal foldmethod=indent
 
 " Folds:
 " restore all manually created folds - and save them at exit:
@@ -775,7 +775,7 @@ endif
 set ofu=syntaxcomplete#Complete
 set cot=menu,longest
 " and screw Python 2, while we're at it. Yeah, I said it, beardies:
-autocmd FileType python set ofu=python3complete#Complete
+autocmd FileType python setlocal ofu=python3complete#Complete
 
 " Remove the Windows ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
