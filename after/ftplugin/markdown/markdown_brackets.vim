@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     1.0
 " Created:     Mon Jan 17, 2011 08:45 EET
-" Last Update: Wed Feb 08, 2012 09:21 GTB Standard Time
+" Last Update: Wed Feb 08, 2012 09:42 GTB Standard Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Markdown.
@@ -38,7 +38,7 @@ if exists(':Brackets')
     :SetMarker <+ +>
     :Brackets -clear
     :Brackets { } -insert=0 -trigger=<localleader>{
-    :Brackets ( )
+    :Brackets ( ) -trigger=<localleader>(
     :Brackets [ ] -visual=0
     :Brackets [ ] -insert=0
     :Brackets " " -visual=0

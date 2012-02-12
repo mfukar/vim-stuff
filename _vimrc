@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 08, 2012 09:34 GTB Standard Time
+" Last Update: Wed Feb 08, 2012 10:01 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -289,8 +289,8 @@ autocmd FileType c setlocal formatoptions+=ro
 " for CSS, also have things in braces indented:
 autocmd FileType css setlocal smartindent
 
-" for HTML and Markdown, use CSS when exporting:
-autocmd FileType html,markdown setlocal html_use_css=1
+" use CSS when exporting:
+let html_use_css = 1
 
 " for HTML, generally format text, but if a long line has been created leave it
 " alone when editing:
