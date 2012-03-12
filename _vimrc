@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 08, 2012 10:01 GTB Standard Time
+" Last Update: Mon Mar 12, 2012 12:58 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -31,24 +31,25 @@ autocmd!
 
 " TODO I need to fix the logic here. terms have changed.
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
-" KVT claims to be "xterm-color":
+" KVT claims to be "xterm-color", so does the Mac OSX console:
 if &term =~ 'xterm'
 " Gnome terminal fortunately sets $COLORTERM; it needs <BkSpc> and
 " <Del> fixing, and it has a bug which causes spurious 'c's to appear,
 " which can be fixed by unsetting t_RV:
-    "if $COLORTERM == 'gnome-terminal'
-        "execute 'set t_kb=' . nr2char(8)
+    if $COLORTERM == 'gnome-terminal'
+        execute 'set t_kb=' . nr2char(8)
         " [Char 8 is <Ctrl>+H.]
-        "fixdel
-        "set t_RV=
+        fixdel
+        set t_RV=
 " XTerm, Konsole, and KVT all also need <BkSpc> and <Del> fixing;
 " there's no easy way of distinguishing these terminals from other
 " things that claim to be "xterm", but RXVT sets $COLORTERM to "rxvt"
 " and these don't:
-    "else
+    else
     if $COLORTERM == ''
         execute 'set t_kb=' . nr2char(8)
         fixdel
+    endif
 " The above won't work if an XTerm or KVT is started from within a
 " Gnome Terminal or an RXVT: the $COLORTERM setting will propagate;
 " it's always OK with Konsole which explicitly sets $COLORTERM to "".
@@ -185,7 +186,7 @@ set mouse=a
 " don't have files trying to override this .vimrc:
 set nomodeline
 
-" I use pscp with netrw.
+" I use pscp with netrw:
 if(has('win32'))
     " list files, it's the key setting, if you haven't set it you
     " will most likely get a blank buffer:
@@ -203,6 +204,7 @@ set backspace=eol,start,indent
 
 " give the cursor some room to breathe:
 set scrolloff=5
+
 
 " * Text Formatting -- General
 
