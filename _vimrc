@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Mar 12, 2012 12:58 GTB Standard Time
+" Last Update: Wed Mar 14, 2012 19:01 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -508,9 +508,12 @@ nnoremap \th :set invhls hls?<CR>
 " * Keystrokes -- Object Processing
 
 " Mappings to base64 encode/decode current visual selection and paste it one a new line
-" below the current one.  Both clobber register 0:
-vnoremap <Leader>e64  "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64encode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
-vnoremap <Leader>d64  "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64decode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
+" below the current one. Both clobber register 0:
+vnoremap <Leader>e64 "0y:let @0=substitute(@0, "\n", "", "")<CR>:exe 'python3 _my_b64encode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
+vnoremap <Leader>d64 "0y:exe 'python3 _my_b64decode("' . escape(getreg('0'), '"'). '")'<CR>o<C-[>p
+
+" Mappings to convert current buffer contents from Markdown to HTML and paste it in place:
+noremap <Leader>md :exe 'python3 _markdown_2_html()'<CR>
 
 
 " * Keystrokes -- Insert Mode
@@ -733,6 +736,7 @@ def _my_b64encode(blob = None):
     res = base64.b64encode(str.encode(blob))
     vim.command("let @@='%s'"%(bytes.decode(res), ))
 EOF
+
 " Function to decode a blob in base64,
 " then put the result in the unnamed register.
 python3 << EOF
@@ -749,6 +753,15 @@ EOF
 
 " Execute the code selection using compile/exec
 " TODO
+
+" Convert a Markdown buffer to XHTML5. TODO What would be a good place to put the result?
+python3 << EOF
+import vim, markdown
+def _markdown_2_html():
+    blob = "\n".join(vim.current.buffer[:]) + "\n"
+    html = markdown.markdown(blob, output_format='xhtml5')
+    vim.current.buffer.append(html.split('\n'))
+EOF
 endif
 
 
