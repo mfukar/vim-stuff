@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Mar 14, 2012 20:16 GTB Standard Time
+" Last Update: Tue Mar 27, 2012 10:03 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -73,7 +73,7 @@ elseif has("unix")
 endif
 
 " Set 'path' to make gf usable:
-set path=$SRC_ROOT/include,$HOME/include,.
+set path=$SRC_ROOT/include,$HOME/include,../include,.
 
 " And let's make it just a little bit smarter for Python:
 python3 << EOF
