@@ -7,6 +7,8 @@
 " Changelog:
 "   0.1 - Extended c.vim, adding custom types.
 "   0.2 - More custom types added
+"   0.3 - Finally found a fix for folding on cBlock when you have other syntax groups for
+"         {\|}.
 
 
 " Common ANSI-standard functions
@@ -281,3 +283,8 @@ hi def link cBoolean		Boolean
 " mfukar - Links
 hi def link cCustomFunc		Function
 hi def link cCustomType		Type
+
+" cBlock definition with matchgroup to exclude certain syn constructs:
+" TODO: This doesn't work when put in the start of the file. Why?
+syntax region cBlock matchgroup=Operator start="{" end="}" contains=ALLBUT,cCurlyError,@cParenGroup,cErrInParen,cCppParen,cErrInBracket,cCppBracket,cCppString,@Spell fold
+syn sync fromstart
