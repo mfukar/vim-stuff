@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Mar 27, 2012 10:03 GTB Daylight Time
+" Last Update: Tue Apr 10, 2012 13:14 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -18,7 +18,6 @@
 " * Keystrokes -- Toggles
 " * Keystrokes -- Object Processing
 " * Keystrokes -- Insert Mode
-" * SLRN Behaviour
 " * Functions Referred to Above
 " * Functions Using the Python Interface
 " * Automatic Code Completion
@@ -527,26 +526,6 @@ iabbrev lorem Loremipsumdolorsitamet,consecteturadipisicingelit,seddoeiusmod
 \nimidestlaborum.
 iabbrev mf mfukar
 iabbrev -*- -*- coding: utf-8 -*-
-
-
-" * SLRN Behaviour
-
-" when using SLRN to compose a new news article without a signature, the
-" cursor will be at the end of the file, the blank line after the header, so
-" duplicate this line ready to start typing on; when composing a new article
-" with a signature, SLRN includes an appropriate blank line but places the
-" cursor on the following one, so move it up one line [if re-editing a
-" partially-composed article, SLRN places the cursor on the top line, so
-" neither of these will apply]:
-autocmd VimEnter .article if line('.') == line('$') | yank | put |
-  \ elseif line('.') != 1 | -
-
-" when following up articles from people with long names and/or e-mail
-" addresses, the SLRN-generated attribution line can have over 80 characters,
-" which will then cause SLRN to complain when trying to post it(!), so if
-" editing a followup for the first time, reformat the line (then put the cursor
-" back):
-autocmd VimEnter .followup if line('.') != 1 | normal gq${j
 
 
 " * Functions Referred to Above
