@@ -287,4 +287,3 @@ hi def link cCustomType		Type
 " cBlock definition with matchgroup to exclude certain syn constructs:
 " TODO: This doesn't work when put in the start of the file. Why?
 syntax region cBlock matchgroup=Operator start="{" end="}" contains=ALLBUT,cCurlyError,@cParenGroup,cErrInParen,cCppParen,cErrInBracket,cCppBracket,cCppString,@Spell fold
-syn sync fromstart
