@@ -234,12 +234,9 @@ syn keyword	cAnsiName	bitand not or_eq
 
 " mfukar - Types
 syn keyword	cCustomType	lfsr_t lfsr_data
-syn keyword	cCustomType	sparse_set_t sparse_set_iterator_t
-" Anontool related keywords
-syn keyword cCustomType anonlib_endian_t
 " NG
 syn keyword cCustomType u8 u16 u32 u64
-syn keyword cCustomType gw_state_e gw_exec_e gw_result_e gw_packet_type_e gwup_db_result_e gwup_reporter_sub_app_report_msg_t gwup_db_rec_stat_t gwup_proxy_stat_t
+syn keyword cCustomType gw_state_e gw_exec_e gw_result_e gw_packet_type_e gwup_db_result_e
 syn keyword cCustomType	ppp
 syn keyword cCustomType	fsm
 syn keyword cCustomType	lcp lcp_options
