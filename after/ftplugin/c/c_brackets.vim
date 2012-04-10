@@ -62,7 +62,7 @@ if exists(':Brackets')
 
   :Brackets -clear
   :Brackets { } -visual=0 -nl -trigger=<localleader>{
-  :Brackets { }
+  :Brackets { } -nl
   :Brackets ( )
   :Brackets [ ] -visual=0
   :Brackets [ ] -insert=0 -trigger=<localleader>[
