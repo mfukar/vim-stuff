@@ -5,7 +5,7 @@
 "               <URL:http://code.google.com/p/lh-vim/>
 " Version:      1.1.1
 " Created:      28th Feb 2008
-" Last Update:  Tue Feb 07, 2012 13:16 GTB Standard Time
+" Last Update:  Wed May 09, 2012 12:08 EEST
 "------------------------------------------------------------------------
 " Description:  
 " 		This autoload plugin defines the functions behind the command
@@ -260,7 +260,9 @@ function! s:ClearMappings(isLocal)
       call s:UnMap(m)
     endfor
   endif
-  unlet crt_definitions[:]
+  if !empty(crt_definitions)
+      unlet crt_definitions[:]
+  endif
 endfunction
 
 "------------------------------------------------------------------------
