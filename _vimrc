@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Apr 10, 2012 13:14 GTB Daylight Time
+" Last Update: Wed May 09, 2012 12:10 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -32,12 +32,10 @@ autocmd!
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color", so does the Mac OSX console:
 if &term =~ 'xterm'
-" Gnome terminal fortunately sets $COLORTERM; it needs <BkSpc> and
-" <Del> fixing, and it has a bug which causes spurious 'c's to appear,
+" Gnome terminal fortunately sets $COLORTERM; it needs <Del> fixing,
+" and it has a bug which causes spurious 'c's to appear,
 " which can be fixed by unsetting t_RV:
     if $COLORTERM == 'gnome-terminal'
-        execute 'set t_kb=' . nr2char(8)
-        " [Char 8 is <Ctrl>+H.]
         fixdel
         set t_RV=
 " XTerm, Konsole, and KVT all also need <BkSpc> and <Del> fixing;
@@ -743,7 +741,7 @@ command! -range PyBase64Decode python3 _my_b64decode(<f-line1>, <f-line2>)
 python3 << EOF
 import vim, markdown
 def _markdown_2_html():
-    blob = "\n".join(vim.current.buffer[:]) + "\n"
+    blob = '\n'.join(vim.current.buffer[:]) + '\n'
     html = markdown.markdown(blob, output_format='xhtml5')
     vim.current.buffer.append(html.split('\n'))
 EOF
