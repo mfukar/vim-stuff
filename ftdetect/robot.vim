@@ -1,20 +1,23 @@
 "=============================================================================
-" $Id$
-" File:         ftdetect/robot.vim                                {{{1
+" File:         ftdetect/robot.vim
 " Author:       Michael Foukarakis
-" Version:      0.1
+" Version:      0.2
 " Created:      Tue 21 Dec 2010 09:08:35 AM EET
-" Last Update:  $Date$
+" Last Update:  Mon May 14, 2012 09:43 EEST
 "------------------------------------------------------------------------
 " Description:
-"       Filetype detection plugin for Robot files.
+"   Filetype detection plugin for Robot files.
+" WARNING:
+"   Overrides all default file type checks.
 "------------------------------------------------------------------------
 " Installation:
-"       Drop this file into {rtp}/ftdetect
-"       Requires Vim7+
-" History:      None yet.
+"   - Requires Vim7+
+"   - Drop this file into {rtp}/ftdetect
+"   - Use the '# -*- coding: robot -*-' in the first line of robot files
+"     or set the g:robot_syntax_for_txt global variable
+"     to explicitly tell vim about filetype.
+" History:      - Replaced setf with setlocal filetype, much more sane.
 " TODO:         Missing features go here.
-" }}}1
 "=============================================================================
 let s:cpo_save=&cpo
 set cpo&vim
@@ -24,14 +27,12 @@ au BufNewFile,BufRead *.txt call s:FTrobot()
 func! s:FTrobot()
 	let b:topl = getline(1)
 	if (exists("g:robot_syntax_for_txt") && g:robot_syntax_for_txt) || b:topl =~ '\*\*\*.\{-}\*\*\*'
-		setf robot
+		setlocal filetype=robot
 	elseif b:topl =~ '^# -\*- coding: robot -\*-$'
-		setf robot
-	else
-		setf human
+		setlocal filetype=robot
 	endif
 endfunc
 
 "------------------------------------------------------------------------
 let &cpo=s:cpo_save
-" vim600: set fdm=marker:
+" vim700: set fdm=marker:
