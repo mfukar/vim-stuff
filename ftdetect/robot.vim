@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.2
 " Created:      Tue 21 Dec 2010 09:08:35 AM EET
-" Last Update:  Mon May 14, 2012 09:43 EEST
+" Last Update:  Mon May 14, 2012 09:58 EEST
 "------------------------------------------------------------------------
 " Description:
 "   Filetype detection plugin for Robot files.
@@ -26,9 +26,9 @@ au BufNewFile,BufRead *.txt call s:FTrobot()
 
 func! s:FTrobot()
 	let b:topl = getline(1)
-	if (exists("g:robot_syntax_for_txt") && g:robot_syntax_for_txt) || b:topl =~ '\*\*\*.\{-}\*\*\*'
-		setlocal filetype=robot
-	elseif b:topl =~ '^# -\*- coding: robot -\*-$'
+	if (exists("g:robot_syntax_for_txt") && g:robot_syntax_for_txt)
+    \ || b:topl =~ '\*\*\*.\{-}\*\*\*'
+    \ || b:topl =~ '^# -\*- coding: robot -\*-$'
 		setlocal filetype=robot
 	endif
 endfunc
