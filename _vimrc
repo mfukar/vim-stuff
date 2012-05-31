@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed May 09, 2012 12:10 EEST
+" Last Update: Thu May 31, 2012 12:59 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -652,30 +652,46 @@ function! AddWordToDictionary()
 endfunction " AddWordToDictionary()
 
 
-function! s:RunShellCommand(cmdline)
-    let first = 1
-    let words = []
-    " Expand and escape cmd arguments.
-    " shellescape() should work with '\'
-    for part in split(a:cmdline)
-        if first
-            " skip the cmd. ugly, i know.
-            let first = 0
-        else
-            if part[0] =~ '\v[%#<]'
-                let part = expand(part)
-            endif
-            let part = shellescape(part, 1)
-        endif
-        call add(words, part)
-    endfor
+" Last command run with RunShellCommand():
+let s:lastcmd = ''
+" Run commands in the shell and show the results in a new window.
+" From that window,
+" <localleader>b takes you back to the buffer you were before the command was executed,
+" <localleader>r executes the command again.
+"
+" :Shell! can be used to repeat the last command given:
+function! s:RunShellCommand(cmdline, bang)
+    let _ = a:bang != '' ? s:lastcmd : a:cmdline == '' ? '' : join(map(split(a:cmdline), 'expand(v:val)'))
 
-    " This is where actual work is getting done :-)
-    silent execute '$read !'. expanded_cmdline
+    if _ == ''
+        return
+    endif
+
+    let s:lastcmd = _
+    let bufnr = bufnr('%')
+    let winnr = bufwinnr('^' . _ . '$')
+    silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
+    " I could set buftype=nofile, but then no switching back and forth buffers..
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
+
+    setlocal modifiable
+    silent! :%d
+
+    call setline(1, 'You entered:  ' . a:cmdline)
+    call setline(2, 'Expanded to:  ' . _)
+    call append(line('$'), substitute(getline(2), '.', '=', 'g'))
+
+    silent execute '$read !' . _
+    silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+    silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
+    silent! execute 'nnoremap <silent> <buffer> <localleader>r :call <SID>RunShellCommand(''' . _ . ''', '''')<CR>'
+    silent! execute 'nnoremap <silent> <buffer> <localleader>b :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
+    nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<CR>
 
     setlocal nomodifiable
     1
 endfunction " RunShellCommand(cmdline)
+command! -complete=shellcmd -nargs=* -bang Shell call s:RunShellCommand(<q-args>, '<bang>')
 
 
 " Override DateStamp() (used by µTemplate)
