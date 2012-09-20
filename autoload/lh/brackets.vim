@@ -5,7 +5,7 @@
 "               <URL:http://code.google.com/p/lh-vim/>
 " Version:      1.1.1
 " Created:      28th Feb 2008
-" Last Update:  Wed May 09, 2012 12:08 EEST
+" Last Update:  Thu Sep 20, 2012 14:40 SGT
 "------------------------------------------------------------------------
 " Description:  
 " 		This autoload plugin defines the functions behind the command
@@ -330,7 +330,7 @@ function! s:Jump()
 
   let ll = getline('.')[p : ]
   let m = matchstr(ll, Marker_Txt('.\{-}'))
-  let lm = strwidth(m)
+  let lm = len(m)
   if lm
     let del_mark = repeat("\<del>", lm)
   endif
