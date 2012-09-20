@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu May 31, 2012 12:59 GTB Daylight Time
+" Last Update: Thu Sep 20, 2012 14:44 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -308,6 +308,9 @@ autocmd FileType make setlocal noexpandtab shiftwidth=8
 autocmd FileType c,cpp setlocal foldmethod=syntax
 " but indent for Python:
 autocmd FileType python setlocal foldmethod=indent
+
+" For git commit messages, wrap text to 72 columns:
+autocmd FileType gitcommit setlocal textwidth=72
 
 " Folds:
 " restore all manually created folds - and save them at exit:
