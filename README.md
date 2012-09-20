@@ -8,6 +8,8 @@ possible, but I'm always open to suggestions to make it better.
 Plugins
 -------
 
+* pathogen
+* indexer (+ prereqs)
 * CSApprox
 * matchit
 * netrw
