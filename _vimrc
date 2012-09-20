@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 20, 2012 14:44 SGT
+" Last Update: Thu Sep 20, 2012 14:47 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -79,6 +79,9 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command('set path+=%s' % (p.replace(' ', '\ ')))
 EOF
+
+" Initialize pathogen:
+call pathogen#infect()
 
 
 " * User Interface
