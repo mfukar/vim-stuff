@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Sep 24, 2012 19:34 SGT
+" Last Update: Mon Sep 24, 2012 19:41 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -71,14 +71,6 @@ endif
 
 " Set 'path' to make gf usable:
 set path=$SRC_ROOT/include,$HOME/include,../include,.
-
-" And let's make it just a little bit smarter for Python:
-python3 << EOF
-import os, sys, vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command('set path+=%s' % (p.replace(' ', '\ ')))
-EOF
 
 
 " * User Interface
@@ -683,7 +675,7 @@ function! s:RunShellCommand(cmdline, bang)
 
     let s:lastcmd = _
     let bufnr = bufnr('%')
-    let winnr = bufwinnr('^' . _ . '$')
+    let winnr = bufwinnr(_)
     silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
     " I could set buftype=nofile, but then no switching back and forth buffers..
     setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
@@ -734,6 +726,15 @@ endfunction " Deboxify()
 
 " I'm using Python-3.x. Deal with it:
 if v:version >= 703
+
+" Make path just a little bit smarter for Python:
+python3 << EOF
+import os, sys, vim
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command('set path+=%s' % (p.replace(' ', '\ ')))
+EOF
+
 
 " Function to encode a range of lines in base64,
 " then append the result below the range:
