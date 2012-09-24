@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 20, 2012 14:47 SGT
+" Last Update: Mon Sep 24, 2012 19:34 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -44,7 +44,7 @@ if &term =~ 'xterm'
 " and these don't:
     else
     if $COLORTERM == ''
-        execute 'set t_kb=' . nr2char(8)
+        execute 'set t_kb=' . nr2char(127)
         fixdel
     endif
 " The above won't work if an XTerm or KVT is started from within a
@@ -79,9 +79,6 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command('set path+=%s' % (p.replace(' ', '\ ')))
 EOF
-
-" Initialize pathogen:
-call pathogen#infect()
 
 
 " * User Interface
@@ -218,15 +215,20 @@ set nu
 " use tabs, and have them copied down lines:
 set shiftwidth=4    " # of spaces to use for each step when autoindenting
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
-set expandtab       " insert #tabstop spaces instead of Tab
 set tabstop=4       " 4 spaces indent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set autoindent
 
-" some extra tags for various stuff:
-if expand('%:p:h') =~ 'ng'
-    " Add tags for ng:
-    set tags+=/scratch/mfoukara/tags
+" Tags are bound to be messy.
+" Here's how I handle them:
+"   if the current directory contains 'src' the tags and cscope db will be one level up,
+"   Linux kernel tags will be located at $KERNELTAGS,
+"   Niometrics' project tags will be located at $NIOTAGS,
+"   The respective cscope databases are at $KERNEL_CSCOPE_DB, $NIO_CSCOPE_DB
+" TODO: Potential conflicts will be resolved later.
+if expand('%:p:h') =~ '/src/'
+    " Add tags :
+    "set tags+=expand('%:p:h') . "/../tags"
 
     " Add any cscope database in current directory:
     if filereadable("cscope.out")
@@ -237,12 +239,26 @@ if expand('%:p:h') =~ 'ng'
     endif
 endif
 
-if expand('%:p:h') =~ 'linux'
-    " Linux kernel tags
-    set tags += /home/mfukar/src/linux/tags
+" Add project-independent tags for quickly jumping around C, Python code:
+if has("unix")
+    autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
+    autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
 
-    " Add the cscope database:
-    " TODO
+    " Niometrics project tags:
+    autocmd FileType c setlocal tags+="$NIOTAGS"
+    " Linux kernel tags:
+    set tags+="$KERNELTAGS"
+elseif has("win32")
+    autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
+endif
+
+" Niometrics project cscope database:
+if $NIO_CSCOPE_DB != ""
+    cs add $NIO_CSCOPE_DB
+endif
+" Linux kernel cscope database:
+if $KERNEL_CSCOPE_DB != ""
+    cs add $KERNEL_CSCOPE_DB
 endif
 
 
@@ -267,14 +283,6 @@ filetype plugin indent on
 
 " we want the :Man function:
 runtime ftplugin/man.vim
-
-" Add tags for quickly jumping around C, Python code.
-if has("unix")
-    autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
-    autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
-elseif has("win32")
-    autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
-endif
 
 " include files can be nasm, makefiles, etc.
 " TODO: figure something out to distinguish between them..
