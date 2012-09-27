@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 27, 2012 11:41 SGT
+" Last Update: Thu Sep 27, 2012 18:39 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -71,7 +71,8 @@ elseif has("unix")
 endif
 
 " Set 'path' to make gf usable:
-set path=$SRC_ROOT/include,$HOME/include,../include,.
+" TODO: Add project root.
+set path=/usr/include,$HOME/include,../include,.
 
 
 " * User Interface
@@ -116,9 +117,14 @@ set laststatus=2
 " Taglist configuration
 " on/off switching:
 nnoremap <silent> <F7> :TlistToggle<CR>
-let Tlist_Close_On_Select = 1
 " Let my shells handle all the path sickness:
 let Tlist_Ctags_Cmd='ctags'
+let Tlist_Close_On_Select = 1
+let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
+" TagListTagName - Used for tag names
+highlight MyTagListTagName gui=bold guifg=Black guibg=Orange
+" " TagListTagScope - Used for tag scope
+highlight MyTagListTagScope gui=NONE guifg=Blue
 
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2))
