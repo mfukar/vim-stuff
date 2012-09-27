@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Sep 24, 2012 19:41 SGT
+" Last Update: Thu Sep 27, 2012 11:32 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -28,7 +28,6 @@ autocmd!
 
 " * Terminal Settings
 
-" TODO I need to fix the logic here. terms have changed.
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color", so does the Mac OSX console:
 if &term =~ 'xterm'
@@ -44,7 +43,9 @@ if &term =~ 'xterm'
 " and these don't:
     else
     if $COLORTERM == ''
-        execute 'set t_kb=' . nr2char(127)
+		" Tricky. Magic number might have to change to 127 (^?) in
+		" some systems. In PuTTY it can be configured:
+		execute 'set t_kb=' . nr2char(8)
         fixdel
     endif
 " The above won't work if an XTerm or KVT is started from within a
@@ -726,15 +727,6 @@ endfunction " Deboxify()
 
 " I'm using Python-3.x. Deal with it:
 if v:version >= 703
-
-" Make path just a little bit smarter for Python:
-python3 << EOF
-import os, sys, vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command('set path+=%s' % (p.replace(' ', '\ ')))
-EOF
-
 
 " Function to encode a range of lines in base64,
 " then append the result below the range:
