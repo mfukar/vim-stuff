@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 27, 2012 11:32 SGT
+" Last Update: Thu Sep 27, 2012 11:41 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -240,7 +240,7 @@ if has("unix")
     " Niometrics project tags:
     autocmd FileType c setlocal tags+="$NIOTAGS"
     " Linux kernel tags:
-    set tags+="$KERNELTAGS"
+    autocmd FileType c setlocal tags+="$KERNELTAGS"
 elseif has("win32")
     autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
