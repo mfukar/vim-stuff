@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Sep 27, 2012 18:39 SGT
+" Last Update: Thu Oct 04, 2012 09:58 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -81,18 +81,21 @@ set encoding=utf-8
 
 set fileencodings=ucs-bom,utf-8,default,latin1
 
+" No more bells, I've had enough:
+set noeb vb t_vb=
+
 if has("gui_running")
         set lines=50
         set columns=96
         set gfn=Consolas:h11
 endif
 
-" My laptop stupidly sets language to Greek.
+" My laptop has language set to Greek or US:
 if has("win32")
     lang English_United Kingdom.1252
 endif
 
-" whoami
+" whoami:
 let g:author = "Michael Foukarakis"
 let g:author_short = "mfukar"
 
