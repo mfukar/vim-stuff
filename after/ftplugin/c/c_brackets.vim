@@ -61,7 +61,7 @@ if exists(':Brackets')
   :SetMarker <+ +>
 
   :Brackets -clear
-  :Brackets { } -visual=0 -nl -trigger=<localleader>{
+  :Brackets { } -visual=0 -trigger=<localleader>{
   :Brackets { } -nl
   :Brackets ( )
   :Brackets [ ] -visual=0
