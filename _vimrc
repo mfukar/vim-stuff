@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Oct 10, 2012 11:20 SGT
+" Last Update: Wed Oct 10, 2012 11:39 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -219,13 +219,13 @@ set autoindent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 if $NIO_LOG_LEVEL != ''
-    set sw=4        " # of spaces to use for each step when autoindenting
-    set tabstop=4   " 4 spaces indent
-    set expandtab   " screw tabs.
-else
     set sw=8
     set tabstop=8
     set noexpandtab
+else
+    set sw=4        " # of spaces to use for each step when autoindenting
+    set tabstop=4   " 4 spaces indent
+    set expandtab   " screw tabs.
 endif
 
 " Tags are bound to be messy.
