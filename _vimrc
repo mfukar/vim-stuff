@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Oct 04, 2012 09:58 Malay Peninsula Standard Time
+" Last Update: Wed Oct 10, 2012 11:20 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -214,18 +214,25 @@ set nowrap
 set nu
 
 " Indentation
-" use tabs, and have them copied down lines:
-set shiftwidth=4    " # of spaces to use for each step when autoindenting
-set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
-set tabstop=4       " 4 spaces indent
-set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
+" For my projects, use spaces instead of tabs, and have them copied down lines:
 set autoindent
+set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
+set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
+if $NIO_LOG_LEVEL != ''
+    set sw=4        " # of spaces to use for each step when autoindenting
+    set tabstop=4   " 4 spaces indent
+    set expandtab   " screw tabs.
+else
+    set sw=8
+    set tabstop=8
+    set noexpandtab
+endif
 
 " Tags are bound to be messy.
 " Here's how I handle them:
 "   if the current directory contains 'src' the tags and cscope db will be one level up,
 "   Linux kernel tags will be located at $KERNELTAGS,
-"   Niometrics' project tags will be located at $NIOTAGS,
+"   Niometrics' global project tags will be located at $NIOTAGS,
 "   The respective cscope databases are at $KERNEL_CSCOPE_DB, $NIO_CSCOPE_DB
 " TODO: Potential conflicts will be resolved later.
 if expand('%:p:h') =~ '/src/'
