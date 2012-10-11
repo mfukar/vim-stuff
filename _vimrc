@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Oct 10, 2012 11:39 SGT
+" Last Update: Wed Oct 10, 2012 11:40 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -210,7 +210,7 @@ set scrolloff=5
 " don't make it look like there are line breaks where there aren't:
 set nowrap
 
-" always use line numbering
+" always use line numbering:
 set nu
 
 " Indentation

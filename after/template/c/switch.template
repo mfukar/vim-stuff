@@ -3,7 +3,7 @@ VimL:"{switch-case} Template-File, Luc Hermitte
 VimL:" hint: switch (cond) { case... default ...}
 VimL: let s:value_start  = 'Â¡'
 VimL: let s:value_end    = 'Â¡'
-VimL: let s:reindent     = 1 
+VimL: let s:reindent     = 0
 VimL: let s:marker_open  = '<+'
 VimL: let s:marker_close = '+>'
 VimL: function! s:_LoopOverCases()
@@ -23,9 +23,9 @@ VimL: "
 VimL: let s:_expr = empty(s:Args()) ? Marker_Txt('expr') : s:Args()[0].name
 switchÂ¡C_nl_before_bracket()Â¡(Â¡s:_exprÂ¡)Â¡C_nl_before_curlyB()Â¡{
 VimL: call s:_LoopOverCases()
-    default:
-      {
-	  <+default-code+>;
-	  break;
-      }
+default:
+{
+	<+default-code+>;
+	break;
+}
 }<++>

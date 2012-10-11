@@ -10,6 +10,6 @@ VimL:"  echomsg "case -> " .(empty(s:Args()) ? 'empty' : string(s:Args()))
 VimL: let s:case = empty(s:Args()) ? Marker_Txt('case') : (s:Args()[0])
 case Â¡s:caseÂ¡:
 {
-    <+Â¡substitute(s:case, Marker_Txt('\(.\{-}\)'), '\1', '')Â¡-code+>;
-    break;
+	<+Â¡substitute(s:case, Marker_Txt('\(.\{-}\)'), '\1', '')Â¡-code+>;
+	break;
 }
