@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Oct 12, 2012 11:51 SGT
+" Last Update: Fri Oct 12, 2012 14:46 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -74,8 +74,7 @@ elseif has("unix")
 endif
 
 " Set 'path' to make gf usable:
-" TODO: Add project root.
-set path=/usr/include,$HOME/include,../include,.
+set path=/usr/include,$HOME/include,../include,.,,
 
 
 " * User Interface
@@ -234,48 +233,48 @@ else
     set expandtab   " screw tabs.
 endif
 
-" Tags are bound to be messy.
-" Here's how I handle them:
-"   if the current directory contains 'src' the tags and cscope db will be one level up,
-"   Linux kernel tags will be located at $KERNELTAGS,
-"   Niometrics' global project tags will be located at $NIOTAGS,
-"   The respective cscope databases are at $KERNEL_CSCOPE_DB, $NIO_CSCOPE_DB
-" TODO: Potential conflicts will be resolved later.
-if expand('%:p:h') =~ '/src/'
-    " Add tags :
-    "set tags+=expand('%:p:h') . "/../tags"
+" Search recursively up to / for the ctags 'tags' file:
+set tags=tags;/
 
-    " Add any cscope database in current directory:
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add the database pointed to by environment variable:
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
+" And do the same for cscope.out:
+function! LoadCscope()
+    let db = findfile("cscope.out", ".;")
+
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        " Disable 'duplicate connection' errors here:
+	set nocscopeverbose
+        exe "cs add " . db . " " . path
     endif
-endif
+endfunction
+au BufEnter /* call LoadCscope()
 
-" Add project-independent tags for quickly jumping around C, Python code:
+" Add project-independent tags for quickly jumping around C/Python stdlib code:
 if has("unix")
     autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
-
-    " Niometrics project tags:
-    autocmd FileType c setlocal tags+="$NIOTAGS"
-    " Linux kernel tags:
-    autocmd FileType c setlocal tags+="$KERNELTAGS"
 elseif has("win32")
     autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
 
-" Niometrics project cscope database:
-if $NIO_CSCOPE_DB != ""
-    cs add $NIO_CSCOPE_DB
-endif
-" Linux kernel cscope database:
-if $KERNEL_CSCOPE_DB != ""
-    cs add $KERNEL_CSCOPE_DB
-endif
+"   Linux kernel tags will be located at $KERNELTAGS,
+"   Niometrics' global project tags will be located at $NIOTAGS,
+"   The respective cscope databases are at $KERNEL_CSCOPE_DB, $NIO_CSCOPE_DB:
+if has("unix")
+    " Niometrics project tags:
+    autocmd FileType c setlocal tags+="$NIOTAGS"
+    " Niometrics project cscope database:
+    if $NIO_CSCOPE_DB != ""
+	    cs add $NIO_CSCOPE_DB
+    endif
 
+    " Linux kernel tags:
+    autocmd FileType c setlocal tags+="$KERNELTAGS"
+    " Linux kernel cscope database:
+    if $KERNEL_CSCOPE_DB != ""
+	    cs add $KERNEL_CSCOPE_DB
+    endif
+endif
 
 " normally don't automatically format text as it is typed, IE only do this with
 " comments, at 90 characters (my terminals are 102 columns wide). also, reformat
