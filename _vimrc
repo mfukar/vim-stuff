@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Oct 10, 2012 11:40 SGT
+" Last Update: Fri Oct 12, 2012 11:51 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -56,6 +56,9 @@ endif
 
 
 " * Environment
+
+" Enable pathogen:
+call pathogen#infect()
 
 " Normal vim operation. Modified when viewing manpages:
 let $PAGER=''
@@ -203,6 +206,9 @@ set backspace=eol,start,indent
 
 " give the cursor some room to breathe:
 set scrolloff=5
+
+" Set the mark string for signature:
+let g:SignatureLcMarkStr="\m>"
 
 
 " * Text Formatting -- General
