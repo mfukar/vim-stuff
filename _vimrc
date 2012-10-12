@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Oct 12, 2012 14:46 SGT
+" Last Update: Fri Oct 12, 2012 15:11 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -247,7 +247,7 @@ function! LoadCscope()
         exe "cs add " . db . " " . path
     endif
 endfunction
-au BufEnter /* call LoadCscope()
+autocmd BufEnter /* call LoadCscope()
 
 " Add project-independent tags for quickly jumping around C/Python stdlib code:
 if has("unix")
