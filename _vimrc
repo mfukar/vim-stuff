@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Oct 12, 2012 15:11 SGT
+" Last Update: Fri Nov 02, 2012 21:58 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -85,6 +85,7 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 
 " No more bells, I've had enough:
 set noeb vb t_vb=
+autocmd GUIEnter * set vb t_vb=
 
 if has("gui_running")
         set lines=50
