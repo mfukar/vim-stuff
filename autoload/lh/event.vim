@@ -7,9 +7,9 @@
 " Created:	15th Feb 2008
 " Last Update:	$Date: 2010-09-20 00:40:58 +0200 (lun., 20 sept. 2010) $
 "------------------------------------------------------------------------
-" Description:	
+" Description:
 " 	Function to help manage vim |autocommand-events|
-" 
+"
 "------------------------------------------------------------------------
 " Installation:
 " 	Drop it into {rtp}/autoload/lh/
@@ -17,7 +17,7 @@
 " History:
 " 	v2.0.6:
 " 		Creation
-" TODO:		
+" TODO:
 " }}}1
 "=============================================================================
 
@@ -45,7 +45,7 @@ endfunction
 " # Event Registration {{{2
 function! s:RegisteredOnce(cmd, group)
   " We can't delete the current augroup autocommand => increment a counter
-  if !exists('s:'.a:group) || s:{a:group} == 0 
+  if !exists('s:'.a:group) || s:{a:group} == 0
     let s:{a:group} = 1
     exe a:cmd
   endif
@@ -56,7 +56,7 @@ function! lh#event#register_for_one_execution_at(event, cmd, group)
   let s:{group} = 0
   exe 'augroup '.group
   au!
-  exe 'au '.a:event.' '.expand('%:p').' call s:RegisteredOnce('.string(a:cmd).','.string(group).')'
+  exe 'au '.a:event.' '. substitute(expand('%:p'), '\', '/', 'g') .' call s:RegisteredOnce('.string(a:cmd).','.string(group).')'
   augroup END
 endfunction
 function! lh#event#RegisterForOneExecutionAt(event, cmd, group)
