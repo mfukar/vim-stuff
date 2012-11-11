@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Nov 02, 2012 21:58 Malay Peninsula Standard Time
+" Last Update: Sun Nov 11, 2012 14:21 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -712,10 +712,11 @@ function! s:RunShellCommand(cmdline, bang)
 
     silent execute '$read !' . _
     silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
-    silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
+    silent! execute 'autocmd BufEnter  <buffer> execute ''resize '' .  line(''$'')'
     silent! execute 'nnoremap <silent> <buffer> <localleader>r :call <SID>RunShellCommand(''' . _ . ''', '''')<CR>'
     silent! execute 'nnoremap <silent> <buffer> <localleader>b :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
-    nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<CR>
+
+    execute 'resize ' . line('$')
 
     setlocal nomodifiable
     1

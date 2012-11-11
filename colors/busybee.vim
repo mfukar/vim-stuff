@@ -32,8 +32,8 @@ hi Folded           guifg=#FFFFFF guibg=#000900 gui=none
 hi Title            guifg=#E8FF09 guibg=NONE	gui=bold
 hi Visual           guifg=#FFF126 guibg=#323232 gui=none
 hi SpecialKey       guifg=#FFE843 guibg=#0F180F gui=none
-hi Search           guifg=#FFFF00 guibg=#000000 gui=none
-hi IncSearch        guifg=#FFFF00 guibg=#000000 gui=none
+hi Search           guifg=#000000 guibg=#DFFF00 gui=none
+hi IncSearch        guifg=#000000 guibg=#DFFF00 gui=none
 hi Sign             guifg=#FFFF00 guibg=#000000 gui=none
 hi DiffChange       guibg=#4C5200 gui=none
 hi DiffAdd          guibg=#252B4C gui=none
