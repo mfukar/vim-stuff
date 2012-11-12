@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 11, 2012 14:21 Malay Peninsula Standard Time
+" Last Update: Mon Nov 12, 2012 16:56 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -220,18 +220,15 @@ set nowrap
 set nu
 
 " Indentation
-" For my projects, use spaces instead of tabs, and have them copied down lines:
+" Wherever possible, use spaces instead of tabs, and have them copied down lines:
 set autoindent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
+
+autocmd FileType c,c++,python,powershell,asm,erlang,html,javascript,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 if $NIO_LOG_LEVEL != ''
-    set sw=8
-    set tabstop=8
-    set noexpandtab
-else
-    set sw=4        " # of spaces to use for each step when autoindenting
-    set tabstop=4   " 4 spaces indent
-    set expandtab   " screw tabs.
+    " Override the defaults:
+    autocmd FileType c,c++ setlocal sw=8 ts=8 noexpandtab
 endif
 
 " Search recursively up to / for the ctags 'tags' file:
@@ -827,7 +824,7 @@ autocmd FileType python setlocal ofu=python3complete#Complete
 " Remove the Windows ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Remove indenting on empty lines
+" Remove indenting on empty lines and at their end:
 noremap <Leader>i :%s/\s*$//g<cr>:noh<cr>''
 
 " end of mfukar's .vimrc
