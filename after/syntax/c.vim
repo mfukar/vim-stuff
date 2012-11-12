@@ -237,7 +237,7 @@ syn keyword	cCustomType	lfsr_t lfsr_data
 
 " well it basically comes down to this match
 " [excluding REALLY retarded defs]:
-syn match cCustomType   "[A-Za-z_]\w*_t\>"
+syn match cCustomType   "[A-Za-z_]\w*_[et]\>"
 
 " Operators
 syn match cOperator	"\(<<\|>>\|[-+*/%&^|<>!=]\)="
