@@ -25,8 +25,8 @@ hi iCursor          guifg=NONE    guibg=yellow
 hi Normal           guifg=#000000 guibg=#FFFFFF gui=none
 hi NonText          guifg=#000000 guibg=#F0F0F0 gui=none
 hi LineNr           guifg=#000000 guibg=#E6E6E6 gui=none
-hi StatusLine       guifg=#000000 guibg=#E5D3FC gui=italic
-hi StatusLineNC     guifg=#000000 guibg=#D7D7D7 gui=none
+hi StatusLine       guifg=#000000 guibg=#C5B3DC gui=italic
+hi StatusLineNC     guifg=#000000 guibg=#979797 gui=none
 hi VertSplit        guifg=#000000 guibg=#E6E6E6 gui=none
 hi Folded           guifg=#000000 guibg=#FFFFFF gui=none
 hi Title            guifg=#7F27F2 guibg=NONE	gui=bold
