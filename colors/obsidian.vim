@@ -23,95 +23,95 @@ let colors_name="obsidian"
 
 " Base color
 " ----------
-hi Normal           guifg=#D4D2CF           guibg=#201F1F
+hi Normal           guifg=#D4D2CF  guibg=#201F1F
 
 " Comment Group
 " -------------
 " any comment
-hi Comment          guifg=#787775                                  gui=italic
+hi Comment          guifg=#787775  gui=italic
 
 " Constant Group
 " --------------
 " any constant
-hi Constant         guifg=#ff0000                                  gui=none
+hi Constant         guifg=#ff0000  gui=none
 " strings
-hi String           guifg=#E85848                                   gui=none
+hi String           guifg=#E85848  gui=none
 " character constant
-hi Character        guifg=#96BFF0                                   gui=none
+hi Character        guifg=#96BFF0  gui=none
 " numbers decimal/hex
-hi Number           guifg=#C0A25F                                   gui=none
+hi Number           guifg=#C0A25F  gui=none
 " true, false
-hi Boolean          guifg=#C0A25F                                   gui=none
+hi Boolean          guifg=#C0A25F  gui=none
 " float
-hi Float            guifg=#C0A25F                                  gui=none
+hi Float            guifg=#C0A25F  gui=none
 
 " Identifier Group
 " ----------------
 " any variable name
-hi Identifier       guifg=#508ED8                                   gui=none
+hi Identifier       guifg=#508ED8  gui=none
 " function, method, class
-hi Function         guifg=#8E79A5                                   gui=none
+hi Function         guifg=#8E79A5  gui=none
 
 " Statement Group
 " ---------------
 " any statement
-hi Statement        guifg=#8E79A5                                   gui=none
+hi Statement        guifg=#8E79A5  gui=none
 " if, then, else
-hi Conditional      guifg=#00A000                                   gui=none
+hi Conditional      guifg=#00A000  gui=none
 " try, catch, throw, raise
-hi Exception        guifg=#4A5704                                   gui=none
+hi Exception        guifg=#4A5704  gui=none
 " for, while, do
-hi Repeat           guifg=#DBA716                                 gui=none
+hi Repeat           guifg=#DBA716  gui=none
 " case, default
-hi Label            guifg=#8E79A5                                   gui=none
+hi Label            guifg=#8E79A5  gui=none
 " sizeof, +, *
-hi Operator         guifg=#FF9FEC                                   gui=none
+hi Operator         guifg=#FF9FEC  gui=none
 " any other keyword, e.g. 'sub'
-hi Keyword          guifg=#AA3000                                   gui=none
+hi Keyword          guifg=#AA3000  gui=none
 
 " Preprocessor Group
 " ------------------
 " generic preprocessor
-hi PreProc          guifg=#78B753                                   gui=none
+hi PreProc          guifg=#78B753  gui=none
 " #include
-hi Include          guifg=#78B753                                   gui=none
+hi Include          guifg=#78B753  gui=none
 " #define
-hi Define           guifg=#78B753                                   gui=none
+hi Define           guifg=#78B753  gui=none
 " same as define
-hi Macro            guifg=#78B753                                   gui=none
+hi Macro            guifg=#78B753  gui=none
 " #if, #else, #endif
-hi PreCondit        guifg=#78B753                                   gui=none
+hi PreCondit        guifg=#78B753  gui=none
 
 " Type Group
 " ----------
 " int, long, char
-hi Type             guifg=#508ED8                                   gui=none
+hi Type             guifg=#508ED8  gui=none
 " static, register, volative
-hi StorageClass     guifg=#508ED8                                   gui=none
+hi StorageClass     guifg=#508ED8  gui=none
 " struct, union, enum
-hi Structure        guifg=#508ED8                                   gui=none
+hi Structure        guifg=#508ED8  gui=none
 " typedef
-hi Typedef          guifg=#508ED8                                   gui=none
+hi Typedef          guifg=#508ED8  gui=none
 
 " Special Group
 " -------------
 " any special symbol
-hi Special          guifg=#C00000                                   gui=none
+hi Special          guifg=#C00000  gui=none
 " special character in a constant
-hi SpecialChar      guifg=#C00000                                   gui=none
+hi SpecialChar      guifg=#C00000  gui=none
 " things you can CTRL-]
-hi Tag              guifg=#C00000                                   gui=none
+hi Tag              guifg=#C00000  gui=none
 " character that needs attention
-hi Delimiter        guifg=#C00000                                   gui=none
+hi Delimiter        guifg=#C00000  gui=none
 " special things inside a comment
-hi SpecialComment   guifg=#C00000                                   gui=none
+hi SpecialComment   guifg=#C00000  gui=none
 " debugging statements
-hi Debug            guifg=#C00000           guibg=NONE              gui=none
+hi Debug            guifg=#C00000  guibg=NONE  gui=none
 
 " Underlined Group
 " ----------------
 " text that stands out, html links
-hi Underlined       guifg=fg                                        gui=underline
+hi Underlined       guifg=fg       gui=underline
 
 " Ignore Group
 " ------------
