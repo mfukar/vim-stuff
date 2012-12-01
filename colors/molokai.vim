@@ -10,14 +10,11 @@
 hi clear
 
 set background=dark
-if version > 580
-    " no guarantees for version 5.8 and below, but this makes it stop
-    " complaining
-    hi clear
-    if exists("syntax_on")
-        syntax reset
-    endif
+
+if exists("syntax_on")
+    syntax reset
 endif
+
 let g:colors_name="molokai"
 
 if exists("g:molokai_original")
@@ -122,9 +119,7 @@ else
    hi NonText         guifg=#BCBCBC guibg=#232526
 end
 
-"
-" Support for 256-color terminal
-"
+" Support for 256-color terminal:
 if &t_Co > 255
    hi Boolean         ctermfg=135
    hi Character       ctermfg=144
