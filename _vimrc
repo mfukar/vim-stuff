@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Nov 12, 2012 16:56 SGT
+" Last Update: Sat Dec 01, 2012 21:52 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -135,13 +135,13 @@ highlight MyTagListTagScope gui=NONE guifg=Blue
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2))
 \|| has('gui_running')
-  syntax on
+    syntax on
 endif
 
 " Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
 " probably the windows shell, and I don't really care about that..
 set t_Co=256
-colorscheme spice
+colorscheme obsidian
 
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
@@ -220,7 +220,7 @@ set nowrap
 set nu
 
 " Indentation
-" Wherever possible, use spaces instead of tabs, and have them copied down lines:
+" For my projects, use spaces instead of tabs, and have them copied down lines:
 set autoindent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
@@ -241,7 +241,7 @@ function! LoadCscope()
     if (!empty(db))
         let path = strpart(db, 0, match(db, "/cscope.out$"))
         " Disable 'duplicate connection' errors here:
-	set nocscopeverbose
+        set nocscopeverbose
         exe "cs add " . db . " " . path
     endif
 endfunction
@@ -377,11 +377,9 @@ set complete=.,w,k
 set infercase
 
 " correct my common typos without me even noticing them:
-abbreviate amtch match
 abbreviate teh the
 abbreviate spolier spoiler
 abbreviate atmoic atomic
-abbreviate ifno info
 
 " Spell checking operations are defined next.  They are all set to normal mode keystrokes
 " beginning \s but function keys are also mapped to the most common ones.  The functions
@@ -490,7 +488,7 @@ noremap Y y$
 " ...
 
 " have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle:
-vnoremap <Leader>kr y:call Deboxify('@@')<CR>p
+vnoremap <Leader>kr y:call Deboxify('@@')<CR>
 
 
 " * Keystrokes -- Toggles
@@ -737,7 +735,8 @@ function! DateStamp(...)
 endfunction " DateStamp(...)
 
 
-" TODO: Transform visual box selection into a single line.
+" Transform visual box selection into a single line:
+" TODO kill the original selection?
 function! Deboxify(reg)
     let @@ = join(split(getreg(a:reg), '\n'), "")
 endfunction " Deboxify()
