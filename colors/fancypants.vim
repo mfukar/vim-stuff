@@ -21,7 +21,7 @@ hi PmenuSel       guifg=#000000 guibg=#7F27F2
 
 " Background and menu colors
 hi Cursor           guifg=NONE guibg=#000000
-hi iCursor          guifg=NONE    guibg=yellow
+hi iCursor          guifg=NONE    guibg=red
 hi Normal           guifg=#000000 guibg=#FFFFFF gui=none
 hi NonText          guifg=#000000 guibg=#F0F0F0 gui=none
 hi LineNr           guifg=#000000 guibg=#E6E6E6 gui=none
@@ -46,7 +46,7 @@ hi TabLineSel       guifg=#FFFFD7 gui=bold
 hi Todo             guifg=#FFFFFF guibg=blue    gui=none
 
 " Syntax highlighting
-hi StorageClass guifg=#FFB100 guibg=#000000
+hi StorageClass guifg=#FFB100 gui=bold
 hi Comment guifg=#A63A00 gui=none
 hi Constant guifg=#1BC2B1 gui=none
 hi Number guifg=#1BC2B1 gui=none

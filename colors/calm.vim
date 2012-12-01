@@ -1,6 +1,3 @@
-" Vim color file
-" © 2010 Michael Foukarakis
-
 set background=dark
 
 hi clear
@@ -21,6 +18,7 @@ endif
 
 " Background and menu colors
 hi Cursor           guifg=NONE guibg=#FFFFFF gui=none
+hi iCursor          guifg=NONE guibg=#8087DB gui=none
 hi Normal           guifg=#FFFFFF guibg=#01080C gui=none
 hi NonText          guifg=#FFFFFF guibg=#10171B gui=none
 hi LineNr           guifg=#FFFFFF guibg=#1A2125 gui=none
