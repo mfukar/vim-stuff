@@ -59,7 +59,6 @@ hi PreProc      guifg=#BB9D85 gui=none
 hi Keyword      guifg=#EFA37F gui=none
 hi String       guifg=#8A5A0C gui=none
 hi Type         guifg=#A64100 gui=none
-hi pythonBuiltin guifg=#FF4D1A gui=none
 hi TabLineFill  guifg=#372404 gui=none
 
 " Special cases
