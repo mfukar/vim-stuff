@@ -23,90 +23,90 @@ let colors_name="obsidian"
 
 " Base color
 " ----------
-hi Normal           guifg=#D4D2CF  guibg=#201F1F
+hi Normal           guifg=#D4D2CF guibg=#201F1F
 
 " Comment Group
 " -------------
 " any comment
-hi Comment          guifg=#787775  gui=italic
+hi Comment          guifg=#787775 gui=italic
 
 " Constant Group
 " --------------
 " any constant
-hi Constant         guifg=#ff0000  gui=none
+hi Constant         guifg=#ff0000 gui=none
 " strings
-hi String           guifg=#E85848  gui=none
+hi String           guifg=#E85848 gui=none
 " character constant
-hi Character        guifg=#96BFF0  gui=none
+hi Character        guifg=#96BFF0 gui=none
 " numbers decimal/hex
-hi Number           guifg=#C0A25F  gui=none
+hi Number           guifg=#C0A25F gui=none
 " true, false
-hi Boolean          guifg=#C0A25F  gui=none
+hi Boolean          guifg=#C0A25F gui=none
 " float
-hi Float            guifg=#C0A25F  gui=none
+hi Float            guifg=#C0A25F gui=none
 
 " Identifier Group
 " ----------------
 " any variable name
-hi Identifier       guifg=#508ED8  gui=none
+hi Identifier       guifg=#508ED8 gui=none
 " function, method, class
-hi Function         guifg=#8E79A5  gui=none
+hi Function         guifg=#8E79A5 gui=none
 
 " Statement Group
 " ---------------
 " any statement
-hi Statement        guifg=#8E79A5  gui=none
+hi Statement        guifg=#8E79A5 gui=none
 " if, then, else
-hi Conditional      guifg=#00A000  gui=none
+hi Conditional      guifg=#00A000 gui=none
 " try, catch, throw, raise
-hi Exception        guifg=#4A5704  gui=none
+hi Exception        guifg=#4A5704 gui=none
 " for, while, do
-hi Repeat           guifg=#DBA716  gui=none
+hi Repeat           guifg=#DBA716 gui=none
 " case, default
-hi Label            guifg=#8E79A5  gui=none
+hi Label            guifg=#8E79A5 gui=none
 " sizeof, +, *
-hi Operator         guifg=#FF9FEC  gui=none
+hi Operator         guifg=#FF9FEC gui=none
 " any other keyword, e.g. 'sub'
-hi Keyword          guifg=#AA3000  gui=none
+hi Keyword          guifg=#AA3000 gui=none
 
 " Preprocessor Group
 " ------------------
 " generic preprocessor
-hi PreProc          guifg=#78B753  gui=none
+hi PreProc          guifg=#78B753 gui=none
 " #include
-hi Include          guifg=#78B753  gui=none
+hi Include          guifg=#78B753 gui=none
 " #define
-hi Define           guifg=#78B753  gui=none
+hi Define           guifg=#78B753 gui=none
 " same as define
-hi Macro            guifg=#78B753  gui=none
+hi Macro            guifg=#78B753 gui=none
 " #if, #else, #endif
-hi PreCondit        guifg=#78B753  gui=none
+hi PreCondit        guifg=#78B753 gui=none
 
 " Type Group
 " ----------
 " int, long, char
-hi Type             guifg=#508ED8  gui=none
+hi Type             guifg=#508ED8 gui=none
 " static, register, volative
-hi StorageClass     guifg=#508ED8  gui=none
+hi StorageClass     guifg=#508ED8 gui=none
 " struct, union, enum
-hi Structure        guifg=#508ED8  gui=none
+hi Structure        guifg=#508ED8 gui=none
 " typedef
-hi Typedef          guifg=#508ED8  gui=none
+hi Typedef          guifg=#508ED8 gui=none
 
 " Special Group
 " -------------
 " any special symbol
-hi Special          guifg=#C00000  gui=none
+hi Special          guifg=#C00000 gui=none
 " special character in a constant
-hi SpecialChar      guifg=#C00000  gui=none
+hi SpecialChar      guifg=#C00000 gui=none
 " things you can CTRL-]
-hi Tag              guifg=#C00000  gui=none
+hi Tag              guifg=#C00000 gui=none
 " character that needs attention
-hi Delimiter        guifg=#C00000  gui=none
+hi Delimiter        guifg=#C00000 gui=none
 " special things inside a comment
-hi SpecialComment   guifg=#C00000  gui=none
+hi SpecialComment   guifg=#C00000 gui=none
 " debugging statements
-hi Debug            guifg=#C00000  guibg=NONE  gui=none
+hi Debug            guifg=#C00000 guibg=NONE  gui=none
 
 " Underlined Group
 " ----------------
@@ -121,91 +121,91 @@ hi Ignore           guifg=bg
 " Error Group
 " -----------
 " any erroneous construct
-hi Error            guifg=#E85848           guibg=#451E1A           gui=none
+hi Error            guifg=#E85848 guibg=#451E1A           gui=none
 
 " Todo Group
 " ----------
 " todo, fixme, note, xxx
-hi Todo             guifg=#C0A25F           guibg=NONE              gui=underline
+hi Todo             guifg=#C0A25F guibg=NONE              gui=underline
 
 " Spelling
 " --------
 " word not recognized
-hi SpellBad         guisp=#ee0000                                   gui=undercurl
+hi SpellBad         guisp=#ee0000                         gui=undercurl
 " word not capitalized
-hi SpellCap         guisp=#eeee00                                   gui=undercurl
+hi SpellCap         guisp=#eeee00                         gui=undercurl
 " rare word
-hi SpellRare        guisp=#ffa500                                   gui=undercurl
+hi SpellRare        guisp=#ffa500                         gui=undercurl
 " wrong spelling for selected region
-hi SpellLocal       guisp=#ffa500                                   gui=undercurl
+hi SpellLocal       guisp=#ffa500                         gui=undercurl
 
 " Cursor
 " ------
 " character under the cursor
-hi Cursor           guifg=fg                guibg=#0078FF
+hi Cursor           guifg=fg      guibg=#0078FF
 " like cursor, but used when in IME mode
-hi CursorIM         guifg=bg                guibg=#96cdcd
+hi CursorIM         guifg=bg      guibg=#96cdcd
 " cursor column
-hi CursorColumn     guifg=NONE              guibg=#202438           gui=none
+hi CursorColumn     guifg=NONE    guibg=#202438           gui=none
 " cursor line/row
-hi CursorLine       gui=NONE                guibg=#202438           gui=none
+hi CursorLine       gui=NONE      guibg=#202438           gui=none
 
 " Misc
 " ----
 " directory names and other special names in listings
-hi Directory        guifg=#c0e0b0                                   gui=none
+hi Directory        guifg=#c0e0b0                         gui=none
 " error messages on the command line
-hi ErrorMsg         guifg=#E85848           guibg=#461E1A              gui=none
+hi ErrorMsg         guifg=#E85848 guibg=#461E1A           gui=none
 " column separating vertically split windows
-hi VertSplit        guifg=#777777           guibg=#363946           gui=none
+hi VertSplit        guifg=#777777 guibg=#363946           gui=none
 " columns where signs are displayed (used in IDEs)
-hi SignColumn       guifg=#9fafaf           guibg=#181818           gui=none
+hi SignColumn       guifg=#9fafaf guibg=#181818           gui=none
 " line numbers
-hi LineNr           guifg=#B4D3B1           guibg=#323232
+hi LineNr           guifg=#B4D3B1 guibg=#323232
 " match parenthesis, brackets
-hi MatchParen       guifg=#00ff00           guibg=NONE              gui=bold
+hi MatchParen       guifg=#00ff00 guibg=NONE              gui=bold
 " the 'more' prompt when output takes more than one line
-hi MoreMsg          guifg=#2e8b57                                   gui=none
+hi MoreMsg          guifg=#2e8b57                         gui=none
 " text showing what mode you are in
-hi ModeMsg          guifg=fg           guibg=NONE              gui=bold
+hi ModeMsg          guifg=fg      guibg=NONE              gui=bold
 " the '~' and '@' and showbreak, '>' double wide char doesn't fit on line
-hi NonText          guifg=#404040                                   gui=none
+hi NonText          guifg=#404040                         gui=none
 " the hit-enter prompt (show more output) and yes/no questions
-hi Question         guifg=fg                                        gui=none
+hi Question         guifg=fg                              gui=none
 " meta and special keys used with map, unprintable characters
 hi SpecialKey       guifg=#404040
 " titles for output from :set all, :autocmd, etc
-hi Title            guifg=#62bdde                                   gui=none
-"hi Title            guifg=#5ec8e5                                   gui=none
+hi Title            guifg=#62bdde                         gui=none
+"hi Title            guifg=#5ec8e5                         gui=none
 " warning messages
-hi WarningMsg       guifg=#e5786d                                   gui=none
+hi WarningMsg       guifg=#e5786d                         gui=none
 " current match in the wildmenu completion
-hi WildMenu         guifg=#cae682           guibg=#363946           gui=bold,underline
+hi WildMenu         guifg=#cae682 guibg=#363946           gui=bold,underline
 
 " Diff
 " ----
 " added line
-hi DiffAdd          guifg=#0000FF           guibg=#201F1F           gui=none
+hi DiffAdd          guifg=#0000FF guibg=#201F1F           gui=none
 " changed line
-hi DiffChange       guifg=NONE              guibg=#4a343a           gui=none
+hi DiffChange       guifg=NONE    guibg=#4a343a           gui=none
 " deleted line
-hi DiffDelete       guifg=#FF0000           guibg=#3c3631           gui=none
+hi DiffDelete       guifg=#FF0000 guibg=#3c3631           gui=none
 " changed text within line
-hi DiffText         guifg=#f05060           guibg=#4a343a           gui=bold
+hi DiffText         guifg=#f05060 guibg=#4a343a           gui=bold
 
 " Folds
 " -----
 " line used for closed folds
-hi Folded           guifg=#91d6f8           guibg=#363946           gui=none
+hi Folded           guifg=#91d6f8 guibg=#363946           gui=none
 " column on side used to indicated open and closed folds
-hi FoldColumn       guifg=#91d6f8           guibg=#363946           gui=none
+hi FoldColumn       guifg=#91d6f8 guibg=#363946           gui=none
 
 " Search
 " ------
 " highlight incremental search text; also highlight text replaced with :s///c
-hi IncSearch        guifg=#302F2F guibg=#C0A25F                   gui=none
+hi IncSearch        guifg=#302F2F guibg=#C0A25F          gui=none
 " hlsearch (last search pattern), also used for quickfix
-hi Search                                    guibg=#C0A25F          gui=none
+hi Search                         guibg=#C0A25F          gui=none
 
 " Popup Menu
 " ----------
