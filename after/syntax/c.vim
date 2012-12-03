@@ -232,11 +232,7 @@ syn keyword	cAnsiName	and bitor not_eq xor
 syn keyword	cAnsiName	and_eq compl or xor_eq
 syn keyword	cAnsiName	bitand not or_eq
 
-" mfukar - Types
-syn keyword	cCustomType	lfsr_t lfsr_data
-
-" well it basically comes down to this match
-" [excluding REALLY retarded defs]:
+" Match my common typedef scheme:
 syn match cCustomType   "[A-Za-z_]\w*_[et]\>"
 
 " Operators
@@ -265,7 +261,6 @@ syn keyword	cBoolean true false TRUE FALSE
 syn keyword	cTodo		NOTICE WARNING
 
 " Links
-hi def link cDelimiter 		Delimiter
 hi def link cAnsiFunction	Function
 hi def link cAnsiName		Identifier
 hi def link cBoolean		Boolean
