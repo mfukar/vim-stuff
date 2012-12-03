@@ -1,7 +1,7 @@
 " netrw.vim: Handles file transfer and remote directory listing across
 "            AUTOLOAD SECTION
-" Date:		Jun 01, 2011
-" Version:	143a
+" Date:		May 31, 2011
+" Version:	142
 " Maintainer:	Charles E Campbell, Jr <NdrOchip@ScampbellPfamily.AbizM-NOSPAM>
 " GetLatestVimScripts: 1075 1 :AutoInstall: netrw.vim
 " Copyright:    Copyright (C) 1999-2010 Charles E. Campbell, Jr. {{{1
@@ -22,7 +22,7 @@
 if &cp || exists("g:loaded_netrw")
   finish
 endif
-let g:loaded_netrw = "v143a"
+let g:loaded_netrw = "v142"
 if v:version < 702
  echohl WarningMsg
  echo "***warning*** this version of netrw needs vim 7.2"
@@ -3680,32 +3680,32 @@ fun! netrw#Explore(indx,dosplit,style,...)
 
    if a:style == 0      " Explore, Sexplore
 "    call Decho("style=0: Explore or Sexplore")
-    let winsz= (winsz > 0)? (winsz*winheight(0))/100 : -winsz
+    let winsz= (winsz*winheight(0))/100
     exe winsz."wincmd s"
 
    elseif a:style == 1  "Explore!, Sexplore!
 "    call Decho("style=1: Explore! or Sexplore!")
-    let winsz= (winsz > 0)? (winsz*winheight(0))/100 : -winsz
+    let winsz= (winsz*winheight(0))/100
     exe winsz."wincmd v"
 
    elseif a:style == 2  " Hexplore
 "    call Decho("style=2: Hexplore")
-    let winsz= (winsz > 0)? (winsz*winheight(0))/100 : -winsz
+    let winsz= (winsz*winheight(0))/100
     exe "bel ".winsz."wincmd s"
 
    elseif a:style == 3  " Hexplore!
 "    call Decho("style=3: Hexplore!")
-    let winsz= (winsz > 0)? (winsz*winheight(0))/100 : -winsz
+    let winsz= (winsz*winheight(0))/100
     exe "abo ".winsz."wincmd s"
 
    elseif a:style == 4  " Vexplore
 "    call Decho("style=4: Vexplore")
-    let winsz= (winsz > 0)? (winsz*winheight(0))/100 : -winsz
+    let winsz= (winsz*winheight(0))/100
     exe "lefta ".winsz."wincmd v"
 
    elseif a:style == 5  " Vexplore!
 "    call Decho("style=5: Vexplore!")
-    let winsz= (winsz > 0)? (winsz*winheight(0))/100 : -winsz
+    let winsz= (winsz*winheight(0))/100
     exe "rightb ".winsz."wincmd v"
 
    elseif a:style == 6  " Texplore
@@ -5722,13 +5722,11 @@ fun! s:NetrwPrevWinOpen(islocal)
    " if only one window, open a new one first
 "   call Decho("only one window, so open a new one (g:netrw_alto=".g:netrw_alto.")")
    if g:netrw_preview
-    let winsz= (g:netrw_winsize > 0)? (g:netrw_winsize*winheight(0))/100 : -g:netrw_winsize
-"    call Decho("exe ".(g:netrw_alto? "top " : "bot ")."vert ".winsz."wincmd s")
-    exe (g:netrw_alto? "top " : "bot ")."vert ".winsz."wincmd s"
+"    call Decho("exe ".(g:netrw_alto? "top " : "bot ")."vert ".g:netrw_winsize."wincmd s")
+    exe (g:netrw_alto? "top " : "bot ")."vert ".g:netrw_winsize."wincmd s"
    else
-    let winsz= (g:netrw_winsize > 0)? (g:netrw_winsize*winwidth(0))/100 : -g:netrw_winsize
-"    call Decho("exe ".(g:netrw_alto? "bel " : "abo ").winsz."wincmd s")
-    exe (g:netrw_alto? "bel " : "abo ").winsz."wincmd s"
+"    call Decho("exe ".(g:netrw_alto? "bel " : "abo ").g:netrw_winsize."wincmd s")
+    exe (g:netrw_alto? "bel " : "abo ").g:netrw_winsize."wincmd s"
    endif
    let didsplit  = 1
 
@@ -5993,9 +5991,8 @@ fun! s:NetrwPreview(path) range
   if has("quickfix")
    if !isdirectory(a:path)
     if g:netrw_preview && !g:netrw_alto
-     let pvhkeep = &pvh
-     let winsz   = (g:netrw_winsize > 0)? (g:netrw_winsize*winwidth(0))/100 : -g:netrw_winsize
-     let &pvh    = winwidth(0) - winsz
+     let pvhkeep= &pvh
+     let &pvh   = winwidth(0) - g:netrw_winsize
     endif
     exe (g:netrw_alto? "top " : "bot ").(g:netrw_preview? "vert " : "")."pedit ".fnameescape(a:path)
     if exists("pvhkeep")
@@ -6177,8 +6174,8 @@ fun! s:NetrwSplit(mode)
 
   if a:mode == 0
    " remote and o
-   let winsz= (g:netrw_winsize > 0)? (g:netrw_winsize*winheight(0))/100 : -g:netrw_winsize
-"   call Decho("exe ".(g:netrw_alto? "bel " : "abo ").winsz."wincmd s")
+"   call Decho("exe ".(g:netrw_alto? "bel " : "abo ").g:netrw_winsize."wincmd s")
+   let winsz= (g:netrw_winsize*winheight(0))/100
    exe (g:netrw_alto? "bel " : "abo ").winsz."wincmd s"
    let s:didsplit= 1
    keepj call s:RestoreWinVars()
@@ -6197,8 +6194,8 @@ fun! s:NetrwSplit(mode)
 
   elseif a:mode == 2
    " remote and v
-   let winsz= (g:netrw_winsize > 0)? (g:netrw_winsize*winwidth(0))/100 : -g:netrw_winsize
-"   call Decho("exe ".(g:netrw_altv? "rightb " : "lefta ").winsz."wincmd v")
+"   call Decho("exe ".(g:netrw_altv? "rightb " : "lefta ").g:netrw_winsize."wincmd v")
+   let winsz= (g:netrw_winsize*winwidth(0))/100
    exe (g:netrw_altv? "rightb " : "lefta ").winsz."wincmd v"
    let s:didsplit= 1
    keepj call s:RestoreWinVars()
@@ -6207,8 +6204,8 @@ fun! s:NetrwSplit(mode)
 
   elseif a:mode == 3
    " local and o
-   let winsz= (g:netrw_winsize > 0)? (g:netrw_winsize*winheight(0))/100 : -g:netrw_winsize
-"   call Decho("exe ".(g:netrw_alto? "bel " : "abo ").winsz."wincmd s")
+"   call Decho("exe ".(g:netrw_alto? "bel " : "abo ").g:netrw_winsize."wincmd s")
+   let winsz= (g:netrw_winsize*winheight(0))/100
    exe (g:netrw_alto? "bel " : "abo ").winsz."wincmd s"
    let s:didsplit= 1
    keepj call s:RestoreWinVars()
@@ -6229,8 +6226,8 @@ fun! s:NetrwSplit(mode)
 
   elseif a:mode == 5
    " local and v
-   let winsz= (g:netrw_winsize > 0)? (g:netrw_winsize*winwidth(0))/100 : -g:netrw_winsize
-"   call Decho("exe ".(g:netrw_altv? "rightb " : "lefta ").winsz."wincmd v")
+"   call Decho("exe ".(g:netrw_altv? "rightb " : "lefta ").g:netrw_winsize."wincmd v")
+   let winsz= (g:netrw_winsize*winwidth(0))/100
    exe (g:netrw_altv? "rightb " : "lefta ").winsz."wincmd v"
    let s:didsplit= 1
    keepj call s:RestoreWinVars()

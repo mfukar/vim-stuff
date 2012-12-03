@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sat Dec 01, 2012 21:52 Malay Peninsula Standard Time
+" Last Update: Mon Dec 03, 2012 11:35 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -190,11 +190,11 @@ set nomodeline
 
 " I use pscp with netrw:
 if(has('win32'))
-    " list files, it's the key setting, if you haven't set it you
-    " will most likely get a blank buffer:
-    let g:netrw_list_cmd = "plink HOSTNAME ls -lFAh"
-    " $USERNAME works for me:
-    let g:netrw_scp_cmd = "pscp -l ".$USERNAME." -scp -q -batch"
+    " list files, mind the trailing space:
+    let g:netrw_list_cmd = "plink HOSTNAME ls -laFh "
+    " g:author_short will do when g:netrw_machine is not available:
+    let g:netrw_scp_cmd = "pscp -l ".g:author_short." -2 -scp -q -batch"
+    let g:netrw_ssh_cmd = "plink -l ".g:author_short." -2 -T -ssh"
 endif
 
 " Automatically change the working directory:
