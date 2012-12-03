@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Dec 03, 2012 11:35 Malay Peninsula Standard Time
+" Last Update: Mon Dec 03, 2012 11:47 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -226,6 +226,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,c++,python,powershell,asm,erlang,html,javascript,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
+autocmd FileType gitconfig setlocal sw=4 ts=4 expandtab
 if $NIO_LOG_LEVEL != ''
     " Override the defaults:
     autocmd FileType c,c++ setlocal sw=8 ts=8 noexpandtab
