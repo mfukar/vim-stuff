@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Dec 03, 2012 11:47 SGT
+" Last Update: Tue Dec 04, 2012 13:35 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -187,6 +187,9 @@ set mouse=a
 
 " don't have files trying to override this .vimrc:
 set nomodeline
+
+" Some convenient netrw settings:
+let g:netrw_liststyle = 3
 
 " I use pscp with netrw:
 if(has('win32'))
