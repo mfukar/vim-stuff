@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Dec 04, 2012 13:35 Malay Peninsula Standard Time
+" Last Update: Tue Dec 04, 2012 17:37 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -537,7 +537,8 @@ nnoremap \th :set invhls hls?<CR>
 vnoremap <Leader>e64 :PyBase64Encode<cr>
 vnoremap <Leader>d64 :PyBase64Decode<cr>
 
-" Mappings to convert current buffer contents from Markdown to HTML and paste it in place:
+" Mappings to convert current buffer contents from Markdown to HTML and
+" put it in a (new) file:
 noremap <Leader>md :exe 'python3 _markdown_2_html()'<CR>
 
 
@@ -783,7 +784,10 @@ command! -range PyBase64Decode python3 _my_b64decode(<f-line1>, <f-line2>)
 " Execute the code selection using compile/exec
 " TODO
 
-" Convert a Markdown buffer to XHTML5. TODO What would be a good place to put the result?
+" Convert a Markdown buffer to XHTML5.
+" TODO Create a file with the same name as the current buffer with the .html
+" suffix, using LH's template, and paste the generated HTML inside. Can be
+" further customised (with CSS?).
 python3 << EOF
 import vim, markdown
 def _markdown_2_html():
