@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Dec 04, 2012 17:37 Malay Peninsula Standard Time
+" Last Update: Thu Dec 06, 2012 10:39 Malay Peninsula Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -179,8 +179,8 @@ let mapleader = ","
 let maplocalleader = ","
 
 " when using list, keep tabs at their full width and display arrows:
-execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
 " (Character 187 is a right double-chevron, and 183 a mid-dot.)
+execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
 
 " have the mouse enabled all the time:
 set mouse=a
@@ -228,7 +228,7 @@ set autoindent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
-autocmd FileType c,c++,python,powershell,asm,erlang,html,javascript,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
+autocmd FileType c,c++,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig setlocal sw=4 ts=4 expandtab
 if $NIO_LOG_LEVEL != ''
     " Override the defaults:
@@ -322,9 +322,9 @@ let html_use_css = 1
 " alone when editing:
 autocmd FileType html setlocal formatoptions+=tl
 
-" for both CSS and HTML, use genuine tab characters for indentation, to make
+" for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller:
-autocmd FileType html,css setlocal noexpandtab tabstop=2
+autocmd FileType html,css setlocal noexpandtab tabstop=4
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
