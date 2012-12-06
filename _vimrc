@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Dec 06, 2012 10:47 Malay Peninsula Standard Time
+" Last Update: Thu Dec 06, 2012 13:36 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -384,6 +384,7 @@ set infercase
 abbreviate teh the
 abbreviate spolier spoiler
 abbreviate atmoic atomic
+abbreviate magic ¡magic!
 
 " Spell checking operations are defined next.  They are all set to normal mode keystrokes
 " beginning \s but function keys are also mapped to the most common ones.  The functions
