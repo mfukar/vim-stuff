@@ -35,7 +35,7 @@ hi SpecialKey     guifg=#759B93 guibg=#0F0F0F gui=none
 hi Search         guifg=#FFFFFF guibg=#9A2700 gui=none
 hi IncSearch      guifg=tan     guibg=#D07E08 gui=none
 hi Sign           guifg=#02DF15 guibg=NONE    gui=none
-hi ModeMsg        guifg=#02DF15 guibg=NONE    gui=none
+hi ModeMsg        guifg=#02DF15 guibg=NONE    gui=bold
 
 hi DiffChange     guibg=#4C4C09 gui=none
 hi DiffAdd        guibg=#252556 gui=none

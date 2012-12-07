@@ -59,7 +59,7 @@ execute "hi Question guifg="    . s:Colors[0]  . " guibg=" . s:Colors[12]
 execute "hi Search guifg="      . s:Colors[0]  . " guibg=" . s:Colors[13] . " gui=bold"
 execute "hi SpecialKey guifg="  . s:Colors[10] . " guibg=" . s:Colors[12]
 execute "hi StatusLine guifg="  . s:Colors[1]  . " guibg=" . s:Colors[9]  . " gui=none"
-execute "hi StatusLineNC guifg=" . s:Colors[1] . " guibg=" . s:Colors[8]  . " gui=none"
+execute "hi StatusLineNC guifg=" . s:Colors[1] . " guibg=" . s:Colors[13]  . " gui=none"
 execute "hi TabLine guifg="     . s:Colors[8]  . " guibg=" . s:Colors[12] . " gui=none"
 execute "hi TabLineFill guifg=" . s:Colors[12] . " guibg=" . s:Colors[13] . " gui=none"
 execute "hi TabLineSel guifg="  . s:Colors[1]  . " guibg=" . s:Colors[13] . " gui=none"
