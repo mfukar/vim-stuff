@@ -13,7 +13,7 @@ set t_Co=256
 
 let colors_name = "spice"
 
-hi CursorLine     guibg=#000000
+hi CursorLine     guibg=#350020
 hi CursorColumn   guibg=#000000
 hi MatchParen     guifg=#FF7400 guibg=#000000 gui=bold
 hi Pmenu          guifg=#FFFFFF guibg=#323232
