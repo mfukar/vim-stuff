@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Dec 06, 2012 13:36 SGT
+" Last Update: Tue Jan 15, 2013 17:48 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -141,7 +141,7 @@ endif
 " Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
 " probably the windows shell, and I don't really care about that..
 set t_Co=256
-colorscheme obsidian
+colorscheme obsidian2
 
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
@@ -259,17 +259,9 @@ elseif has("win32")
     autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
 
-"   Linux kernel tags will be located at $KERNELTAGS,
-"   Niometrics' global project tags will be located at $NIOTAGS,
-"   The respective cscope databases are at $KERNEL_CSCOPE_DB, $NIO_CSCOPE_DB:
+" Linux kernel tags will be located at $KERNELTAGS,
+" The respective cscope databases are at $KERNEL_CSCOPE_DB:
 if has("unix")
-    " Niometrics project tags:
-    autocmd FileType c setlocal tags+="$NIOTAGS"
-    " Niometrics project cscope database:
-    if $NIO_CSCOPE_DB != ""
-	    cs add $NIO_CSCOPE_DB
-    endif
-
     " Linux kernel tags:
     autocmd FileType c setlocal tags+="$KERNELTAGS"
     " Linux kernel cscope database:
