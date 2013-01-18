@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jan 15, 2013 17:48 EET
+" Last Update: Fri Jan 18, 2013 12:31 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -293,15 +293,13 @@ filetype plugin indent on
 runtime ftplugin/man.vim
 
 " include files can be nasm, makefiles, etc.
-" TODO: figure something out to distinguish between them..
-" autocmd BufNewFile,BufRead *.inc setlocal filetype=nasm
+autocmd BufNewFile,BufRead *.inc setlocal filetype=nasm
 
 " for C/C++, have automatic indentation:
 autocmd FileType c,cpp setlocal cindent
 
-" for actual C (not C++) programming where comments have explicit end characters, if
-" starting a new line in the middle of a comment automatically insert the comment leader
-" characters:
+" for actual C (not C++) files where comments have explicit end characters, if starting a
+" new line in the middle of a comment automatically insert the comment leader characters:
 autocmd FileType c setlocal formatoptions+=ro
 
 " for CSS, also have things in braces indented:
@@ -343,7 +341,7 @@ autocmd FileType gitcommit setlocal textwidth=72
 set ignorecase
 set smartcase
 
-" show the best match so far as search strings are typed:
+" show the best match so far, as search strings are being typed:
 set incsearch
 
 " always assume the /g flag on :s substitutions to replace all matches in a line:
@@ -433,15 +431,15 @@ noremap - <PageUp>
 noremap <Ins> 2<C-Y>
 noremap <Del> 2<C-E>
 
-" use <F5> to cycle through split windows
-" and <F6> to cycle through tabs
+" use <F5> to cycle through split windows,
+" and <F6> to cycle through tabs:
 nnoremap <F5> <Esc><C-W>w
 nnoremap <F6> <Esc>:tabnext<CR>
 
 " use <Ctrl>+N/<Ctrl>+P to cycle through files:
+" [<Ctrl>+N by default is like j, and <Ctrl>+P like k.]
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
-" [<Ctrl>+N by default is like j, and <Ctrl>+P like k.]
 
 " have % bounce between angled brackets, as well as t'other kinds:
 set matchpairs+=<:>
@@ -485,7 +483,7 @@ noremap Y y$
 " ...
 
 " have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle:
-vnoremap <Leader>kr y:call Deboxify('@@')<CR>
+vnoremap <Leader>kr d:call Deboxify('@@')<CR>p
 
 
 " * Keystrokes -- Toggles
@@ -733,8 +731,7 @@ function! DateStamp(...)
 endfunction " DateStamp(...)
 
 
-" Transform visual box selection into a single line:
-" TODO kill the original selection?
+" Transform the contents of the register passed to a single line:
 function! Deboxify(reg)
     let @@ = join(split(getreg(a:reg), '\n'), "")
 endfunction " Deboxify()
@@ -818,13 +815,14 @@ endif
 " Enable omnicompletion:
 set ofu=syntaxcomplete#Complete
 set cot=menu,longest
+
 " and screw Python 2, while we're at it. Yeah, I said it, beardies:
 autocmd FileType python setlocal ofu=python3complete#Complete
 
 " Remove the Windows ^M
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Remove indenting on empty lines and at their end:
+" Remove whitespace on empty lines and at their end:
 noremap <Leader>i :%s/\s*$//g<cr>:noh<cr>''
 
 " end of mfukar's .vimrc
