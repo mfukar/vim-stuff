@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.2
 " Created:      Tue 21 Dec 2010 09:08:35 AM EET
-" Last Update:  Mon May 14, 2012 09:58 EEST
+" Last Update:  Tue Feb 05, 2013 16:31 SGT
 "------------------------------------------------------------------------
 " Description:
 "   Filetype detection plugin for Robot files.
@@ -23,6 +23,7 @@ let s:cpo_save=&cpo
 set cpo&vim
 
 au BufNewFile,BufRead *.txt call s:FTrobot()
+au BufNewFile,BufRead *.robot setlocal filetype=robot
 
 func! s:FTrobot()
 	let b:topl = getline(1)
