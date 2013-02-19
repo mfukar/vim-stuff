@@ -221,9 +221,9 @@ hi PMenuThumb                               guibg=#808890           gui=none
 " Status Line
 " -----------
 " status line for current window
-hi StatusLine       guifg=#508ED8           guibg=#1C2C3F           gui=bold
+hi StatusLine       guifg=#ec7600           guibg=#302f2f          gui=bold
 " status line for non-current windows
-hi StatusLineNC     guifg=#78777f           guibg=#302F2F          gui=none
+hi StatusLineNC     guifg=#7c4600           guibg=#302f2f          gui=none
 
 " Tab Lines
 " ---------
