@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Jan 18, 2013 12:31 GTB Standard Time
+" Last Update: Thu Feb 28, 2013 17:25 SGT
 "
 " This vimrc is divided into these sections:
 "
@@ -141,7 +141,7 @@ endif
 " Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
 " probably the windows shell, and I don't really care about that..
 set t_Co=256
-colorscheme obsidian2
+colorscheme obsidian
 
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
@@ -231,8 +231,8 @@ set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 autocmd FileType c,c++,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig setlocal sw=4 ts=4 expandtab
 if $NIO_LOG_LEVEL != ''
-    " Override the defaults:
-    autocmd FileType c,c++ setlocal sw=8 ts=8 noexpandtab
+    " Dreadful tab culture:
+    autocmd FileType c,c++ setlocal sw=4 ts=4 noexpandtab
 endif
 
 " Search recursively up to / for the ctags 'tags' file:
