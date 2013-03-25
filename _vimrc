@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Feb 28, 2013 17:25 SGT
+" Last Update: Mon Mar 25, 2013 17:08 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -525,12 +525,16 @@ nnoremap \th :set invhls hls?<CR>
 
 " Mappings to base64 encode/decode current visual selection and paste it in a new line(s)
 " below the selected range:
-vnoremap <Leader>e64 :PyBase64Encode<cr>
-vnoremap <Leader>d64 :PyBase64Decode<cr>
+vnoremap <Leader>e64 :PyBase64Encode<CR>
+vnoremap <Leader>d64 :PyBase64Decode<CR>
 
 " Mappings to convert current buffer contents from Markdown to HTML and
 " put it in a (new) file:
 noremap <Leader>md :exe 'python3 _markdown_2_html()'<CR>
+
+" Mapping to convert leading timestamps in syslog-like files from seconds from Epoch to
+" ISO8601 formatted date/time:
+noremap <Leader>iso :exe 'python3 _epoch_to_iso8601()'<CR>
 
 
 " * Keystrokes -- Insert Mode
@@ -784,6 +788,18 @@ def _markdown_2_html():
     blob = '\n'.join(vim.current.buffer[:]) + '\n'
     html = markdown.markdown(blob, output_format='xhtml5')
     vim.current.buffer.append(html.split('\n'))
+EOF
+
+" Replace a leading timestamp in seconds from Epoch with ISO8601 date-time,
+" on all lines:
+python3 << EOF
+import vim, datetime
+def _epoch_to_iso8601():
+    isolines = []
+    for index in range(len(vim.current.buffer)):
+        line = vim.current.buffer[index]
+        stamp = datetime.datetime.fromtimestamp(int(line[:line.find(':')])).isoformat()
+        vim.current.buffer[index] = stamp + line[line.find(':') + 1:]
 EOF
 endif
 
