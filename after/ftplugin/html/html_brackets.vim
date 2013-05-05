@@ -5,7 +5,7 @@
 "               <URL:http://code.google.com/p/lh-vim/>
 " Version:  1.0.0
 " Created:  24th Mar 2008
-" Last Update:  Tue Feb 07, 2012 13:23 GTB Standard Time
+" Last Update:  Tue Apr 23, 2013 23:24 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "   html-ftplugin that defines the default preferences regarding the
@@ -48,8 +48,8 @@ if exists(':Brackets')
     let b:cb_jump_on_close = 1
 
     :Brackets < > -visual=0
-            \      -open=function('lh#html#brackets#lt')
-            \      -clos=function('lh#html#brackets#gt')
+                \ -open=function('lh#html#brackets#lt')
+                \ -clos=function('lh#html#brackets#gt')
 endif
 
 "------------------------------------------------------------------------
