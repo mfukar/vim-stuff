@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun May 05, 2013 09:56 GTB Daylight Time
+" Last Update: Tue Aug 13, 2013 13:00 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -230,10 +230,6 @@ set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,c++,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig,yaml setlocal sw=4 ts=4 expandtab
-if $NIO_LOG_LEVEL != ''
-    " Dreadful tab culture:
-    autocmd FileType c,c++ setlocal sw=4 ts=4 noexpandtab
-endif
 
 " Search recursively up to / for the ctags 'tags' file:
 set tags=tags;/
