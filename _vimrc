@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Aug 13, 2013 13:00 GTB Daylight Time
+" Last Update: Tue Aug 20, 2013 10:21 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -31,6 +31,12 @@ autocmd!
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color", so does the Mac OSX console:
 if &term =~ 'xterm'
+    if $TERM == 'xterm-256color'
+        " Mac OSX iTerm pretends it's an "xterm-256color":
+        fixdel
+        execute 'set t_kb=' . nr2char(127)
+    endif
+    else
 " Gnome terminal fortunately sets $COLORTERM; it needs <Del> fixing,
 " and it has a bug which causes spurious 'c's to appear,
 " which can be fixed by unsetting t_RV:
