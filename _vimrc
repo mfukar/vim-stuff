@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Aug 20, 2013 10:21 BST
+" Last Update: Thu Aug 22, 2013 17:49 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -235,7 +235,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,c++,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
-autocmd FileType gitconfig,yaml setlocal sw=4 ts=4 expandtab
+autocmd FileType gitconfig,yaml,ruby setlocal sw=4 ts=4 expandtab
 
 " Search recursively up to / for the ctags 'tags' file:
 set tags=tags;/
