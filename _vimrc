@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Aug 25, 2013 09:52 BST
+" Last Update: Sun Aug 25, 2013 10:01 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -156,7 +156,9 @@ colorscheme obsidian
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
     set guicursor=n-v-c:block-Cursor
-    set guicursor+=i:hor25-iCursor-blinkwait25-blinkon250-blinkoff250
+    if !has('mac')
+        set guicursor+=i:hor25-iCursor-blinkwait25-blinkon250-blinkoff250
+    endif
 endif
 
 " have a hundred lines of command-line (etc) history:
