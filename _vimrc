@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Aug 22, 2013 17:49 EEST
+" Last Update: Sun Aug 25, 2013 09:52 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -96,11 +96,15 @@ autocmd GUIEnter * set vb t_vb=
 if has("gui_running")
         set lines=50
         set columns=96
-        set gfn=Consolas:h11
+        if has('win32')
+            set gfn=Consolas:h11
+        elseif has('mac')
+            set gfn=Monaco:h11
+        endif
 endif
 
 " My laptop has language set to Greek or US:
-if has("win32")
+if has('win32')
     lang English_United Kingdom.1252
 endif
 
