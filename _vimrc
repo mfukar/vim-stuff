@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Aug 27, 2013 10:04 BST
+" Last Update: Wed Aug 28, 2013 19:15 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -717,8 +717,8 @@ function! s:RunShellCommand(cmdline, bang)
     silent! execute 'set ft=text'
     silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
     silent! execute 'autocmd BufEnter  <buffer> execute ''resize '' .  line(''$'')'
-    silent! execute 'nnoremap <silent> <buffer> <localleader>r :call <SID>RunShellCommand(''' . _ . ''', '''')<CR>'
-    silent! execute 'nnoremap <silent> <buffer> <localleader>b :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
+    silent! execute 'nnoremap <silent> <buffer> r :call <SID>RunShellCommand(''' . _ . ''', '''')<CR>'
+    silent! execute 'nnoremap <silent> <buffer> b :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
 
     execute 'resize ' . line('$')
 
