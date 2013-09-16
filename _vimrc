@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Sep 06, 2013 16:20 BST
+" Last Update: Mon Sep 16, 2013 15:02 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -319,6 +319,10 @@ let html_use_css = 1
 " for HTML, generally format text, but if a long line has been created leave it
 " alone when editing:
 autocmd FileType html setlocal formatoptions+=tl
+
+" for HTML & Javascript, have a mapping toggling the filetype between those two:
+autocmd FileType html noremap <localleader>t :set filetype=javascript<CR>
+autocmd FileType javascript noremap <localleader>t :set filetype=html<CR>
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller:
