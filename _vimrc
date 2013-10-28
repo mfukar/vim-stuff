@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Sep 16, 2013 15:02 BST
+" Last Update: Thu Oct 24, 2013 14:36 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -151,7 +151,7 @@ endif
 " Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
 " probably the windows shell, and I don't really care about that..
 set t_Co=256
-colorscheme obsidian
+colorscheme solarized
 
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
