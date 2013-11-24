@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 24, 2013 21:56 EET
+" Last Update: Sun Nov 24, 2013 21:59 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -194,14 +194,14 @@ execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
 " have the mouse enabled all the time:
 set mouse=a
 
-" don't have files trying to override this .vimrc:
+" Don't have files trying to override this .vimrc or perform any shenanigans:
 set nomodeline
 
 " Some convenient netrw settings:
 let g:netrw_liststyle = 3
 
 " I use pscp with netrw:
-if(has('win32'))
+if has('win32')
     " list files, mind the trailing space:
     let g:netrw_list_cmd = "plink HOSTNAME ls -laFh "
     " g:author_short will do when g:netrw_machine is not available:
@@ -225,10 +225,10 @@ let g:SignatureLcMarkStr="\m>"
 
 " * Text Formatting -- General
 
-" don't make it look like there are line breaks where there aren't:
+" Don't make it look like there are line breaks where there aren't:
 set nowrap
 
-" always use line numbering:
+" Always use line numbering:
 set nu
 
 " Indentation
@@ -257,10 +257,10 @@ endfunction
 autocmd BufEnter /* call LoadCscope()
 
 " Add project-independent tags for quickly jumping around C/Python stdlib code:
-if has("unix")
+if has('unix') || has('mac')
     autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
-elseif has("win32")
+elseif has('win32')
     autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
 
