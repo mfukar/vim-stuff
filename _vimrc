@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Nov 22, 2013 14:53 EET
+" Last Update: Sun Nov 24, 2013 21:56 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -31,8 +31,9 @@ autocmd!
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color", so does the Mac OSX console:
 if &term =~ 'xterm'
+
+" Mac OSX iTerm pretends it's an "xterm-256color":
     if $TERM == 'xterm-256color'
-        " Mac OSX iTerm pretends it's an "xterm-256color":
         fixdel
         execute 'set t_kb=' . nr2char(127)
     endif
@@ -49,9 +50,9 @@ if &term =~ 'xterm'
 " and these don't:
     else
     if $COLORTERM == ''
-		" Tricky. Magic number might have to change to 127 (^?) in
-		" some systems. In PuTTY it can be configured:
-		execute 'set t_kb=' . nr2char(8)
+        " Tricky. Magic number might have to change to 127 (^?) in
+        " some systems. In PuTTY it can be configured:
+        execute 'set t_kb=' . nr2char(8)
         fixdel
     endif
 " The above won't work if an XTerm or KVT is started from within a
@@ -70,17 +71,17 @@ call pathogen#infect()
 let $PAGER=''
 
 " Store temporary files in a central spot,
-" instead of all over the place.
-if has("win32")
+" instead of all over the place:
+if has('win32')
     set backupdir=$VIMRUNTIME\temp
     set directory=$VIMRUNTIME\temp
-elseif has("unix")
+elseif has('unix')
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp
     set directory=~/.vim-tmp,~/.tmp,~/tmp
 endif
 
 " Set 'path' to make gf usable:
-set path=/usr/include,$HOME/include,../include,.,,
+set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 
 
 " * User Interface
@@ -93,7 +94,7 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
-if has("gui_running")
+if has('gui_running')
         set lines=50
         set columns=96
         if has('win32')
@@ -103,18 +104,13 @@ if has("gui_running")
         endif
 endif
 
-" My laptop has language set to Greek or US:
-if has('win32')
-    lang English_United Kingdom.1252
-endif
-
 " whoami:
-let g:author = "Michael Foukarakis"
-let g:author_short = "mfukar"
+let g:author = 'Michael Foukarakis'
+let g:author_short = 'mfukar'
 
 " mt_chooseWith for lh-vim template completion
 " TODO: 'complete' doesn't seem to work atm.
-let g:mt_chooseWith = "confirm"
+let g:mt_chooseWith = 'confirm'
 
 " screw , I don't want SIGSTOP and 'screen' would lose the connection
 " on it, so let's remap it to something useful, like a shell:
@@ -133,13 +129,14 @@ set laststatus=2
 " Taglist configuration
 " on/off switching:
 nnoremap <silent> <F7> :TlistToggle<CR>
-" Let my shells handle all the path sickness:
+
+" Let the shell handle all the path sickness:
 let Tlist_Ctags_Cmd='ctags'
 let Tlist_Close_On_Select = 1
 let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 " TagListTagName - Used for tag names
 highlight MyTagListTagName gui=bold guifg=Black guibg=Orange
-" " TagListTagScope - Used for tag scope
+" TagListTagScope - Used for tag scope
 highlight MyTagListTagScope gui=NONE guifg=Blue
 
 " have syntax highlighting in terminals which can display colours:
@@ -149,7 +146,7 @@ if (has('syntax') && (&t_Co > 2))
 endif
 
 " Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
-" probably the windows shell, and I don't really care about that..
+" probably the windows shell, and I don't really care about that:
 set t_Co=256
 colorscheme solarized
 
@@ -190,7 +187,7 @@ set showcmd
 let mapleader = ","
 let maplocalleader = ","
 
-" when using list, keep tabs at their full width and display arrows:
+" When using list, keep tabs at their full width and display arrows:
 " (Character 187 is a right double-chevron, and 183 a mid-dot.)
 execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
 
