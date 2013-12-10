@@ -42,8 +42,8 @@ if !exists(':Brackets')
 endif
 
 if exists(':Brackets')
-    let b:usemarks         = 1
-    let b:cb_jump_on_close = 1
+    let b:usemarks         = 0
+    let b:cb_jump_on_close = 0
 
     :SetMarker <+ +>
 

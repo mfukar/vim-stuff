@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 24, 2013 21:59 EET
+" Last Update: Tue Dec 10, 2013 09:09 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -789,14 +789,15 @@ command! -range PyBase64Decode python3 _my_b64decode(<f-line1>, <f-line2>)
 " TODO
 
 " Convert a Markdown buffer to XHTML5.
-" TODO Create a file with the same name as the current buffer with the .html
-" suffix, using LH's template, and paste the generated HTML inside. Can be
-" further customised (with CSS?).
+" TODO Use LH's template for HTML files.
+" TODO CSS?
 python3 << EOF
 import vim, markdown
 def _markdown_2_html():
     blob = '\n'.join(vim.current.buffer[:]) + '\n'
     html = markdown.markdown(blob, output_format='xhtml5')
+    html_fname = ''.join(vim.current.buffer.name.split('.')[:-1]) + '.html'
+    vim.command('belowright new ' + html_fname)
     vim.current.buffer.append(html.split('\n'))
 EOF
 
