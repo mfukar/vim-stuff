@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Dec 10, 2013 09:09 EET
+" Last Update: Tue Dec 10, 2013 09:24 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -788,17 +788,24 @@ command! -range PyBase64Decode python3 _my_b64decode(<f-line1>, <f-line2>)
 " Execute the code selection using compile/exec
 " TODO
 
-" Convert a Markdown buffer to XHTML5.
-" TODO Use LH's template for HTML files.
-" TODO CSS?
+" Convert a Markdown buffer to XHTML5:
 python3 << EOF
 import vim, markdown
 def _markdown_2_html():
+    # Convert:
     blob = '\n'.join(vim.current.buffer[:]) + '\n'
-    html = markdown.markdown(blob, output_format='xhtml5')
+    html = markdown.markdown(blob, extensions=['toc'], output_format='xhtml5')
+
+    # New window with appropriate file name:
     html_fname = ''.join(vim.current.buffer.name.split('.')[:-1]) + '.html'
     vim.command('belowright new ' + html_fname)
+
+    # The template adds a marker in the body, it's easier to just remove it:
+    trailer = vim.current.buffer[4:]
+    del vim.current.buffer[3:]
+
     vim.current.buffer.append(html.split('\n'))
+    vim.current.buffer.append(trailer)
 EOF
 
 " Replace a leading timestamp in seconds from Epoch with ISO8601 date-time,
