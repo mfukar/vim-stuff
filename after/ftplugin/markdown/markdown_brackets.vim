@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     1.0
 " Created:     Mon Jan 17, 2011 08:45 EET
-" Last Update: Thu Sep 12, 2013 13:57 BST
+" Last Update: Wed Dec 11, 2013 09:07 EET
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Markdown.
@@ -29,6 +29,8 @@ set cpo&vim
 "------------------------------------------------------------------------
 " Brackets
 "------------------------------------------------------------------------
+" XXX BUG: Brackets don't seem to work after long-lived vim sessions. Probably another
+" script mucking with them.
 if !exists(':Brackets')
     runtime plugin/common_brackets.vim
 endif
@@ -38,7 +40,8 @@ if exists(':Brackets')
     :SetMarker <+ +>
     :Brackets -clear
     :Brackets { } -insert=0 -trigger=<localleader>{
-    :Brackets ( ) -trigger=<localleader>(
+    :Brackets ( ) -visual=0
+    :Brackets ( ) -insert=0 -trigger=<localleader>(
     :Brackets [ ] -visual=0
     :Brackets [ ] -insert=0 -trigger=<localleader>[
     :Brackets " " -visual=0
