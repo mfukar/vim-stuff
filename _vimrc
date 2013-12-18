@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Dec 10, 2013 09:24 EET
+" Last Update: Wed Dec 18, 2013 12:39 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -128,7 +128,7 @@ set laststatus=2
 
 " Taglist configuration
 " on/off switching:
-nnoremap <silent> <F7> :TlistToggle<CR>
+nnoremap <silent> <F11> :TlistToggle<CR>
 
 " Let the shell handle all the path sickness:
 let Tlist_Ctags_Cmd='ctags'
@@ -355,6 +355,10 @@ set incsearch
 
 " always assume the /g flag on :s substitutions to replace all matches in a line:
 set gdefault
+
+" Define a mapping to search for the word under the cursor in the current directory and
+" all subdirectories, opening the quickfix window when done:
+map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **  " <Bar> cw<CR>
 
 
 " * Spelling
