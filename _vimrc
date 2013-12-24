@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Dec 18, 2013 12:39 EET
+" Last Update: Tue Dec 24, 2013 15:45 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -377,8 +377,9 @@ endif
 " that words at starts of sentences can still be completed with words that are in the
 " dictionary all in lower case):
 execute 'set dictionary+=' . PersonalDict
-if has("unix")
+if has('unix')
     set dictionary+=/usr/dict/words
+elseif has('mac')
 endif
 set complete=.,w,k
 set infercase
@@ -529,9 +530,12 @@ nmap <F2> \tl
 vmap <Leader><F2> :BlobDiff('blob')<CR>
 nmap <Leader><F2> :RegDiff('@@')<CR>
 
-" have \th ("toggle highlight") toggle highlighting of search matches, and
+" have <Leader>th ("toggle highlight") toggle highlighting of search matches, and
 " report the change:
-nnoremap \th :set invhls hls?<CR>
+nnoremap <Leader>th :set invhls hls?<CR>
+
+" additionally, highlight search matches by default:
+set hls
 
 
 " * Keystrokes -- Object Processing
