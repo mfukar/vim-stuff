@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Dec 24, 2013 15:45 EET
+" Last Update: Fri Dec 27, 2013 23:20 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -503,27 +503,27 @@ vnoremap <Leader>kr d:call Deboxify('@@')<CR>p
 " * Keystrokes -- Toggles
 
 " Keystrokes to toggle options are defined here.  They are all set to normal mode strokes
-" beginning with \t.
+" beginning with <Leader>t.
 " Some function keys (which might not work in all terminals) are also mapped, for
 " convenience.
 
-" have \tp ("toggle paste") toggle paste on/off and report the change, and
+" have <Leader>tp ("toggle paste") toggle paste on/off and report the change, and
 " where possible also have <F4> do this both in normal and insert mode:
-nnoremap \tp :set invpaste paste?<CR>
-nmap <F4> \tp
-imap <F4> <C-O>\tp
+nnoremap <Leader>tp :set invpaste paste?<CR>
+nmap <F4> <Leader>tp
+imap <F4> <C-O><Leader>tp
 set pastetoggle=<F4>
 
-" have \tf ("toggle format") toggle the automatic insertion of line breaks
+" have <Leader>tf ("toggle format") toggle the automatic insertion of line breaks
 " during typing and report the change:
-nnoremap \tf :if &fo =~ 't' <Bar> set fo-=t <Bar> else <Bar> set fo+=t <Bar>
+nnoremap <Leader>tf :if &fo =~ 't' <Bar> set fo-=t <Bar> else <Bar> set fo+=t <Bar>
   \ endif <Bar> set fo?<CR>
-nmap <F3> \tf
-imap <F3> <C-O>\tf
+nmap <F3> <Leader>tf
+imap <F3> <C-O><Leader>tf
 
-" have \tl ("toggle list") toggle list on/off and report the change:
-nnoremap \tl :set invlist list?<CR>
-nmap <F2> \tl
+" have <Leader>tl ("toggle list") toggle list on/off and report the change:
+nnoremap <Leader>tl :set invlist list?<CR>
+nmap <F2> <Leader>tl
 
 " map <Leader><F2> to calling the BlobDiff command with a selection in visual/select mode,
 " and with the unnamed register contents in normal mode:
