@@ -1,0 +1,17 @@
+VimL:" markdown File Template, mfukar, Wed Jan 01, 2014 18:27 EET
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end   = s:value_start
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+---
+layout: post
+title: <++>
+tags: <++>
+year: Â¡strftime('%Y')Â¡
+month: Â¡strftime('%m')Â¡
+day: Â¡strftime('%d')Â¡
+published: false
+summary: <++>
+---
+<+content+>
