@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Dec 27, 2013 23:20 EET
+" Last Update: Wed Jan 08, 2014 10:16 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -848,10 +848,10 @@ autocmd BufWritePre * call LastUpdated()
 filetype plugin on
 " TODO: Decide between pydiction | omnicomplete for Python:
 let g:pydiction_menu_height = 20
-if has("unix")
-    let g:pydiction_location = '/home/'.$USERNAME.'/.vim/ftplugin/pydiction/complete-dict'
+if has('unix') || has('mac')
+    let g:pydiction_location = '/home/'.$USERNAME.'/.vim/bundle/pydiction/complete-dict'
 else
-    let g:pydiction_location =$VIMRUNTIME.'vimfiles/fplugin/pydiction/complete-dict'
+    let g:pydiction_location =$VIMRUNTIME.'vimfiles/bundle/pydiction/complete-dict'
 endif
 
 " Enable omnicompletion:
