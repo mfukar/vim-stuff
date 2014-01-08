@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jan 08, 2014 10:16 EET
+" Last Update: Wed Jan 08, 2014 10:29 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -99,7 +99,7 @@ if has('gui_running')
         set columns=96
         if has('win32')
             set gfn=Consolas:h11
-        elseif has('mac')
+        elseif has('macunix')
             set gfn=Monaco:h11
         endif
 endif
@@ -153,7 +153,7 @@ colorscheme solarized
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
     set guicursor=n-v-c:block-Cursor
-    if !has('mac')
+    if !has('macunix')
         set guicursor+=i:hor25-iCursor-blinkwait25-blinkon250-blinkoff250
     endif
 endif
@@ -257,7 +257,7 @@ endfunction
 autocmd BufEnter /* call LoadCscope()
 
 " Add project-independent tags for quickly jumping around C/Python stdlib code:
-if has('unix') || has('mac')
+if has('unix') || has('macunix')
     autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
 elseif has('win32')
@@ -379,7 +379,7 @@ endif
 execute 'set dictionary+=' . PersonalDict
 if has('unix')
     set dictionary+=/usr/dict/words
-elseif has('mac')
+elseif has('macunix')
 endif
 set complete=.,w,k
 set infercase
@@ -846,10 +846,9 @@ endfun
 autocmd BufWritePre * call LastUpdated()
 
 filetype plugin on
-" TODO: Decide between pydiction | omnicomplete for Python:
 let g:pydiction_menu_height = 20
-if has('unix') || has('mac')
-    let g:pydiction_location = '/home/'.$USERNAME.'/.vim/bundle/pydiction/complete-dict'
+if has('gui_macvim') || has('macunix') || has('unix')
+    let g:pydiction_location = $HOME . '/.vim/bundle/pydiction/complete-dict'
 else
     let g:pydiction_location =$VIMRUNTIME.'vimfiles/bundle/pydiction/complete-dict'
 endif
