@@ -19,4 +19,5 @@ Plugins
 * a slightly customized version of Tim Pope's surround
 * BlobDiff (diff two arbitrary text blobs)
 * vsearch  (visual search)
+* pydiction
 * and others I may have left out or forgotten.
