@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jan 08, 2014 10:29 EET
+" Last Update: Thu Jan 16, 2014 10:10 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -123,7 +123,7 @@ set title
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
-set statusline=%<%f\ [%{&ff}]%h%m%r\ 0x%B%=%{strftime(\"%H:%M,\ %b\ %d,\ %Y\")}\ %l,\T%{IndentLevel()}\ %P
+let &statusline='%<%f [%{&ff}]%h%m%r 0x%B%=%{strftime("%H:%M, %b %d, %Y")} %l,T%{IndentLevel()} %P'
 set laststatus=2
 
 " Taglist configuration
@@ -258,7 +258,9 @@ autocmd BufEnter /* call LoadCscope()
 
 " Add project-independent tags for quickly jumping around C/Python stdlib code:
 if has('unix') || has('macunix')
-    autocmd FileType c setlocal tags+=$HOME/.vim/tags/c.ctags
+    autocmd FileType c      setlocal tags+=$HOME/.vim/tags/c.ctags
+    " Experimental..
+    autocmd FileType cpp    setlocal tags+=$HOME/.vim/tags/cpp.ctags
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
 elseif has('win32')
     autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
