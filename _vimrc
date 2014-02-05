@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 05, 2014 12:56 EET
+" Last Update: Wed Feb 05, 2014 16:33 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -88,21 +88,21 @@ set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 
 set encoding=utf-8
 
-set fileencodings=ucs-bom,utf-8,default,latin1
+set fileencodings=utf-8,ucs-bom,default,latin1
 
 " No more bells, I've had enough:
 set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
 if has('gui_running')
-        set lines=50
-        set columns=96
-        if has('win32')
-            set gfn=Consolas:h11
-        elseif has('macunix')
-            " Do note that Monaco doesn't have an italic variant:
-            set gfn=Monaco:h11
-        endif
+    set lines=50
+    set columns=96
+    if has('win32')
+        set gfn=Consolas:h11
+    elseif has('macunix')
+        " Do note that Monaco doesn't have an italic variant:
+        set gfn=Monaco:h11
+    endif
 endif
 
 " whoami:
@@ -141,8 +141,7 @@ highlight MyTagListTagName gui=bold guifg=Black guibg=Orange
 highlight MyTagListTagScope gui=NONE guifg=Blue
 
 " have syntax highlighting in terminals which can display colours:
-if (has('syntax') && (&t_Co > 2))
-\|| has('gui_running')
+if (has('syntax') && (&t_Co > 2)) || has('gui_running')
     syntax on
 endif
 
@@ -220,9 +219,6 @@ set backspace=eol,start,indent
 " give the cursor some room to breathe:
 set scrolloff=5
 
-" Set the mark string for signature:
-let g:SignatureLcMarkStr="\m>"
-
 
 " * Text Formatting -- General
 
@@ -240,6 +236,15 @@ set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig,yaml,ruby,java,objc setlocal sw=4 ts=4 expandtab
+
+" for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
+" files a few bytes smaller:
+autocmd FileType javascript,html,css setlocal noexpandtab ts=4 sw=4
+
+" in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
+" have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
+" later):
+autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 " Search recursively up to / for the ctags 'tags' file:
 set tags=tags;/
@@ -323,15 +328,6 @@ autocmd FileType html setlocal formatoptions+=tl
 " for HTML & Javascript, have a mapping toggling the filetype between those two:
 autocmd FileType html noremap <localleader>t :set filetype=javascript<CR>
 autocmd FileType javascript noremap <localleader>t :set filetype=html<CR>
-
-" for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
-" files a few bytes smaller:
-autocmd FileType javascript,html,css setlocal noexpandtab ts=4 sw=4
-
-" in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
-" have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
-" later):
-autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 " set folding according to syntax for C,C++:
 autocmd FileType c,cpp setlocal foldmethod=syntax
