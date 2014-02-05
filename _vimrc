@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 05, 2014 16:33 EET
+" Last Update: Wed Feb 05, 2014 16:45 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -406,8 +406,7 @@ execute 'nnoremap \sl :w ! grep -v "^>" <Bar> grep -E -v "^[[:alpha:]-]+: " ' .
 " and also excluding the possessive forms of any valid words (EG "Lizzy's" won't be
 " highlighted if "Lizzy" is in the dictionary); with mail and news messages it ignores
 " headers and quoted text; for HTML it ignores tags and only checks words that will
-" appear, and turns off other syntax highlighting to make the errors more apparent
-" [function at end of file]:
+" appear, and turns off other syntax highlighting to make the errors more apparent:
 nnoremap \sh :call HighlightSpellingErrors()<CR><CR>
 nmap <F9> \sh
 
