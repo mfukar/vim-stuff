@@ -3,7 +3,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.0.3
 " Created:      Thu Sep 15, 2011 13:22 GTB Daylight Time
-" Last Update:  Fri Sep 23, 2011 16:18 GTB Daylight Time
+" Last Update:  Mon Feb 03, 2014 16:01 EET
 "------------------------------------------------------------------------
 " Description:
 "       Differ - a dictionary that can diff!
@@ -148,7 +148,7 @@ endfunction " blobdiff#differ#SetupDiffBuffer()
 
 function! blobdiff#differ#CloseDiffBuffer() dict
     if bufexists(self.diff_buffer)
-        exe 'bdelete ' .self.diff_buffer
+        exe 'bdelete! ' .self.diff_buffer
     endif
 endfunction "blobdiff#differ#CloseDiffBuffer()
 
