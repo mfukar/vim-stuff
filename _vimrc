@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Jan 16, 2014 10:10 EET
+" Last Update: Wed Feb 05, 2014 12:56 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -100,6 +100,7 @@ if has('gui_running')
         if has('win32')
             set gfn=Consolas:h11
         elseif has('macunix')
+            " Do note that Monaco doesn't have an italic variant:
             set gfn=Monaco:h11
         endif
 endif
@@ -551,7 +552,7 @@ vnoremap <Leader>d64 :PyBase64Decode<CR>
 " put it in a (new) file:
 noremap <Leader>md :exe 'python3 _markdown_2_html()'<CR>
 
-" Mapping to convert leading timestamps in syslog-like files from seconds from Epoch to
+" Mapping to convert leading timestamps in syslog-like files from seconds-since-Epoch to
 " ISO8601 formatted date/time:
 noremap <Leader>iso :exe 'python3 _epoch_to_iso8601()'<CR>
 
