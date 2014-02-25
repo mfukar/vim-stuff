@@ -1,0 +1,33 @@
+VimL: "" css File Template, mfukar, Tue Feb 25, 2014 14:33 GMT
+VimL: let s:value_start = 'Â¡'
+VimL: let s:value_end = 'Â¡'
+VimL: let s:marker_open  = '<+'
+VimL: let s:marker_close = '+>'
+	<style>
+	html {
+		background: #f5ee;
+		font-family: Monaco;
+		font-size: 14px;
+	}
+	body {
+		width: 1000px;
+	}
+	blockquote {
+		font-style: italic;
+	}
+	pre, code {
+		background-color: #ffffff;
+		color: #d14;
+		white-space: pre-wrap;
+	}
+	pre {
+		padding: 0.5em;
+		border-radius: 5px;
+		border: 1px solid #aaa;
+		margin-left: 0.5em;
+		margin-right: 0.5em;
+	}
+	li {
+		margin: 0 0 3px 0;
+	}
+	</style>
