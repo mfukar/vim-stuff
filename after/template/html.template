@@ -5,7 +5,9 @@ VimL: let s:marker_open  = '<+'
 VimL: let s:marker_close = '+>'
 <!-- Created by Â¡Author(1)Â¡ with Vim Â¡substitute(v:version, '.', '&.', '')Â¡ -->
 <html>
+VimL: call s:Include( 'css' )
+
 	<body>
-		<+the page+>
+		<+content+>
 	</body>
 </html>
