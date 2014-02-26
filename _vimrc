@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 12, 2014 11:16 EET
+" Last Update: Wed Feb 26, 2014 15:09 GMT
 "
 " This vimrc is divided into these sections:
 "
@@ -811,8 +811,8 @@ def _markdown_2_html():
     vim.command('belowright new ' + html_fname)
 
     # The template adds a marker in the body, it's easier to just remove it:
-    trailer = vim.current.buffer[4:]
-    del vim.current.buffer[3:]
+    trailer = vim.current.buffer[-2:]
+    del vim.current.buffer[-3:]
 
     vim.current.buffer.append(html.split('\n'))
     vim.current.buffer.append(trailer)
