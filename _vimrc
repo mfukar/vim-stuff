@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 26, 2014 15:09 GMT
+" Last Update: Wed Feb 26, 2014 15:55 GMT
 "
 " This vimrc is divided into these sections:
 "
@@ -811,11 +811,13 @@ def _markdown_2_html():
     vim.command('belowright new ' + html_fname)
 
     # The template adds a marker in the body, it's easier to just remove it:
-    trailer = vim.current.buffer[-2:]
-    del vim.current.buffer[-3:]
-
+    vim.command('normal <C-K>')
+    vim.command('normal dd')
+    # Delete the trailer, up to the end of file:
+    vim.command('normal dG')
     vim.current.buffer.append(html.split('\n'))
-    vim.current.buffer.append(trailer)
+    # ..and paste the trailer back:
+    vim.command('normal Gp')
 EOF
 
 " Replace a leading timestamp in seconds from Epoch with ISO8601 date-time,
