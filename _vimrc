@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Feb 26, 2014 15:55 GMT
+" Last Update: Sat Mar 01, 2014 16:18 GMT
 "
 " This vimrc is divided into these sections:
 "
@@ -113,8 +113,8 @@ let g:author_short = 'mfukar'
 " TODO: 'complete' doesn't seem to work atm.
 let g:mt_chooseWith = 'confirm'
 
-" screw , I don't want SIGSTOP and 'screen' would lose the connection
-" on it, so let's remap it to something useful, like a shell:
+" SIGSTOP from <C-Z> is unwanted and 'screen' would lose the connection on it,
+" so let's remap it to something useful, like a shell:
 map <C-Z> :shell<CR>
 
 " Set the terminal title, always:
@@ -201,7 +201,7 @@ set mouse=a
 " Don't have files trying to override this .vimrc or perform any shenanigans:
 set nomodeline
 
-" Some convenient netrw settings:
+" Make netrw list files in a tree:
 let g:netrw_liststyle = 3
 
 " I use pscp with netrw:
@@ -810,11 +810,13 @@ def _markdown_2_html():
     html_fname = ''.join(vim.current.buffer.name.split('.')[:-1]) + '.html'
     vim.command('belowright new ' + html_fname)
 
-    # The template adds a marker in the body, it's easier to just remove it:
+    # The template adds a single marker in the body, jump to it:
     vim.command('normal <C-K>')
+    # it's easier to just remove it:
     vim.command('normal dd')
-    # Delete the trailer, up to the end of file:
+    # delete the trailer, up to the end of file:
     vim.command('normal dG')
+    # append the generated HTML:
     vim.current.buffer.append(html.split('\n'))
     # ..and paste the trailer back:
     vim.command('normal Gp')
@@ -861,10 +863,10 @@ endif
 set ofu=syntaxcomplete#Complete
 set cot=menu,longest
 
-" and screw Python 2, while we're at it. Yeah, I said it, beardies:
+" Always using Python 3.x:
 autocmd FileType python setlocal ofu=python3complete#Complete
 
-" Remove the Windows ^M
+" Remove the Windows ^M:
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Remove whitespace on empty lines and at their end:
