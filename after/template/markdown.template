@@ -11,7 +11,7 @@ tags: <++>
 year: Â¡strftime('%Y')Â¡
 month: Â¡strftime('%m')Â¡
 day: Â¡strftime('%d')Â¡
-published: false
+published: <+false+>
 summary: <++>
 ---
 <+content+>
