@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Mar 12, 2014 16:02 GMT
+" Last Update: Wed Mar 12, 2014 18:24 GMT
 "
 " This vimrc is divided into these sections:
 "
@@ -30,7 +30,7 @@ autocmd!
 
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
 " KVT claims to be "xterm-color", so does the Mac OSX console:
-if &term =~ 'xterm'
+if &term =~ 'xterm' " {{{1
 
 " Mac OSX iTerm pretends it's an "xterm-256color":
     if $TERM == 'xterm-256color'
@@ -59,7 +59,7 @@ if &term =~ 'xterm'
 " Gnome Terminal or an RXVT: the $COLORTERM setting will propagate;
 " it's always OK with Konsole which explicitly sets $COLORTERM to "".
     endif
-endif
+endif " }}}1
 
 
 " * Environment
@@ -94,16 +94,16 @@ set fileencodings=utf-8,ucs-bom,default,latin1
 set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
-if has('gui_running')
+if has('gui_running') " {{{1
     set lines=50
-    set columns=96
+    set columns=120
     if has('win32')
         set gfn=Consolas:h11
     elseif has('macunix')
         " Do note that Monaco doesn't have an italic variant:
         set gfn=Monaco:h11
     endif
-endif
+endif " }}}1
 
 " whoami:
 let g:author = 'Michael Foukarakis'
@@ -702,7 +702,7 @@ let s:lastcmd = ''
 " <localleader>b takes you back to the buffer you were before the command was executed,
 " <localleader>r executes the command again.
 " :Shell! can be used to repeat the last command given:
-function! s:RunShellCommand(cmdline, bang)
+function! s:RunShellCommand(cmdline, bang) " {{{1
     let _ = a:bang != '' ? s:lastcmd : a:cmdline == '' ? '' : join(map(split(a:cmdline), 'expand(v:val)'))
 
     if _ == ''
@@ -734,7 +734,7 @@ function! s:RunShellCommand(cmdline, bang)
 
     setlocal nomodifiable
     1
-endfunction " RunShellCommand(cmdline)
+endfunction " }}}1
 command! -complete=shellcmd -nargs=* -bang Shell call s:RunShellCommand(<q-args>, '<bang>')
 
 
