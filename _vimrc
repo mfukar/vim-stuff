@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sat Mar 01, 2014 16:18 GMT
+" Last Update: Wed Mar 12, 2014 16:02 GMT
 "
 " This vimrc is divided into these sections:
 "
@@ -213,7 +213,7 @@ if has('win32')
     let g:netrw_ssh_cmd = "plink -l ".g:author_short." -2 -T -ssh"
 endif
 
-" Automatically change the working directory:
+" Automatically set the working directory:
 set autochdir
 
 " allow <BkSpc> to delete line breaks, beyond the start of the current
@@ -698,10 +698,9 @@ endfunction " AddWordToDictionary()
 " Last command run with RunShellCommand():
 let s:lastcmd = ''
 " Run commands in the shell and show the results in a new window.
-" From that window,
+" In that window,
 " <localleader>b takes you back to the buffer you were before the command was executed,
 " <localleader>r executes the command again.
-"
 " :Shell! can be used to repeat the last command given:
 function! s:RunShellCommand(cmdline, bang)
     let _ = a:bang != '' ? s:lastcmd : a:cmdline == '' ? '' : join(map(split(a:cmdline), 'expand(v:val)'))
@@ -712,7 +711,7 @@ function! s:RunShellCommand(cmdline, bang)
 
     let s:lastcmd = _
     let bufnr = bufnr('%')
-    let winnr = bufwinnr(_)
+    let winnr = bufwinnr('^' ._. '$') " Force full match.
     silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
     " I could set buftype=nofile, but then no switching back and forth buffers..
     setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
