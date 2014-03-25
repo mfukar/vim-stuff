@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Mar 25, 2014 18:00 EET
+" Last Update: Tue Mar 25, 2014 18:04 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -133,7 +133,7 @@ endif
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
-let &statusline='%<%-3.3n %f [%{&ff}]%h%m%r (%c, 0x%B) %= <%{strftime("%H:%M, %b %d, %Y")}> T%{IndentLevel()} %P'
+let &statusline='%<%3.3n %f [%{&ff}]%h%m%r (%03c, 0x%04B) %= <%{strftime("%H:%M, %b %d, %Y")}> T%{IndentLevel()} %P'
 set laststatus=2
 
 " Taglist configuration
