@@ -19,7 +19,8 @@ syn match	golfOperator		"(\|)\|%\|/\|*\|-\|+"
 syn match	golfDuplicate		"\."
 syn match	golfMap			","
 syn match	golfStack		";\|:\|\\\|[\|]\|@"
-syn match	golfString		"\"\|'"
+syn region golfString start=+"+ end=+"+ skip=+\\"+
+syn region golfString start=+'+ end=+'+ skip=+\\'+
 syn match	golfSort		"\$"
 syn match	golfComment		"#.*$" contains=@Spell
 
