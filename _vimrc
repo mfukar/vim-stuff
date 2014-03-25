@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Mar 12, 2014 18:24 GMT
+" Last Update: Tue Mar 25, 2014 18:00 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -120,11 +120,20 @@ map <C-Z> :shell<CR>
 " Set the terminal title, always:
 set title
 
+" Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
+" probably the windows shell, and I don't really care about that:
+set t_Co=256
+if has('gui_running')
+    colorscheme solarized
+else
+    colorscheme obsidian
+endif
+
 " Create a fancy status line:
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
-let &statusline='%<%f [%{&ff}]%h%m%r 0x%B%=%{strftime("%H:%M, %b %d, %Y")} %l,T%{IndentLevel()} %P'
+let &statusline='%<%-3.3n %f [%{&ff}]%h%m%r (%c, 0x%B) %= <%{strftime("%H:%M, %b %d, %Y")}> T%{IndentLevel()} %P'
 set laststatus=2
 
 " Taglist configuration
@@ -143,15 +152,6 @@ highlight MyTagListTagScope gui=NONE guifg=Blue
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2)) || has('gui_running')
     syntax on
-endif
-
-" Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
-" probably the windows shell, and I don't really care about that:
-set t_Co=256
-if has('gui_running')
-    colorscheme solarized
-else
-    colorscheme obsidian
 endif
 
 " Set a different cursor for insert/normal/visual mode:
