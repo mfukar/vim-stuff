@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Mar 25, 2014 18:04 EET
+" Last Update: Fri Mar 28, 2014 11:40 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -95,7 +95,7 @@ set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
 if has('gui_running') " {{{1
-    set lines=50
+    set lines=61     " Magic number for my screen on OS X.
     set columns=120
     if has('win32')
         set gfn=Consolas:h11
