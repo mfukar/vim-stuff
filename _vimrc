@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Mar 28, 2014 11:40 EET
+" Last Update: Thu May 01, 2014 11:57 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -450,7 +450,8 @@ noremap <Del> 2<C-E>
 " use <F5> to cycle through split windows,
 " and <F6> to cycle through tabs:
 nnoremap <F5> <Esc><C-W>w
-nnoremap <F6> <Esc>:tabnext<CR>
+nnoremap <F6> :tabnext<CR>
+inoremap <F6> <Esc>:tabnext<CR>
 
 " use <Ctrl>+N/<Ctrl>+P to cycle through files:
 " [<Ctrl>+N by default is like j, and <Ctrl>+P like k.]
@@ -498,7 +499,8 @@ noremap Y y$
 " current line:
 " ...
 
-" have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle:
+" have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle &
+" delete-whitespace-rectangle:
 vnoremap <Leader>kr d:call Deboxify('@@')<CR>p
 
 
@@ -762,7 +764,6 @@ endfunction " Deboxify()
 
 " * Functions Using the Python Interface
 
-" I'm using Python-3.x. Deal with it:
 if v:version >= 703
 
 " Function to encode a range of lines in base64,
@@ -822,7 +823,7 @@ def _markdown_2_html():
 EOF
 
 " Replace a leading timestamp in seconds from Epoch with ISO8601 date-time,
-" on all lines:
+" on all lines. Useful for syslog-like output:
 python3 << EOF
 import vim, datetime
 def _epoch_to_iso8601():
