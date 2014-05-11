@@ -93,15 +93,12 @@ else
     let s:solarized_termtrans_default = 0
 endif
 call s:SetOption("termtrans",s:solarized_termtrans_default)
-call s:SetOption("degrade",0)
 call s:SetOption("bold",1)
 call s:SetOption("underline",1)
-call s:SetOption("italic",1) " note that we need to override this later if the terminal doesn't support
-call s:SetOption("termcolors",16)
+call s:SetOption("italic",1)
 call s:SetOption("contrast","normal")
 call s:SetOption("visibility","normal")
 call s:SetOption("diffmode","normal")
-call s:SetOption("hitrail",0)
 call s:SetOption("menu",1)
 
 "}}}
@@ -832,25 +829,7 @@ exe "hi! pandocMetadata"                 .s:fg_blue   .s:bg_none   .s:fmt_bold
 hi! link pandocMetadataTitle             pandocMetadata
 
 "}}}
-" Utility autocommand "{{{
-" ---------------------------------------------------------------------
-" In cases where Solarized is initialized inside a terminal vim session and
-" then transferred to a gui session via the command `:gui`, the gui vim process
-" does not re-read the colorscheme (or .vimrc for that matter) so any `has_gui`
-" related code that sets gui specific values isn't executed.
-"
-" Currently, Solarized sets only the cterm or gui values for the colorscheme
-" depending on gui or terminal mode. It's possible that, if the following
-" autocommand method is deemed excessively poor form, that approach will be
-" used again and the autocommand below will be dropped.
-"
-" However it seems relatively benign in this case to include the autocommand
-" here. It fires only in cases where vim is transferring from terminal to gui
-" mode (detected with the script scope s:vmode variable). It also allows for
-" other potential terminal customizations that might make gui mode suboptimal.
-"
-autocmd GUIEnter * if (s:vmode != "gui") | exe "colorscheme " . g:colors_name | endif
-"}}}
+
 " Highlight Trailing Space {{{
 " Experimental: Different highlight when on cursorline
 function! s:SolarizedHiTrail()
@@ -926,11 +905,6 @@ function! SolarizedMenu()
         amenu &Solarized.&Diff\ Mode.&Low\ Diff\ Mode    :let g:solarized_diffmode="low"     \| colorscheme solarized<CR>
         amenu &Solarized.&Diff\ Mode.&Normal\ Diff\ Mode :let g:solarized_diffmode="normal"  \| colorscheme solarized<CR>
         amenu &Solarized.&Diff\ Mode.&High\ Diff\ Mode   :let g:solarized_diffmode="high"    \| colorscheme solarized<CR>
-
-        if g:solarized_hitrail==0 | let l:hitrailswitch="On" | else | let l:hitrailswitch="Off" | endif
-        exe "amenu &Solarized.&Experimental.&Turn\\ Highlight\\ Trailing\\ Spaces\\ ".l:hitrailswitch." :let g:solarized_hitrail=(abs(g:solarized_hitrail-1)) \\| colorscheme solarized<CR>"
-        an    &Solarized.&Experimental.-sep-               <Nop>
-        amenu &Solarized.&Experimental.&Help:\ HiTrail    :help 'solarized_hitrail'<CR>
 
         an    &Solarized.-sep1-                          <Nop>
 
