@@ -74,7 +74,7 @@ if exists(':Brackets')
 
   :Brackets /* */ -visual=0
   :Brackets /* */ -insert=0 -trigger=<localleader>/
-  :Brackets /** */ -visual=0 -trigger=/!
+  :Brackets /** */ -visual=0 -nl -trigger=/!
 endif
 "=============================================================================
 let &cpo=s:cpo_save

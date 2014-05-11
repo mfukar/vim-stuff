@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu May 01, 2014 11:57 EEST
+" Last Update: Fri May 02, 2014 16:45 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -569,6 +569,9 @@ iabbrev lorem Loremipsumdolorsitamet,consecteturadipisicingelit,seddoeiusmod
 \nimidestlaborum.
 iabbrev mf mfukar
 iabbrev -*- -*- coding: utf-8 -*-
+
+" Never use single-line comments:
+iabbrev // /*
 
 
 " * Functions Referred to Above
