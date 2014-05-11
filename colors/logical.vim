@@ -87,12 +87,6 @@ function! s:SetOption(name,default)
     endif
 endfunction
 
-if ($TERM_PROGRAM ==? "apple_terminal" && &t_Co < 256)
-    let s:solarized_termtrans_default = 1
-else
-    let s:solarized_termtrans_default = 0
-endif
-call s:SetOption("termtrans",s:solarized_termtrans_default)
 call s:SetOption("bold",1)
 call s:SetOption("underline",1)
 call s:SetOption("italic",1)
@@ -224,14 +218,7 @@ endif
     let s:ou              = ""
     let s:ob              = ""
 "}}}
-" Background value based on termtrans setting "{{{
-" ---------------------------------------------------------------------
-if (has("gui_running") || g:solarized_termtrans == 0)
-    let s:back        = s:base03
-else
-    let s:back        = "NONE"
-endif
-"}}}
+
 " Alternate light scheme "{{{
 " ---------------------------------------------------------------------
 if &background == "light"
