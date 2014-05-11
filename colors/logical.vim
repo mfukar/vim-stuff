@@ -122,7 +122,7 @@ let colors_name = "solarized"
 " leave the hex values out entirely in that case and include only cterm colors)
 " We also check to see if user has set solarized (force use of the
 " neutral gray monotone palette component)
-if (has("gui_running") && g:solarized_degrade == 0)
+if has("gui_running")
     let s:vmode       = "gui"
     let s:base03      = "#002b36"
     let s:base02      = "#073642"
@@ -141,27 +141,6 @@ if (has("gui_running") && g:solarized_degrade == 0)
     let s:cyan        = "#2aa198"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
-elseif (has("gui_running") && g:solarized_degrade == 1)
-    " These colors are identical to the 256 color mode. They may be viewed
-    " while in gui mode via "let g:solarized_degrade=1", though this is not
-    " recommened and is for testing only.
-    let s:vmode       = "gui"
-    let s:base03      = "#1c1c1c"
-    let s:base02      = "#262626"
-    let s:base01      = "#4e4e4e"
-    let s:base00      = "#585858"
-    let s:base0       = "#808080"
-    let s:base1       = "#8a8a8a"
-    let s:base2       = "#d7d7af"
-    let s:base3       = "#ffffd7"
-    let s:yellow      = "#af8700"
-    let s:orange      = "#d75f00"
-    let s:red         = "#af0000"
-    let s:magenta     = "#af005f"
-    let s:violet      = "#5f5faf"
-    let s:blue        = "#0087ff"
-    let s:cyan        = "#00afaf"
-    let s:green       = "#5f8700"
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:vmode       = "cterm"
     let s:base03      = "8"
