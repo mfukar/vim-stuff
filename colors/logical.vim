@@ -39,33 +39,6 @@
 " green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 " }}}
 "
-" Environment Specific Overrides "{{{
-" Allow or disallow certain features based on current terminal emulator or
-" environment.
-
-" Terminals that support italics
-let s:terms_italic=[
-            \"rxvt",
-            \"gnome-terminal"
-            \]
-" For reference only, terminals are known to be incomptible.
-" Terminals that are in neither list need to be tested.
-let s:terms_noitalic=[
-            \"iTerm.app",
-            \"Apple_Terminal"
-            \]
-if has("gui_running")
-    let s:terminal_italic=1 " TODO: could refactor to not require this at all
-else
-    let s:terminal_italic=0 " terminals will be guilty until proven compatible
-    for term in s:terms_italic
-        if $TERM_PROGRAM =~ term
-            let s:terminal_italic=1
-        endif
-    endfor
-endif
-
-" }}}
 " Default option values"{{{
 " ---------------------------------------------------------------------
 " s:options_list is used to autogenerate a list of all non-default options
@@ -334,7 +307,7 @@ else
     let s:u           = ",underline"
 endif
 
-if g:solarized_italic == 0 || s:terminal_italic == 0
+if g:solarized_italic == 0
     let s:i           = ""
 else
     let s:i           = ",italic"
