@@ -1,27 +1,23 @@
-" Name:     Solarized vim colorscheme
-" Author:   Ethan Schoonover <es@ethanschoonover.com>
-" URL:      http://ethanschoonover.com/solarized
-"           (see this url for latest release & screenshots)
+" Name:     Logical vim colorscheme
+" Author:   Michael Foukarakis <foukarakis.michael@gmail.com>
 " License:  OSI approved MIT license (see end of this file)
-" Created:  In the middle of the night
-" Modified: 2011 May 05
+" Last Modified: 2011 May 05
 "
 " Usage "{{{
 " ---------------------------------------------------------------------
 " ABOUT:
 " ---------------------------------------------------------------------
-" Solarized is a carefully designed selective contrast colorscheme with dual
-" light and dark modes that runs in both GUI, 256 and 16 color modes.
+" Logical is a colorscheme which aims to provide reasonable colour choices
+" in light mode that runs at least in GUI & 256 color modes.
 "
-" See the homepage above for screenshots and details.
+" Right now, it is mainly based on the Solarized theme, and therefore retains its original
+" licensing as well.
 "
 " ---------------------------------------------------------------------
 " COLOR VALUES
 " ---------------------------------------------------------------------
-" Download palettes and files from: http://ethanschoonover.com/solarized
-"
 " L\*a\*b values are canonical (White D65, Reference D50), other values are
-" matched in sRGB space.
+" matched in sRGB space. I'm retaining this for 'compatibility' with Solarized.
 "
 " SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      sRGB        HSB
 " --------- ------- ---- -------  ----------- ---------- ----------- -----------
@@ -42,6 +38,7 @@
 " cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
 " green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 " }}}
+"
 " Environment Specific Overrides "{{{
 " Allow or disallow certain features based on current terminal emulator or
 " environment.
