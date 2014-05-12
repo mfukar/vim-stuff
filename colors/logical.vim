@@ -102,7 +102,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "solarized"
+let colors_name = "logical"
 
 "}}}
 " GUI & CSApprox hexadecimal palettes"{{{
@@ -256,7 +256,7 @@ endif
 "}}}
 " Overrides dependent on user specified values and environment "{{{
 " ---------------------------------------------------------------------
-if (g:solarized_bold == 0 || &t_Co == 8 )
+if g:solarized_bold == 0
     let s:b           = ""
     let s:bb          = ",bold"
 else
@@ -844,7 +844,7 @@ function! SolarizedMenu()
     endif
     let g:loaded_solarized_menu = 1
 
-    if g:colors_name == "solarized" && g:solarized_menu != 0
+    if g:colors_name == "logical" && g:solarized_menu != 0
 
         amenu &Solarized.&Contrast.&Low\ Contrast        :let g:solarized_contrast="low"       \| colorscheme solarized<CR>
         amenu &Solarized.&Contrast.&Normal\ Contrast     :let g:solarized_contrast="normal"    \| colorscheme solarized<CR>
@@ -892,7 +892,7 @@ function! SolarizedMenu()
     endif
 endfunction
 
-autocmd ColorScheme * if g:colors_name != "solarized" | silent! aunmenu Solarized | else | call SolarizedMenu() | endif
+autocmd ColorScheme * if g:colors_name != "logical" | silent! aunmenu Solarized | else | call SolarizedMenu() | endif
 
 "}}}
 
