@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri May 02, 2014 16:45 EEST
+" Last Update: Mon May 12, 2014 12:40 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -120,11 +120,11 @@ map <C-Z> :shell<CR>
 " Set the terminal title, always:
 set title
 
-" Set the colorscheme. The only terminal that doesn't support 256 colors nowadays is
-" probably the windows shell, and I don't really care about that:
+" Set the colorscheme. Also force the number of terminal colors; if 256 colours are not
+" supported, your terminal emulator sucks & you should get another one:
 set t_Co=256
 if has('gui_running')
-    colorscheme solarized
+    colorscheme logical
 else
     colorscheme obsidian
 endif

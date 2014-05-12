@@ -895,6 +895,20 @@ endfunction
 autocmd ColorScheme * if g:colors_name != "solarized" | silent! aunmenu Solarized | else | call SolarizedMenu() | endif
 
 "}}}
+
+" Highlight trailing whitespace {{{
+function! s:highlight_trailing_whitespace()
+    syn match HighTrailingSpace "\s*$"
+    exe "hi! HighTrailingSpace " .s:fmt_undr .s:fg_red .s:bg_none .s:sp_red
+endfunction
+augroup highlight_trailing_whitespace
+    autocmd!
+    autocmd! Syntax * call s:highlight_trailing_whitespace()
+    autocmd! ColorScheme * if g:colors_name == "logical" | call s:highlight_trailing_whitespace() | else | augroup! s:highlight_trailing_whitespace | endif
+augroup END
+" }}}
+
+
 " License "{{{
 " ---------------------------------------------------------------------
 "
