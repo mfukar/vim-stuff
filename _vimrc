@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon May 12, 2014 12:45 EEST
+" Last Update: Tue May 27, 2014 17:16 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -127,6 +127,7 @@ set t_Co=256
 "
 " Set the colorscheme:
 if has('gui_running')
+    set background=light
     colorscheme logical
 else
     colorscheme obsidian
@@ -504,7 +505,7 @@ noremap Y y$
 
 " have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle &
 " delete-whitespace-rectangle:
-vnoremap <Leader>kr d:call Deboxify('@@')<CR>p
+vnoremap <Leader>kr d:call Deboxify('@"')<CR>p
 
 
 " * Keystrokes -- Toggles
@@ -830,14 +831,16 @@ EOF
 
 " Replace a leading timestamp in seconds from Epoch with ISO8601 date-time,
 " on all lines. Useful for syslog-like output:
+" TODO: Guess the separator with a RE?
 python3 << EOF
 import vim, datetime
 def _epoch_to_iso8601():
     isolines = []
     for index in range(len(vim.current.buffer)):
         line = vim.current.buffer[index]
-        stamp = datetime.datetime.fromtimestamp(int(line[:line.find(':')])).isoformat()
-        vim.current.buffer[index] = stamp + line[line.find(':') + 1:]
+        timestamp = int(line[:line.find(':')])
+        isostamp = datetime.datetime.fromtimestamp(timestamp).isoformat()
+        vim.current.buffer[index] = isostamp + ':' + line[line.find(':') + 1:]
 EOF
 endif
 
