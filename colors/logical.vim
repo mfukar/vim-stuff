@@ -1,23 +1,29 @@
 " Name:     Logical vim colorscheme
 " Author:   Michael Foukarakis <foukarakis.michael@gmail.com>
-" License:  OSI approved MIT license (see end of this file)
-" Last Modified: 2011 May 05
+" License:  OSI approved MIT license (retained from Solarized)
+" Last Update: Wed Jun 04, 2014 15:46 BST
 "
 " Usage "{{{
+"
 " ---------------------------------------------------------------------
 " ABOUT:
 " ---------------------------------------------------------------------
-" Logical is a colorscheme which aims to provide reasonable colour choices
-" in light mode that runs at least in GUI & 256 color modes.
+" Solarized is a carefully designed selective contrast colorscheme with dual
+" light and dark modes that runs in both GUI, 256 and 16 color modes.
 "
-" Right now, it is mainly based on the Solarized theme, and therefore retains its original
-" licensing as well.
+" ---------------------------------------------------------------------
+" OPTIONS:
+" ---------------------------------------------------------------------
+" See the "solarized.txt" help file included with this colorscheme (in the
+" "doc" subdirectory) for information on options, usage, the Toggle Background
+" function and more. If you have already installed Solarized, this is available
+" from the Solarized menu and command line as ":help solarized"
 "
 " ---------------------------------------------------------------------
 " COLOR VALUES
 " ---------------------------------------------------------------------
 " L\*a\*b values are canonical (White D65, Reference D50), other values are
-" matched in sRGB space. I'm retaining this for 'compatibility' with Solarized.
+" matched in sRGB space.
 "
 " SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      sRGB        HSB
 " --------- ------- ---- -------  ----------- ---------- ----------- -----------
@@ -37,6 +43,7 @@
 " blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
 " cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
 " green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
+"
 " }}}
 "
 " Default option values"{{{
@@ -96,7 +103,8 @@ call s:SetOption("diffmode","normal")
 call s:SetOption("menu",1)
 
 "}}}
-" Colorscheme initialization "{{{
+
+" Initialization "{{{
 " ---------------------------------------------------------------------
 hi clear
 if exists("syntax_on")
@@ -105,6 +113,7 @@ endif
 let colors_name = "logical"
 
 "}}}
+
 " GUI & CSApprox hexadecimal palettes"{{{
 " ---------------------------------------------------------------------
 "
@@ -132,25 +141,7 @@ if has("gui_running")
     let s:cyan        = "#2aa198"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
-elseif g:solarized_termcolors != 256 && &t_Co >= 16
-    let s:vmode       = "cterm"
-    let s:base03      = "8"
-    let s:base02      = "0"
-    let s:base01      = "10"
-    let s:base00      = "11"
-    let s:base0       = "12"
-    let s:base1       = "14"
-    let s:base2       = "7"
-    let s:base3       = "15"
-    let s:yellow      = "3"
-    let s:orange      = "9"
-    let s:red         = "1"
-    let s:magenta     = "5"
-    let s:violet      = "13"
-    let s:blue        = "4"
-    let s:cyan        = "6"
-    let s:green       = "2"
-elseif g:solarized_termcolors == 256
+else " 256 colors
     let s:vmode       = "cterm"
     let s:base03      = "234"
     let s:base02      = "235"
@@ -168,42 +159,6 @@ elseif g:solarized_termcolors == 256
     let s:blue        = "33"
     let s:cyan        = "37"
     let s:green       = "64"
-else
-    let s:vmode       = "cterm"
-    let s:bright      = "* term=bold cterm=bold"
-"   let s:base03      = "0".s:bright
-"   let s:base02      = "0"
-"   let s:base01      = "2".s:bright
-"   let s:base00      = "3".s:bright
-"   let s:base0       = "4".s:bright
-"   let s:base1       = "6".s:bright
-"   let s:base2       = "7"
-"   let s:base3       = "7".s:bright
-"   let s:yellow      = "3"
-"   let s:orange      = "1".s:bright
-"   let s:red         = "1"
-"   let s:magenta     = "5"
-"   let s:violet      = "5".s:bright
-"   let s:blue        = "4"
-"   let s:cyan        = "6"
-"   let s:green       = "2"
-    let s:base03      = "DarkGray"      " 0*
-    let s:base02      = "Black"         " 0
-    let s:base01      = "LightGreen"    " 2*
-    let s:base00      = "LightYellow"   " 3*
-    let s:base0       = "LightBlue"     " 4*
-    let s:base1       = "LightCyan"     " 6*
-    let s:base2       = "LightGray"     " 7
-    let s:base3       = "White"         " 7*
-    let s:yellow      = "DarkYellow"    " 3
-    let s:orange      = "LightRed"      " 1*
-    let s:red         = "DarkRed"       " 1
-    let s:magenta     = "DarkMagenta"   " 5
-    let s:violet      = "LightMagenta"  " 5*
-    let s:blue        = "DarkBlue"      " 4
-    let s:cyan        = "DarkCyan"      " 6
-    let s:green       = "DarkGreen"     " 2
-
 endif
 "}}}
 " Formatting options and null values for passthrough effect "{{{
@@ -218,7 +173,14 @@ endif
     let s:ou              = ""
     let s:ob              = ""
 "}}}
-
+" Background value "{{{
+" ---------------------------------------------------------------------
+if has("gui_running")
+    let s:back        = s:base03
+else
+    let s:back        = "NONE"
+endif
+"}}}
 " Alternate light scheme "{{{
 " ---------------------------------------------------------------------
 if &background == "light"
@@ -516,7 +478,6 @@ exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
 exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
-exe "hi! iCursor"        .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 
@@ -817,6 +778,18 @@ hi! link pandocMetadataTitle             pandocMetadata
 
 "}}}
 
+" Highlight Trailing Space {{{
+function! s:Logical_HighlightTrailingWhitespace()
+    syn match logicalTrailingSpace "\s*$"
+    exe "hi! logicalTrailingSpace " .s:fmt_undr .s:fg_red .s:bg_none .s:sp_red
+endfunction
+augroup Logical_HighlightTrailingWhitespace
+    autocmd!
+    autocmd! Syntax * call s:Logical_HighlightTrailingWhitespace()
+    autocmd! ColorScheme * if g:colors_name ==? "logical" | call s:Logical_HighlightTrailingWhitespace() | else | augroup! s:Logical_HighlightTrailingWhitespace | endif
+    autocmd! ColorScheme * if g:colors_name !=? "logical" | hi! clear logicalTrailingSpace | endif
+augroup END
+" }}}
 " Menus "{{{
 " ---------------------------------------------------------------------
 " Turn off Solarized menu by including the following assignment in your .vimrc:
@@ -824,7 +797,7 @@ hi! link pandocMetadataTitle             pandocMetadata
 "    let g:solarized_menu=0
 
 function! s:SolarizedOptions()
-    new "new buffer
+    new
     setf vim "vim filetype
     let failed = append(0, s:defaults_list)
     let failed = append(0, s:colorscheme_list)
@@ -895,20 +868,6 @@ endfunction
 autocmd ColorScheme * if g:colors_name != "logical" | silent! aunmenu Solarized | else | call SolarizedMenu() | endif
 
 "}}}
-
-" Highlight trailing whitespace {{{
-function! s:highlight_trailing_whitespace()
-    syn match HighTrailingSpace "\s*$"
-    exe "hi! HighTrailingSpace " .s:fmt_undr .s:fg_red .s:bg_none .s:sp_red
-endfunction
-augroup highlight_trailing_whitespace
-    autocmd!
-    autocmd! Syntax * call s:highlight_trailing_whitespace()
-    autocmd! ColorScheme * if g:colors_name == "logical" | call s:highlight_trailing_whitespace() | else | augroup! s:highlight_trailing_whitespace | endif
-augroup END
-" }}}
-
-
 " License "{{{
 " ---------------------------------------------------------------------
 "
