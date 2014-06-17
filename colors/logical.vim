@@ -1,7 +1,7 @@
 " Name:     Logical vim colorscheme
 " Author:   Michael Foukarakis <foukarakis.michael@gmail.com>
 " License:  OSI approved MIT license (retained from Solarized)
-" Last Update: Wed Jun 04, 2014 15:46 BST
+" Last Update: Wed Jun 04, 2014 15:47 BST
 "
 " Usage "{{{
 "
@@ -141,7 +141,7 @@ if has("gui_running")
     let s:cyan        = "#2aa198"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
-else " 256 colors
+else " terminals supporting 256 colors
     let s:vmode       = "cterm"
     let s:base03      = "234"
     let s:base02      = "235"

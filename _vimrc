@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Jun 08, 2014 22:56 BST
+" Last Update: Tue Jun 17, 2014 08:45 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -247,7 +247,7 @@ autocmd FileType gitconfig,yaml,ruby,java,objc setlocal sw=4 ts=4 expandtab
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller:
-autocmd FileType javascript,html,css,sh setlocal noexpandtab ts=4 sw=4
+autocmd FileType javascript,html,css,sh setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
@@ -748,7 +748,7 @@ command! -complete=shellcmd -nargs=* -bang Shell call s:RunShellCommand(<q-args>
 
 
 " Override DateStamp() (used by µTemplate)
-function! DateStamp(...)
+function! DateStamp(...) " {{{1
     if a:0 > 0
         return strftime(a:1)
     else
@@ -760,13 +760,13 @@ function! DateStamp(...)
             return strftime('%a %b %d, %Y %R %Z')
         endif
     endif
-endfunction " DateStamp(...)
+endfunction " }}}1
 
 
 " Transform the contents of the register passed to a single line:
-function! Deboxify(reg)
+function! Deboxify(reg) " {{{1
     let @@ = join(split(getreg(a:reg), '\n'), "")
-endfunction " Deboxify()
+endfunction " }}}1
 
 
 " * Functions Using the Python Interface
