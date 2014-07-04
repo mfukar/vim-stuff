@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Jun 20, 2014 16:25 BST
+" Last Update: Thu Jun 26, 2014 11:49 BST
 "
 " This vimrc is divided into these sections:
 "
@@ -50,14 +50,11 @@ if &term =~ 'xterm' " {{{1
 " and these don't:
     else
     if $COLORTERM == ''
-        " Tricky. Magic number might have to change to 127 (^?) in
-        " some systems. In PuTTY it can be configured:
         execute 'set t_kb=' . nr2char(8)
         fixdel
     endif
 " The above won't work if an XTerm or KVT is started from within a
-" Gnome Terminal or an RXVT: the $COLORTERM setting will propagate;
-" it's always OK with Konsole which explicitly sets $COLORTERM to "".
+" Gnome Terminal or an RXVT: the $COLORTERM setting will propagate.
     endif
 endif " }}}1
 
