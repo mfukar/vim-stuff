@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Jun 26, 2014 11:49 BST
+" Last Update: Tue Jul 08, 2014 11:37 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -136,6 +136,12 @@ function! IndentLevel()
 endf
 let &statusline='%<%3.3n  %f  %(%y %{&fenc} [%{&ff}]%)  %m%r (%03c, %#WildMenu#0x%04B%*) %= T%{IndentLevel()} %P : %3l : %3c   [%{strftime("%H:%M, %b %d, %Y")}]'
 set laststatus=2
+
+" Configure airline:
+let g:airline#extensions#disable_rtp_load = 1
+let g:airline_section_b      = '[%04B]'
+let g:airline_section_gutter = '%= %{strftime("%H:%M, %b %d, %Y")}'
+let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
 
 " Taglist configuration
 " on/off switching:
@@ -284,7 +290,7 @@ if has("unix")
     autocmd FileType c setlocal tags+="$KERNELTAGS"
     " Linux kernel cscope database:
     if $KERNEL_CSCOPE_DB != ""
-	    cs add $KERNEL_CSCOPE_DB
+        cs add $KERNEL_CSCOPE_DB
     endif
 endif
 
