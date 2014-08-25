@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jul 23, 2014 11:53 EEST
+" Last Update: Δευ Αυγ 25, 2014 15:02 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -165,7 +165,7 @@ endif
 if (has('gui_running'))
     set guicursor=n-v-c:block-Cursor
     if !has('macunix')
-        set guicursor+=i:hor25-iCursor-blinkwait25-blinkon250-blinkoff250
+        set guicursor+=i:ver25-Cursor-blinkwait25-blinkon250-blinkoff250
     endif
 endif
 
