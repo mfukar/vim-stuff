@@ -4,7 +4,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.1
 " Created:      Wed Jan 25, 2012 11:07 GTB Standard Time
-" Last Update:  Fri Jul 11, 2014 13:47 EEST
+" Last Update:  Tue Sep 09, 2014 17:22 EEST
 "------------------------------------------------------------------------
 " Description:  Markdown syntax file
 "------------------------------------------------------------------------
