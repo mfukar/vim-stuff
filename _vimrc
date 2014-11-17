@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Nov 06, 2014 13:23 SAST
+" Last Update: Mon Nov 17, 2014 09:53 SAST
 "
 " This vimrc is divided into these sections:
 "
@@ -275,12 +275,10 @@ autocmd BufEnter /* call LoadCscope()
 
 " Add project-independent tags for quickly jumping around C/Python stdlib code:
 if has('unix') || has('macunix')
-    autocmd FileType c      setlocal tags+=$HOME/.vim/tags/c.ctags
-    " Experimental..
-    autocmd FileType cpp    setlocal tags+=$HOME/.vim/tags/cpp.ctags
+    autocmd FileType c,cpp exe "cs add $HOME/.vim/tags/system.cscope.out"
+    autocmd FileType c,cpp setlocal tags+=$HOME/.vim/tags/system.ctags
+    " Experimental.. TODO
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
-elseif has('win32')
-    autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
 
 " Linux kernel tags will be located at $KERNELTAGS,
