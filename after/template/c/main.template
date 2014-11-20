@@ -3,10 +3,12 @@ VimL:"{main(){...}} Template-File, Luc Hermitte
 VimL:" hint: int main(argc, argv) { ... }
 VimL: let s:value_start  = 'Â¡'
 VimL: let s:value_end    = 'Â¡'
-VimL: let s:reindent     = 1 
+VimL: let s:reindent     = 1
 VimL: let s:marker_open  = '<+'
 VimL: let s:marker_close = '+>'
 int main (<+int argc, char **argv+>)
 {
     <+code+>
+
+    return EXIT_SUCCESS;
 }
