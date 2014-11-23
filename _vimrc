@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 23, 2014 13:34 SAST
+" Last Update: Sun Nov 23, 2014 13:51 SAST
 "
 " This vimrc is divided into these sections:
 "
@@ -504,7 +504,7 @@ noremap Y y$
 " current line:
 " ...
 
-" have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle &
+" have <Leader>kr join the selection of a visual block, like emacs' kill-rectangle &
 " delete-whitespace-rectangle:
 vnoremap <Leader>kr d:call Deboxify('@"')<CR>P
 
@@ -551,8 +551,10 @@ set hls
 
 " Mappings to base64 encode/decode current visual selection and put it in the unnamed
 " register:
-vnoremap <Leader>e64 d:call Deboxify('@"')<CR>:PyBase64Encode<CR>P
-vnoremap <Leader>d64 d:call Deboxify('@"')<CR>:PyBase64Decode<CR>P
+vnoremap <Leader>e64 d:call Deboxify('@"')<CR>:PyBase64Encode<CR>O<C-[>P
+vnoremap <Leader>d64 d:call Deboxify('@"')<CR>:PyBase64Decode<CR>O<C-[>P
+nnoremap <Leader>e64 D:call Deboxify('@"')<CR>:PyBase64Encode<CR>p
+nnoremap <Leader>d64 D:call Deboxify('@"')<CR>:PyBase64Decode<CR>p
 
 " Mappings to convert current buffer contents from Markdown to HTML and
 " put it in a (new) file:
