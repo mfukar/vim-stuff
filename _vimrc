@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 23, 2014 12:40 SAST
+" Last Update: Sun Nov 23, 2014 12:53 SAST
 "
 " This vimrc is divided into these sections:
 "
@@ -766,7 +766,7 @@ endfunction " }}}1
 
 " Transform the contents of the register passed to a single line:
 function! Deboxify(reg) " {{{1
-    let @@ = join(split(getreg(a:reg), '\n'), "")
+    let @" = join(split(getreg(a:reg), '\n'), "")
 endfunction " }}}1
 
 
@@ -774,6 +774,9 @@ endfunction " }}}1
 
 if v:version >= 703
 
+" TODO: It'd be nicer if the two functions below did only base64 encoding / decoding in
+" the unnamed register, and left text handling to the command that uses them.
+"
 " Function to encode a range of lines in base64,
 " then append the result below the range:
 python3 << EOF
