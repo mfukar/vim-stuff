@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 23, 2014 12:53 SAST
+" Last Update: Sun Nov 23, 2014 13:34 SAST
 "
 " This vimrc is divided into these sections:
 "
@@ -549,10 +549,10 @@ set hls
 
 " * Keystrokes -- Object Processing
 
-" Mappings to base64 encode/decode current visual selection and paste it in a new line(s)
-" below the selected range:
-vnoremap <Leader>e64 :PyBase64Encode<CR>
-vnoremap <Leader>d64 :PyBase64Decode<CR>
+" Mappings to base64 encode/decode current visual selection and put it in the unnamed
+" register:
+vnoremap <Leader>e64 d:call Deboxify('@"')<CR>:PyBase64Encode<CR>P
+vnoremap <Leader>d64 d:call Deboxify('@"')<CR>:PyBase64Decode<CR>P
 
 " Mappings to convert current buffer contents from Markdown to HTML and
 " put it in a (new) file:
@@ -774,32 +774,25 @@ endfunction " }}}1
 
 if v:version >= 703
 
-" TODO: It'd be nicer if the two functions below did only base64 encoding / decoding in
-" the unnamed register, and left text handling to the command that uses them.
-"
-" Function to encode a range of lines in base64,
-" then append the result below the range:
+" Function to replace the contents of the unnamed register with its base64 encoding:
 python3 << EOF
 import vim, base64
-def _my_b64encode(line1, line2):
-    rng = vim.current.buffer.range(int(line1), int(line2))
-    blob = '\r\n'.join(rng)
+def _my_b64encode():
+    blob = vim.eval('@"')
     res = base64.b64encode(str.encode(blob))
-    rng.append(bytes.decode(res))
+    vim.command('let @" = \'{}\''.format(bytes.decode(res)))
 EOF
-command! -range PyBase64Encode python3 _my_b64encode(<f-line1>, <f-line2>)
+command! PyBase64Encode python3 _my_b64encode()
 
-" Function to decode a range of lines in base64,
-" then append the result below the range:
+" Function to replace the contents of the unnamed register with its base64 decoding:
 python3 << EOF
 import vim, base64
-def _my_b64decode(line1, line2):
-    rng = vim.current.buffer.range(int(line1), int(line2))
-    blob = ''.join(rng)
+def _my_b64decode():
+    blob = vim.eval('@"')
     res = base64.b64decode(str.encode(blob))
-    rng.append(bytes.decode(res).translate(str.maketrans({'\r':None})).split('\n'))
+    vim.command('let @" = \'{}\''.format(bytes.decode(res)))
 EOF
-command! -range PyBase64Decode python3 _my_b64decode(<f-line1>, <f-line2>)
+command! PyBase64Decode python3 _my_b64decode()
 
 " Use :make to compile the current buffer and see syntax errors
 " :cn to see next, :cp to see previous
