@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Nov 17, 2014 09:53 SAST
+" Last Update: Sun Nov 23, 2014 12:40 SAST
 "
 " This vimrc is divided into these sections:
 "
@@ -506,7 +506,7 @@ noremap Y y$
 
 " have <Leader>kr join the lines of a visual block, like emacs' kill-rectangle &
 " delete-whitespace-rectangle:
-vnoremap <Leader>kr d:call Deboxify('@"')<CR>p
+vnoremap <Leader>kr d:call Deboxify('@"')<CR>P
 
 
 " * Keystrokes -- Toggles
