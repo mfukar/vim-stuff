@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 23, 2014 13:51 SAST
+" Last Update: Fri Nov 28, 2014 12:44 SAST
 "
 " This vimrc is divided into these sections:
 "
@@ -877,7 +877,18 @@ autocmd FileType python setlocal ofu=python3complete#Complete
 " Remove the Windows ^M:
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Remove whitespace on empty lines and at their end:
-noremap <Leader>i :%s/\s*$//g<cr>:noh<cr>''
+" Remove whitespace on empty lines and at their end. Preserves the view:
+function! NukeWhitespace()
+    if &readonly || !&modifiable
+        return
+    endif
+    " Save search history & view:
+    let s:__sh = &hlsearch
+    let s:__cp = winsaveview()
+    %s/\s*$//eg
+    let &hlsearch = s:__sh
+    call winrestview(s:__cp)
+endfun
+noremap <silent> <Leader>i :call NukeWhitespace()<CR>
 
 " end of mfukar's .vimrc
