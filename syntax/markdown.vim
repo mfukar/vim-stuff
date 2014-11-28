@@ -4,7 +4,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.1
 " Created:      Wed Jan 25, 2012 11:07 GTB Standard Time
-" Last Update:  Tue Sep 09, 2014 17:22 EEST
+" Last Update:  Fri Nov 28, 2014 10:38 SAST
 "------------------------------------------------------------------------
 " Description:  Markdown syntax file
 "------------------------------------------------------------------------
@@ -113,6 +113,7 @@ hi def link markdownItalic                htmlItalic
 hi def link markdownBold                  htmlBold
 hi def link markdownBoldItalic            htmlBoldItalic
 hi def link markdownCodeDelimiter         Delimiter
+hi def link markdownCode                  pandocCodeBlock
 
 hi def link markdownEscape                Special
 hi def link markdownError                 Error
