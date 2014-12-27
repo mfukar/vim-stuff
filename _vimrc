@@ -250,7 +250,7 @@ autocmd FileType gitconfig,yaml,ruby,java,objc,gdb setlocal sw=4 ts=4 expandtab
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller:
-autocmd FileType javascript,html,css,sh setlocal ts=4 sw=4 noexpandtab
+autocmd FileType javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
