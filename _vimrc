@@ -279,6 +279,8 @@ if has('unix') || has('macunix')
     autocmd FileType c,cpp setlocal tags+=$HOME/.vim/tags/system.ctags
     " Experimental.. TODO
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
+elseif has('win32')
+    autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
 endif
 
 " Linux kernel tags will be located at $KERNELTAGS,
