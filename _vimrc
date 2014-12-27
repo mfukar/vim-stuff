@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Nov 28, 2014 12:44 SAST
+" Last Update: Σαβ Δεκ 27, 2014 11:48 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -95,7 +95,7 @@ if has('gui_running') " {{{1
     set lines=61     " Magic number for my screen on OS X.
     set columns=120
     if has('win32')
-        set gfn=Consolas:h11
+        set gfn=Consolas:h9
     elseif has('macunix')
         " Do note that Monaco doesn't have an italic variant:
         set gfn=Monaco:h11
