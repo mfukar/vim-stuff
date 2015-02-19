@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Σαβ Δεκ 27, 2014 11:48 GTB Standard Time
+" Last Update: Fri Jan 09, 2015 12:53 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -253,8 +253,7 @@ autocmd FileType gitconfig,yaml,ruby,java,objc,gdb setlocal sw=4 ts=4 expandtab
 autocmd FileType javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
-" have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
-" later):
+" have indentation at 8 chars to be sure that all indents are tabs:
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 " Search recursively up to / for the ctags 'tags' file:
@@ -475,14 +474,14 @@ vmap <F1> <C-C><F1>
 omap <F1> <C-C><F1>
 map! <F1> <C-C><F1>
 
-" Jumping around markers
+" Jumping around markers:
 imap <C-J> <Plug>MarkersJumpF
  map <C-J> <Plug>MarkersJumpF
 imap <C-K> <Plug>MarkersJumpB
  map <C-K> <Plug>MarkersJumpB
 vmap <C-m> <Plug>MarkersMark
 
-" Bracket manipulation mode
+" Bracket manipulation mode:
 noremap <silent> <C-L>m :call BracketsManipMode("\<C-L>b")<CR>
 
 
