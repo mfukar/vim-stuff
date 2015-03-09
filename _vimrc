@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Feb 19, 2015 14:27 EET
+" Last Update: Mon Mar 09, 2015 12:34 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -123,12 +123,8 @@ set title
 set t_Co=256
 "
 " Set the colorscheme:
-if has('gui_running')
-    set background=light
-    colorscheme logical
-else
-    colorscheme obsidian
-endif
+set background=light
+colorscheme logical
 
 " Create a fancy status line:
 function! IndentLevel()
