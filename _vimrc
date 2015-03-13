@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Mar 12, 2015 12:26 EET
+" Last Update: Fri Mar 13, 2015 10:22 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -892,6 +892,8 @@ noremap <silent> <Leader>i :call NukeWhitespace()<CR>
 if has('macunix')
     let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib/"
 endif
+let g:clang_user_options='|| exit 0'
+"let g:clang_close_preview=1
 let g:clang_debug=1
 
 " end of mfukar's .vimrc
