@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Mar 09, 2015 12:34 EET
+" Last Update: Thu Mar 12, 2015 12:26 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -887,5 +887,11 @@ function! NukeWhitespace()
     call winrestview(s:__cp)
 endfun
 noremap <silent> <Leader>i :call NukeWhitespace()<CR>
+
+" Set the library path for clang_complete on OS X:
+if has('macunix')
+    let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib/"
+endif
+let g:clang_debug=1
 
 " end of mfukar's .vimrc
