@@ -124,7 +124,7 @@ set t_Co=256
 "
 " Set the colorscheme:
 set background=light
-colorscheme logical
+colorscheme railscasts
 
 " Create a fancy status line:
 function! IndentLevel()
