@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Mar 13, 2015 10:22 EET
+" Last Update: Mon Mar 16, 2015 10:15 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -138,6 +138,8 @@ let g:airline#extensions#disable_rtp_load = 1
 let g:airline_section_b      = '[%04B]'
 let g:airline_section_gutter = '%= %{strftime("%H:%M, %b %d, %Y")}'
 let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
+let g:airline_theme='kolor'
+
 
 " Taglist configuration
 " on/off switching:
