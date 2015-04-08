@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Mar 16, 2015 10:15 EET
+" Last Update: Wed Apr 08, 2015 14:21 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -242,6 +242,7 @@ set nu
 set autoindent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
+set cino+=l1g0t0i4(0
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig,yaml,ruby,java,objc,gdb setlocal sw=4 ts=4 expandtab
