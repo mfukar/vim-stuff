@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Apr 08, 2015 14:21 EEST
+" Last Update: Wed Apr 08, 2015 14:24 EEST
 "
 " This vimrc is divided into these sections:
 "
