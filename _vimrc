@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Apr 08, 2015 14:24 EEST
+" Last Update: Tue Apr 14, 2015 11:44 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -107,7 +107,6 @@ let g:author = 'Michael Foukarakis'
 let g:author_short = 'mfukar'
 
 " mt_chooseWith for lh-vim template completion
-" TODO: 'complete' doesn't seem to work atm.
 let g:mt_chooseWith = 'confirm'
 
 " SIGSTOP from <C-Z> is unwanted and 'screen' would lose the connection on it,
@@ -124,7 +123,7 @@ set t_Co=256
 "
 " Set the colorscheme:
 set background=light
-colorscheme railscasts
+colorscheme logical
 
 " Create a fancy status line:
 function! IndentLevel()
