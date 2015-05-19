@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Apr 14, 2015 11:44 EEST
+" Last Update: Tue May 19, 2015 10:06 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -124,6 +124,9 @@ set t_Co=256
 " Set the colorscheme:
 set background=light
 colorscheme logical
+
+" Set the colorscheme for vim-airline:
+let g:airline_theme='kolor'
 
 " Create a fancy status line:
 function! IndentLevel()
