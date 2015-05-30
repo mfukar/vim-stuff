@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue May 19, 2015 10:06 EEST
+" Last Update: Σαβ Μαϊ 30, 2015 10:06 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -70,8 +70,8 @@ let $PAGER=''
 " Store temporary files in a central spot,
 " instead of all over the place:
 if has('win32')
-    set backupdir=$VIMRUNTIME\temp
-    set directory=$VIMRUNTIME\temp
+    set backupdir=$HOMEPATH\tmp
+    set directory=$HOMEPATH\tmp
 elseif has('unix')
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp
     set directory=~/.vim-tmp,~/.tmp,~/tmp
@@ -122,11 +122,12 @@ set title
 set t_Co=256
 "
 " Set the colorscheme:
-set background=light
-colorscheme logical
-
-" Set the colorscheme for vim-airline:
-let g:airline_theme='kolor'
+if has('gui_running')
+    set background=light
+    colorscheme logical
+else
+    colorscheme obsidian
+endif
 
 " Create a fancy status line:
 function! IndentLevel()
@@ -140,8 +141,6 @@ let g:airline#extensions#disable_rtp_load = 1
 let g:airline_section_b      = '[%04B]'
 let g:airline_section_gutter = '%= %{strftime("%H:%M, %b %d, %Y")}'
 let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
-let g:airline_theme='kolor'
-
 
 " Taglist configuration
 " on/off switching:
@@ -244,7 +243,6 @@ set nu
 set autoindent
 set smarttab        " delete tabs (or #tabstop spaces) from start of line with <Backspace>
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
-set cino+=l1g0t0i4(0
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig,yaml,ruby,java,objc,gdb setlocal sw=4 ts=4 expandtab
@@ -254,7 +252,8 @@ autocmd FileType gitconfig,yaml,ruby,java,objc,gdb setlocal sw=4 ts=4 expandtab
 autocmd FileType txt,javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
-" have indentation at 8 chars to be sure that all indents are tabs:
+" have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
+" later):
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 
 " Search recursively up to / for the ctags 'tags' file:
@@ -475,14 +474,14 @@ vmap <F1> <C-C><F1>
 omap <F1> <C-C><F1>
 map! <F1> <C-C><F1>
 
-" Jumping around markers:
+" Jumping around markers
 imap <C-J> <Plug>MarkersJumpF
  map <C-J> <Plug>MarkersJumpF
 imap <C-K> <Plug>MarkersJumpB
  map <C-K> <Plug>MarkersJumpB
 vmap <C-m> <Plug>MarkersMark
 
-" Bracket manipulation mode:
+" Bracket manipulation mode
 noremap <silent> <C-L>m :call BracketsManipMode("\<C-L>b")<CR>
 
 
@@ -892,13 +891,5 @@ function! NukeWhitespace()
     call winrestview(s:__cp)
 endfun
 noremap <silent> <Leader>i :call NukeWhitespace()<CR>
-
-" Set the library path for clang_complete on OS X:
-if has('macunix')
-    let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib/"
-endif
-let g:clang_user_options='|| exit 0'
-"let g:clang_close_preview=1
-let g:clang_debug=1
 
 " end of mfukar's .vimrc
