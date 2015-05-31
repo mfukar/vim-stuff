@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Σαβ Μαϊ 30, 2015 10:06 GTB Daylight Time
+" Last Update: Κυρ Μαϊ 31, 2015 11:20 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
