@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Κυρ Μαϊ 31, 2015 11:20 GTB Daylight Time
+" Last Update: Κυρ Μαϊ 31, 2015 18:44 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -372,7 +372,7 @@ map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **  " <Bar> cw<CR>
 
 " * Spelling
 
-" define Ispell language and personal dictionary, used in several places below:
+" define Ispell language and personal dictionary, used below:
 let IspellLang = 'british'
 if has("win32")
     let PersonalDict = '$HOME\.ispell_' . IspellLang
@@ -861,12 +861,6 @@ endfun
 autocmd BufWritePre * call LastUpdated()
 
 filetype plugin on
-let g:pydiction_menu_height = 20
-if has('gui_macvim') || has('macunix') || has('unix')
-    let g:pydiction_location = $HOME . '/.vim/bundle/pydiction/complete-dict'
-else
-    let g:pydiction_location =$VIMRUNTIME.'vimfiles/bundle/pydiction/complete-dict'
-endif
 
 " Enable omnicompletion:
 set ofu=syntaxcomplete#Complete
@@ -874,6 +868,9 @@ set cot=menu,longest
 
 " Always using Python 3.x:
 autocmd FileType python setlocal ofu=python3complete#Complete
+
+" Setup Supertab to attempt to infer completion method based on context:
+let g:SuperTabDefaultCompletionType = "context"
 
 " Remove the Windows ^M:
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
