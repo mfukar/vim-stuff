@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Κυρ Μαϊ 31, 2015 18:44 GTB Daylight Time
+" Last Update: Thu Jun 04, 2015 13:09 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -846,6 +846,9 @@ endif
 
 
 " * Automatic Code Completion
+
+" Configure clang-complete:
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
 
 " If the buffer is modified, update any 'Last Update:' string in the first 20 lines.
 " 'Last Update:' can have up to 20 characters before and whitespace after it, they are
