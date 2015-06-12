@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Κυρ Μαϊ 31, 2015 18:44 GTB Daylight Time
+" Last Update: Παρ Ιουν 12, 2015 09:39 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -70,8 +70,8 @@ let $PAGER=''
 " Store temporary files in a central spot,
 " instead of all over the place:
 if has('win32')
-    set backupdir=$HOMEPATH\tmp
-    set directory=$HOMEPATH\tmp
+    set backupdir=$HOMEDRIVE$HOMEPATH\tmp
+    set directory=$HOMEDRIVE$HOMEPATH\tmp
 elseif has('unix')
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp
     set directory=~/.vim-tmp,~/.tmp,~/tmp
