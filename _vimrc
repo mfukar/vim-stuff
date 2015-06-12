@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Παρ Ιουν 12, 2015 09:41 GTB Daylight Time
+" Last Update: Παρ Ιουν 12, 2015 17:17 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -28,33 +28,32 @@ autocmd!
 
 " * Terminal Settings
 
-" XTerm, RXVT, Gnome Terminal, and Konsole all claim to be "xterm";
-" KVT claims to be "xterm-color", so does the Mac OSX console:
+" XTerm, RXVT, Gnome Terminal, and Konsole all claim to be 'xterm';
+" KVT claims to be 'xterm-color', so does the Mac OSX console:
 if &term =~ 'xterm' " {{{1
-
-" Mac OSX iTerm pretends it's an "xterm-256color":
+    " Mac OSX iTerm pretends it's an 'xterm-256color':
     if $TERM == 'xterm-256color'
         fixdel
         execute 'set t_kb=' . nr2char(127)
     endif
-    else
-" Gnome terminal fortunately sets $COLORTERM; it needs <Del> fixing,
-" and it has a bug which causes spurious 'c's to appear,
-" which can be fixed by unsetting t_RV:
+else
+    " Gnome terminal fortunately sets $COLORTERM; it needs <Del> fixing,
+    " and it has a bug which causes spurious 'c's to appear,
+    " which can be fixed by unsetting t_RV:
     if $COLORTERM == 'gnome-terminal'
         fixdel
         set t_RV=
-" XTerm, Konsole, and KVT all also need <BkSpc> and <Del> fixing;
-" there's no easy way of distinguishing these terminals from other
-" things that claim to be "xterm", but RXVT sets $COLORTERM to "rxvt"
-" and these don't:
     else
-    if $COLORTERM == ''
-        execute 'set t_kb=' . nr2char(8)
-        fixdel
-    endif
-" The above won't work if an XTerm or KVT is started from within a
-" Gnome Terminal or an RXVT: the $COLORTERM setting will propagate.
+        " XTerm, Konsole, and KVT all also need <BkSpc> and <Del> fixing;
+        " there's no easy way of distinguishing these terminals from other
+        " things that claim to be 'xterm', but RXVT sets $COLORTERM to 'rxvt'
+        " and these don't:
+        if $COLORTERM == ''
+            execute 'set t_kb=' . nr2char(8)
+            fixdel
+        endif
+        " The above won't work if an XTerm or KVT is started from within a
+        " Gnome Terminal or an RXVT: the $COLORTERM setting will propagate.
     endif
 endif " }}}1
 
@@ -73,8 +72,8 @@ if has('win32')
     set backupdir=$HOMEDRIVE$HOMEPATH\tmp
     set directory=$HOMEDRIVE$HOMEPATH\tmp
 elseif has('unix')
-    set backupdir=~/.vim-tmp,~/.tmp,~/tmp
-    set directory=~/.vim-tmp,~/.tmp,~/tmp
+    set backupdir=~/tmp
+    set directory=~/tmp
 endif
 
 " Set 'path' to make gf usable:
