@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Παρ Ιουν 12, 2015 17:17 GTB Daylight Time
+" Last Update: Mon Jun 29, 2015 13:17 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -244,7 +244,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
-autocmd FileType gitconfig,yaml,ruby,java,objc,gdb setlocal sw=4 ts=4 expandtab
+autocmd FileType gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller, and preserve tabs in plain text files:
