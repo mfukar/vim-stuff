@@ -3,7 +3,7 @@
 " Author:      Michael Foukarakis
 " Version:     0.1
 " Created:     Mon Jun 29, 2015 13:19 EEST
-" Last Update: Mon Jun 29, 2015 13:21 EEST
+" Last Update: Πεμ Ιουλ 16, 2015 18:22 GTB Daylight Time
 "------------------------------------------------------------------------
 " Description:
 "       ftplugin that defines default preferences for bracketing mappings for Haskell
@@ -47,6 +47,8 @@ if exists(':Brackets')
     :Brackets " " -insert=0 -trigger=""
     :Brackets ' ' -visual=0
     :Brackets ' ' -insert=0 -trigger=''
+    :Brackets ` ` -visual=0
+    :Brackets ` ` -insert=0 -trigger=<localleader>`
 endif
 
 "------------------------------------------------------------------------
