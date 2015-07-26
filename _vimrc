@@ -96,7 +96,7 @@ if has("gui_running")
     " Restore window size (lines, columns) and position from values stored in vimsize file:
     function! ScreenRestore()
         let fname = ScreenFilename()
-        if has("gui_running") && g:screen_size_restore_pos && filereadable(fname)
+        if has("gui_running") && filereadable(fname)
             let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
             for line in readfile(fname)
                 let sizepos = split(line)
@@ -111,7 +111,7 @@ if has("gui_running")
 
     " Save window size and position:
     function! ScreenSave()
-        if has("gui_running") && g:screen_size_restore_pos
+        if has("gui_running")
             let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
             let data = vim_instance . ' ' . &columns . ' ' . &lines . ' ' .
                         \ (getwinposx()<0?0:getwinposx()) . ' ' .
@@ -128,17 +128,18 @@ if has("gui_running")
         endif
     endfunction
 
-    if !exists('g:screen_size_restore_pos')
-      let g:screen_size_restore_pos = 1
-    endif
     if !exists('g:screen_size_by_vim_instance')
       let g:screen_size_by_vim_instance = 1
     endif
 
-    autocmd VimEnter * call ScreenRestore()
+    autocmd VimEnter,BufWinEnter * call ScreenRestore()
     autocmd VimLeavePre * call ScreenSave()
 endif
 
+" Always show the tabline, workaround for window position being messed up when it appears:
+set showtabline=2
+
+" Because we're not cavemen:
 set encoding=utf-8
 
 set fileencodings=utf-8,ucs-bom,default,latin1
