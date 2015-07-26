@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Τρι Ιουλ 21, 2015 12:33 GTB Daylight Time
+" Last Update: Κυρ Ιουλ 26, 2015 15:08 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -905,7 +905,13 @@ endif
 " * Automatic Code Completion
 
 " Configure clang-complete:
-let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+if has('win32')
+    let g:clang_library_path='' " TODO
+elseif has('macunix')
+    let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+else
+    ;" let down
+endif
 
 " If the buffer is modified, update any 'Last Update:' string in the first 20 lines.
 " 'Last Update:' can have up to 20 characters before and whitespace after it, they are
