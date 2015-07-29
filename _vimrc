@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Κυρ Ιουλ 26, 2015 15:08 GTB Daylight Time
+" Last Update: Τετ Ιουλ 29, 2015 14:19 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -512,7 +512,8 @@ noremap <Del> 2<C-E>
 
 " use <F5> to cycle through split windows,
 " and <F6> to cycle through tabs:
-nnoremap <F5> <Esc><C-W>w
+inoremap <F5> <Esc><C-W>w
+nnoremap <F5> <C-W>w
 nnoremap <F6> :tabnext<CR>
 inoremap <F6> <Esc>:tabnext<CR>
 
