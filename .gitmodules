@@ -10,6 +10,3 @@
 [submodule "bundle/clang-complete"]
 	path = bundle/clang-complete
 	url = git@github.com:myint/clang-complete.git
-[submodule "bundle/neco-ghc"]
-	path = bundle/neco-ghc
-	url = git@github.com:eagletmt/neco-ghc.git
