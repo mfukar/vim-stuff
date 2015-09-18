@@ -10,3 +10,6 @@
 [submodule "bundle/clang-complete"]
 	path = bundle/clang-complete
 	url = git@github.com:myint/clang-complete.git
+[submodule "bundle/haskellmode-vim"]
+	path = bundle/haskellmode-vim
+	url = git@github.com:lukerandall/haskellmode-vim.git

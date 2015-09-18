@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Τετ Ιουλ 29, 2015 14:19 GTB Daylight Time
+" Last Update: Fri Sep 18, 2015 13:41 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -62,6 +62,8 @@ endif " }}}1
 
 " Enable pathogen:
 call pathogen#infect()
+" ..and set up help:
+Helptags
 
 " Normal vim operation. Modified when viewing manpages:
 let $PAGER=''
