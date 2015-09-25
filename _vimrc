@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Sep 18, 2015 13:41 EEST
+" Last Update: Fri Sep 25, 2015 17:37 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -543,6 +543,9 @@ vmap <C-m> <Plug>MarkersMark
 
 " Bracket manipulation mode
 noremap <silent> <C-L>m :call BracketsManipMode("\<C-L>b")<CR>
+
+" Have <localleader>Q close the preview-window:
+noremap <localleader>Q :pclose<CR>
 
 
 " * Keystrokes -- Formatting
