@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Sep 25, 2015 17:37 EEST
+" Last Update: Mon Dec 07, 2015 10:48 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -962,6 +962,6 @@ function! NukeWhitespace()
     let &hlsearch = s:__sh
     call winrestview(s:__cp)
 endfun
-noremap <silent> <Leader>i :call NukeWhitespace()<CR>
+noremap <silent> <Leader>w :call NukeWhitespace()<CR>
 
 " end of mfukar's .vimrc
