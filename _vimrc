@@ -288,6 +288,9 @@ set backspace=eol,start,indent
 " give the cursor some room to breathe:
 set scrolloff=5
 
+" Haskell documentation directory for haddock:
+let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
+
 
 " * Text Formatting -- General
 
