@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Dec 07, 2015 10:48 EET
+" Last Update: Mon Dec 07, 2015 12:11 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -83,61 +83,7 @@ set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 
 
 " * User Interface
-
-" Save and restore GUI position/size via readfile/writefile. Useful for my Windows
-" installation, which doesn't allow me to specify/reset window position:
-if has("gui_running")
-    function! ScreenFilename()
-        if has('win32')
-            return $HOME.'\_vimsize'
-        else
-            return $HOME.'/.vimsize'
-        endif
-    endfunction
-
-    " Restore window size (lines, columns) and position from values stored in vimsize file:
-    function! ScreenRestore()
-        let fname = ScreenFilename()
-        if has("gui_running") && filereadable(fname)
-            let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
-            for line in readfile(fname)
-                let sizepos = split(line)
-                if len(sizepos) == 5 && sizepos[0] == vim_instance
-                    silent! execute "set columns=".sizepos[1]." lines=".sizepos[2]
-                    silent! execute "winpos ".sizepos[3]." ".sizepos[4]
-                    return
-                endif
-            endfor
-        endif
-    endfunction
-
-    " Save window size and position:
-    function! ScreenSave()
-        if has("gui_running")
-            let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
-            let data = vim_instance . ' ' . &columns . ' ' . &lines . ' ' .
-                        \ (getwinposx()<0?0:getwinposx()) . ' ' .
-                        \ (getwinposy()<0?0:getwinposy())
-            let fname = ScreenFilename()
-            if filereadable(fname)
-                let lines = readfile(fname)
-                call filter(lines, "v:val !~ '^" . vim_instance . "\\>'")
-                call add(lines, data)
-            else
-                let lines = [data]
-            endif
-            call writefile(lines, fname)
-        endif
-    endfunction
-
-    if !exists('g:screen_size_by_vim_instance')
-      let g:screen_size_by_vim_instance = 1
-    endif
-
-    autocmd VimEnter,BufWinEnter * call ScreenRestore()
-    autocmd VimLeavePre * call ScreenSave()
-endif
-
+"
 " Always show the tabline, workaround for window position being messed up when it appears:
 set showtabline=2
 
