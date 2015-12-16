@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Dec 07, 2015 12:11 EET
+" Last Update: Wed Dec 16, 2015 12:33 EET
 "
 " This vimrc is divided into these sections:
 "
@@ -234,8 +234,9 @@ set backspace=eol,start,indent
 " give the cursor some room to breathe:
 set scrolloff=5
 
-" Haskell documentation directory for haddock:
+" Haskell documentation directory for haskellmode-vim:
 let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
+let g:haddock_browser="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 
 " * Text Formatting -- General
