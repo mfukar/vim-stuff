@@ -83,7 +83,7 @@ set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 
 
 " * User Interface
-"
+
 " Always show the tabline, workaround for window position being messed up when it appears:
 set showtabline=2
 
@@ -97,11 +97,12 @@ set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
 if has('gui_running') " {{{1
-    set lines=61     " Magic number for my screen on OS X.
     set columns=120
     if has('win32')
+        set lines=46
         set gfn=Consolas:h9
     elseif has('macunix')
+        set lines=61
         " Do note that Monaco doesn't have an italic variant:
         set gfn=Monaco:h11
     endif
