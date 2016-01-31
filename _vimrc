@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Dec 16, 2015 12:33 EET
+" Last Update: Κυρ Ιαν 31, 2016 18:00 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -563,6 +563,9 @@ set hls
 
 
 " * Keystrokes -- Object Processing
+
+" Calculate arithmetic expressions in one line:
+nnoremap <Leader>C 0y$A <C-r>=<C-r>"<CR><Esc>
 
 " Mappings to base64 encode/decode current visual selection and put it in the unnamed
 " register:
