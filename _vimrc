@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Κυρ Ιαν 31, 2016 18:00 GTB Standard Time
+" Last Update: Τετ Φεβ 03, 2016 17:18 GTB Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -239,6 +239,10 @@ set scrolloff=5
 let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
 let g:haddock_browser="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
+" Set GHC on Windows (I use stack and you should, too):
+if has('win32')
+    let g:ghc = "stack ghc"
+endif
 
 " * Text Formatting -- General
 
