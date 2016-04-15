@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Τετ Φεβ 03, 2016 17:18 GTB Standard Time
+" Last Update: Fri Apr 15, 2016 10:47 EEST
 "
 " This vimrc is divided into these sections:
 "
@@ -263,7 +263,7 @@ autocmd FileType gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 ex
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller, and preserve tabs in plain text files:
-autocmd FileType txt,javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
+autocmd FileType txt,json,javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
@@ -918,5 +918,6 @@ function! NukeWhitespace()
     call winrestview(s:__cp)
 endfun
 noremap <silent> <Leader>w :call NukeWhitespace()<CR>
+autocmd BufWritePre * call NukeWhitespace()
 
 " end of mfukar's .vimrc
