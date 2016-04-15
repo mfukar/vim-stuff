@@ -57,14 +57,14 @@ if has("cscope")
     " Note: 'set splitright' in your .vimrc if you prefer the new window
     " on the right instead of the left side of the current buffer.
 
-    nmap <C-\><C-\>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\><C-\>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\><C-\>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\><C-\>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\><C-\>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\><C-\>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-\><C-\>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\><C-\>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\><C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\><C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
     " Keymap Timeouts
     "
