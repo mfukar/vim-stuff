@@ -4,7 +4,7 @@
 " Author:       Michael Foukarakis
 " Version:      0.1
 " Created:      Wed Jan 25, 2012 11:07 GTB Standard Time
-" Last Update:  Fri Nov 28, 2014 10:38 SAST
+" Last Update:  Fri Apr 15, 2016 10:57 EEST
 "------------------------------------------------------------------------
 " Description:  Markdown syntax file
 "------------------------------------------------------------------------
@@ -20,7 +20,7 @@
 " }}}1
 "=============================================================================
 if exists("b:current_syntax")
-  finish
+    finish
 endif
 
 runtime! syntax/html.vim
@@ -120,4 +120,4 @@ hi def link markdownError                 Error
 
 let b:current_syntax = "markdown"
 
-" vim:set sw=2:
+" vim:set sw=4:
