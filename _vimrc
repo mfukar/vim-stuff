@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Apr 15, 2016 10:47 EEST
+" Last Update: Τετ Απρ 20, 2016 19:13 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -383,6 +383,8 @@ set gdefault
 " all subdirectories, opening the quickfix window when done:
 map <F7> :execute "vimgrep /" . expand("<cword>") . "/j **  " <Bar> cw<CR>
 
+" Set grepformat to use ag or ack:
+set grepformat^=%f:%l:%c:%s | if executable('ag') | set grepprg=ag\ --vimgrep | elseif executable('ack') | set grepprg=ack\ --nogroup\ --nocolour | endif
 
 " * Spelling
 
