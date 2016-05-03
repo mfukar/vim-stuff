@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Τετ Απρ 20, 2016 19:13 GTB Daylight Time
+" Last Update: Τρι Μαϊ 03, 2016 18:47 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -603,6 +603,10 @@ iabbrev -*- -*- coding: utf-8 -*-
 
 " Never use single-line comments:
 iabbrev // /*
+
+iabbrev (c) ©
+iabbrev TM ™
+iabbrev (shrug) ¯\_(ツ)_/¯
 
 
 " * Functions Referred to Above
