@@ -2,9 +2,9 @@ VimL:" $Id: fori.template 33 2008-02-19 01:26:11Z luc.hermitte $
 VimL:"{for i=0...} Template-File, Luc Hermitte
 VimL: let s:value_start  = 'Â¡'
 VimL: let s:value_end    = 'Â¡'
-VimL: let s:reindent     = 1 
+VimL: let s:reindent     = 1
 VimL: let s:marker_open  = '<+'
 VimL: let s:marker_close = '+>'
-forÂ¡C_nl_before_bracket()Â¡(i=0; i!=<+MAX+> ; ++i)Â¡C_nl_before_curlyB()Â¡{
+forÂ¡C_nl_before_bracket()Â¡(size_t idx = 0; idx != <+MAX+> ; ++idx)Â¡C_nl_before_curlyB()Â¡{
     <+code+>
 }<++>
