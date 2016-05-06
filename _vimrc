@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Τρι Μαϊ 03, 2016 18:47 GTB Daylight Time
+" Last Update: Παρ Μαϊ 06, 2016 14:59 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -353,8 +353,8 @@ autocmd FileType html setlocal formatoptions+=tl
 autocmd FileType html noremap <localleader>t :set filetype=javascript<CR>
 autocmd FileType javascript noremap <localleader>t :set filetype=html<CR>
 
-" set folding according to syntax for C,C++:
-autocmd FileType c,cpp setlocal foldmethod=syntax
+" set folding according to syntax where supported:
+autocmd FileType c,cpp,json setlocal foldmethod=syntax
 " but indent for Python:
 autocmd FileType python setlocal foldmethod=indent
 
