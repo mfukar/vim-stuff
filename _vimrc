@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Σαβ Μαϊ 21, 2016 11:55 GTB Daylight Time
+" Last Update: Σαβ Μαϊ 21, 2016 12:17 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -18,7 +18,7 @@
 " * Keystrokes -- Toggles
 " * Keystrokes -- Object Processing
 " * Keystrokes -- Insert Mode
-" * Functions Referred to Above
+" * Functions Referred Above
 " * Functions Using the Python Interface
 " * Automatic Code Completion
 "
@@ -388,25 +388,24 @@ set grepformat^=%f:%l:%c:%s | if executable('ag') | set grepprg=ag\ --vimgrep | 
 
 " * Spelling
 
-" define Ispell language and personal dictionary, used below:
-let IspellLang = 'british'
-if has("win32")
-    let PersonalDict = '$HOME\.ispell_' . IspellLang
-elseif has("unix")
-    let PersonalDict = '~/.ispell_' . IspellLang
-endif
+" Set the language:
+set spelllang=en_gb
 
-" try to avoid misspelling words in the first place -- have the insert mode
-" <Ctrl>+N/<Ctrl>+P keys perform completion on partially-typed words by checking the Linux
-" word list (if on Linux) and the personal Ispell dictionary; sort out case sensibly (so
-" that words at starts of sentences can still be completed with words that are in the
-" dictionary all in lower case):
-execute 'set dictionary+=' . PersonalDict
+" Spellcheck only text and vimscript, for now:
+autocmd filetype markdown,vim setlocal spell
+
+" Use the system word list too, if on UNIX-likes:
 if has('unix')
     set dictionary+=/usr/dict/words
-elseif has('macunix')
 endif
-set complete=.,w,k
+
+" The types of completion for spelling are:
+" scan the current buffer
+" scan buffers open in other windows
+" scan the 'dictionary'
+" scan the active 'spell':
+set complete=.,w,k,kspell
+" Sort case sensibly, so that words can be all lowercase in the dictionary:
 set infercase
 
 " correct my common typos without me even noticing them:
@@ -414,37 +413,6 @@ abbreviate teh the
 abbreviate spolier spoiler
 abbreviate atmoic atomic
 abbreviate magic ¡magic!
-
-" Spell checking operations are defined next.  They are all set to normal mode keystrokes
-" beginning \s but function keys are also mapped to the most common ones.  The functions
-" referred to are defined at the end of this .vimrc.
-
-" si ("spelling interactive") saves the current file then spell checks it
-" interactively through Ispell and reloads the corrected version:
-execute 'nnoremap <localleader>si :w<CR>:!ispell -x -d ' . IspellLang . ' %<CR>:e<CR><CR>'
-
-" sl ("spelling list") lists all spelling mistakes in the current buffer,
-" but excludes any in news/mail headers or in ("> ") quoted text:
-execute 'nnoremap <localleader>sl :w ! grep -v "^>" <Bar> grep -E -v "^[[:alpha:]-]+: " ' .
-  \ '<Bar> ispell -l -d ' . IspellLang . ' <Bar> sort <Bar> uniq<CR>'
-
-" sh ("spelling highlight") highlights (in red) all misspelt words in the current buffer,
-" and also excluding the possessive forms of any valid words (EG "Lizzy's" won't be
-" highlighted if "Lizzy" is in the dictionary); with mail and news messages it ignores
-" headers and quoted text; for HTML it ignores tags and only checks words that will
-" appear, and turns off other syntax highlighting to make the errors more apparent:
-nnoremap <localleader>sh :call HighlightSpellingErrors()<CR><CR>
-
-" sc ("spelling clear") clears all highlighted misspellings; for HTML it
-" restores regular syntax highlighting:
-nnoremap <localleader>sc :if &ft == 'html' <Bar> sy on <Bar>
-  \ else <Bar> :sy clear SpellError <Bar> endif<CR>
-
-" sa ("spelling add") adds the word at the cursor position to the personal dictionary
-" (but for possessives adds the base word, so that when the cursor is on "Ceri's" only
-" "Ceri" gets added to the dictionary), and stops highlighting that word as an error (if
-" appropriate) [function at end of file]:
-nnoremap <localleader>sa :call AddWordToDictionary()<CR><CR>
 
 
 " * Keystrokes -- Moving Around
@@ -606,131 +574,7 @@ iabbrev TM ™
 iabbrev (shrug) ¯\_(ツ)_/¯
 
 
-" * Functions Referred to Above
-
-function! HighlightSpellingErrors()
-" highlights spelling errors in the current window; used for the \sh operation
-" defined above;
-" requires the ispell, sort, and uniq commands to be in the path;
-" requires the global variable IspellLang to be defined above, and to contain
-" the preferred Ispell language;
-" for mail/news messages, requires the grep command to be in the path;
-" for HTML documents, saves the file to disk and requires the lynx command to
-" be in the path
-
-  " for HTML files, remove all current syntax highlighting (so that
-  " misspellings show up clearly), and note it's HTML for future reference:
-  if &filetype == 'html'
-    let HTML = 1
-    syntax clear
-
-  " for everything else, simply remove any previously-identified spelling
-  " errors (and corrections):
-  else
-    let HTML = 0
-    if hlexists('SpellError')
-      syntax clear SpellError
-    endif
-    if hlexists('Normal')
-      syntax clear Normal
-    endif
-  endif
-
-  " form a command that has the text to be checked piping through standard
-  " output; for HTML files this involves saving the current file and processing
-  " it with Lynx; for everything else, use all the buffer except quoted text
-  " and mail/news headers:
-  if HTML
-    write
-    let PipeCmd = '! lynx --dump --nolist % |'
-  else
-    let PipeCmd = 'write !'
-    if &filetype == 'mail'
-      let PipeCmd = PipeCmd . ' grep -v "^> " | grep -E -v "^[[:alpha:]-]+:" |'
-    endif
-  endif
-
-  " execute that command, then generate a unique list of misspelt words and
-  " store it in a temporary file:
-  let ErrorsFile = tempname()
-  execute PipeCmd . ' ispell -l -d '. g:IspellLang .' | sort | uniq > ' . ErrorsFile
-
-  " open that list of words in another window:
-  execute 'split ' . ErrorsFile
-
-  " for every word in that list ending with "'s", check if the root form
-  " without the "'s" is in the dictionary, and if so remove the word from the
-  " list:
-  global /'s$/ execute 'read ! echo '. expand('<cword>') .' | ispell -l -d ' . g:IspellLang | delete
-  " (If the root form is in the dictionary, ispell -l will have no output so
-  " nothing will be read in, the cursor will remain in the same place and the
-  " :delete will delete the word from the list.  If the root form is not in the
-  " dictionary, then ispell -l will output it and it will be read on to a new
-  " line; the delete command will then remove that misspelt root form, leaving
-  " the original possessive form in the list!)
-
-  " only do anything if there are some misspellings:
-  if strlen(getline('.')) > 0
-
-    " if (previously noted as) HTML, replace each non-alphanum char with a
-    " regexp that matches either that char or a &...; entity:
-    if HTML
-      % substitute /\W/\\(&\\|\&\\(#\\d\\{2,4}\\|\w\\{2,8}\\);\\)/e
-    endif
-
-    " turn each mistake into a vim command to place it in the SpellError
-    " syntax highlighting group:
-    % substitute /^/syntax match SpellError !\\</
-    % substitute /$/\\>!/
-  endif
-
-  " save and close that file (so switch back to the one being checked):
-  exit
-
-  " make syntax highlighting case-sensitive, then execute all the match
-  " commands that have just been set up in that temporary file, delete it, and
-  " highlight all those words in red:
-  syntax case match
-  execute 'source ' . ErrorsFile
-  call delete(ErrorsFile)
-  highlight SpellError term=reverse ctermfg=DarkRed guifg=Red
-
-  " with HTML, don't mark any errors in e-mail addresses or URLs, and ignore
-  " anything marked in a fix-width font (as being computer code):
-  if HTML
-    syntax case ignore
-    syntax match Normal !\<[[:alnum:]._-]\+@[[:alnum:]._-]\+\.\a\+\>!
-    syntax match Normal
-      \ !\<\(ht\|f\)tp://[-[:alnum:].]\+\a\(/[-_.[:alnum:]/#&=,]*\)\=\>!
-    syntax region Normal start=!<Pre>! end=!</Pre>!
-    syntax region Normal start=!<Code>! end=!</Code>!
-    syntax region Normal start=!<Kbd>! end=!</Kbd>!
-  endif
-
-endfunction " HighlightSpellingErrors()
-
-
-function! AddWordToDictionary()
-    " adds the word under the cursor to the personal dictonary; used for the \sa operation
-    " defined above; requires the global variable PersonalDict to be defined above, and to
-    " contain the Ispell personal dictionary.  Get the word under the cursor, including the
-    " apostrophe as a word character to allow for words like "won't", but then ignoring any
-    " apostrophes at the start or end of the word:
-    set iskeyword+='
-    let Word = substitute(expand('<cword>'), "^'\\+", '', '')
-    let Word = substitute(Word, "'\\+$", '', '')
-    set iskeyword-='
-
-    " override any SpellError highlighting that might exist for this word, highlighting it
-    " as normal text:
-    execute 'syntax match Normal #\<' . Word . '\>#'
-
-    " remove any final "'s" so that possessive forms don't end up in the dictionary, then add
-    " the word to the dictionary:
-    let Word = substitute(Word, "'s$", '', '')
-    execute '!echo "' . Word . '" >> ' . g:PersonalDict
-endfunction " AddWordToDictionary()
-
+" * Functions Referred Above
 
 " Last command run with RunShellCommand():
 let s:lastcmd = ''
