@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Παρ Μαϊ 06, 2016 14:59 GTB Daylight Time
+" Last Update: Σαβ Μαϊ 21, 2016 11:55 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -419,35 +419,32 @@ abbreviate magic ¡magic!
 " beginning \s but function keys are also mapped to the most common ones.  The functions
 " referred to are defined at the end of this .vimrc.
 
-" \si ("spelling interactive") saves the current file then spell checks it
+" si ("spelling interactive") saves the current file then spell checks it
 " interactively through Ispell and reloads the corrected version:
-execute 'nnoremap \si :w<CR>:!ispell -x -d ' . IspellLang . ' %<CR>:e<CR><CR>'
+execute 'nnoremap <localleader>si :w<CR>:!ispell -x -d ' . IspellLang . ' %<CR>:e<CR><CR>'
 
-" \sl ("spelling list") lists all spelling mistakes in the current buffer,
+" sl ("spelling list") lists all spelling mistakes in the current buffer,
 " but excludes any in news/mail headers or in ("> ") quoted text:
-execute 'nnoremap \sl :w ! grep -v "^>" <Bar> grep -E -v "^[[:alpha:]-]+: " ' .
+execute 'nnoremap <localleader>sl :w ! grep -v "^>" <Bar> grep -E -v "^[[:alpha:]-]+: " ' .
   \ '<Bar> ispell -l -d ' . IspellLang . ' <Bar> sort <Bar> uniq<CR>'
 
-" \sh ("spelling highlight") highlights (in red) all misspelt words in the current buffer,
+" sh ("spelling highlight") highlights (in red) all misspelt words in the current buffer,
 " and also excluding the possessive forms of any valid words (EG "Lizzy's" won't be
 " highlighted if "Lizzy" is in the dictionary); with mail and news messages it ignores
 " headers and quoted text; for HTML it ignores tags and only checks words that will
 " appear, and turns off other syntax highlighting to make the errors more apparent:
-nnoremap \sh :call HighlightSpellingErrors()<CR><CR>
-nmap <F9> \sh
+nnoremap <localleader>sh :call HighlightSpellingErrors()<CR><CR>
 
-" \sc ("spelling clear") clears all highlighted misspellings; for HTML it
+" sc ("spelling clear") clears all highlighted misspellings; for HTML it
 " restores regular syntax highlighting:
-nnoremap \sc :if &ft == 'html' <Bar> sy on <Bar>
+nnoremap <localleader>sc :if &ft == 'html' <Bar> sy on <Bar>
   \ else <Bar> :sy clear SpellError <Bar> endif<CR>
-nmap <F10> \sc
 
-" \sa ("spelling add") adds the word at the cursor position to the personal dictionary
+" sa ("spelling add") adds the word at the cursor position to the personal dictionary
 " (but for possessives adds the base word, so that when the cursor is on "Ceri's" only
 " "Ceri" gets added to the dictionary), and stops highlighting that word as an error (if
 " appropriate) [function at end of file]:
-nnoremap \sa :call AddWordToDictionary()<CR><CR>
-nmap <F8> \sa
+nnoremap <localleader>sa :call AddWordToDictionary()<CR><CR>
 
 
 " * Keystrokes -- Moving Around
