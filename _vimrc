@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Σαβ Μαϊ 21, 2016 12:17 GTB Daylight Time
+" Last Update: Παρ Μαϊ 27, 2016 08:58 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -179,7 +179,7 @@ set history=100
 
 " remember all of these between sessions, but only 10 search terms; also
 " remember info for 10 files, but never any on removable disks, don't
-" remember marks in files, don't rehighlight old search patterns, and
+" remember marks in files, don't re-highlight old search patterns, and
 " only save up to 100 lines of registers; including @10 in there should
 " restrict input buffer but it causes an error for me:
 set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
@@ -260,6 +260,10 @@ set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
+
+" For C, C++, and all others that apply, line up continuation lines after the first
+" non-whitespace character in the unfinished expression in parentheses:
+autocmd FileType c,cpp,python,ruby,java,objc setlocal cinoptions=(0,u0
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller, and preserve tabs in plain text files:
