@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Παρ Μαϊ 27, 2016 08:58 GTB Daylight Time
+" Last Update: Τετ Αυγ 03, 2016 09:19 GTB Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -145,7 +145,6 @@ set laststatus=2
 " Configure airline:
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_section_b      = '[%04B]'
-let g:airline_section_gutter = '%= %{strftime("%H:%M, %b %d, %Y")}'
 let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
 
 " Taglist configuration
