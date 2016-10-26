@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Τετ Αυγ 03, 2016 09:19 GTB Daylight Time
+" Last Update: Wed Oct 26, 2016 15:36 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -320,6 +320,13 @@ set textwidth=90
 " treat lines starting with a quote mark as comments (for vim files, such as this very
 " one!):
 set comments+=b:\"
+
+" EasyAlign shortcuts:
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 
 " * Text Formatting -- Specific File Formats
