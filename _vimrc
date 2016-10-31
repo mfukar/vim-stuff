@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Oct 26, 2016 15:36 CEST
+" Last Update: Δευ Οκτ 31, 2016 13:31 W. Europe Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -727,7 +727,7 @@ endif
 
 " Configure clang-complete:
 if has('win32')
-    let g:clang_library_path='' " TODO
+    let g:clang_library_path='C:\Program Files\LLVM\bin'
 elseif has('macunix')
     let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
 else
