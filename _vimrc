@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Δευ Οκτ 31, 2016 13:31 W. Europe Standard Time
+" Last Update: Thu Nov 03, 2016 15:21 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -579,9 +579,13 @@ iabbrev -*- -*- coding: utf-8 -*-
 " Never use single-line comments:
 iabbrev // /*
 
+" Useful Unicode shortcuts, to avoid stupid software workarounds:
+" (anybody designing a useful Unicode keyboard?)
 iabbrev (c) ©
 iabbrev TM ™
 iabbrev (shrug) ¯\_(ツ)_/¯
+iabbrev (check) ✔
+iabbrev (x) ✘
 
 
 " * Functions Referred Above
