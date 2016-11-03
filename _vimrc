@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Nov 03, 2016 15:21 CET
+" Last Update: Thu Nov 03, 2016 15:34 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -581,11 +581,11 @@ iabbrev // /*
 
 " Useful Unicode shortcuts, to avoid stupid software workarounds:
 " (anybody designing a useful Unicode keyboard?)
-iabbrev (c) ©
+iabbrev -c- ©
 iabbrev TM ™
-iabbrev (shrug) ¯\_(ツ)_/¯
-iabbrev (check) ✔
-iabbrev (x) ✘
+iabbrev -shrug- ¯\_(ツ)_/¯
+iabbrev -check- ✔
+iabbrev -x- ✘
 
 
 " * Functions Referred Above
