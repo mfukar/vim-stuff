@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Nov 03, 2016 15:34 CET
+" Last Update: Tue Nov 08, 2016 10:33 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -586,6 +586,7 @@ iabbrev TM ™
 iabbrev -shrug- ¯\_(ツ)_/¯
 iabbrev -check- ✔
 iabbrev -x- ✘
+iabbrev =/= ≠
 
 
 " * Functions Referred Above
