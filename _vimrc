@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sun Nov 13, 2016 17:41 WEST
+" Last Update: Δευ Νοε 14, 2016 18:00 W. Europe Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -258,7 +258,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
-autocmd FileType txt,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
+autocmd FileType json,txt,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
 
 " For C, C++, and all others that apply, line up continuation lines after the first
 " non-whitespace character in the unfinished expression in parentheses:
@@ -266,7 +266,7 @@ autocmd FileType c,cpp,python,ruby,java,objc setlocal cinoptions=(0,u0
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller, and preserve tabs in plain text files:
-autocmd FileType txt,json,javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
+autocmd FileType javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
