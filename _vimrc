@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Δευ Νοε 14, 2016 18:00 W. Europe Standard Time
+" Last Update: Fr Nov 25, 2016 10:46 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -403,11 +403,6 @@ set spelllang=en_gb
 
 " Spellcheck only text and vimscript, for now:
 autocmd filetype markdown,vim setlocal spell
-
-" Use the system word list too, if on UNIX-likes:
-if has('unix')
-    set dictionary+=/usr/dict/words
-endif
 
 " The types of completion for spelling are:
 " scan the current buffer
