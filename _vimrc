@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fr Nov 25, 2016 10:46 CET
+" Last Update: Wed Dec 07, 2016 10:30 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -86,6 +86,10 @@ set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 
 " Always show the tabline, workaround for window position being messed up when it appears:
 set showtabline=2
+
+" Show the cursorline, and colorcolumn past 100:
+set cursorline
+set colorcolumn=100
 
 " Because we're not cavemen:
 set encoding=utf-8
@@ -258,7 +262,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
-autocmd FileType json,txt,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
+autocmd FileType sh,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
 
 " For C, C++, and all others that apply, line up continuation lines after the first
 " non-whitespace character in the unfinished expression in parentheses:
@@ -266,7 +270,7 @@ autocmd FileType c,cpp,python,ruby,java,objc setlocal cinoptions=(0,u0
 
 " for CSS, HTML, and Javascript use genuine tab characters for indentation, to make
 " files a few bytes smaller, and preserve tabs in plain text files:
-autocmd FileType javascript,html,xml,css,sh setlocal ts=4 sw=4 noexpandtab
+autocmd FileType txt,json,javascript,html,xml,css setlocal ts=4 sw=4 noexpandtab
 
 " in makefiles, don't expand tabs to spaces, since actual tab characters are needed, and
 " have indentation at 8 chars to be sure that all indents are tabs (despite the mappings
