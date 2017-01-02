@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Dec 07, 2016 10:30 CET
+" Last Update: Mo Jan 02, 2017 09:42 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -31,7 +31,7 @@ autocmd!
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be 'xterm';
 " KVT claims to be 'xterm-color', so does the Mac OSX console:
 if &term =~ 'xterm' " {{{1
-    " Mac OSX iTerm pretends it's an 'xterm-256color':
+    " macOS iTerm pretends it's an 'xterm-256color':
     if $TERM == 'xterm-256color'
         fixdel
         execute 'set t_kb=' . nr2char(127)
@@ -125,7 +125,6 @@ map <C-Z> :shell<CR>
 
 " Set the terminal title, always:
 set title
-
 
 " Force the number of terminal colors; if 256 colours are not
 " supported, your terminal emulator sucks & you should get another one:
@@ -375,10 +374,12 @@ autocmd FileType python setlocal foldmethod=indent
 " For git commit messages, wrap text to 72 columns:
 autocmd FileType gitcommit setlocal textwidth=72
 
-" Folds:
-" restore all manually created folds - and save them at exit:
-"au BufWinLeave  * mkview
-"au BufWinEnter  * silent loadview
+" Restore all manually created folds - and save them at exit:
+au BufWinLeave  * mkview
+au BufWinEnter  * silent loadview
+
+" The syntax of systemd unit files is covered by sh.vim:
+autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.path,*.busname,*.slice setlocal filetype=sh
 
 
 " * Search & Replace
