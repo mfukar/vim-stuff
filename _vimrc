@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jan 03, 2017 13:00 CET
+" Last Update: Tue Jan 03, 2017 13:07 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -138,6 +138,11 @@ else
     colorscheme obsidian
 endif
 
+" Create a fancy status line:
+function! IndentLevel()
+    return (indent('.') / &ts)
+endf
+let &statusline='%<%3.3n  %f  %(%y %{&fenc} [%{&ff}]%)  %m%r (%03c, %#WildMenu#0x%04B%*) %= T%{IndentLevel()} %P : %3l : %3c   [%{strftime("%H:%M, %b %d, %Y")}]'
 " Always show a status line:
 set laststatus=2
 
