@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mo Jan 02, 2017 13:56 CET
+" Last Update: Tue Jan 03, 2017 13:00 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -138,17 +138,14 @@ else
     colorscheme obsidian
 endif
 
-" Create a fancy status line:
-function! IndentLevel()
-    return (indent('.') / &ts)
-endf
-let &statusline='%<%3.3n  %f  %(%y %{&fenc} [%{&ff}]%)  %m%r (%03c, %#WildMenu#0x%04B%*) %= T%{IndentLevel()} %P : %3l : %3c   [%{strftime("%H:%M, %b %d, %Y")}]'
+" Always show a status line:
 set laststatus=2
 
 " Configure airline:
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_section_b      = '[%04B]'
 let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
+let g:airline_theme = 'cobalt2'
 
 " Taglist configuration
 " on/off switching:
@@ -246,6 +243,9 @@ if has('win32')
     let g:ghc = "stack ghc"
 endif
 
+" Set the update time to 750ms. Fast enough, without putting a lot of computation burden:
+set updatetime=750
+
 " * Text Formatting -- General
 
 " Don't make it look like there are line breaks where there aren't:
@@ -253,6 +253,8 @@ set nowrap
 
 " Always use line numbering:
 set nu
+" Use F8 to toggle relative line numbering:
+nmap <F8> :set relativenumber!<CR>
 
 " Indentation
 " For my projects, use spaces instead of tabs, and have them copied down lines:
@@ -587,6 +589,7 @@ iabbrev -shrug- ¯\_(ツ)_/¯
 iabbrev -check- ✔
 iabbrev -x- ✘
 iabbrev =/= ≠
+iabbrev => ⇒
 
 
 " * Functions Referred Above
