@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mo Jan 02, 2017 09:42 CET
+" Last Update: Mo Jan 02, 2017 13:56 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -375,8 +375,8 @@ autocmd FileType python setlocal foldmethod=indent
 autocmd FileType gitcommit setlocal textwidth=72
 
 " Restore all manually created folds - and save them at exit:
-au BufWinLeave  * mkview
-au BufWinEnter  * silent loadview
+" au BufWinLeave  * mkview
+" au BufWinEnter  * silent loadview
 
 " The syntax of systemd unit files is covered by sh.vim:
 autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.path,*.busname,*.slice setlocal filetype=sh
