@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jan 04, 2017 10:41 CET
+" Last Update: Wed Jan 04, 2017 11:16 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -207,8 +207,13 @@ set mouse=a
 " Don't have files trying to override this .vimrc or perform any shenanigans:
 set nomodeline
 
-" Make netrw list files in a tree:
+" netrw settings:
+" List files in a tree:
 let g:netrw_liststyle = 3
+" Remove the banner by default:
+let g:netrw_banner = 0
+" Open the file by splitting vertically first:
+let g:netrw_browse_split = 2
 
 " I use pscp with netrw:
 if has('win32')
