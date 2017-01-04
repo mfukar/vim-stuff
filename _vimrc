@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jan 03, 2017 13:07 CET
+" Last Update: Wed Jan 04, 2017 10:41 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -152,18 +152,8 @@ let g:airline_section_b      = '[%04B]'
 let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
 let g:airline_theme = 'cobalt2'
 
-" Taglist configuration
-" on/off switching:
-nnoremap <silent> <F11> :TlistToggle<CR>
-
-" Let the shell handle all the path sickness:
-let Tlist_Ctags_Cmd='ctags'
-let Tlist_Close_On_Select = 1
-let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
-" TagListTagName - Used for tag names
-highlight MyTagListTagName gui=bold guifg=Black guibg=Orange
-" TagListTagScope - Used for tag scope
-highlight MyTagListTagScope gui=NONE guifg=Blue
+" Tagbar on/off switching:
+nnoremap <silent> <F11> :TagbarToggle<CR>
 
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2)) || has('gui_running')
