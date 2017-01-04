@@ -8,16 +8,15 @@ possible, but I'm always open to suggestions to make it better.
 Plugins
 -------
 
-* indexer (+ prereqs)
-* CSApprox
-* matchit
-* netrw
-* pyclewn
-* SearchInRuntime
-* vimball
+* clang-complete - completion based on libclang
+* tagbar - organise tags & allow navigation
+* easy-align
+* haskellmode-vim
+* CSApprox - approximate gui colorschemes on terminals
+* matchit - extends % matching
 * Luc Hermitte's vim-lib, map-tools, µtemplate, etc.
 * a slightly customized version of Tim Pope's surround
-* BlobDiff (diff two arbitrary text blobs)
-* vsearch  (visual search)
-* pydiction
+* BlobDiff - diff two arbitrary text blobs
+* vsearch - visual search
+* airline - and associated themes
 * and others I may have left out or forgotten.
