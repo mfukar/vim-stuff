@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jan 04, 2017 11:16 CET
+" Last Update: Thu Jan 05, 2017 10:35 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -212,8 +212,8 @@ set nomodeline
 let g:netrw_liststyle = 3
 " Remove the banner by default:
 let g:netrw_banner = 0
-" Open the file by splitting vertically first:
-let g:netrw_browse_split = 2
+" Open the file by splitting horizontally first:
+let g:netrw_browse_split = 1
 
 " I use pscp with netrw:
 if has('win32')
