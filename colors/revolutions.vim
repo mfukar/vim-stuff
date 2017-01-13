@@ -13,6 +13,7 @@ let g:colors_name = 'revolutions'
 hi Boolean        guifg=#e6fff3 guibg=#43705a gui=none
 hi Character      guifg=#e6fff3 guibg=#43705a gui=none
 hi Comment        guifg=#43705a guibg=#000000 gui=underline
+hi ColorColumn    guifg=#000000 guibg=#43705a gui=none
 hi Conditional    guifg=#e6fff3 guibg=#000000 gui=bold
 hi Constant       guifg=#e6fff3 guibg=#43705a gui=none
 hi Cursor         guifg=#43705a guibg=#e6fff3 gui=none
