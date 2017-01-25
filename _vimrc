@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Jan 05, 2017 10:42 CET
+" Last Update: Wed Jan 25, 2017 13:26 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -71,11 +71,11 @@ let $PAGER=''
 " Store temporary files in a central spot,
 " instead of all over the place:
 if has('win32')
-    set backupdir=$HOMEDRIVE$HOMEPATH\tmp
-    set directory=$HOMEDRIVE$HOMEPATH\tmp
+    set backupdir=$HOMEDRIVE$HOMEPATH\tmp\\
+    set directory=$HOMEDRIVE$HOMEPATH\tmp\\
 elseif has('unix')
-    set backupdir=~/tmp
-    set directory=~/tmp
+    set backupdir=~/tmp//
+    set directory=~/tmp//
 endif
 
 " Set 'path' to make gf usable:
