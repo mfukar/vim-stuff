@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jan 25, 2017 13:26 CET
+" Last Update: Tue Mar 07, 2017 11:24 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -77,6 +77,9 @@ elseif has('unix')
     set backupdir=~/tmp//
     set directory=~/tmp//
 endif
+
+" Use persistent undo:
+set undofile
 
 " Set 'path' to make gf usable:
 set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
@@ -263,7 +266,7 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
-autocmd FileType zsh,sh,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell setlocal sw=4 ts=4 expandtab
+autocmd FileType zsh,sh,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell,cabal setlocal sw=4 ts=4 expandtab
 autocmd BufEnter,BufNew  *.bb,*.bbappend setlocal sw=4 ts=4 expandtab
 
 " For C, C++, and all others that apply, line up continuation lines after the first

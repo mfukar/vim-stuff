@@ -34,3 +34,6 @@
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
     branch = master
+[submodule "bundle/undotree"]
+	path = bundle/undotree
+	url = https://github.com/mbbill/undotree.git
