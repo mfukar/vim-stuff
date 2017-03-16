@@ -14,9 +14,6 @@
     path = bundle/clang-complete
     url = git@github.com:myint/clang-complete.git
     branch = master
-[submodule "bundle/haskellmode-vim"]
-    path = bundle/haskellmode-vim
-    url = git@github.com:lukerandall/haskellmode-vim.git
     branch = master
 [submodule "bundle/easy-align"]
     path = bundle/easy-align
