@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Mar 07, 2017 11:29 CET
+" Last Update: Thu Mar 30, 2017 14:30 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -320,12 +320,11 @@ if has("unix")
     endif
 endif
 
-" normally don't automatically format text as it is typed, IE only do this with
-" comments, at 90 characters (my terminals are 102 columns wide). also, reformat
-" numbered lists:
+" normally don't automatically format text as it is typed, only do this with
+" comments, at 100 characters. also, reformat numbered lists:
 set fo-=t
 set fo+=n
-set textwidth=90
+set textwidth=100
 
 " treat lines starting with a quote mark as comments (for vim files, such as this very
 " one!):
@@ -588,6 +587,8 @@ iabbrev // /*
 
 " Useful Unicode shortcuts, to avoid stupid software workarounds:
 " (anybody designing a useful Unicode keyboard?)
+autocmd filetype markdown iabbrev -> →
+autocmd filetype markdown iabbrev <- ←
 iabbrev -c- ©
 iabbrev TM ™
 iabbrev -shrug- ¯\_(ツ)_/¯
