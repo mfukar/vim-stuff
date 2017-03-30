@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Mar 30, 2017 14:30 CEST
+" Last Update: Thu Mar 30, 2017 14:37 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -69,14 +69,15 @@ Helptags
 " Normal vim operation. Modified when viewing manpages:
 let $PAGER=''
 
-" Store temporary files in a central spot,
-" instead of all over the place:
+" Store temporary files in a central spot, instead of all over the place:
 if has('win32')
     set backupdir=$HOMEDRIVE$HOMEPATH\tmp\\
     set directory=$HOMEDRIVE$HOMEPATH\tmp\\
+    set undodir=$HOMEDRIVE$HOMEPATH\tmp\\
 elseif has('unix')
     set backupdir=~/tmp//
     set directory=~/tmp//
+    set undodir=~/tmp//
 endif
 
 " Use persistent undo:
