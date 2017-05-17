@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Mar 30, 2017 14:37 CEST
+" Last Update: Wed May 17, 2017 11:14 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -140,7 +140,7 @@ if has('gui_running')
     set background=light
     colorscheme logical
 else
-    colorscheme obsidian
+    colorscheme badwolf
 endif
 
 " Create a fancy status line:
@@ -554,6 +554,10 @@ set hls
 
 " Calculate arithmetic expressions in one line:
 nnoremap <Leader>C 0y$A <C-r>=<C-r>"<CR><Esc>
+
+" Increment all numbers in a visual selection like C-a and C-x do:
+vnoremap <C-a> :s/\%V-\=\d\+/\=submatch(0)+1/g
+vnoremap <C-x> :s/\%V-\=\d\+/\=submatch(0)-1/g
 
 " Mappings to base64 encode/decode current visual selection and put it in the unnamed
 " register:
