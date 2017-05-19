@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed May 17, 2017 11:14 CEST
+" Last Update: Fri May 19, 2017 14:00 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -30,7 +30,7 @@ autocmd!
 
 " XTerm, RXVT, Gnome Terminal, and Konsole all claim to be 'xterm';
 " KVT claims to be 'xterm-color', so does the Mac OSX console:
-if &term =~ 'xterm' " {{{1
+if &term =~ 'xterm'
     " macOS iTerm pretends it's an 'xterm-256color':
     if $TERM == 'xterm-256color'
         fixdel
@@ -55,7 +55,7 @@ else
         " The above won't work if an XTerm or KVT is started from within a
         " Gnome Terminal or an RXVT: the $COLORTERM setting will propagate.
     endif
-endif " }}}1
+endif
 
 
 " * Environment
@@ -71,13 +71,13 @@ let $PAGER=''
 
 " Store temporary files in a central spot, instead of all over the place:
 if has('win32')
-    set backupdir=$HOMEDRIVE$HOMEPATH\tmp\\
-    set directory=$HOMEDRIVE$HOMEPATH\tmp\\
-    set undodir=$HOMEDRIVE$HOMEPATH\tmp\\
+    set backupdir=$HOMEDRIVE$HOMEPATH\tmp\\vim\\
+    set directory=$HOMEDRIVE$HOMEPATH\tmp\\vim\\
+    set undodir=$HOMEDRIVE$HOMEPATH\tmp\\vim\\
 elseif has('unix')
-    set backupdir=~/tmp//
-    set directory=~/tmp//
-    set undodir=~/tmp//
+    set backupdir=~/tmp/.vim/
+    set directory=~/tmp/.vim
+    set undodir=~/tmp/.vim
 endif
 
 " Use persistent undo:
@@ -105,7 +105,7 @@ set fileencodings=utf-8,ucs-bom,default,latin1
 set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
-if has('gui_running') " {{{1
+if has('gui_running')
     set columns=120
     if has('win32')
         set lines=46
@@ -115,7 +115,7 @@ if has('gui_running') " {{{1
         " Do note that Monaco doesn't have an italic variant:
         set gfn=Monaco:h11
     endif
-endif " }}}1
+endif
 
 " whoami:
 let g:author = 'Michael Foukarakis'
@@ -612,7 +612,7 @@ let s:lastcmd = ''
 " <localleader>b takes you back to the buffer you were before the command was executed,
 " <localleader>r executes the command again.
 " :Shell! can be used to repeat the last command given:
-function! s:RunShellCommand(cmdline, bang) " {{{1
+function! s:RunShellCommand(cmdline, bang)
     let _ = a:bang != '' ? s:lastcmd : a:cmdline == '' ? '' : join(map(split(a:cmdline), 'expand(v:val)'))
 
     if _ == ''
@@ -644,12 +644,12 @@ function! s:RunShellCommand(cmdline, bang) " {{{1
 
     setlocal nomodifiable
     1
-endfunction " }}}1
+endfunction
 command! -complete=shellcmd -nargs=* -bang Shell call s:RunShellCommand(<q-args>, '<bang>')
 
 
 " Override DateStamp() (used by µTemplate)
-function! DateStamp(...) " {{{1
+function! DateStamp(...)
     if a:0 > 0
         return strftime(a:1)
     else
@@ -661,13 +661,13 @@ function! DateStamp(...) " {{{1
             return strftime('%a %b %d, %Y %R %Z')
         endif
     endif
-endfunction " }}}1
+endfunction
 
 
 " Transform the contents of the register passed to a single line:
-function! Deboxify(reg) " {{{1
+function! Deboxify(reg)
     let @" = join(split(getreg(a:reg), '\n'), "")
-endfunction " }}}1
+endfunction
 
 
 " * Functions Using the Python Interface
