@@ -2,9 +2,9 @@
 " $Id$
 " File:         syntax\markdown.vim                               {{{1
 " Author:       Michael Foukarakis
-" Version:      0.1
+" Version:      0.2
 " Created:      Wed Jan 25, 2012 11:07 GTB Standard Time
-" Last Update:  Fri Apr 15, 2016 10:57 EEST
+" Last Update:  Tue May 23, 2017 14:31 CEST
 "------------------------------------------------------------------------
 " Description:  Markdown syntax file
 "------------------------------------------------------------------------
@@ -27,6 +27,7 @@ runtime! syntax/html.vim
 unlet! b:current_syntax
 
 syn sync minlines=10
+syn sync fromstart
 syn case ignore
 
 syn match markdownValid '[<>]\S\@!'
@@ -86,6 +87,7 @@ syn region markdownCode matchgroup=markdownCodeDelimiter start="^\s*\zs```\s*\w*
 syn match markdownEscape "\\[][\\`*_{}()#+.!-]"
 syn match markdownError "\w\@<=_\w\@="
 
+
 hi def link markdownH1                    htmlH1
 hi def link markdownH2                    htmlH2
 hi def link markdownH3                    htmlH3
@@ -119,5 +121,29 @@ hi def link markdownEscape                Special
 hi def link markdownError                 Error
 
 let b:current_syntax = "markdown"
+
+" Folding:
+setlocal foldmethod=expr
+setlocal foldexpr=Nested_header_fold()
+
+function! Nested_header_fold()
+  let line = getline(v:lnum)
+
+  let depth = match(line, '\(^#\+\)\@<=\( .*$\)\@=')
+  if depth > 0
+    return ">" . depth
+  endif
+
+  let nextline = getline(v:lnum + 1)
+  if (line =~ '^.\+$') && (nextline =~ '^=\+$')
+    return ">1"
+  endif
+
+  if (line =~ '^.\+$') && (nextline =~ '^-\+$')
+    return ">2"
+  endif
+
+  return "="
+endfunction
 
 " vim:set sw=4:
