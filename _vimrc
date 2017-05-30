@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri May 19, 2017 14:00 CEST
+" Last Update: Tue May 30, 2017 12:03 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -422,7 +422,7 @@ autocmd filetype markdown,vim setlocal spell
 " scan the 'dictionary'
 " scan the active 'spell':
 set complete=.,w,k,kspell
-" Sort case sensibly, so that words can be all lowercase in the dictionary:
+" Sort case sensibly, so that words can be all lower case in the dictionary:
 set infercase
 
 " correct my common typos without me even noticing them:
@@ -463,7 +463,7 @@ inoremap <F6> <Esc>:tabnext<CR>
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
 
-" have % bounce between angled brackets, as well as t'other kinds:
+" have % bounce between angled brackets:
 set matchpairs+=<:>
 
 " have <F1> prompt for a help topic, rather than displaying the introduction

@@ -21,3 +21,6 @@ userspace
 dialog
 systemd
 artifact
+vimscript
+quickfix
+ack
