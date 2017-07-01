@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue May 30, 2017 12:03 CEST
+" Last Update: Σαβ Ιουλ 01, 2017 12:40 W. Europe Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -109,7 +109,7 @@ if has('gui_running')
     set columns=120
     if has('win32')
         set lines=46
-        set gfn=Consolas:h9
+        set gfn=Input:h9:cANSI:qDRAFT
     elseif has('macunix')
         set lines=61
         " Do note that Monaco doesn't have an italic variant:
