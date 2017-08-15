@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jul 25, 2017 09:48 CEST
+" Last Update: Tue Aug 15, 2017 10:19 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -414,7 +414,7 @@ set grepformat^=%f:%l:%c:%s | if executable('ag') | set grepprg=ag\ --vimgrep | 
 set spelllang=en_gb
 
 " Spellcheck only text and vimscript, for now:
-autocmd filetype markdown,vim setlocal spell
+autocmd filetype markdown,vim,text setlocal spell
 
 " The types of completion for spelling are:
 " scan the current buffer
@@ -424,6 +424,9 @@ autocmd filetype markdown,vim setlocal spell
 set complete=.,w,k,kspell
 " Sort case sensibly, so that words can be all lower case in the dictionary:
 set infercase
+
+" Set spellsuggest to 'best' - the default - and show a maximum of 15 suggestions:
+set sps=best,15
 
 " correct my common typos without me even noticing them:
 abbreviate teh the
