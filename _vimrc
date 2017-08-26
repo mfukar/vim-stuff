@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Aug 15, 2017 10:19 CEST
+" Last Update: Sat Aug 26, 2017 12:44 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -597,6 +597,7 @@ iabbrev // /*
 " (anybody designing a useful Unicode keyboard?)
 autocmd filetype markdown iabbrev -> →
 autocmd filetype markdown iabbrev <- ←
+autocmd filetype markdown iabbrev ... …
 iabbrev -c- ©
 iabbrev TM ™
 iabbrev -shrug- ¯\_(ツ)_/¯
