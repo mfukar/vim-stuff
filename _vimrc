@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sat Aug 26, 2017 12:44 CEST
+" Last Update: Mon Oct 23, 2017 10:06 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -390,6 +390,11 @@ autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.pat
 
 
 " * Search & Replace
+
+" Use fzf from Homebrew:
+if has('macunix')
+    set rtp+=/usr/local/opt/fzf
+endif
 
 " make searches case-insensitive, unless they contain upper-case letters:
 set ignorecase
