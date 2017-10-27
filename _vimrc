@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Oct 27, 2017 10:28 CEST
+" Last Update: Fri Oct 27, 2017 10:44 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -395,6 +395,12 @@ autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.pat
 if has('macunix')
     set rtp+=/usr/local/opt/fzf
 endif
+
+" Use ag for ack.vim whenever possible, and bind it to :A
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+command! -bang -nargs=* -complete=file A call ack#Ack('grep<bang>', <q-args>)
 
 " make searches case-insensitive, unless they contain upper-case letters:
 set ignorecase
