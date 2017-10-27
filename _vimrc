@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Oct 23, 2017 10:06 CEST
+" Last Update: Fri Oct 27, 2017 10:28 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -493,6 +493,9 @@ noremap <silent> <C-L>m :call BracketsManipMode("\<C-L>b")<CR>
 
 " Have <localleader>Q close the preview-window:
 noremap <localleader>Q :pclose<CR>
+
+" Have C-j use clang-complete to jump around instead of C-]:
+let g:clang_jumpto_declaration_key = '<C-j>'
 
 
 " * Keystrokes -- Formatting
