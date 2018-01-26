@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Jan 10, 2018 14:45 CET
+" Last Update: Fri Jan 26, 2018 09:42 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -710,14 +710,6 @@ def _my_b64decode():
 EOF
 command! PyBase64Decode python3 _my_b64decode()
 
-" Use :make to compile the current buffer and see syntax errors
-" :cn to see next, :cp to see previous
-" :dist to see all errors
-" TODO
-
-" Execute the code selection using compile/exec
-" TODO
-
 " Convert a Markdown buffer to XHTML5:
 python3 << EOF
 import vim, markdown
@@ -727,7 +719,7 @@ def _markdown_2_html():
     html = markdown.markdown(blob, extensions=['toc'], output_format='xhtml5')
 
     # New window with appropriate file name:
-    html_fname = ''.join(vim.current.buffer.name.split('.')[:-1]) + '.html'
+    html_fname = vim.current.buffer.name.rpartition('.')[0] + '.html'
     vim.command('belowright new ' + html_fname)
 
     # The template adds a single marker in the body, jump to it:
