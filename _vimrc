@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Oct 27, 2017 10:44 CEST
+" Last Update: Wed Jan 10, 2018 14:45 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -147,9 +147,6 @@ endif
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
-let &statusline='%<%3.3n  %f  %(%y %{&fenc} [%{&ff}]%)  %m%r (%03c, %#WildMenu#0x%04B%*) %= T%{IndentLevel()} %P : %3l : %3c   [%{strftime("%H:%M, %b %d, %Y")}]'
-" Always show a status line:
-set laststatus=2
 
 " Configure airline:
 let g:airline#extensions#disable_rtp_load = 1
@@ -611,6 +608,7 @@ iabbrev // /*
 " (anybody designing a useful Unicode keyboard?)
 autocmd filetype markdown iabbrev -> →
 autocmd filetype markdown iabbrev <- ←
+autocmd filetype markdown iabbrev <-> ↔
 autocmd filetype markdown iabbrev ... …
 iabbrev -c- ©
 iabbrev TM ™

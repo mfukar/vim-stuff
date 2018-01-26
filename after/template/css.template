@@ -5,8 +5,7 @@ VimL: let s:marker_open  = '<+'
 VimL: let s:marker_close = '+>'
 	<style>
 	html {
-		background: #f5ee;
-		font-family: Monaco;
+		font-family: Input;
 		font-size: 14px;
 	}
 	body {
@@ -16,7 +15,7 @@ VimL: let s:marker_close = '+>'
 		font-style: italic;
 	}
 	pre, code {
-		background-color: #ffffff;
+		background-color: #eeeeee;
 		color: #d14;
 		white-space: pre-wrap;
 	}
@@ -24,10 +23,13 @@ VimL: let s:marker_close = '+>'
 		padding: 0.5em;
 		border-radius: 5px;
 		border: 1px solid #aaa;
-		margin-left: 0.5em;
+		margin-left: 5em;
 		margin-right: 0.5em;
 	}
+	h2 {
+		margin-left: 2em;
+	}
 	li {
-		margin: 0 0 3px 0;
+		margin: 0 0 3px 2em;
 	}
 	</style>
