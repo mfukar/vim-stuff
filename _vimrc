@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Jan 26, 2018 09:42 CET
+" Last Update: Mon Mar 05, 2018 09:34 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -21,6 +21,7 @@
 " * Functions Referred Above
 " * Functions Using the Python Interface
 " * Automatic Code Completion
+" * Plugin configuration
 "
 " First clear any existing autocommands:
 autocmd!
