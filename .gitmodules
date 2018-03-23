@@ -1,6 +1,3 @@
-[submodule "bundle/railscasts-theme"]
-    path = bundle/railscasts-theme
-    branch = master
 [submodule "bundle/vim-airline"]
     path = bundle/vim-airline
     url = https://github.com/bling/vim-airline
