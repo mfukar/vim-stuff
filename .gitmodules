@@ -1,6 +1,5 @@
 [submodule "bundle/railscasts-theme"]
     path = bundle/railscasts-theme
-    url = git@github.com:dhruvasagar/vim-railscasts-theme.git
     branch = master
 [submodule "bundle/vim-airline"]
     path = bundle/vim-airline
@@ -8,27 +7,27 @@
     branch = master
 [submodule "bundle/supertab"]
     path = bundle/supertab
-    url = git@github.com:ervandew/supertab.git
+    url = https://github.com/ervandew/supertab.git
     branch = master
 [submodule "bundle/clang-complete"]
     path = bundle/clang-complete
-    url = git@github.com:myint/clang-complete.git
+    url = https://github.com/myint/clang-complete.git
     branch = master
 [submodule "bundle/easy-align"]
     path = bundle/easy-align
-    url = git@github.com:junegunn/vim-easy-align.git
+    url = https://github.com/junegunn/vim-easy-align.git
     branch = master
 [submodule "bundle/vim-gitgutter"]
     path = bundle/vim-gitgutter
-    url = git@github.com:airblade/vim-gitgutter.git
+    url = https://github.com/airblade/vim-gitgutter.git
     branch = master
 [submodule "bundle/vim-airline-themes"]
     path = bundle/vim-airline-themes
-    url = git@github.com:vim-airline/vim-airline-themes.git
+    url = https://github.com/vim-airline/vim-airline-themes.git
     branch = master
 [submodule "bundle/tagbar"]
     path = bundle/tagbar
-    url = git://github.com/majutsushi/tagbar
+    url = https://github.com/majutsushi/tagbar.git
     branch = master
 [submodule "bundle/undotree"]
     path = bundle/undotree
@@ -43,13 +42,13 @@
     url = https://github.com/ludovicchabant/vim-gutentags.git
     branch = master
 [submodule "bundle/vim-dispatch"]
-	path = bundle/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
+    path = bundle/vim-dispatch
+    url = https://github.com/tpope/vim-dispatch.git
     branch = master
 [submodule "bundle/ack.vim"]
-	path = bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
+    path = bundle/ack.vim
+    url = https://github.com/mileszs/ack.vim.git
     branch = master
 [submodule "bundle/gruvbox"]
-	path = bundle/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
+    path = bundle/gruvbox
+    url = https://github.com/morhetz/gruvbox.git
