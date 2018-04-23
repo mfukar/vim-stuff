@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Mar 05, 2018 09:34 CET
+" Last Update: Mon Apr 23, 2018 14:27 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -267,7 +267,7 @@ set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
 autocmd FileType zsh,sh,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell,cabal,json setlocal sw=4 ts=4 expandtab
-autocmd BufEnter,BufNew  *.bb,*.bbappend setlocal sw=4 ts=4 expandtab
+autocmd BufEnter,BufNew *.bb,*.bbappend setlocal sw=4 ts=4 expandtab
 
 " For C, C++, and all others that apply, line up continuation lines after the first
 " non-whitespace character in the unfinished expression in parentheses:
@@ -385,6 +385,17 @@ autocmd FileType gitcommit setlocal textwidth=72
 
 " The syntax of systemd unit files is covered by sh.vim:
 autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.path,*.busname,*.slice setlocal filetype=sh
+
+" Try to highlight user-defined types in C & C++ using ctags:
+autocmd FileType c,cpp call s:highlight_user_defined_types()
+" Look for a file names _ud_types.vim in all parent directories
+" containing syntax definitions for user-defined types, and source it:
+function s:highlight_user_defined_types()
+    let udtfile = findfile('_ud_types.vim', '.;')
+    if filereadable(udtfile)
+        exe 'so ' . udtfile
+    endif
+endfunction
 
 
 " * Search & Replace
