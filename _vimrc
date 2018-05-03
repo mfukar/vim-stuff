@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Apr 23, 2018 14:27 CEST
+" Last Update: Thu May 03, 2018 13:39 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -306,17 +306,6 @@ if has('unix') || has('macunix')
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
 elseif has('win32')
     autocmd FileType python setlocal tags+=$VIM/vimfiles/tags/python.ctags
-endif
-
-" Linux kernel tags will be located at $KERNELTAGS,
-" The respective cscope databases are at $KERNEL_CSCOPE_DB:
-if has("unix")
-    " Linux kernel tags:
-    autocmd FileType c setlocal tags+="$KERNELTAGS"
-    " Linux kernel cscope database:
-    if $KERNEL_CSCOPE_DB != ""
-        cs add $KERNEL_CSCOPE_DB
-    endif
 endif
 
 " normally don't automatically format text as it is typed, only do this with
