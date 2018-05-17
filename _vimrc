@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu May 03, 2018 13:39 CEST
+" Last Update: Thu May 17, 2018 15:26 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -379,13 +379,16 @@ autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.pat
 autocmd FileType c,cpp call s:highlight_user_defined_types()
 " Look for a file names _ud_types.vim in all parent directories
 " containing syntax definitions for user-defined types, and source it:
-function s:highlight_user_defined_types()
+function! s:highlight_user_defined_types()
     let udtfile = findfile('_ud_types.vim', '.;')
     if filereadable(udtfile)
         exe 'so ' . udtfile
     endif
 endfunction
 
+" Highlight weasel words and treat them as the crap they are:
+hi def link weasels Error
+syn keyword weasels just simply trivial
 
 " * Search & Replace
 
@@ -741,12 +744,13 @@ EOF
 python3 << EOF
 import vim, datetime
 def _epoch_to_iso8601():
-    isolines = []
+    separator, isolines = ':', []
     for index in range(len(vim.current.buffer)):
         line = vim.current.buffer[index]
-        timestamp = int(line[:line.find(':')])
+        timestamp, _, rest = line.partition(separator)
+        timestamp = int(timestamp)
         isostamp = datetime.datetime.fromtimestamp(timestamp).isoformat()
-        vim.current.buffer[index] = isostamp + ':' + line[line.find(':') + 1:]
+        vim.current.buffer[index] = isostamp + separator + rest
 EOF
 endif
 
