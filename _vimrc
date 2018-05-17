@@ -139,9 +139,9 @@ set t_Co=256
 " Set the colorscheme:
 if has('gui_running')
     set background=light
-    colorscheme logical
+    colorscheme gruvbox
 else
-    colorscheme badwolf
+    colorscheme gruvbox
 endif
 
 " Create a fancy status line:
@@ -803,6 +803,5 @@ function! NukeWhitespace()
     call winrestview(s:__cp)
 endfun
 noremap <silent> <Leader>w :call NukeWhitespace()<CR>
-autocmd BufWritePre * call NukeWhitespace()
 
 " end of mfukar's .vimrc
