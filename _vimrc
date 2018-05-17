@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu May 17, 2018 15:26 CEST
+" Last Update: Thu May 17, 2018 16:14 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -141,6 +141,7 @@ if has('gui_running')
     set background=light
     colorscheme gruvbox
 else
+    set background=dark
     colorscheme gruvbox
 endif
 
