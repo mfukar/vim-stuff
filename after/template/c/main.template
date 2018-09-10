@@ -6,8 +6,7 @@ VimL: let s:value_end    = 'Â¡'
 VimL: let s:reindent     = 0
 VimL: let s:marker_open  = '<+'
 VimL: let s:marker_close = '+>'
-int main (<+int argc, char **argv+>)
-{
+int main (<+int argc, char **argv+>) {
     <+code+>
 
     return EXIT_SUCCESS;

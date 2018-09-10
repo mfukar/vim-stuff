@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu May 17, 2018 16:14 CEST
+" Last Update: Mon Sep 10, 2018 13:49 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -152,8 +152,8 @@ endf
 
 " Configure airline:
 let g:airline#extensions#disable_rtp_load = 1
-let g:airline_section_b      = '[%04B]'
-let g:airline_section_z      = '%3p%% : %3l : %3c T%{IndentLevel()}'
+let g:airline_section_b = '[%04B]'
+let g:airline_section_z = '%3p%% : %3l : %3c T%{IndentLevel()}'
 let g:airline_theme = 'cobalt2'
 
 " Tagbar on/off switching:
@@ -283,6 +283,9 @@ autocmd FileType txt,javascript,html,xml,css setlocal ts=4 sw=4 noexpandtab
 " later):
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 
+" Set up relative locations for cscope databases:
+set csre
+
 " Search recursively up to / for the ctags 'tags' file:
 set tags=tags;/
 
@@ -294,7 +297,7 @@ function! LoadCscope()
         let path = strpart(db, 0, match(db, "/cscope.out$"))
         " Disable 'duplicate connection' errors here:
         set nocscopeverbose
-        exe "cs add " . db . " " . path
+        exe "cs add " . db . " " . path . " -d"
     endif
 endfunction
 autocmd BufEnter /* call LoadCscope()
@@ -389,7 +392,7 @@ endfunction
 
 " Highlight weasel words and treat them as the crap they are:
 hi def link weasels Error
-syn keyword weasels just simply trivial
+syn keyword weasels obviously basically just simply trivial clearly easy
 
 " * Search & Replace
 
