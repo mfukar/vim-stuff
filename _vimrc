@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Sep 10, 2018 13:49 CEST
+" Last Update: Πεμ Ιαν 31, 2019 18:40 W. Europe Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -413,6 +413,9 @@ set smartcase
 
 " show the best match so far, as search strings are being typed:
 set incsearch
+
+" Clear the last search quickly:
+nmap <silent> ./ :nohlsearch<CR>
 
 " always assume the /g flag on :s substitutions to replace all matches in a line:
 set gdefault
