@@ -42,9 +42,6 @@
     path = bundle/vim-dispatch
     url = https://github.com/tpope/vim-dispatch.git
     branch = master
-[submodule "bundle/ack.vim"]
-    path = bundle/ack.vim
-    url = https://github.com/mileszs/ack.vim.git
     branch = master
 [submodule "bundle/gruvbox"]
     path = bundle/gruvbox
