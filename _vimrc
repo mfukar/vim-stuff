@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Πεμ Ιαν 31, 2019 18:40 W. Europe Standard Time
+" Last Update: Thu Feb 28, 2019 12:41 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -26,6 +26,7 @@
 " First clear any existing autocommands:
 autocmd!
 
+silent! python3 1
 
 " * Terminal Settings
 
@@ -283,9 +284,6 @@ autocmd FileType txt,javascript,html,xml,css setlocal ts=4 sw=4 noexpandtab
 " later):
 autocmd FileType make setlocal noexpandtab shiftwidth=8
 
-" Set up relative locations for cscope databases:
-set csre
-
 " Search recursively up to / for the ctags 'tags' file:
 set tags=tags;/
 
@@ -294,10 +292,9 @@ function! LoadCscope()
     let db = findfile("cscope.out", ".;")
 
     if (!empty(db))
-        let path = strpart(db, 0, match(db, "/cscope.out$"))
-        " Disable 'duplicate connection' errors here:
         set nocscopeverbose
-        exe "cs add " . db . " " . path . " -d"
+        exe "cs add " .db. " " . expand('%:p:h') . " -d"
+        set cscopeverbose
     endif
 endfunction
 autocmd BufEnter /* call LoadCscope()
