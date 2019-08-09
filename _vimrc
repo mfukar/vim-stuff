@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Thu Feb 28, 2019 12:41 CET
+" Last Update: Mon Aug 05, 2019 11:18 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -111,11 +111,11 @@ if has('gui_running')
     set columns=120
     if has('win32')
         set lines=46
-        set gfn=Input:h9:cANSI:qDRAFT
+        set gfn=Input:h10:cANSI:qDRAFT
     elseif has('macunix')
         set lines=61
         " Do note that Monaco doesn't have an italic variant:
-        set gfn=Monaco:h11
+        set gfn=Monaco:h12
     endif
 endif
 
@@ -138,13 +138,8 @@ set title
 set t_Co=256
 "
 " Set the colorscheme:
-if has('gui_running')
-    set background=light
-    colorscheme gruvbox
-else
-    set background=dark
-    colorscheme gruvbox
-endif
+set background=light
+colorscheme kuroi
 
 " Create a fancy status line:
 function! IndentLevel()
@@ -301,7 +296,7 @@ autocmd BufEnter /* call LoadCscope()
 
 " Add project-independent tags for quickly jumping around C/Python stdlib code:
 if has('unix') || has('macunix')
-    autocmd FileType c,cpp exe "cs add $HOME/.vim/tags/system.cscope.out"
+    " autocmd FileType c,cpp exe "cs add $HOME/.vim/tags/system.cscope.out"
     autocmd FileType c,cpp setlocal tags+=$HOME/.vim/tags/system.ctags
     " Experimental.. TODO
     autocmd FileType python setlocal tags+=$HOME/.vim/tags/python.ctags
@@ -412,7 +407,7 @@ set smartcase
 set incsearch
 
 " Clear the last search quickly:
-nmap <silent> ./ :nohlsearch<CR>
+nmap <silent> <localleader>/ :nohlsearch<CR>
 
 " always assume the /g flag on :s substitutions to replace all matches in a line:
 set gdefault
