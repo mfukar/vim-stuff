@@ -46,3 +46,7 @@
     path = bundle/gruvbox
     url = https://github.com/morhetz/gruvbox.git
     branch = master
+[submodule "bundle/kuroi"]
+    path = bundle/kuroi
+    url = https://github.com/aonemd/kuroi.vim.git
+    branch = master
