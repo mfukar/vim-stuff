@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Aug 05, 2019 11:18 CEST
+" Last Update: Fri Dec 20, 2019 12:26 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -114,8 +114,7 @@ if has('gui_running')
         set gfn=Input:h10:cANSI:qDRAFT
     elseif has('macunix')
         set lines=61
-        " Do note that Monaco doesn't have an italic variant:
-        set gfn=Monaco:h12
+        set gfn=Menlo:h14
     endif
 endif
 
