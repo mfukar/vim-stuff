@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri Dec 20, 2019 12:26 CET
+" Last Update: Tue Dec 24, 2019 08:56 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -167,7 +167,7 @@ if (has('gui_running'))
     endif
 endif
 
-" have a hundred lines of command-line (etc) history:
+" have a hundred lines of command-line history:
 set history=100
 
 " remember all of these between sessions, but only 10 search terms; also
@@ -214,15 +214,6 @@ let g:netrw_banner = 0
 " Open the file by splitting horizontally first:
 let g:netrw_browse_split = 1
 
-" I use pscp with netrw:
-if has('win32')
-    " list files, mind the trailing space:
-    let g:netrw_list_cmd = "plink HOSTNAME ls -laFh "
-    " g:author_short will do when g:netrw_machine is not available:
-    let g:netrw_scp_cmd = "pscp -l ".g:author_short." -2 -scp -q -batch"
-    let g:netrw_ssh_cmd = "plink -l ".g:author_short." -2 -T -ssh"
-endif
-
 " Automatically set the working directory:
 set autochdir
 
@@ -242,7 +233,7 @@ if has('win32')
     let g:ghc = "stack ghc"
 endif
 
-" Set the update time to 750ms. Fast enough, without putting a lot of computation burden:
+" Set the update time to 750ms. Fast enough for me:
 set updatetime=750
 
 " * Text Formatting -- General
@@ -759,7 +750,7 @@ endif
 if has('win32')
     let g:clang_library_path='C:\Program Files\LLVM\bin'
 elseif has('macunix')
-    let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+    let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 else
     ;" let down
 endif
