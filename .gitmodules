@@ -6,10 +6,6 @@
     path = bundle/supertab
     url = https://github.com/ervandew/supertab.git
     branch = master
-[submodule "bundle/clang-complete"]
-    path = bundle/clang-complete
-    url = https://github.com/myint/clang-complete.git
-    branch = master
 [submodule "bundle/easy-align"]
     path = bundle/easy-align
     url = https://github.com/junegunn/vim-easy-align.git

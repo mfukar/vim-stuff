@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Dec 24, 2019 08:56 CET
+" Last Update: Fri May 15, 2020 09:31 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -162,9 +162,7 @@ endif
 " Set a different cursor for insert/normal/visual mode:
 if (has('gui_running'))
     set guicursor=n-v-c:block-Cursor
-    if !has('macunix')
-        set guicursor+=i:ver25-Cursor-blinkwait25-blinkon250-blinkoff250
-    endif
+    set guicursor+=i:ver25-Cursor-blinkwait25-blinkon250-blinkoff250
 endif
 
 " have a hundred lines of command-line history:
