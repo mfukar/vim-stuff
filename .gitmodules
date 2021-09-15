@@ -46,3 +46,6 @@
     path = bundle/kuroi
     url = https://github.com/aonemd/kuroi.vim.git
     branch = master
+[submodule "bundle/rainbow"]
+	path = bundle/rainbow
+	url = https://github.com/luochen1990/rainbow.git
