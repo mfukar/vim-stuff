@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri May 15, 2020 09:31 CEST
+" Last Update: Wed Sep 15, 2021 14:13 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -221,6 +221,9 @@ set backspace=eol,start,indent
 
 " give the cursor some room to breathe:
 set scrolloff=5
+
+" Set up rainbow (highlighting parentheses per level):
+let g:rainbow_active=1
 
 " Haskell documentation directory for haskellmode-vim:
 let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
