@@ -8,12 +8,12 @@ possible, but I'm always open to suggestions to make it better.
 Plugins
 -------
 
-* clang-complete - completion based on libclang
 * tagbar - organise tags & allow navigation
 * easy-align
 * haskellmode-vim
 * CSApprox - approximate gui colorschemes on terminals
 * matchit - extends % matching
+* rainbow - match and highlight parentheses based on level
 * Luc Hermitte's vim-lib, map-tools, µtemplate, etc.
 * a slightly customized version of Tim Pope's surround
 * BlobDiff - diff two arbitrary text blobs
