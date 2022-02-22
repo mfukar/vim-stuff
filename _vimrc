@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Sep 15, 2021 14:13 CEST
+" Last Update: Tue Feb 22, 2022 11:53 CET
 "
 " This vimrc is divided into these sections:
 "
@@ -38,6 +38,9 @@ if &term =~ 'xterm'
         fixdel
         execute 'set t_kb=' . nr2char(127)
     endif
+" macos semi-terminals:
+elseif &term =~ 'linux'
+    execute 'set t_kb=' . nr2char(127)
 else
     " Gnome terminal fortunately sets $COLORTERM; it needs <Del> fixing,
     " and it has a bug which causes spurious 'c's to appear,
@@ -748,12 +751,13 @@ endif
 " * Automatic Code Completion
 
 " Configure clang-complete:
+let g:clang_use_library=1
 if has('win32')
     let g:clang_library_path='C:\Program Files\LLVM\bin'
 elseif has('macunix')
     let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 else
-    ;" let down
+    let g:clang_library_path='/usr/lib/llvm-10/lib/libclang.so.1' " let down
 endif
 
 " If the buffer is modified, update any 'Last Update:' string in the first 20 lines.
