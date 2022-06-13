@@ -18,10 +18,6 @@
     path = bundle/vim-airline-themes
     url = https://github.com/vim-airline/vim-airline-themes.git
     branch = master
-[submodule "bundle/tagbar"]
-    path = bundle/tagbar
-    url = https://github.com/majutsushi/tagbar.git
-    branch = master
 [submodule "bundle/undotree"]
     path = bundle/undotree
     url = https://github.com/mbbill/undotree.git
