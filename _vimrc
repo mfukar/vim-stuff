@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Feb 22, 2022 11:53 CET
+" Last Update: Mon Jun 13, 2022 11:54 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -141,7 +141,7 @@ set t_Co=256
 "
 " Set the colorscheme:
 set background=light
-colorscheme kuroi
+colorscheme gruvbox
 
 " Create a fancy status line:
 function! IndentLevel()
@@ -197,9 +197,10 @@ set showcmd
 let mapleader = ","
 let maplocalleader = ","
 
-" When using list, keep tabs at their full width and display arrows:
-" (Character 187 is a right double-chevron, and 183 a mid-dot.)
-execute 'set listchars+=tab:' . nr2char(187) . nr2char(183)
+" When using list, keep tabs at their full width and display arrows
+" (Character 187 is a right double-chevron, and 183 a mid-dot)
+" additionally, show eol as logical-not
+execute 'set listchars+=tab:' .nr2char(187).nr2char(183). ',eol:' .nr2char(172) . ',space:'. nr2char(183)
 
 " have the mouse enabled all the time:
 set mouse=a
@@ -257,7 +258,8 @@ set smarttab        " delete tabs (or #tabstop spaces) from start of line with <
 set shiftround      " round indent to multiples of 'shiftwidth' when using >,<
 
 autocmd FileType c,cpp,python,powershell,asm,erlang,markdown,tex,vim,golfscript,robot setlocal sw=4 ts=4 expandtab
-autocmd FileType zsh,sh,cmake,gitconfig,yaml,ruby,java,objc,gdb,haskell,cabal,json setlocal sw=4 ts=4 expandtab
+autocmd FileType zsh,sh,cmake,gitconfig,ruby,java,objc,gdb,haskell,cabal,json setlocal sw=4 ts=4 expandtab
+autocmd FileType yaml setlocal sw=2 ts=2 expandtab
 autocmd BufEnter,BufNew *.bb,*.bbappend setlocal sw=4 ts=4 expandtab
 
 " For C, C++, and all others that apply, line up continuation lines after the first
@@ -589,14 +591,7 @@ noremap <Leader>iso :exe 'python3 _epoch_to_iso8601()'<CR>
 " * Keystrokes -- Insert Mode
 
 " Useful abbreviations:
-iabbrev lorem Loremipsumdolorsitamet,consecteturadipisicingelit,seddoeiusmod
-\temporincididuntutlaboreetdoloremagnaaliqua.Utenimadminimveniam,quisnostrud
-\exercitationullamcolaborisnisiutaliquipexeacommodoconsequat.Duisauteiruredo
-\lorinreprehenderitinvoluptatevelitessecillumdoloreeufugiatnullapariatur.Exc
-\epteursintoccaecatcupidatatnonproident,suntinculpaquiofficiadeseruntmollita
-\nimidestlaborum.
 iabbrev mf mfukar
-iabbrev -*- -*- coding: utf-8 -*-
 
 " Never use single-line comments:
 iabbrev // /*
