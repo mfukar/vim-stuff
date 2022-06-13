@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Jun 13, 2022 11:54 CEST
+" Last Update: Mon Jun 13, 2022 12:29 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -97,9 +97,9 @@ set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 " Always show the tabline, workaround for window position being messed up when it appears:
 set showtabline=2
 
-" Show the cursorline, and colorcolumn past 100:
+" Show the cursorline, and colorcolumn past ancient history:
 set cursorline
-set colorcolumn=100
+set colorcolumn=120
 
 " Because we're not cavemen:
 set encoding=utf-8
@@ -140,7 +140,7 @@ set title
 set t_Co=256
 "
 " Set the colorscheme:
-set background=light
+set background=dark
 colorscheme gruvbox
 
 " Create a fancy status line:
@@ -155,7 +155,7 @@ let g:airline_section_z = '%3p%% : %3l : %3c T%{IndentLevel()}'
 let g:airline_theme = 'cobalt2'
 
 " Tagbar on/off switching:
-nnoremap <silent> <F11> :TagbarToggle<CR>
+nnoremap <silent> <F10> :TagbarToggle<CR>
 
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2)) || has('gui_running')
