@@ -52,3 +52,7 @@
     path = bundle/coc
     url = https://github.com/neoclide/coc.nvim.git
     branch = release
+[submodule "bundle/vim-lsp"]
+	path = bundle/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
+    branch = master
