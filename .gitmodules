@@ -48,3 +48,7 @@
 [submodule "bundle/tagbar2"]
 	path = bundle/tagbar2
 	url = https://github.com/preservim/tagbar.git
+[submodule ".\\bundle\\coc"]
+	path = .\\bundle\\coc
+	url = https://github.com/neoclide/coc.nvim.git
+    branch = release
