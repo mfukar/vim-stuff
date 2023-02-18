@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Jun 13, 2022 12:29 CEST
+" Last Update: Sat Feb 18, 2023 19:21 W. Europe Standard Time
 "
 " This vimrc is divided into these sections:
 "
@@ -62,7 +62,6 @@ else
     endif
 endif
 
-
 " * Environment
 
 " Enable pathogen:
@@ -80,9 +79,9 @@ if has('win32')
     set directory=$HOMEDRIVE$HOMEPATH\tmp\\vim\\
     set undodir=$HOMEDRIVE$HOMEPATH\tmp\\vim\\
 elseif has('unix')
-    set backupdir=~/tmp/.vim/
-    set directory=~/tmp/.vim
-    set undodir=~/tmp/.vim
+    set backupdir=~/tmp/vim/
+    set directory=~/tmp/vim
+    set undodir=~/tmp/vim
 endif
 
 " Use persistent undo:
@@ -90,7 +89,6 @@ set undofile
 
 " Set 'path' to make gf usable:
 set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
-
 
 " * User Interface
 
@@ -112,13 +110,8 @@ autocmd GUIEnter * set vb t_vb=
 
 if has('gui_running')
     set columns=120
-    if has('win32')
-        set lines=46
-        set gfn=Input:h10:cANSI:qDRAFT
-    elseif has('macunix')
-        set lines=61
-        set gfn=Menlo:h14
-    endif
+    set lines=46
+    set gfn=Consolas:h11
 endif
 
 " whoami:
@@ -141,7 +134,7 @@ set t_Co=256
 "
 " Set the colorscheme:
 set background=dark
-colorscheme gruvbox
+colorscheme kuroi
 
 " Create a fancy status line:
 function! IndentLevel()
@@ -226,19 +219,7 @@ set backspace=eol,start,indent
 " give the cursor some room to breathe:
 set scrolloff=5
 
-" Set up rainbow (highlighting parentheses per level):
-let g:rainbow_active=1
-
-" Haskell documentation directory for haskellmode-vim:
-let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
-let g:haddock_browser="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-
-" Set GHC on Windows (I use stack and you should, too):
-if has('win32')
-    let g:ghc = "stack ghc"
-endif
-
-" Set the update time to 750ms. Fast enough for me:
+" Set the update time to 750ms. Fast enough, without putting a lot of computation burden:
 set updatetime=750
 
 " * Text Formatting -- General
@@ -338,20 +319,6 @@ autocmd FileType c,cpp setlocal cindent
 " new line in the middle of a comment automatically insert the comment leader characters:
 autocmd FileType c setlocal formatoptions+=ro
 
-" for CSS, also have things in braces indented:
-autocmd FileType css setlocal smartindent
-
-" use CSS when exporting:
-let html_use_css = 1
-
-" for HTML, generally format text, but if a long line has been created leave it
-" alone when editing:
-autocmd FileType html setlocal formatoptions+=tl
-
-" for HTML & Javascript, have a mapping toggling the filetype between those two:
-autocmd FileType html noremap <localleader>t :set filetype=javascript<CR>
-autocmd FileType javascript noremap <localleader>t :set filetype=html<CR>
-
 " set folding according to syntax where supported:
 autocmd FileType c,cpp,json setlocal foldmethod=syntax
 " but indent for Python:
@@ -360,34 +327,12 @@ autocmd FileType python setlocal foldmethod=indent
 " For git commit messages, wrap text to 72 columns:
 autocmd FileType gitcommit setlocal textwidth=72
 
-" Restore all manually created folds - and save them at exit:
-" au BufWinLeave  * mkview
-" au BufWinEnter  * silent loadview
-
-" The syntax of systemd unit files is covered by sh.vim:
-autocmd BufNewFile,BufRead *.service,*.mount,*.automount,*.target,*.socket,*.path,*.busname,*.slice setlocal filetype=sh
-
-" Try to highlight user-defined types in C & C++ using ctags:
-autocmd FileType c,cpp call s:highlight_user_defined_types()
-" Look for a file names _ud_types.vim in all parent directories
-" containing syntax definitions for user-defined types, and source it:
-function! s:highlight_user_defined_types()
-    let udtfile = findfile('_ud_types.vim', '.;')
-    if filereadable(udtfile)
-        exe 'so ' . udtfile
-    endif
-endfunction
 
 " Highlight weasel words and treat them as the crap they are:
 hi def link weasels Error
 syn keyword weasels obviously basically just simply trivial clearly easy
 
 " * Search & Replace
-
-" Use fzf from Homebrew:
-if has('macunix')
-    set rtp+=/usr/local/opt/fzf
-endif
 
 " Use ag for ack.vim whenever possible, and bind it to :A
 if executable('ag')
@@ -419,9 +364,9 @@ set grepformat^=%f:%l:%c:%s | if executable('ag') | set grepprg=ag\ --vimgrep | 
 
 " Set the language:
 set spelllang=en_gb
+set nospell
 
-" Spellcheck only text and vimscript, for now:
-autocmd filetype markdown,vim,text setlocal spell
+autocmd filetype markdown setlocal spell
 
 " The types of completion for spelling are:
 " scan the current buffer
@@ -701,30 +646,6 @@ def _my_b64decode():
     vim.command('let @" = \'{}\''.format(bytes.decode(res)))
 EOF
 command! PyBase64Decode python3 _my_b64decode()
-
-" Convert a Markdown buffer to XHTML5:
-python3 << EOF
-import vim, markdown
-def _markdown_2_html():
-    # Convert:
-    blob = '\n'.join(vim.current.buffer[:]) + '\n'
-    html = markdown.markdown(blob, extensions=['toc'], output_format='xhtml5')
-
-    # New window with appropriate file name:
-    html_fname = vim.current.buffer.name.rpartition('.')[0] + '.html'
-    vim.command('belowright new ' + html_fname)
-
-    # The template adds a single marker in the body, jump to it:
-    vim.command('normal <C-K>')
-    # it's easier to just remove it:
-    vim.command('normal dd')
-    # delete the trailer, up to the end of file:
-    vim.command('normal dG')
-    # append the generated HTML:
-    vim.current.buffer.append(html.split('\n'))
-    # ..and paste the trailer back:
-    vim.command('normal Gp')
-EOF
 
 " Replace a leading timestamp in seconds from Epoch with ISO8601 date-time,
 " on all lines. Useful for syslog-like output:

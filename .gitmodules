@@ -26,10 +26,6 @@
     path = bundle/badwolf
     url = https://github.com/sjl/badwolf.git
     branch = master
-[submodule "bundle/gutentags"]
-    path = bundle/gutentags
-    url = https://github.com/ludovicchabant/vim-gutentags.git
-    branch = master
 [submodule "bundle/vim-dispatch"]
     path = bundle/vim-dispatch
     url = https://github.com/tpope/vim-dispatch.git
