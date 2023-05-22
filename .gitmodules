@@ -41,10 +41,6 @@
 [submodule "bundle/rainbow"]
     path = bundle/rainbow
     url = https://github.com/luochen1990/rainbow.git
-[submodule "bundle/clang_complete"]
-    path = bundle/clang_complete
-    url = https://github.com/xavierd/clang_complete.git
-    branch = master
 [submodule "bundle/tagbar2"]
     path = bundle/tagbar2
     url = https://github.com/preservim/tagbar.git

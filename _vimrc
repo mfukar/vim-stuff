@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Sat Feb 18, 2023 19:21 W. Europe Standard Time
+" Last Update: Mon May 22, 2023 10:24 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -110,8 +110,14 @@ autocmd GUIEnter * set vb t_vb=
 
 if has('gui_running')
     set columns=120
-    set lines=46
-    set gfn=Consolas:h11
+    if has('win32')
+        set lines=46
+        set gfn=Input:h10:cANSI:qDRAFT
+    elseif has('macunix')
+        set lines=61
+        "set gfn=Menlo:h14
+        set gfn=Droid\ Sans\ Mono\ Awesome:h14
+    endif
 endif
 
 " whoami:
@@ -368,12 +374,6 @@ set nospell
 
 autocmd filetype markdown setlocal spell
 
-" The types of completion for spelling are:
-" scan the current buffer
-" scan buffers open in other windows
-" scan the 'dictionary'
-" scan the active 'spell':
-set complete=.,w,k,kspell
 " Sort case sensibly, so that words can be all lower case in the dictionary:
 set infercase
 
@@ -666,16 +666,6 @@ endif
 
 " * Automatic Code Completion
 
-" Configure clang-complete:
-let g:clang_use_library=1
-if has('win32')
-    let g:clang_library_path='C:\Program Files\LLVM\bin'
-elseif has('macunix')
-    let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-else
-    let g:clang_library_path='/usr/lib/llvm-10/lib/libclang.so.1' " let down
-endif
-
 " If the buffer is modified, update any 'Last Update:' string in the first 20 lines.
 " 'Last Update:' can have up to 20 characters before and whitespace after it, they are
 " both retained. Restores cursor and window position:
@@ -692,14 +682,18 @@ autocmd BufWritePre * call LastUpdated()
 filetype plugin on
 
 " Enable omnicompletion:
-set ofu=syntaxcomplete#Complete
+set ofu=lsp#complete
 set cot=menu,longest
+" The types of completion for keyword completion are:
+" scan the current buffer
+" scan buffers open in other windows
+" scan the 'dictionary'
+" scan the active 'spell':
+set complete=.,w,k,kspell
 
-" Always using Python 3.x:
-autocmd FileType python setlocal ofu=python3complete#Complete
-
-" Setup Supertab to attempt to infer completion method based on context:
+" Setup Supertab to omnicomplete first if possible:
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " Remove the Windows ^M:
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
