@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon May 22, 2023 10:24 CEST
+" Last Update: Mon May 22, 2023 13:28 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -325,10 +325,14 @@ autocmd FileType c,cpp setlocal cindent
 " new line in the middle of a comment automatically insert the comment leader characters:
 autocmd FileType c setlocal formatoptions+=ro
 
-" set folding according to syntax where supported:
-autocmd FileType c,cpp,json setlocal foldmethod=syntax
+" set folding according to syntax where appropriate:
+autocmd FileType json setlocal foldmethod=syntax
 " but indent for Python:
 autocmd FileType python setlocal foldmethod=indent
+" and a language server elsewhere:
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
 
 " For git commit messages, wrap text to 72 columns:
 autocmd FileType gitcommit setlocal textwidth=72
@@ -689,7 +693,7 @@ set cot=menu,longest
 " scan buffers open in other windows
 " scan the 'dictionary'
 " scan the active 'spell':
-set complete=.,w,k,kspell
+" set complete=.,w,k,kspell
 
 " Setup Supertab to omnicomplete first if possible:
 let g:SuperTabDefaultCompletionType = "context"
