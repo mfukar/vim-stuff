@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon May 22, 2023 13:28 CEST
+" Last Update: Fri May 26, 2023 10:09 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -384,12 +384,6 @@ set infercase
 " Set spellsuggest to 'best' - the default - and show a maximum of 15 suggestions:
 set sps=best,15
 
-" correct my common typos without me even noticing them:
-abbreviate teh the
-abbreviate spolier spoiler
-abbreviate atmoic atomic
-abbreviate magic ¡magic!
-
 
 " * Keystrokes -- Moving Around
 
@@ -538,6 +532,12 @@ noremap <Leader>iso :exe 'python3 _epoch_to_iso8601()'<CR>
 
 
 " * Keystrokes -- Insert Mode
+"
+" correct my common typos without me even noticing them:
+iabbrev teh the
+iabbrev spolier spoiler
+iabbrev atmoic atomic
+iabbrev magic ¡magic!
 
 " Useful abbreviations:
 iabbrev mf mfukar
@@ -546,7 +546,6 @@ iabbrev mf mfukar
 iabbrev // /*
 
 " Useful Unicode shortcuts, to avoid stupid software workarounds:
-" (anybody designing a useful Unicode keyboard?)
 autocmd filetype markdown iabbrev -> →
 autocmd filetype markdown iabbrev <- ←
 autocmd filetype markdown iabbrev <-> ↔
