@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Fri May 26, 2023 10:09 CEST
+" Last Update: Mon Jun 05, 2023 09:43 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -94,14 +94,11 @@ set path=/opt/local/include,/usr/include,$HOME/include,../include,.,,
 
 " Always show the tabline, workaround for window position being messed up when it appears:
 set showtabline=2
-
-" Show the cursorline, and colorcolumn past ancient history:
 set cursorline
 set colorcolumn=120
 
 " Because we're not cavemen:
 set encoding=utf-8
-
 set fileencodings=utf-8,ucs-bom,default,latin1
 
 " No more bells, I've had enough:
@@ -115,7 +112,6 @@ if has('gui_running')
         set gfn=Input:h10:cANSI:qDRAFT
     elseif has('macunix')
         set lines=61
-        "set gfn=Menlo:h14
         set gfn=Droid\ Sans\ Mono\ Awesome:h14
     endif
 endif
@@ -124,37 +120,26 @@ endif
 let g:author = 'Michael Foukarakis'
 let g:author_short = 'mfukar'
 
-" mt_chooseWith for lh-vim template completion
-let g:mt_chooseWith = 'confirm'
-
-" SIGSTOP from <C-Z> is unwanted and 'screen' would lose the connection on it,
-" so let's remap it to something useful, like a shell:
-map <C-Z> :shell<CR>
-
 " Set the terminal title, always:
 set title
 
-" Force the number of terminal colors; if 256 colours are not
-" supported, your terminal emulator sucks & you should get another one:
+" Force the number of terminal colors; if env doesn't do 256 colours,
+" don't care:
 set t_Co=256
 "
-" Set the colorscheme:
-set background=dark
-colorscheme kuroi
+" Set a colorscheme:
+set background=light
+colorscheme iceberg
 
-" Create a fancy status line:
+" Create a fancy status line with airline:
 function! IndentLevel()
     return (indent('.') / &ts)
 endf
 
-" Configure airline:
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_section_b = '[%04B]'
 let g:airline_section_z = '%3p%% : %3l : %3c T%{IndentLevel()}'
 let g:airline_theme = 'cobalt2'
-
-" Tagbar on/off switching:
-nnoremap <silent> <F10> :TagbarToggle<CR>
 
 " have syntax highlighting in terminals which can display colours:
 if (has('syntax') && (&t_Co > 2)) || has('gui_running')
@@ -475,6 +460,14 @@ vnoremap <Leader>kr d:call Deboxify('@"')<CR>P
 " Some function keys (which might not work in all terminals) are also mapped, for
 " convenience.
 
+" Tagbar on/off switching:
+nnoremap <silent> <F10> :TagbarToggle<CR>
+
+" SIGSTOP from <C-Z> is unwanted and 'screen' would lose the connection on it,
+" so let's remap it to something useful, like a shell:
+map <C-Z> :shell<CR>
+
+
 " have <Leader>tp ("toggle paste") toggle paste on/off and report the change, and
 " where possible also have <F4> do this both in normal and insert mode:
 nnoremap <Leader>tp :set invpaste paste?<CR>
@@ -714,5 +707,10 @@ function! NukeWhitespace()
     call winrestview(s:__cp)
 endfun
 noremap <silent> <Leader>w :call NukeWhitespace()<CR>
+
+" * Plugin configuration
+
+" mt_chooseWith for lh-vim template completion
+let g:mt_chooseWith = 'confirm'
 
 " end of mfukar's .vimrc
