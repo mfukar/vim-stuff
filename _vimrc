@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Jun 05, 2023 09:43 CEST
+" Last Update: Mon Oct 09, 2023 22:18 W. Europe Daylight Time
 "
 " This vimrc is divided into these sections:
 "
@@ -709,8 +709,5 @@ endfun
 noremap <silent> <Leader>w :call NukeWhitespace()<CR>
 
 " * Plugin configuration
-
-" mt_chooseWith for lh-vim template completion
-let g:mt_chooseWith = 'confirm'
 
 " end of mfukar's .vimrc
