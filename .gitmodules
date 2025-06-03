@@ -56,3 +56,6 @@
     path = bundle/vim-lsp-settings
     url = https://github.com/mattn/vim-lsp-settings.git
     branch = master
+[submodule "bundle/c-function-context"]
+	path = bundle/c-function-context
+	url = https://github.com/wellle/context.vim.git
