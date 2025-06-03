@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Mon Oct 09, 2023 22:18 W. Europe Daylight Time
+" Last Update: Tue Jun 03, 2025 11:28 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -112,7 +112,7 @@ if has('gui_running')
         set gfn=Input:h10:cANSI:qDRAFT
     elseif has('macunix')
         set lines=61
-        set gfn=Droid\ Sans\ Mono\ Awesome:h14
+        set gfn=MonaspaceKryptonVar-Medium:h13
     endif
 endif
 
@@ -128,7 +128,6 @@ set title
 set t_Co=256
 "
 " Set a colorscheme:
-set background=light
 colorscheme iceberg
 
 " Create a fancy status line with airline:
@@ -289,6 +288,8 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Enable rainbow parentheses:
+let g:rainbow_active=1
 
 " * Text Formatting -- Specific File Formats
 
