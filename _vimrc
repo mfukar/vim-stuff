@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jun 03, 2025 11:28 CEST
+" Last Update: Wed Oct 01, 2025 13:43 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -272,10 +272,10 @@ elseif has('win32')
 endif
 
 " normally don't automatically format text as it is typed, only do this with
-" comments, at 100 characters. also, reformat numbered lists:
+" comments, at 120 characters (same as colorcolumn). also, reformat numbered lists:
 set fo-=t
 set fo+=n
-set textwidth=100
+set textwidth=120
 
 " treat lines starting with a quote mark as comments (for vim files, such as this very
 " one!):
