@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Tue Jun 23, 2026 15:17 CEST
+" Last Update: Tue Jun 23, 2026 15:56 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -713,5 +713,7 @@ endfun
 noremap <silent> <Leader>w :call NukeWhitespace()<CR>
 
 " * Plugin configuration
+
+autocmd FileType c,cpp let g:lsp_semantic_enabled=1
 
 " end of mfukar's .vimrc
