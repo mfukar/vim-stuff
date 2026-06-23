@@ -59,3 +59,6 @@
 [submodule "bundle/c-function-context"]
 	path = bundle/c-function-context
 	url = https://github.com/wellle/context.vim.git
+[submodule "bundle/iceberg"]
+	path = bundle/iceberg
+	url = https://github.com/cocopon/iceberg.vim.git

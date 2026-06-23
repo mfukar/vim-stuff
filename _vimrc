@@ -2,7 +2,7 @@
 "
 " mfukar's _vimrc
 "
-" Last Update: Wed Oct 01, 2025 13:43 CEST
+" Last Update: Tue Jun 23, 2026 15:17 CEST
 "
 " This vimrc is divided into these sections:
 "
@@ -105,15 +105,21 @@ set fileencodings=utf-8,ucs-bom,default,latin1
 set noeb vb t_vb=
 autocmd GUIEnter * set vb t_vb=
 
+" Set a colorscheme, font, and basic UI settings:
 if has('gui_running')
     set columns=120
     if has('win32')
         set lines=46
         set gfn=Input:h10:cANSI:qDRAFT
+        colorscheme gruvbox
     elseif has('macunix')
         set lines=61
-        set gfn=MonaspaceKryptonVar-Medium:h13
+        set gfn=MonaspaceKrypton-Regular:h13
+        colorscheme iceberg
     endif
+else
+    set bg=light
+    colorscheme calm
 endif
 
 " whoami:
@@ -126,9 +132,6 @@ set title
 " Force the number of terminal colors; if env doesn't do 256 colours,
 " don't care:
 set t_Co=256
-"
-" Set a colorscheme:
-colorscheme iceberg
 
 " Create a fancy status line with airline:
 function! IndentLevel()
